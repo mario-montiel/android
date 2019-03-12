@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponseRedirectResponseredirect;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Modelos\Login;
@@ -17,34 +18,40 @@ class LoginController extends Controller
 
     function login(Request $request)
     {
-        dd($vato);
+        $this->validate($request, [
+            'usuario' => 'required|max:255',
+            'password' => 'required',], 
+
+            ['usuario.required' => 'Ingrese un usuario',
+            'password.required' => 'Ingrese una contraseña',]);
+
         $vato = DB::table('usuarios')->first();
-        //dd($vato->contraseña);
-        //$Login = new Login();
+
         $usuario = $request->get('usuario');
-        //dd($usuario);
         $pass = $request->get('password');
-        //dd($pass);
+        //dd($vato->usuario);
 
         if ($vato->usuario == $usuario && $vato->contraseña == $pass) {
-           return view('TalleresUTT.Talleres.talleres');
+           return redirect('/registroTalleres');
         }
+       
+       return redirect('/inicioSesion');
 
-        return back();   
+        
     }
 
-    function viewRegistroUsuario()
+    /*function viewRegistroUsuario()
     {
     	return view('TalleresUTT.Login.registro');
     }
     function registrarse(Request $request)
     {
-		/*$this->validate($request, [
-		    'usuario' => 'required|max:255|color',
+		$this->validate($request, [
+		    'usuario' => 'required|max:255',
 		    'password' => 'required',], 
 
 		    ['usuario.required' => 'Ingrese un usuario',
-    		'password.required' => 'Ingrese una contraseña',]);*/
+    		'password.required' => 'Ingrese una contraseña',]);
 
 
 
@@ -55,6 +62,6 @@ class LoginController extends Controller
 
 		return view('TalleresUTT.Login.login');
     
-	}
+	}*/
 
 }

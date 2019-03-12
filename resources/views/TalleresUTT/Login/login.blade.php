@@ -30,7 +30,7 @@
 	#boton1{
 		width: 280px;
 		height: 60px;
-		margin-top: 5px;
+		margin-top: 35px;
 		border-radius: 45px;
 
 	}
@@ -122,13 +122,21 @@
     <div id="card" class="card">
         <div class="card-body">
             <h3 id="title" class="card-title text-center">Iniciar Sesión</h3>
-            <form action="/inicioSesion" method="get">
+
+            @if ($errors->any())
+		        <ul style="color: white; margin-top: 25px; margin: auto;">
+		            @foreach ($errors->all() as $error)
+		                <li>{{ $error }}</li>
+		            @endforeach
+		        </ul>
+			@endif
+
+            <form action="{{ url('inicioSesion') }}" method="post">
                 {{ csrf_field() }}
                 
                 <div class="row">
 				    <div id="col1" class="col"> <input id="input1" type="text" placeholder="Usuario o Email" name="usuario"> </div>
 				    <div id="col2" class="col-12"> <input id="input2" type="password" placeholder="Contraseña" name="password"> </div>
-				    <div class="col"> <p id="p1">¿Olvidó su contraseña?</p> </div>
 				    <div id="col3" class="col-12"> <button id="boton1" type="submit" class="btn btn-dark"> Iniciar sesión </button> </div>
 				    <div id="col4" class="col-12"> <p id="p2">© 2019 Desarrollado por el equipo Amarillo de la Carrera de Sistemas Informáticos</p> </div>
 				  </div>
