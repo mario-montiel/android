@@ -145,7 +145,7 @@
 				    <input type="text" class="form-control" id="input" name="horarios">
 				  </div>
                   <div class="form-group">
-				    <label for="exampleFormControlTextarea1"> Elegir icono del taller </label>
+				    <label for="exampleFormControlTextarea1"> Elegir iconos del taller </label>
 				    
 				 <div class="row">
 				    <div class="col"> <img name="img" id="img" src="{{ asset('img/talleresUTT/saxophone.png') }}">
@@ -230,6 +230,6 @@
     </div>
 
 </div>
-
+  
 </body>
 </html>
