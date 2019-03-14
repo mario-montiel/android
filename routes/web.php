@@ -15,7 +15,7 @@ Route::get('/', function () {
 */
 
 
-Route::get('/','IngenieriaSoftware@viewTalleres');
+Route::get('/','LoginController@viewLogin');
 
 
 //////////////////////////////////////////////////////////
