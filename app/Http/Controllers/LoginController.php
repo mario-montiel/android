@@ -40,7 +40,7 @@ class LoginController extends Controller
         
     }
 
-    /*function viewRegistroUsuario()
+    function viewRegistroUsuario()
     {
     	return view('TalleresUTT.Login.registro');
     }
@@ -62,6 +62,6 @@ class LoginController extends Controller
 
 		return view('TalleresUTT.Login.login');
     
-	}*/
+	}
 
 }

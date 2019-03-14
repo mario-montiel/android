@@ -45,8 +45,8 @@ Route::get('/seleccionFoto','IngenieriaSoftware@viewSeleccionFoto');
 Route::get('/inicioSesion', 'LoginController@viewLogin');
 Route::post('/inicioSesion', 'LoginController@login');
 
-/*Route::get('/registrarse', 'LoginController@viewRegistroUsuario');
-Route::post('/registrar', 'LoginController@registrarse');*/
+Route::get('/registrarse', 'LoginController@viewRegistroUsuario');
+Route::post('/registrar', 'LoginController@registrarse');
 
 Route::get('/registroTalleres', 'TalleresController@viewTalleres');
 Route::post('/talleres', 'TalleresController@talleres');
