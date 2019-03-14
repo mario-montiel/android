@@ -9,12 +9,13 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
 Route::get('/', function () {
     return view('TalleresUTT.Login.login');
 });
+*/
 
+
+Route::get('/','IngenieriaSoftware@viewTalleres');
 
 
 //////////////////////////////////////////////////////////
@@ -48,5 +49,5 @@ Route::post('/inicioSesion', 'LoginController@login');
 Route::get('/registrarse', 'LoginController@viewRegistroUsuario');
 Route::post('/registrar', 'LoginController@registrarse');
 
-Route::get('/registroTalleres', 'TalleresController@viewTalleres');
+//Route::get('/registroTalleres', 'TalleresController@viewTalleres');
 Route::post('/talleres', 'TalleresController@talleres');
