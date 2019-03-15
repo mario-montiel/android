@@ -56,8 +56,11 @@ class TalleresController extends Controller
 
     	return redirect('/mostrartalleres');
     }
-    //talleres input
-    //Tipo.. combobox
-    //Icono.. radiobutton
-    //Evento.. Ninguno
+
+    function arregloJohnnyLand(){
+        $deportivo = DB::table('tipos_taller')->get();
+        //$deportivo = collect($deportivo)->where('');
+
+        return $deportivo;
+    }
 }

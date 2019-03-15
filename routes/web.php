@@ -40,7 +40,6 @@ Route::get('/cambioFoto','IngenieriaSoftware@viewCambioFoto');
 
 Route::get('/seleccionFoto','IngenieriaSoftware@viewSeleccionFoto');
 
-
 /////////////////////////////////////////////////////////////////////////////////
 
 Route::get('/inicioSesion', 'LoginController@viewLogin');
@@ -54,3 +53,5 @@ Route::post('/talleres', 'TalleresController@talleres');
 Route::get('/mostrartalleres', 'TalleresController@viewMostrarTalleres');
 Route::get('/editartaller/{id}', 'TalleresController@viewActualizarTalleres');
 Route::PUT('/editartaller/{id}', 'TalleresController@actualizarTaller');
+
+Route::get('/JohnnyLand', 'TalleresController@arregloJohnnyLand');
