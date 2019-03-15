@@ -191,7 +191,7 @@
 				     </div> 
 				    	
 				    <div class="col"> <img class="img" id="img2" src="{{ asset('img/talleresUTT/guitarelectric.png') }}"> 
-				    	<div><input id="guitarelectric" type="radio" class="radio" name="radio" value="guitar-electric"></div>
+				    	<div><input id="guitarelectric" type="radio" class="radio" name="radio" value="guitarelectric"></div>
 				    </div>
 
 				     <div class="col"> <img class="img" id="img3" src="{{ asset('img/talleresUTT/guitaracoustic.png') }}">
@@ -283,15 +283,15 @@
 
 		$("#img2").click(function(){
 
-			 if($('#guitar-electric').is('checked') == false){
-			  	$('input:radio[value="guitar-electric"]').prop('checked', true);
+			 if($('#guitarelectric').is('checked') == false){
+			  	$('input:radio[value="guitarelectric"]').prop('checked', true);
 			  }
 		});
 
 		$("#img3").click(function(){
 
-			 if($('#guitar-acoustic').is('checked') == false){
-			  	$('input:radio[value="guitar-acoustic"]').prop('checked', true);
+			 if($('#guitaracoustic').is('checked') == false){
+			  	$('input:radio[value="guitaracoustic"]').prop('checked', true);
 			  }
 		});
 
@@ -304,15 +304,15 @@
 
 		$("#img5").click(function(){
 
-			 if($('#run-fast').is('checked') == false){
-			  	$('input:radio[value="run-fast"]').prop('checked', true);
+			 if($('#runfast').is('checked') == false){
+			  	$('input:radio[value="runfast"]').prop('checked', true);
 			  }
 		});
 
 		$("#img6").click(function(){
 
-			 if($('#drama-masks').is('checked') == false){
-			  	$('input:radio[value="drama-masks"]').prop('checked', true);
+			 if($('#dramamasks').is('checked') == false){
+			  	$('input:radio[value="dramamasks"]').prop('checked', true);
 			  }
 		});
 
@@ -325,8 +325,8 @@
 
 		$("#img8").click(function(){
 
-			 if($('#chess-rook').is('checked') == false){
-			  	$('input:radio[value="chess-rook"]').prop('checked', true);
+			 if($('#chessrook').is('checked') == false){
+			  	$('input:radio[value="chessrook"]').prop('checked', true);
 			  }
 		});
 
@@ -360,14 +360,14 @@
 
 		$("#img13").click(function(){
 
-			 if($('#book-open-variant').is('checked') == false){
-			  	$('input:radio[value="book-open-variant"]').prop('checked', true);
+			 if($('#bookopenvariant').is('checked') == false){
+			  	$('input:radio[value="bookopenvariant"]').prop('checked', true);
 			  }
 		});
 
 		$("#img14").click(function(){
-			 if($('#gamepad-variant').is('checked') == undefined || $('#gamepad-variant').is('checked') == false){
-			  	$('input:radio[value="gamepad-variant"]').prop('checked', true);
+			 if($('#gamepadvariant').is('checked') == false){
+			  	$('input:radio[value="gamepadvariant"]').prop('checked', true);
 			  }
 		});
 
@@ -381,8 +381,8 @@
 
 		$("#img16").click(function(){
 
-			 if($('#soccer-field-electric').is('checked') == false){
-			  	$('input:radio[value="soccer-field"]').prop('checked', true);
+			 if($('#soccerfield').is('checked') == false){
+			  	$('input:radio[value="soccerfield"]').prop('checked', true);
 			  }
 		});
 

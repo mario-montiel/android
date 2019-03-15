@@ -30,8 +30,8 @@ class TalleresController extends Controller
     	//$talleres->eventos_id_evento = 1;
     	//dd($request->get('tipo'));
     	$talleres->save();
-    	
-    	//return $collection;
+
+        return redirect('/registroTalleres');
     }
 
     function viewMostrarTalleres(){
