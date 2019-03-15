@@ -49,5 +49,8 @@ Route::post('/inicioSesion', 'LoginController@login');
 Route::get('/registrarse', 'LoginController@viewRegistroUsuario');
 Route::post('/registrar', 'LoginController@registrarse');
 
-//Route::get('/registroTalleres', 'TalleresController@viewTalleres');
+Route::get('/registroTalleres', 'TalleresController@viewTalleres');
 Route::post('/talleres', 'TalleresController@talleres');
+Route::get('/mostrartalleres', 'TalleresController@viewMostrarTalleres');
+Route::get('/editartaller/{id}', 'TalleresController@viewActualizarTalleres');
+Route::PUT('/editartaller/{id}', 'TalleresController@actualizarTaller');

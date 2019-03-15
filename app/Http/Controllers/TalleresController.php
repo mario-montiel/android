@@ -33,8 +33,28 @@ class TalleresController extends Controller
     	//return $collection;
     }
 
-    function view(){
+    function viewMostrarTalleres(){
+    	$talleres = DB::table("talleres")->get();
+    	return view('TalleresUTT.Talleres.mostrarTalleres', compact('talleres'));
+    }
 
+    function viewActualizarTalleres($id){
+    	$taller = Taller::findOrFail($id);
+    	$tipos_taller = DB::table('tipos_taller')->get();
+		return view('TalleresUTT.Talleres.actualizarTaller', compact('taller', 'tipos_taller'));
+    }
+
+    function actualizarTaller(Request $request, $id){
+    	$taller = Taller::findOrFail($id);
+    	$taller->nombre = $request->get('nombre');
+    	$taller->encargado = $request->get('encargado');
+    	$taller->tipos_taller = $request->get('tipo');
+    	$taller->descripcion = $request->get('descripcion');
+    	$taller->horarios = $request->get('horarios');
+    	$taller->icono = $request->get('radio');
+    	$taller->save();
+
+    	return redirect('/mostrartalleres');
     }
     //talleres input
     //Tipo.. combobox
