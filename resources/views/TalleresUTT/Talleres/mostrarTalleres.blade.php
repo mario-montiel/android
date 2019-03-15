@@ -22,7 +22,7 @@
 	<tbody>
 		<td> {{$taller->nombre}} </td>
 		<td> {{$taller->encargado}} </td>
-		<td> {{$taller->tipos_taller}} </td>
+		<td> {{$tipos_taller->tipo}} </td>
 		<td> {{$taller->descripcion}} </td>
 		<td> {{$taller->horarios}} </td>
 		<td> <a href="{{ url('editartaller', $taller->id_taller) }}"><button type="button" class="btn btn-primary"> Actualizar</button></a> </td>

@@ -35,7 +35,8 @@ class TalleresController extends Controller
 
     function viewMostrarTalleres(){
     	$talleres = DB::table("talleres")->get();
-    	return view('TalleresUTT.Talleres.mostrarTalleres', compact('talleres'));
+        $tipos_taller = DB::table('tipos_taller')->get();
+    	return view('TalleresUTT.Talleres.mostrarTalleres', compact('talleres', 'tipos_taller'));
     }
 
     function viewActualizarTalleres($id){
