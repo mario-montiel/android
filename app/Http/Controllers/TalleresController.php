@@ -6,6 +6,7 @@ use Illuminate\Support\Collection as Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Modelos\Taller;
+use App\Modelos\Tipo_Taller;
 
 class TalleresController extends Controller
 {
@@ -59,9 +60,12 @@ class TalleresController extends Controller
     }
 
     function arregloJohnnyLand(){
-        $deportivo = DB::table('talleres')->get();
-        //$deportivo = collect($deportivo)->where('');
+        $talleres = DB::table('talleres')->get();
+        return $talleres;
+    }
 
-        return $deportivo;
+    function arregloJohnnyLandDepo(){
+         $deportivos = Taller::where("tipos_taller", '=', "2")->get();
+        return $deportivos;
     }
 }

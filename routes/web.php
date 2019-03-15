@@ -55,3 +55,4 @@ Route::get('/editartaller/{id}', 'TalleresController@viewActualizarTalleres');
 Route::PUT('/editartaller/{id}', 'TalleresController@actualizarTaller');
 
 Route::get('/JohnnyLand', 'TalleresController@arregloJohnnyLand');
+Route::get('/JohnnyLandDepo', 'TalleresController@arregloJohnnyLandDepo');
