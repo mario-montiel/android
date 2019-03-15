@@ -58,7 +58,7 @@ class TalleresController extends Controller
     }
 
     function arregloJohnnyLand(){
-        $deportivo = DB::table('tipos_taller')->get();
+        $deportivo = DB::table('talleres')->get();
         //$deportivo = collect($deportivo)->where('');
 
         return $deportivo;
