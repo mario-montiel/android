@@ -68,4 +68,9 @@ class TalleresController extends Controller
          $deportivos = Taller::where("tipos_taller", '=', "2")->get();
         return $deportivos;
     }
+
+    function arregloJohnnyLandCult(){
+         $deportivos = Taller::where("tipos_taller", '=', "1")->get();
+        return $deportivos;
+    }
 }
