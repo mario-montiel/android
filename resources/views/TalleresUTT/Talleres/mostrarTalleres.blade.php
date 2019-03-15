@@ -19,7 +19,7 @@
 		<th>Acciones</th>
 	</head>
 	@foreach($talleres as $taller)
-	@foreach($tipos_taller as $ tp)
+	@foreach($tipos_taller as $tp)
 	<tbody>
 		<td> {{$taller->nombre}} </td>
 		<td> {{$taller->encargado}} </td>
