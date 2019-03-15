@@ -19,14 +19,16 @@
 		<th>Acciones</th>
 	</head>
 	@foreach($talleres as $taller)
+	@foreach($tipos_taller as $ tp)
 	<tbody>
 		<td> {{$taller->nombre}} </td>
 		<td> {{$taller->encargado}} </td>
-		<td> {{$tipos_taller->tipo}} </td>
+		<td> {{$tp->tipo}} </td>
 		<td> {{$taller->descripcion}} </td>
 		<td> {{$taller->horarios}} </td>
 		<td> <a href="{{ url('editartaller', $taller->id_taller) }}"><button type="button" class="btn btn-primary"> Actualizar</button></a> </td>
 	</tbody>
+	@endforeach
 	@endforeach
 </table>
 
