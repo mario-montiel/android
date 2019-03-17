@@ -87,22 +87,35 @@
 		}
 		#tituloNavBar{
 			position: absolute;
-			left: 45%;
+			left: 44%;
 		}
 		#tituloNavBar:hover{
 			color: #A1BFB7;
 		}
-		#regresar{	
-			left: 90%;
+		li{
+			display: none;
 		}
-		@media (max-width: 1500px){
+		@media (max-width: 1600px){
 			#boton1{
 				left: 50%;	
 			}
+			#tituloNavBar{
+			text-align: center;
+			margin: 0;
+			}
+			li{
+			display: none;
+		}
 		}
 		@media (min-width: 1001px) and (max-width: 1499px){
 			#boton1{
 				left: 50%;	
+			}
+			#tituloNavBar{
+			text-align: center;
+			}
+			li{
+			display: visibility;
 			}
 		}
 		@media (min-width: 601px) and (max-width: 1000px){
@@ -121,6 +134,23 @@
 			}
 			#card:hover{
 				width: 90%;
+			}
+			.img{
+				height: 55px;
+				margin-left: 15px;
+			}
+			.radio{
+				margin-left: 35px;
+			}
+			#tituloNavBar{
+				margin: auto;
+				left: 40%;
+			}
+			li{
+				display: inline;
+			}
+			li:hover{
+				background-color: #484452;
 			}
 		}
 		@media (max-width: 600px)
@@ -144,6 +174,23 @@
 			}
 			#card:hover{
 				width: 90%;
+			}
+			.img{
+				height: 55px;
+				margin-left: 25px;
+			}
+			.radio{
+				margin-left: 48px;
+			}
+			#tituloNavBar{
+				margin: auto;
+				left: 34%;
+			}
+			li:hover{
+				background-color: #484452;
+			}
+			li{
+				display: inline;
 			}
 		}
 	</style>
