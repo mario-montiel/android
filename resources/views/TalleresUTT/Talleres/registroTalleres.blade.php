@@ -17,14 +17,16 @@
 		#card{
 			background-color: #282B30;
 			margin: auto;
-			margin-top: 2%;
 			width: 60%;
 			color: white;
 			border-radius: 15px;
 			margin-bottom: 50px;
+			transition: width 1s, height 1s, margin 1s, background-color 2s;
+    		margin: 3% auto 0;
 		}
 		#card:hover{
-			background-color: #303136;
+			width: 65%;
+			background-color: #41464D;
 		}
 		#titulo{
 			margin-top: 2%;
@@ -34,12 +36,19 @@
 		#titulo:hover{
 			color: #A1BFB7;
 		}
+		label{
+			margin-left: 15px;
+		}
 		#input{
+			margin: auto;
+			width: 98%;
 			background-color: #E9E9E9;
 			border-radius: 30px;
 			color: black;
+			transition: width 1s, height 1s, margin 1s, background-color 2s;
 		}
 		#input:hover{
+			width: 100%;
 			background-color: #A1BFB7;
 			color: white;
 		}
@@ -51,8 +60,10 @@
 			background-color: #38393D;
 			border-radius: 5px;
 			padding: 8px;
+			transition: width 1s, height 1s, margin 1s, background-color 2s;
 		}
 		.img:hover{
+			height: 60px;
 			background-color: #A1BFB7;
 		}
 		#radio{
@@ -136,6 +147,7 @@
   </div>
 </nav>
 
+<div class="container-fluid">
 
 	<h1 id="titulo">Registrar Nuevo Taller</h1>
 	
@@ -261,7 +273,7 @@
             @endif
         </div>
     </div>
-
+</div>
 
  <script>
  	jQuery(document).ready(function($) {

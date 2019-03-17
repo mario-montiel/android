@@ -264,7 +264,7 @@
     </div>
 
 
- <script>
+ <script type="text/javascript">
  	jQuery(document).ready(function($) {
 
  		$(".img").click(function(){
@@ -280,15 +280,15 @@
 
 		$("#img2").click(function(){
 
-			 if($('#guitar-electric').is('checked') == false){
-			  	$('input:radio[value="guitar-electric"]').prop('checked', true);
+			 if($('#guitarelectric').is('checked') == false){
+			  	$('input:radio[value="guitarelectric"]').prop('checked', true);
 			  }
 		});
 
 		$("#img3").click(function(){
 
-			 if($('#guitar-acoustic').is('checked') == false){
-			  	$('input:radio[value="guitar-acoustic"]').prop('checked', true);
+			 if($('#guitaracoustic').is('checked') == false){
+			  	$('input:radio[value="guitaracoustic"]').prop('checked', true);
 			  }
 		});
 
@@ -301,15 +301,15 @@
 
 		$("#img5").click(function(){
 
-			 if($('#run-fast').is('checked') == false){
-			  	$('input:radio[value="run-fast"]').prop('checked', true);
+			 if($('#runfast').is('checked') == false){
+			  	$('input:radio[value="runfast"]').prop('checked', true);
 			  }
 		});
 
 		$("#img6").click(function(){
 
-			 if($('#drama-masks').is('checked') == false){
-			  	$('input:radio[value="drama-masks"]').prop('checked', true);
+			 if($('#dramamasks').is('checked') == false){
+			  	$('input:radio[value="dramamasks"]').prop('checked', true);
 			  }
 		});
 
@@ -322,8 +322,8 @@
 
 		$("#img8").click(function(){
 
-			 if($('#chess-rook').is('checked') == false){
-			  	$('input:radio[value="chess-rook"]').prop('checked', true);
+			 if($('#chessrook').is('checked') == false){
+			  	$('input:radio[value="chessrook"]').prop('checked', true);
 			  }
 		});
 
@@ -363,8 +363,8 @@
 		});
 
 		$("#img14").click(function(){
-			 if($('#gamepad-variant').is('checked') == undefined || $('#gamepad-variant').is('checked') == false){
-			  	$('input:radio[value="gamepad-variant"]').prop('checked', true);
+			 if($('#gamepad-variant').is('checked') == undefined || $('#gamepadvariant').is('checked') == false){
+			  	$('input:radio[value="gamepadvariant"]').prop('checked', true);
 			  }
 		});
 
@@ -378,8 +378,8 @@
 
 		$("#img16").click(function(){
 
-			 if($('#soccer-field-electric').is('checked') == false){
-			  	$('input:radio[value="soccer-field"]').prop('checked', true);
+			 if($('#soccerfieldelectric').is('checked') == false){
+			  	$('input:radio[value="soccerfield"]').prop('checked', true);
 			  }
 		});
 
@@ -393,7 +393,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script type="js/bootstrap.min.js"></script>
 <script src=""></script>
 
 </div>

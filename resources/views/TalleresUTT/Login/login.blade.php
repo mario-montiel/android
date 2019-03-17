@@ -218,11 +218,11 @@
 		        </ul>
 			@endif
 
-            <form action="{{ url('inicioSesion') }}" method="post">
+            <form action="{{ url('iniciosesion') }}" method="post">
                 {{ csrf_field() }}
                 
                 <div class="row">
-				    <div id="col1" class="col"> <input id="input1" type="text" placeholder="Usuario o Email" name="usuario"> </div>
+				    <div id="col1" class="col"> <input id="input1" type="text" placeholder="Usuario" name="usuario"> </div>
 				    <div id="col2" class="col-12"> <input id="input2" type="password" placeholder="Contraseña" name="password"> </div>
 				    <div id="col3" class="col-12"> <button id="boton1" type="submit" class="btn btn-dark"> Iniciar sesión </button> </div>
 				    <div id="col4" class="col-12"> <p id="p2">© 2019 Desarrollado por el equipo Amarillo de la Carrera de Sistemas Informáticos</p> </div>

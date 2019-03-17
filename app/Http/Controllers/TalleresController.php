@@ -31,7 +31,7 @@ class TalleresController extends Controller
     	//dd($request->get('tipo'));
     	$talleres->save();
 
-        return redirect('/registroTalleres');
+        return redirect('/registrotalleres');
     }
 
     function viewMostrarTalleres(){

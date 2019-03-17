@@ -20,7 +20,7 @@ class LoginController extends Controller
     {
         $this->validate($request, [
             'usuario' => 'required|max:255',
-            'password' => 'required',], 
+            'password' => 'required',],
 
             ['usuario.required' => 'Ingrese un usuario',
             'password.required' => 'Ingrese una contraseña',]);
@@ -32,10 +32,10 @@ class LoginController extends Controller
         //dd($vato->usuario);
 
         if ($vato->usuario == $usuario && $vato->contraseña == $pass) {
-           return redirect('/registroTalleres');
+           return redirect('/registrotalleres');
         }
        
-       return redirect('/inicioSesion');
+       return redirect('/iniciosesion');
 
         
     }
