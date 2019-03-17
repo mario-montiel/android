@@ -64,4 +64,8 @@ class LoginController extends Controller
     
 	}
 
+    function viewLoading(){
+        return view('TalleresUTT.Loading.loading');
+    }
+
 }

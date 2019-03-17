@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" href="">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<title> Registro de Talleres </title>
+@extends('TalleresUTT.Complements.plugins')
+
+@section('titulo', 'Actualición de Taller')
+
+@section('contenido')
 	<style type="text/css">
 		#fondo{
 			background-color: #282B30;
@@ -191,32 +187,32 @@
 				    	<div><input id="saxophone" type="radio" class="radio" name="radio" value="saxophone"></div>
 				     </div> 
 				    	
-				    <div class="col"> <img class="img" id="img2" src="{{ asset('img/talleresUTT/guitar-electric.png') }}"> 
-				    	<div><input id="guitar-electric" type="radio" class="radio" name="radio" value="guitar-electric"></div>
+				    <div class="col"> <img class="img" id="img2" src="{{ asset('img/talleresUTT/guitarelectric.png') }}"> 
+				    	<div><input id="guitarelectric" type="radio" class="radio" name="radio" value="guitarelectric"></div>
 				    </div>
 
-				     <div class="col"> <img class="img" id="img3" src="{{ asset('img/talleresUTT/guitar-acoustic.png') }}">
-				    	<div><input id="guitar-acoustic" type="radio" class="radio" name="radio" value="guitar-acoustic"></div>
+				     <div class="col"> <img class="img" id="img3" src="{{ asset('img/talleresUTT/guitaracoustic.png') }}">
+				    	<div><input id="guitaracoustic" type="radio" class="radio" name="radio" value="guitaracoustic"></div>
 				     </div> 
 
 				      <div class="col"> <img class="img" id="img4" src="{{ asset('img/talleresUTT/soccer.png') }}">
 				    	<div><input id="soccer" type="radio" class="radio" name="radio" value="soccer"></div>
 				     </div> 
 
-				     <div class="col"> <img class="img" id="img5" src="{{ asset('img/talleresUTT/run-fast.png') }}">
-				    	<div><input id="run-fast" type="radio" class="radio" name="radio" value="run-fast"></div>
+				     <div class="col"> <img class="img" id="img5" src="{{ asset('img/talleresUTT/runfast.png') }}">
+				    	<div><input id="runfast" type="radio" class="radio" name="radio" value="runfast"></div>
 				     </div> 
 
-				     <div class="col"> <img class="img" id="img6" src="{{ asset('img/talleresUTT/drama-masks.png') }}">
-				    	<div><input id="drama-masks" type="radio" class="radio" name="radio" value="drama-masks"></div>
+				     <div class="col"> <img class="img" id="img6" src="{{ asset('img/talleresUTT/dramamasks.png') }}">
+				    	<div><input id="dramamasks" type="radio" class="radio" name="radio" value="dramamasks"></div>
 				     </div> 
 
 				     <div class="col"> <img class="img" id="img7" src="{{ asset('img/talleresUTT/speaker.png') }}">
 				    	<div><input id="speaker" type="radio" class="radio" name="radio" value="speaker"></div>
 				     </div> 
 
-				     <div class="col"> <img class="img" id="img8" src="{{ asset('img/talleresUTT/chess-rook.png') }}">
-				    	<div><input id="chess-rook" type="radio" class="radio" name="radio" value="chess-rook"></div>
+				     <div class="col"> <img class="img" id="img8" src="{{ asset('img/talleresUTT/chessrook.png') }}">
+				    	<div><input id="chessrook" type="radio" class="radio" name="radio" value="chessrook"></div>
 				     </div>
 				<div class="w-100"></div>
 					<div class="col"> <img class="img" id="img9" src="{{ asset('img/talleresUTT/baseball.png') }}">
@@ -235,20 +231,20 @@
 				    	<div><input id="football" type="radio" class="radio" name="radio" value="football"></div>
 				     </div> 
 
-				     <div class="col"> <img class="img" id="img13" src="{{ asset('img/talleresUTT/book-open-variant.png') }}">
-				    	<div><input id="book-open-variant" type="radio" class="radio" name="radiot" value="book-open-variant"></div>
+				     <div class="col"> <img class="img" id="img13" src="{{ asset('img/talleresUTT/bookopenvariant.png') }}">
+				    	<div><input id="bookopenvariant" type="radio" class="radio" name="radiot" value="bookopenvariant"></div>
 				     </div> 
 
-				     <div class="col"> <img class="img" id="img14" src="{{ asset('img/talleresUTT/gamepad-variant.png') }}">
-				    	<div><input id="gamepad-variant" type="radio" class="radio" name="radio" value="gamepad-variant"></div>
+				     <div class="col"> <img class="img" id="img14" src="{{ asset('img/talleresUTT/gamepadvariant.png') }}">
+				    	<div><input id="gamepadvariant" type="radio" class="radio" name="radio" value="gamepadvariant"></div>
 				     </div> 
 
 				     <div class="col"> <img class="img" id="img15" src="{{ asset('img/talleresUTT/karate.png') }}">
 				    	<div><input id="karate" type="radio" class="radio" name="radio" value="karate"></div>
 				     </div>
 
-				     <div class="col"> <img class="img" id="img16" src="{{ asset('img/talleresUTT/soccer-field.png') }}">
-				    	<div ><input id="soccer-field" type="radio" class="radio" name="radio" value="soccer-field"></div>
+				     <div class="col"> <img class="img" id="img16" src="{{ asset('img/talleresUTT/soccerfield.png') }}">
+				    	<div ><input id="soccerfield" type="radio" class="radio" name="radio" value="soccerfield"></div>
 				     </div> 
 				</div>
 				<div class="row">

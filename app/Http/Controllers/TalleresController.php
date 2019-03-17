@@ -35,9 +35,12 @@ class TalleresController extends Controller
     }
 
     function viewMostrarTalleres(){
-    	$talleres = DB::table("talleres")->get();
-        $tipos_taller = DB::table('tipos_taller')->get();
-    	return view('TalleresUTT.Talleres.mostrarTalleres', compact('talleres', 'tipos_taller'));
+    	$talleres = DB::table("talleres")
+            ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')
+            ->select('talleres.id_taller', 'talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
+            ->get();
+
+    	   return view('TalleresUTT.Talleres.mostrarTalleres', compact('talleres'));
     }
 
     function viewActualizarTalleres($id){
@@ -72,5 +75,11 @@ class TalleresController extends Controller
     function arregloJohnnyLandCult(){
          $deportivos = Taller::where("tipos_taller", '=', "1")->get();
         return $deportivos;
+    }
+
+    function eliminarTaller($id){
+        Taller::destroy($id);
+
+        return redirect('/mostrartalleres');
     }
 }

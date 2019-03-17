@@ -15,7 +15,7 @@ Route::get('/', function () {
 */
 
 
-Route::get('/','LoginController@viewLogin');
+//Route::get('/','LoginController@viewLogin');
 
 
 //////////////////////////////////////////////////////////
@@ -42,6 +42,8 @@ Route::get('/seleccionFoto','IngenieriaSoftware@viewSeleccionFoto');
 
 /////////////////////////////////////////////////////////////////////////////////
 
+Route::get('/', 'LoginController@viewLoading');
+
 Route::get('/inicioSesion', 'LoginController@viewLogin');
 Route::post('/inicioSesion', 'LoginController@login');
 
@@ -53,6 +55,7 @@ Route::post('/talleres', 'TalleresController@talleres');
 Route::get('/mostrartalleres', 'TalleresController@viewMostrarTalleres');
 Route::get('/editartaller/{id}', 'TalleresController@viewActualizarTalleres');
 Route::PUT('/editartaller/{id}', 'TalleresController@actualizarTaller');
+Route::get('/eliminartaller/{id}', 'TalleresController@eliminarTaller');
 
 Route::get('/JohnnyLand', 'TalleresController@arregloJohnnyLand');
 Route::get('/JohnnyLandDepo', 'TalleresController@arregloJohnnyLandDepo');

@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" href="">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="css/rrssb.css"/>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="js/rrssb.min.js"></script>
-	<title> Login </title>
+@extends('TalleresUTT.Complements.plugins')
+
+@section('titulo', 'Inicio de Sesión')
+
+@section('contenido')
 	<style type="text/css">
 	#fondo{
 		background-color: #282B30;
@@ -19,10 +13,14 @@
 		margin-top: 30px;
 	}
 	#card{
-		width: 26rem; height: 30rem; margin: auto; background-color: #282B30; border-color: transparent;
+		width: 26rem; height: 30rem; margin: auto; background-color: #2E3239; border-color: transparent;
+		transition: width 1s, height 1s, margin 1s;
+    	margin: 50px auto 0;
 	}
 	#card:hover{
 		background-color: #2E3239;
+		width: 500px;
+		height: 500px;
 	}
 	#title{
 		color: white;
@@ -32,11 +30,18 @@
 		height: 60px;
 		margin-top: 35px;
 		border-radius: 45px;
-
+		transition: width 1s, height 1s, margin 1s, background-color 1s;
+    	margin: 50px auto 0;
+	}
+	#boton1:hover{
+		width: 350px;
+		background-color: #1F1F22;
 	}
 	#img1{
 		height: 60px;
 		margin-top: 2%;
+		display:block;
+		margin:auto;
 
 	}
 	#input1{
@@ -46,11 +51,16 @@
 		border-radius: 45px;
 		color: #ffff;
 		text-align: center;
-		margin-top: 30px;
 		background-image: url('img/acount.png');
 		background-repeat: no-repeat;
 		background-size: 30px;
 		background-position: 40px;
+		transition: width 1s, height 1s, margin 1s, background-color 1s;
+    	margin: 30px auto 0;
+	}
+	#input1:hover{
+		width: 380px;
+		background-color: #484852;
 	}
 	#input1::placeholder {
 		color: white;
@@ -62,11 +72,16 @@
 		border-radius: 45px;
 		color: #ffff;
 		text-align: center;
-		margin-top: 50px;
 		background-image: url('img/password.png');
 		background-repeat: no-repeat;
 		background-size: 30px;
 		background-position: 40px;
+		transition: width 1s, height 1s, margin 1s, background-color 1s;
+    	margin: 50px auto 0;
+	}
+	#input2:hover{
+		width: 380px;
+		background-color: #484852; 
 	}
 	#input2::placeholder {
 		color: white;
@@ -102,23 +117,83 @@
 		position: relative;
 		left: 88%;
 	}
-	@media (max-width: 700px)
-	{
+	@media (max-width: 800px){
 		#imgiluminati{
-		height: 80px;
-		margin-top: 40px;
-		margin-left: -220px;
+			height: 80px;
+			margin-top: 5%;
+			position: absolute;
+			left: 45%;	
+		}
+		#card{
+			margin: auto;
+			position: left;
+			width: 400px;
+			height: 500px;
+		}
+		#card:hover{
+			width: 450px;
+		}
+		#input1{
+			width: 300px;
+		}
+		#input1:hover{
+			width: 320px;
+		}
+		#input2{
+			width: 300px;
+		}
+		#input2:hover{
+			width: 320px;
+		}
+		#boton1{
+			width: 250px;
+		}
+		#boton1:hover{
+			width: 280px;
+		}
 	}
+	@media (max-width: 500px){
+		#card{
+			margin: auto;
+			position: left;
+			width: 320px;
+			height: 500px;
+		}
+		#card:hover{
+			width: 350px;
+		}
+		#input1{
+			width: 260px;
+		}
+		#input1:hover{
+			width: 280px;
+		}
+		#input2{
+			width: 260px;
+		}
+		#input2:hover{
+			width: 280px;
+		}
 	}
 </style>
 </head>
 <body id="fondo">
 
 
+<div id="loading" class="container-fluid" >
+		<div class="box">
+			<div class="b b1"></div>
+			<div class="b b2"></div>
+			<div class="b b3"></div>
+			<div class="b b4"></div>
+		</div>
+</div>
+
 <center><img align="center" border="0" id="img1" src="{{ asset('img/utt.png') }}"> </center>
 
 
 <div id="contenedorlogin" class="container">
+	<div class="row">
     <div id="card" class="card">
         <div class="card-body">
             <h3 id="title" class="card-title text-center">Iniciar Sesión</h3>
@@ -151,6 +226,6 @@
 </div>
 
 <img id="imgiluminati" src="{{ asset('img/iluminati.png') }}">
+</div>
 
-</body>
-</html>
+@endsection
