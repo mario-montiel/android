@@ -14,11 +14,11 @@
 	}
 	#card{
 		width: 26rem; height: 30rem; margin: auto; background-color: #2E3239; border-color: transparent;
-		transition: width 1s, height 1s, margin 1s;
+		transition: width 1s, height 1s, margin 1s, background-color 2s;
     	margin: 50px auto 0;
 	}
 	#card:hover{
-		background-color: #2E3239;
+		background-color: #41464D;
 		width: 500px;
 		height: 500px;
 	}
@@ -129,9 +129,12 @@
 			position: left;
 			width: 400px;
 			height: 500px;
+			transition: width 1s, height 1s, margin 1s, background-color 2s;
+    		margin: 50px auto 0;
 		}
 		#card:hover{
 			width: 450px;
+			background-color: #41464D;
 		}
 		#input1{
 			width: 300px;
@@ -158,9 +161,12 @@
 			position: left;
 			width: 320px;
 			height: 500px;
+			transition: width 1s, height 1s, margin 1s, background-color 2s;
+    		margin: 50px auto 0;
 		}
 		#card:hover{
 			width: 350px;
+			background-color: #41464D;
 		}
 		#input1{
 			width: 260px;
