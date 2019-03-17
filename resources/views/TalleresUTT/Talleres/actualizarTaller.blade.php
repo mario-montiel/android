@@ -1,6 +1,6 @@
 @extends('TalleresUTT.Complements.plugins')
 
-@section('titulo', 'Actualición de Taller')
+@section('titulo', 'Registro de Talleres')
 
 @section('contenido')
 	<style type="text/css">
@@ -8,23 +8,18 @@
 			background-color: #282B30;
 			padding: 0;
 		}
-		#contenedor{
-			
-		}
-		#contenedor:hover{
-			background-color: #303136;
-		}
 		#card{
 			background-color: #282B30;
 			margin: auto;
-			margin-top: 2%;
-			width: 60%;
+			width: 80%;
 			color: white;
 			border-radius: 15px;
 			margin-bottom: 50px;
+			transition: width 1s, height 1s, margin 1s, background-color 2s;
 		}
 		#card:hover{
-			background-color: #303136;
+			width: 85%;
+			background-color: #41464D;
 		}
 		#titulo{
 			margin-top: 2%;
@@ -34,12 +29,19 @@
 		#titulo:hover{
 			color: #A1BFB7;
 		}
+		label{
+			margin-left: 15px;
+		}
 		#input{
+			margin: auto;
+			width: 98%;
 			background-color: #E9E9E9;
 			border-radius: 30px;
 			color: black;
+			transition: width 1s, height 1s, margin 1s, background-color 2s;
 		}
 		#input:hover{
+			width: 100%;
 			background-color: #A1BFB7;
 			color: white;
 		}
@@ -51,8 +53,10 @@
 			background-color: #38393D;
 			border-radius: 5px;
 			padding: 8px;
+			transition: width 1s, height 1s, margin 1s, background-color 2s;
 		}
 		.img:hover{
+			height: 60px;
 			background-color: #A1BFB7;
 		}
 		#radio{
@@ -83,30 +87,75 @@
 		}
 		#tituloNavBar{
 			position: absolute;
-			left: 45%;
+			left: 44%;
 		}
 		#tituloNavBar:hover{
 			color: #A1BFB7;
 		}
-		#regresar{	
-			left: 90%;
+		li{
+			display: none;
 		}
-		@media (max-width: 1500px){
+		@media (max-width: 1600px){
 			#boton1{
 				left: 50%;	
 			}
+			#tituloNavBar{
+			text-align: center;
+			margin: 0;
+			}
+			li{
+			display: none;
+		}
 		}
 		@media (min-width: 1001px) and (max-width: 1499px){
 			#boton1{
 				left: 50%;	
+			}
+			#tituloNavBar{
+			text-align: center;
+			}
+			li{
+			display: visibility;
+			}
+			.img{
+				height: 55px;
 			}
 		}
 		@media (min-width: 601px) and (max-width: 1000px){
 			#boton1{
 				left: 10%;	
 			}
+			#card{
+				background-color: #282B30;
+				margin: auto;
+				width: 80%;
+				color: white;
+				border-radius: 15px;
+				margin-bottom: 50px;
+				transition: width 1s, height 1s, margin 1s, background-color 2s;
+	    		margin: 3% auto 0;
+			}
+			#card:hover{
+				width: 90%;
+			}
+			.img{
+				height: 55px;
+			}
+			.radio{
+				margin-left: 55px;
+			}
+			#tituloNavBar{
+				margin: auto;
+				left: 40%;
+			}
+			li{
+				display: inline;
+			}
+			li:hover{
+				background-color: #484452;
+			}
 		}
-		@media (min-width: 208px) and (max-width: 600px)
+		@media (max-width: 600px)
 		{
 			#boton1{
 				width: 100px;
@@ -115,6 +164,35 @@
 			#boton2{
 				width: 100%;
 				left: 0%;	
+			}
+			#card{
+				background-color: #282B30;
+				margin: auto;
+				width: 80%;
+				color: white;
+				border-radius: 15px;
+				margin-bottom: 50px;
+				transition: width 1s, height 1s, margin 1s, background-color 2s;
+			}
+			#card:hover{
+				width: 90%;
+			}
+			.img{
+				height: 55px;
+				margin-left: 35px;
+			}
+			.radio{
+				margin-left: 48px;
+			}
+			#tituloNavBar{
+				margin: auto;
+				left: 34%;
+			}
+			li:hover{
+				background-color: #484452;
+			}
+			li{
+				display: inline;
 			}
 		}
 	</style>
@@ -136,6 +214,7 @@
   </div>
 </nav>
 
+<div class="container-fluid">
 
 	<h1 id="titulo">Registrar Nuevo Taller</h1>
 	
@@ -150,7 +229,7 @@
 		        </ul>
 			@endif
 
-            <form action="{{ url('editartaller', $taller->id_taller) }}" method="post">
+             <form action="{{ url('editartaller', $taller->id_taller) }}" method="post">
                 {{ csrf_field() }}
                 {{ method_field('PUT')}}
                 
@@ -232,7 +311,7 @@
 				     </div> 
 
 				     <div class="col"> <img class="img" id="img13" src="{{ asset('img/talleresUTT/bookopenvariant.png') }}">
-				    	<div><input id="bookopenvariant" type="radio" class="radio" name="radiot" value="bookopenvariant"></div>
+				    	<div><input id="bookopenvariant" type="radio" class="radio" name="radio" value="bookopenvariant"></div>
 				     </div> 
 
 				     <div class="col"> <img class="img" id="img14" src="{{ asset('img/talleresUTT/gamepadvariant.png') }}">
@@ -262,9 +341,9 @@
             @endif
         </div>
     </div>
+</div>
 
-
- <script type="text/javascript">
+ <script>
  	jQuery(document).ready(function($) {
 
  		$(".img").click(function(){
@@ -357,13 +436,13 @@
 
 		$("#img13").click(function(){
 
-			 if($('#book-open-variant').is('checked') == false){
-			  	$('input:radio[value="book-open-variant"]').prop('checked', true);
+			 if($('#bookopenvariant').is('checked') == false){
+			  	$('input:radio[value="bookopenvariant"]').prop('checked', true);
 			  }
 		});
 
 		$("#img14").click(function(){
-			 if($('#gamepad-variant').is('checked') == undefined || $('#gamepadvariant').is('checked') == false){
+			 if($('#gamepadvariant').is('checked') == false){
 			  	$('input:radio[value="gamepadvariant"]').prop('checked', true);
 			  }
 		});
@@ -378,7 +457,7 @@
 
 		$("#img16").click(function(){
 
-			 if($('#soccerfieldelectric').is('checked') == false){
+			 if($('#soccerfield').is('checked') == false){
 			  	$('input:radio[value="soccerfield"]').prop('checked', true);
 			  }
 		});
@@ -389,13 +468,5 @@
     
  
  </script>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src=""></script>
-
-</div>
   
-</body>
-</html>
+@endsection

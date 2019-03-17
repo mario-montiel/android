@@ -10,13 +10,13 @@
 	#contenedor{
 		position: absolute;
 	}
-	.table{
+	.table:hover{
 		
 	}
 </style>
 
-<div id="contenedor" class="container-fluid table-hover">
-	<table class="table table-responsive table-bordered">
+<div id="contenedor" class="container-fluid">
+	<table class="table table-responsive table-bordered table-hover">
 		<head>
 			<th>Nombre de Taller</th>
 			<th>Encargado</th>
