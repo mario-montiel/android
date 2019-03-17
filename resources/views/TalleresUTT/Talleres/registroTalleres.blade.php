@@ -8,24 +8,17 @@
 			background-color: #282B30;
 			padding: 0;
 		}
-		#contenedor{
-			
-		}
-		#contenedor:hover{
-			background-color: #303136;
-		}
 		#card{
 			background-color: #282B30;
 			margin: auto;
-			width: 60%;
+			width: 80%;
 			color: white;
 			border-radius: 15px;
 			margin-bottom: 50px;
 			transition: width 1s, height 1s, margin 1s, background-color 2s;
-    		margin: 3% auto 0;
 		}
 		#card:hover{
-			width: 65%;
+			width: 85%;
 			background-color: #41464D;
 		}
 		#titulo{
@@ -116,8 +109,21 @@
 			#boton1{
 				left: 10%;	
 			}
+			#card{
+				background-color: #282B30;
+				margin: auto;
+				width: 80%;
+				color: white;
+				border-radius: 15px;
+				margin-bottom: 50px;
+				transition: width 1s, height 1s, margin 1s, background-color 2s;
+	    		margin: 3% auto 0;
+			}
+			#card:hover{
+				width: 90%;
+			}
 		}
-		@media (min-width: 208px) and (max-width: 600px)
+		@media (max-width: 600px)
 		{
 			#boton1{
 				width: 100px;
@@ -126,6 +132,18 @@
 			#boton2{
 				width: 100%;
 				left: 0%;	
+			}
+			#card{
+				background-color: #282B30;
+				margin: auto;
+				width: 80%;
+				color: white;
+				border-radius: 15px;
+				margin-bottom: 50px;
+				transition: width 1s, height 1s, margin 1s, background-color 2s;
+			}
+			#card:hover{
+				width: 90%;
 			}
 		}
 	</style>
