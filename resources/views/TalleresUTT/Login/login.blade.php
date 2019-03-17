@@ -156,13 +156,19 @@
 		}
 	}
 	@media (max-width: 500px){
+		#imgiluminati{
+			height: 80px;
+			margin-top: 5%;
+			position: absolute;
+			left: 43%;	
+		}
 		#card{
 			margin: auto;
 			position: left;
 			width: 320px;
 			height: 500px;
 			transition: width 1s, height 1s, margin 1s, background-color 2s;
-    		margin: 50px auto 0;
+    		margin: 0px auto 0;
 		}
 		#card:hover{
 			width: 350px;
