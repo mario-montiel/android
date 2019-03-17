@@ -3,6 +3,7 @@
 @section('titulo', 'Inicio de Sesión')
 
 @section('contenido')
+	<link rel="stylesheet" type="text/css" href="css/TalleresUTT/loading.css">
 	<style type="text/css">
 	#fondo{
 		background-color: #282B30;
@@ -239,5 +240,12 @@
 
 <img id="imgiluminati" src="{{ asset('img/iluminati.png') }}">
 </div>
+
+<script type="text/javascript">
+	window.onload = function(){
+		var contenedor = document.getElementById('box').style.visibility = 'hidden';
+		contenedor = document.getElementById('loading').style.opacity = '0';
+	};
+</script>
 
 @endsection

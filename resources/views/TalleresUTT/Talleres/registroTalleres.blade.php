@@ -117,6 +117,9 @@
 			li{
 			display: visibility;
 			}
+			.img{
+				height: 55px;
+			}
 		}
 		@media (min-width: 601px) and (max-width: 1000px){
 			#boton1{
@@ -137,10 +140,9 @@
 			}
 			.img{
 				height: 55px;
-				margin-left: 15px;
 			}
 			.radio{
-				margin-left: 35px;
+				margin-left: 55px;
 			}
 			#tituloNavBar{
 				margin: auto;
@@ -177,7 +179,7 @@
 			}
 			.img{
 				height: 55px;
-				margin-left: 25px;
+				margin-left: 35px;
 			}
 			.radio{
 				margin-left: 48px;
