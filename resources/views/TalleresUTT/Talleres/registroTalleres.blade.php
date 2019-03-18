@@ -3,7 +3,7 @@
 @section('titulo', 'Registro de Talleres')
 
 @section('contenido')
-	<style type="text/css">
+	<style type="text/css"> 
 		#fondo{
 			background-color: #282B30;
 			padding: 0;
@@ -50,6 +50,7 @@
 		}
 		.img{
 			height: 55px;
+			margin-left: 10px;
 			background-color: #38393D;
 			border-radius: 5px;
 			padding: 8px;
@@ -59,8 +60,8 @@
 			height: 60px;
 			background-color: #A1BFB7;
 		}
-		#radio{
-			margin-left: 20px;
+		.radio{
+			margin-left: 30px;
 		}
 		#radio:hover{
 			background-color: #A1BFB7;
@@ -94,6 +95,10 @@
 		}
 		li{
 			display: none;
+		}
+		.alert{
+			text-align: center;
+			font-size: 20px;
 		}
 		@media (max-width: 1600px){
 			#boton1{
@@ -154,6 +159,10 @@
 			li:hover{
 				background-color: #484452;
 			}
+			.alert{
+				text-align: center;
+				font-size: 17px;
+			}
 		}
 		@media (max-width: 600px)
 		{
@@ -178,11 +187,14 @@
 				width: 90%;
 			}
 			.img{
-				height: 55px;
-				margin-left: 35px;
+				height: 35px;
+				margin-left: 0px;
+			}
+			.img:hover{
+				height: 45px;
 			}
 			.radio{
-				margin-left: 48px;
+				margin-left: 10px;
 			}
 			#tituloNavBar{
 				margin: auto;
@@ -193,6 +205,10 @@
 			}
 			li{
 				display: inline;
+			}
+			.alert{
+				text-align: center;
+				font-size: 15px;
 			}
 		}
 	</style>
@@ -224,10 +240,14 @@
             @if ($errors->any())
 		        <ul style="color: white; margin-top: 25px; margin: auto;">
 		            @foreach ($errors->all() as $error)
-		                <li>{{ $error }}</li>
+		                <li>{{ $error }}</li> <br>
 		            @endforeach
 		        </ul>
 			@endif
+
+			 @if(Session::has('message'))
+                <span><p class="alert alert-primary">El taller se registró correctamente, vuelva pronto.</p></span> 
+            @endif
 
             <form action="{{ url('talleres') }}" method="post">
                 {{ csrf_field() }}
@@ -242,10 +262,10 @@
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleFormControlSelect1"> Tipo de taller </label>
-				     <select name="tipo" class="form-control" id="input">
+				     <select name="tipo" class="form-control" id="tipo">
 				     	<option>Seleccione el tipo de taller</option>
 				    	@foreach($tipos_taller as $tp)
-				    		<option value="{{ $tp->id_tipotaller }}">{{ $tp->tipo }}</option>
+				    		<option value="{{ $tp->id_tipotaller }}" {{ old('tipo') == $tp->id_tipotaller ? 'selected' : '' }}>{{ $tp->tipo }}</option>
 				    	@endforeach
 				    </select>
 				  </div>
@@ -334,10 +354,6 @@
 				     	</div>
 				     </div>
             </form>
-            
-            @if(Session::has('message'))
-                <p class="alert alert-primary">Alumno registrado</p>
-            @endif
         </div>
     </div>
 </div>

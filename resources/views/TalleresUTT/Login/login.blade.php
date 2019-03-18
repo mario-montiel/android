@@ -118,6 +118,9 @@
 		position: relative;
 		left: 88%;
 	}
+	.alert{
+		
+	}
 	@media (max-width: 800px){
 		#imgiluminati{
 			height: 80px;
@@ -218,6 +221,9 @@
 		            @endforeach
 		        </ul>
 			@endif
+			@if(Session::has('message'))
+               <span><p class="alert alert-primary">Se inicio correctamente su cuenta.</p></span> 
+            @endif
 
             <form action="{{ url('iniciosesion') }}" method="post">
                 {{ csrf_field() }}
@@ -230,10 +236,6 @@
 				  </div>
                 
             </form>
-            
-            @if(Session::has('message'))
-                <p class="alert alert-primary">Alumno registrado</p>
-            @endif
         </div>
     </div>
 </div>

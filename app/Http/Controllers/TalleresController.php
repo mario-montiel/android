@@ -15,6 +15,20 @@ class TalleresController extends Controller
 		return view('TalleresUTT.Talleres.registroTalleres', compact('tipos_taller'));
 	}
     function talleres(Request $request){
+        $this->validate($request, [
+            'nombre' => 'required|max:255',
+            'encargado' => 'required|max:255',
+            'tipo' => 'required|int|min:1',
+            'descripcion' => 'required|max:255',
+            'horarios' => 'required|max:50',
+            'radio' => 'required',],
+
+            ['nombre.required' => 'Ingrese un nombre',
+            'encargado.required' => 'Ingrese un encargado',
+            'tipo.integer' => 'Seleccione un tipo de taller',
+            'descripcion.required' => 'Ingrese una descripción',
+            'horarios.required' => 'Ingrese un horario',
+            'radio.required' => 'Seleccione una imagen',]);
 
     	$taller = DB::table('talleres')->get();
     	//$collection = collect($taller[0]->nombre);
@@ -31,7 +45,8 @@ class TalleresController extends Controller
     	//dd($request->get('tipo'));
     	$talleres->save();
 
-        return redirect('/registrotalleres');
+        return redirect('/registrotalleres')
+            ->with('message', 'El taller se registró correctamente, vuelva pronto');
     }
 
     function viewMostrarTalleres(){
@@ -50,6 +65,21 @@ class TalleresController extends Controller
     }
 
     function actualizarTaller(Request $request, $id){
+        $this->validate($request, [
+            'nombre' => 'required|max:255',
+            'encargado' => 'required|max:255',
+            'tipo' => 'required',
+            'descripcion' => 'required|max:255',
+            'horarios' => 'required|max:50',
+            'radio' => 'required',],
+
+            ['nombre.required' => 'Ingrese el nombre de taller',
+            'encargado.required' => 'Ingrese un encargado de taller',
+            'tipo.required' => 'Ingrese el tipo de taller',
+            'descripcion.required' => 'Ingrese una descripción de taller',
+            'horarios.required' => 'Ingrese el horario del taller',
+            'radio.required' => 'Seleccione una imagen',]);
+
     	$taller = Taller::findOrFail($id);
     	$taller->nombre = $request->get('nombre');
     	$taller->encargado = $request->get('encargado');
@@ -59,7 +89,8 @@ class TalleresController extends Controller
     	$taller->icono = $request->get('radio');
     	$taller->save();
 
-    	return redirect('/mostrartalleres');
+    	return redirect('/mostrartalleres')
+            ->with('actualizacion', 'El taller se actualizó correctamente');
     }
 
     function arregloJohnnyLand(){

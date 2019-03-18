@@ -59,8 +59,8 @@
 			height: 60px;
 			background-color: #A1BFB7;
 		}
-		#radio{
-			margin-left: 20px;
+		.radio{
+			margin-left: 30px;
 		}
 		#radio:hover{
 			background-color: #A1BFB7;
@@ -221,6 +221,10 @@
     <div id="card" class="card">
         <div class="card-body">
 
+        	@if(Session::has('actualizacion'))
+                <p class="alert alert-primary">Alumno registrado</p>
+            @endif
+
             @if ($errors->any())
 		        <ul style="color: white; margin-top: 25px; margin: auto;">
 		            @foreach ($errors->all() as $error)
@@ -246,7 +250,7 @@
 				     <select name="tipo" class="form-control" id="input">
 				     	<option>Seleccione el tipo de taller</option>
 				    	@foreach($tipos_taller as $tp)
-				    		<option value="{{ $tp->id_tipotaller }}">{{ $tp->tipo }}</option>
+				    		<option value="{{ $tp->id_tipotaller }}" {{ old('tipo') == $tp->id_tipotaller ? 'selected' : '' }}>{{ $tp->tipo }}</option>
 				    	@endforeach
 				    </select>
 				  </div>
@@ -336,9 +340,6 @@
 				     </div>
             </form>
             
-            @if(Session::has('message'))
-                <p class="alert alert-primary">Alumno registrado</p>
-            @endif
         </div>
     </div>
 </div>

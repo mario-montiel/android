@@ -42,10 +42,13 @@ Route::get('/seleccionFoto','IngenieriaSoftware@viewSeleccionFoto');
 
 /////////////////////////////////////////////////////////////////////////////////
 
-Route::get('/', 'LoginController@viewLoading');
+//Route::get('/', 'LoginController@viewLoading');
+
+Route::get('/', 'HomeController@viewHome');
 
 Route::get('/iniciosesion', 'LoginController@viewLogin');
 Route::post('/iniciosesion', 'LoginController@login');
+
 
 Route::get('/registrarse', 'LoginController@viewRegistroUsuario');
 Route::post('/registrar', 'LoginController@registrarse');

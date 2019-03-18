@@ -16,6 +16,9 @@
 </style>
 
 <div id="contenedor" class="container-fluid">
+	 @if(Session::has('actualizacion'))
+         <p class="alert alert-primary"> El taller se actualizó correctamente </p>
+     @endif
 	<table class="table table-responsive table-bordered table-hover">
 		<head>
 			<th>Nombre de Taller</th>

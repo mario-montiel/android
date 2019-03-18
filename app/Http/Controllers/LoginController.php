@@ -32,10 +32,13 @@ class LoginController extends Controller
         //dd($vato->usuario);
 
         if ($vato->usuario == $usuario && $vato->contraseña == $pass) {
-           return redirect('/registrotalleres');
+           return redirect('/')
+                ->with('message', 'Se cuenta se inicio correctamente');
         }
        
-       return redirect('/iniciosesion');
+       return redirect('/iniciosesion')
+                ->with('message', 'Cuenta o Contraseña incorrectas');
+
 
         
     }
