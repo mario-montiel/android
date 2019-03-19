@@ -131,11 +131,11 @@ class TalleresController extends Controller
             if ($tabla) {
                 foreach($tabla as $tablon){
                     $changos.='<tr>'.
-                             '<td>'.$tablon->nombre.'<td>'.
-                             '<td>'.$tablon->encargado.'<td>'.
-                             '<td>'.$tablon->tipo.'<td>'.
-                             '<td>'.$tablon->descripcion.'<td>'.
-                             '<td>'.$tablon->horarios.'<td>';
+                             '<td>'.$tablon->nombre.'</td>'.
+                             '<td>'.$tablon->encargado.'</td>'.
+                             '<td>'.$tablon->tipo.'</td>'.
+                             '<td>'.$tablon->descripcion.'</td>'.
+                             '<td>'.$tablon->horarios.'</td>';
                 }
             }
             return Response($changos);

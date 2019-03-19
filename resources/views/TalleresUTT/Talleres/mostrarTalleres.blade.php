@@ -76,7 +76,7 @@
 
 
 <div id="container" class="container-fluid">
-		<table class="table" id="table">
+		<table class="table table-responsive table-bordered" id="table">
 		<head>
 			<th>Nombre de Taller</th>
 			<th>Encargado</th>
