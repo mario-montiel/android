@@ -113,4 +113,66 @@ class TalleresController extends Controller
 
         return redirect('/mostrartalleres');
     }
+
+    public function search(Request $request){
+    
+        if ($request->ajax()) {
+            //$query = $request->get('query');
+            $changos = "";
+            $tabla = DB::table('talleres')
+                ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')
+                ->select('talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
+                ->where('encargado', 'LIKE', '%'.$request->search.'%')
+                ->orWhere('nombre', 'LIKE', '%'.$request->search.'%')
+                ->orWhere('tipo', 'LIKE', '%'.$request->search.'%')
+                ->orWhere('descripcion', 'LIKE', '%'.$request->search.'%')
+                ->orWhere('horarios', 'LIKE', '%'.$request->search.'%')
+                ->get();
+            if ($tabla) {
+                foreach($tabla as $tablon){
+                    $changos.='<tr>'.
+                             '<td>'.$tablon->nombre.'<td>'.
+                             '<td>'.$tablon->encargado.'<td>'.
+                             '<td>'.$tablon->tipo.'<td>'.
+                             '<td>'.$tablon->descripcion.'<td>'.
+                             '<td>'.$tablon->horarios.'<td>';
+                }
+            }
+            return Response($changos);
+
+        }
+        else{
+            return Response()->json(['no'=>'No se encontro nachus']);
+        }
+         /*if ($request->ajax()) {
+            $query = $request->get('query');
+            if ($query != '') {
+                
+            }
+            else{
+                $data = DB::table('talleres')
+                    ->orderBy('')
+            }
+        }
+        return $query;*/
+
+        //$resultado = $request->resultado;
+
+        //dd($resultado);
+
+        /*$resultado = Taller::orderBy('encargado', 'DESC')
+            ->where('encargado', 'LIKE', "%$resultado%")
+            ->get();
+
+        $talleres = DB::table("talleres")
+            ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')
+            ->select('talleres.id_taller', 'talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
+            //->where('talleres.encargado', 'LIKE', '%resultado%')
+            ->get();
+
+        return view('TalleresUTT.Talleres.mostrarTalleres', compact('resultado','talleres'));*/
+
+
+       
+    }
 }

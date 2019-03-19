@@ -4,6 +4,10 @@
 
 @section('contenido')
 <style type="text/css">
+	#fondo{
+			background-color: #282B30;
+			padding: 0;
+	}
 	#imgiluminati{
 		height: 50px;
 		margin-left: 2%;
@@ -21,7 +25,62 @@
 		top: 13%;
 		left: 45%;
 	}
+	#contenedor2{
+		display: flex;
+		justify-content: space-between;
+		$bwidth: 3px;
+		@function restov(){
+			@return -(200px - 3px);
+		}
+		@function restoh(){
+			@return (300px - 3px);
+		}
+	}
+	button{
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		box-shadow: 0 0 0 2px black;
+		position: relative;
+		color: #fff;
+		justify-content: center;
+	}
+	button:before,
+	button:after{
+			content: "";
+			display: block;
+			position: absolute;
+			left: 0;
+			transition:all .3s;
+			background-color: #fff
+	}
+	button:before{
+		--width: -2rem;
+		height: 3px;
+		width: 0;
+		bottom: 0;
+		box-shadow: 0 var(--width) #eee;
+	}
+	button:after{
+		top: 0;
+		width: 3px;
+		height: 0%;
+	}
+	button:hover:after{
+			height: 100%;
+	}
+	button:hover:before{
+			width: 100%;
+	}
 
+	#boton1{
+	}
+	#boton2{
+
+	}
+	#boton3{
+
+	}
 </style>
 
 <body id="fondo">
@@ -91,13 +150,12 @@
 					</div>
             </div>
 
-            <div class="row">
-            <div id="col3" class="col"> <a href="{{ url('registrotalleres')}}"><button id="boton1" type="submit" class="btn btn-dark"> Registrar Nuevo Taller </button></a> </div>
-
-            <div id="col3" class="col"> <a href="{{ url('mostrartalleres')}}"><button id="boton1" type="submit" class="btn btn-dark"> Modificar Taller </button></a> </div>
-
-            <div id="col3" class="col"> <button id="boton1" type="submit" class="btn btn-dark"> Registrar / Asignar Evento </button> </div>
-            </div>
+        <div id="contenedor2" class="container">
+            
+           <a href="{{ url('registrotalleres')}}"><button id="boton1" type="submit" class="btn btn-dark"> Registrar Nuevo Taller </button></a> 
+           <a href="{{ url('mostrartalleres')}}"><button id="boton2" type="submit" class="btn btn-dark"> Modificar Taller </button></a> 
+             <button id="boton3" type="submit" class="btn btn-dark"> Registrar / Asignar Evento </button> 
+        </div>
 </div>
 
 <script type="text/javascript">

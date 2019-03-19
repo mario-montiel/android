@@ -59,7 +59,9 @@ Route::get('/mostrartalleres', 'TalleresController@viewMostrarTalleres');
 Route::get('/editartaller/{id}', 'TalleresController@viewActualizarTalleres');
 Route::PUT('/editartaller/{id}', 'TalleresController@actualizarTaller');
 Route::get('/eliminartaller/{id}', 'TalleresController@eliminarTaller');
+Route::get('/search', 'TalleresController@search');
 
 Route::get('/JohnnyLand', 'TalleresController@arregloJohnnyLand');
 Route::get('/JohnnyLandDepo', 'TalleresController@arregloJohnnyLandDepo');
 Route::get('/JohnnyLandCult', 'TalleresController@arregloJohnnyLandCult');
+
