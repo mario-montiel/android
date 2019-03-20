@@ -4,8 +4,14 @@
 
 @section('contenido')
 <style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 	#fondo{
 			background-color: #282B30;
+			margin: 0;
 			padding: 0;
 	}
 	#imgiluminati{
@@ -14,6 +20,7 @@
 	}
 	#contenedor1{
 		background-color: black;
+		width: 100%;
 	}
 	#tituloNavBar{
 		margin: 0;
@@ -21,22 +28,14 @@
 	}
 	#solicitudes{
 		font-size: 20px;
-		position: absolute;
-		top: 13%;
-		left: 45%;
+		text-align: center;
 	}
 	#contenedor2{
-		display: flex;
-		justify-content: space-between;
-		$bwidth: 3px;
-		@function restov(){
-			@return -(200px - 3px);
-		}
-		@function restoh(){
-			@return (300px - 3px);
-		}
 	}
-	button{
+	#carrusel{
+		margin-top: 5%;
+	}
+	/*button{
 		box-sizing: border-box;
 		display: flex;
 		align-items: center;
@@ -71,98 +70,237 @@
 	}
 	button:hover:before{
 			width: 100%;
+	}*/
+	.wrap{
+		width: 30%;
+		margin: 50px auto;
+		display: flex;
+		justify-content: center;
 	}
-
-	#boton1{
+	.tarjeta-wrap{
+		margin: 10px;
+		-webkit-perspective: 10000;
+		perspective: 10;
 	}
-	#boton2{
+	.tarjeta{
+		width: 450px;
+		height: 350px;
+		background: #247B95;
+		position: relative;
+		transform-style: preserve-3d;
+		transition: .7s ease;
+		-webkit-box-shadow: 0px 10px 15px -5px rgba(0, 0, 0 ,0.65);
+		-moz-box-shadow: 0px 10px 15px -5px rgba(0, 0, 0 ,0.65);
+		box-shadow: 0px 10px 15px -5px rgba(0, 0, 0 ,0.65);
+	}
+	.adelante, .atras{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+	}
+	.adelante{
+		width: 100%;
 
 	}
-	#boton3{
+	.atras{
+		transform: rotateY(180deg);
+		padding: 15px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		color: white;
+		margin: auto;
+	}
+	.tarjeta-wrap:hover .tarjeta{
+		transform: rotateY(180deg);
+	}
+	.carta1{
+		background-image: url(img/TalleresUTT/carrousel/3.jpg);
+		background-size: cover;
+	}
+	.carta2{
+		background-image: url(img/TalleresUTT/carrousel/4.jpg);
+		background-size: cover;
+	}
+	.carta3{
+		background-image: url(img/TalleresUTT/carrousel/2.jpg);
+		background-size: cover;
+	}
+	a{
+		color: white;
+		font-family: sans-serif;
+	}
+	a:hover{
+		color: white;
 
+	}
+	.alert{
+		font-size: 20px;
+	}
+	.box1{
+		height: 100vh;
+		width: 100%;
+		background-image: url("img/TalleresUTT/carrousel/UTT3.jpg");
+		background-size: cover;
+		display: table;
+		background-attachment: fixed;
+	}
+	.box2{
+		height: 100vh;
+		width: 100%;
+		background-image: url("img/TalleresUTT/carrousel/utt.jpeg");
+		background-size: cover;
+		display: table;
+		background-attachment: fixed;
+	}
+	.box3{
+
+	}
+	@media (max-width: 800px){
+		.tarjeta{
+			width: 350px;
+		height: 350px;
+		}
 	}
 </style>
 
 <body id="fondo">
 
-
-<div id="loading" class="container-fluid" >
-		<div class="box">
-			<div class="b b1"></div>
-			<div class="b b2"></div>
-			<div class="b b3"></div>
-			<div class="b b4"></div>
-		</div>
-</div>
-
-<center><img align="center" border="0" id="img1" src="{{ asset('img/utt.png') }}"> </center>
-
-
-<div id="contenedorlogin" class="container">
     	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     		<img id="imgiluminati" src="{{ asset('img/iluminati.png') }}">
-	  <a id="tituloNavBar" class="navbar-brand" href="#"> Talleres UTT</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
+		  <a id="tituloNavBar" class="navbar-brand" href="#"> Talleres UTT</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
 
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item active" id="solicitudes">
-	        <a class="nav-link" href="#">Ver Solicitudes <span class="sr-only">(current)</span></a>
-	      </li>
-	      
-	  </div>
-	</nav>
-
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item active">
+		        <a id="solicitudes" class="nav-link" href="#">Ver Solicitudes <span class="sr-only">(current)</span></a>
+		      </li>
+		  </ul>
+		  </div>
+		</nav>
 
 
 			@if(Session::has('message'))
-               <span><p class="alert alert-primary">Su cuenta se inicio correctamente.</p></span> 
+               <center><span><p class="alert alert-primary">Su cuenta se inicio correctamente.</p></span></center>
             @endif
 
-            <div id="carrusel">
-            	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-					  <ol class="carousel-indicators">
-					    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-					    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-					    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-					  </ol>
-					  <div class="carousel-inner">
-					    <div class="carousel-item active">
-					      <img id="img1" src="{{ asset('img/talleresUTT/carrousel/uttcielo.jpg') }}" class="d-block w-100" alt="  ">
-					    </div>
-					    <div class="carousel-item">
-					      <img id="img2" src="{{ asset('img/talleresUTT/carrousel/uttarcoiris.jpg') }}" class="d-block w-100" alt="...">
-					    </div>
-					    <div class="carousel-item">
-					      <img id="img3" src="{{ asset('img/talleresUTT/carrousel/uttnoche.jpg') }}" class="d-block w-100" alt="...">
-					    </div>
-					  </div>
-					  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					    <span class="sr-only">Previous</span>
-					  </a>
-					  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-					    <span class="sr-only">Next</span>
-					  </a>
-					</div>
-            </div>
+	
 
-        <div id="contenedor2" class="container">
-            
-           <a href="{{ url('registrotalleres')}}"><button id="boton1" type="submit" class="btn btn-dark"> Registrar Nuevo Taller </button></a> 
-           <a href="{{ url('mostrartalleres')}}"><button id="boton2" type="submit" class="btn btn-dark"> Modificar Taller </button></a> 
-             <button id="boton3" type="submit" class="btn btn-dark"> Registrar / Asignar Evento </button> 
-        </div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+	        <div class="wrap">
+	        	<div class="tarjeta-wrap">
+	        		<div class="tarjeta">
+	        			<div class="adelante carta1"></div>
+	        			<div class="atras">
+	        				<h1><a href="/registrotalleres"> Registrar Taller </a></h1>
+	        			</div>
+	        		</div>
+	        	</div>
+	        </div>
+	    </div>
+	    <div class="col">
+	        <div class="wrap">
+	        	<div class="tarjeta-wrap">
+	        		<div class="tarjeta">
+	        			<div class="adelante carta2"></div>
+	        			<div class="atras">
+	        				<h1><a href="/mostrartalleres"> Modificar Taller </a></h1>		
+	        			</div>
+	        		</div>
+	        	</div>
+	        </div>
+	    </div>
+	    <div class="col">
+	        <div class="wrap">
+	        	<div class="tarjeta-wrap">
+	        		<div class="tarjeta">
+	        			<div class="adelante carta3"></div>
+	        			<div class="atras">
+	        				<h1><a href=""> Asignar Evento </a></h1>	
+	        			</div>
+	        		</div>
+	        	</div>
+	        </div>
+	     </div>
+    </div>
 </div>
 
+<div class="box1"></div>
+
+
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+	        <div class="wrap">
+	        	<div class="tarjeta-wrap">
+	        		<div class="tarjeta">
+	        			<div class="adelante carta1"></div>
+	        			<div class="atras">
+	        				<h1><a href="/registrotalleres"> Registrar Taller </a></h1>
+	        			</div>
+	        		</div>
+	        	</div>
+	        </div>
+	    </div>
+	    <div class="col">
+	        <div class="wrap">
+	        	<div class="tarjeta-wrap">
+	        		<div class="tarjeta">
+	        			<div class="adelante carta2"></div>
+	        			<div class="atras">
+	        				<h1><a href="/mostrartalleres"> Modificar Taller </a></h1>		
+	        			</div>
+	        		</div>
+	        	</div>
+	        </div>
+	    </div>
+	    <div class="col">
+	        <div class="wrap">
+	        	<div class="tarjeta-wrap">
+	        		<div class="tarjeta">
+	        			<div class="adelante carta3"></div>
+	        			<div class="atras">
+	        				<h1><a href=""> Asignar Evento </a></h1>	
+	        			</div>
+	        		</div>
+	        	</div>
+	        </div>
+	     </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="box2"></div>
+<div class="box3"></div>
+
 <script type="text/javascript">
-	window.onload = function(){
-		var contenedor = document.getElementById('box').style.visibility = 'hidden';
-		contenedor = document.getElementById('loading').style.opacity = '0';
-	};
+	$(document).ready(function() {
+		    setTimeout(function() {
+		        $("p").fadeOut(1500);
+		    },3000);
+		 
+		    /*setTimeout(function() {
+		        $(".content2").fadeIn(1500);
+		    },6000);*/
+		});
 </script>
 
 @endsection

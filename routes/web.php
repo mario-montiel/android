@@ -57,7 +57,7 @@ Route::get('/registrotalleres', 'TalleresController@viewTalleres');
 Route::post('/talleres', 'TalleresController@talleres');
 Route::get('/mostrartalleres', 'TalleresController@viewMostrarTalleres');
 Route::get('/editartaller/{id}', 'TalleresController@viewActualizarTalleres');
-Route::PUT('/editartaller/{id}', 'TalleresController@actualizarTaller');
+Route::PUT('/editartaller/{id}', 'TalleresController@actualizarTaller')->name("editar");
 Route::get('/eliminartaller/{id}', 'TalleresController@eliminarTaller');
 Route::get('/search', 'TalleresController@search');
 

@@ -50,10 +50,7 @@ class TalleresController extends Controller
     }
 
     function viewMostrarTalleres(){
-    	$talleres = DB::table("talleres")
-            ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')
-            ->select('talleres.id_taller', 'talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
-            ->get();
+    	$talleres = Taller::all();
 
     	   return view('TalleresUTT.Talleres.mostrarTalleres', compact('talleres'));
     }
@@ -116,19 +113,17 @@ class TalleresController extends Controller
 
     public function search(Request $request){
     
-        if ($request->ajax()) {
             //$query = $request->get('query');
-            $changos = "";
             $tabla = DB::table('talleres')
+                ->select('talleres.id_taller','talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
                 ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')
-                ->select('talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
-                ->where('encargado', 'LIKE', '%'.$request->search.'%')
+                ->orWhere('encargado', 'LIKE', '%'.$request->search.'%')
                 ->orWhere('nombre', 'LIKE', '%'.$request->search.'%')
                 ->orWhere('tipo', 'LIKE', '%'.$request->search.'%')
                 ->orWhere('descripcion', 'LIKE', '%'.$request->search.'%')
                 ->orWhere('horarios', 'LIKE', '%'.$request->search.'%')
                 ->get();
-            if ($tabla) {
+            /*if ($tabla) {
                 foreach($tabla as $tablon){
                     $changos.='<tr>'.
                              '<td>'.$tablon->nombre.'</td>'.
@@ -138,12 +133,14 @@ class TalleresController extends Controller
                              '<td>'.$tablon->horarios.'</td>';
                 }
             }
+            return $changos;
             return Response($changos);
 
         }
         else{
-            return Response()->json(['no'=>'No se encontro nachus']);
-        }
+            return Response()->json(['no'=>'No se encontro nachus']);*/
+            return $tabla;
+
          /*if ($request->ajax()) {
             $query = $request->get('query');
             if ($query != '') {
@@ -176,3 +173,7 @@ class TalleresController extends Controller
        
     }
 }
+
+
+
+//<a href="{{ url("editartaller", $taller->id_taller) }}><button class="btn btn-primary">'.'Actualizar'.'</button></a>

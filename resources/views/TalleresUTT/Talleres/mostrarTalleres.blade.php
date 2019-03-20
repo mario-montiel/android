@@ -83,7 +83,7 @@
 			<th>Tipo de Taller</th>
 			<th>Descripción</th>
 			<th>Horarios</th>
-			<th>Actualizar</th>
+			<th>Actuaslizar</th>
 			<th>Eliminar</th>
 		</head>
 		<tbody id="mostrardatos">
@@ -91,41 +91,7 @@
 		</tbody>
 	</table>
 	</div>
-</div>
-
-
-
-
-
-<div id="contenedor" class="container-fluid">
-	 
-         
-     
-	<table class="table table-responsive table-bordered table-hover">
-		<head>
-			<th>Nombre de Taller</th>
-			<th>Encargado</th>
-			<th>Tipo de Taller</th>
-			<th>Descripción</th>
-			<th>Horarios</th>
-			<th>Actualizar</th>
-			<th>Eliminar</th>
-		</head>
-		@foreach($talleres as $taller)
-		<tbody>
-			<td> {{$taller->nombre}} </td>
-			<td> {{$taller->encargado}} </td>
-			<td> {{$taller->tipo}} </td>
-			<td> {{$taller->descripcion}} </td>
-			<td> {{$taller->horarios}} </td>
-			<td> <a href="{{ url('editartaller', $taller->id_taller) }}"><button type="
-				" class="btn btn-primary"> Actualizar</button></a> </td>
-			<td> <a href="{{ url('eliminartaller', $taller->id_taller) }}"><button type="button" class="btn btn-primary"> Eliminar</button></a> </td>
-		</tbody>
-		@endforeach
-	</table>
-</div>
-
+</div>	
 
 <script type="text/javascript">
 	
@@ -141,12 +107,50 @@
 				data: {'search':$value},
 				success:function(data){
 					if(data.no != ""){
-						console.log(data);
-						$('#mostrardatos').html(data);
+						/*$('#mostrardatos').each(function(data, e){
+							console.log(e);
+						});	*/
+						$('#mostrardatos').html("");
+						$.each(data, function(i, item) {
+						    /*$('#mostrardatos').html(
+						    	data[i].nombre);*/
+						    	//console.log(item.nombre);
+						    	/*for(indice = 0; indice < data.length; indice++){
+						    		//	console.log(item[i].nombre);
+								}*/
+								
+								console.log(item.id_taller);
+								changos = "<tr><td>" +
+									item.nombre+ "</td><td>" +
+									item.encargado + "</td><td>" +
+									item.tipo + "</td><td>" +
+									item.descripcion + "</td><td>" +
+									item.horarios + "</td><td>"  +
+									"<a class='btn btn-primary' href='/editartaller/"+item.id_taller+"'>Actualizar</a>" +
+									"</td>" +
+									"<a class='btn btn-primary' href='/editartaller/"+item.id_taller+"'>Actualizar</a>" +
+									"</td>";
+								$('#mostrardatos').append(changos);
+
+						});
+						//$('#mostrardatos').html(data);
 					}
-					else{
-						$('#nel').css("<p class='alert alert-primary'>No se encontró nada</p>")
+					else if($value == ""){
+						$.each(data, function(i, item) {
+						var changoleon = "<tr><td>" +
+									item.nombre+ "</td><td>" +
+									item.encargado + "</td><td>" +
+									item.tipo + "</td><td>" +
+									item.descripcion + "</td><td>" +
+									item.horarios + "</td><td>"  +
+									"<a class='btn btn-primary' href='/editartaller/"+item.id_taller+"'>Actualizar</a>" +
+									"</td>" +
+									"<a class='btn btn-primary' href='/editartaller/"+item.id_taller+"'>Actualizar</a>" +
+									"</td>";
+								$('#mostrardatos').append(changos);
+								});
 					}
+					
 				},
 			     error: function () {
 			         alert("Nachus");

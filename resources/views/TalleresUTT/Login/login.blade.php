@@ -14,13 +14,14 @@
 		margin-top: 30px;
 	}
 	#card{
-		width: 26rem; height: 30rem; margin: auto; background-color: #2E3239; border-color: transparent;
-		transition: width 1s, height 1s, margin 1s, background-color 2s;
-    	margin: 50px auto 0;
+		width: 26rem; height: 32rem; margin: auto; background-color: #2E3239; border-color: transparent;
+		transition: width 1s, height 1s, margin 1s, background-color 2s, opacity 2s;
+    	margin: 10px auto 0;
+    	filter: opacity(.8);
 	}
 	#card:hover{
-		background-color: #41464D;
-		width: 500px;
+		filter: opacity(1);
+		width: 460px;
 		height: 500px;
 	}
 	#title{
@@ -35,13 +36,11 @@
     	margin: 50px auto 0;
 	}
 	#boton1:hover{
-		width: 350px;
 		background-color: #1F1F22;
 	}
 	#img1{
 		height: 60px;
-		margin-top: 2%;
-		display:block;
+		margin-top: 4%;
 		margin:auto;
 
 	}
@@ -60,7 +59,6 @@
     	margin: 30px auto 0;
 	}
 	#input1:hover{
-		width: 380px;
 		background-color: #484852;
 	}
 	#input1::placeholder {
@@ -81,7 +79,6 @@
     	margin: 50px auto 0;
 	}
 	#input2:hover{
-		width: 380px;
 		background-color: #484852; 
 	}
 	#input2::placeholder {
@@ -134,7 +131,6 @@
 			width: 400px;
 			height: 500px;
 			transition: width 1s, height 1s, margin 1s, background-color 2s;
-    		margin: 50px auto 0;
 		}
 		#card:hover{
 			width: 450px;
@@ -143,20 +139,12 @@
 		#input1{
 			width: 300px;
 		}
-		#input1:hover{
-			width: 320px;
-		}
+		
 		#input2{
 			width: 300px;
 		}
-		#input2:hover{
-			width: 320px;
-		}
 		#boton1{
 			width: 250px;
-		}
-		#boton1:hover{
-			width: 280px;
 		}
 	}
 	@media (max-width: 500px){
@@ -167,9 +155,7 @@
 			left: 43%;	
 		}
 		#card{
-			margin: auto;
-			position: left;
-			width: 320px;
+			width: 340px;
 			height: 500px;
 			transition: width 1s, height 1s, margin 1s, background-color 2s;
     		margin: 0px auto 0;
@@ -181,29 +167,13 @@
 		#input1{
 			width: 260px;
 		}
-		#input1:hover{
-			width: 280px;
-		}
 		#input2{
 			width: 260px;
-		}
-		#input2:hover{
-			width: 280px;
 		}
 	}
 </style>
 </head>
 <body id="fondo">
-
-
-<div id="loading" class="container-fluid" >
-		<div class="box">
-			<div class="b b1"></div>
-			<div class="b b2"></div>
-			<div class="b b3"></div>
-			<div class="b b4"></div>
-		</div>
-</div>
 
 <center><img align="center" border="0" id="img1" src="{{ asset('img/utt.png') }}"> </center>
 
@@ -242,12 +212,9 @@
 
 <img id="imgiluminati" src="{{ asset('img/iluminati.png') }}">
 </div>
-
 <script type="text/javascript">
-	window.onload = function(){
-		var contenedor = document.getElementById('box').style.visibility = 'hidden';
-		contenedor = document.getElementById('loading').style.opacity = '0';
-	};
+
+</script>
 </script>
 
 @endsection
