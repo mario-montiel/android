@@ -120,9 +120,7 @@
 		transform: rotateY(180deg);
 	}
 	.carta1{
-		background-size: cover;
-	}
-	#cartax1{
+		background-image: url('img/3.jpg');
 		background-size: cover;
 	}
 	.carta2{
@@ -205,7 +203,7 @@
 	        <div class="wrap">
 	        	<div class="tarjeta-wrap">
 	        		<div class="tarjeta">
-	        			<div class="adelante carta1"><img src="{{'img/3.jpg'}}" id="cartax1" style="width: 450px;height: 350px;"></div>
+	        			<div class="adelante carta1"></div>
 	        			<div class="atras">
 	        				<h1><a href="/registrotalleres"> Registrar Taller </a></h1>
 	        			</div>
