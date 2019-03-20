@@ -120,15 +120,17 @@
 		transform: rotateY(180deg);
 	}
 	.carta1{
-		background-image: url(img/TalleresUTT/carrousel/3.jpg);
+		background-size: cover;
+	}
+	#cartax1{
 		background-size: cover;
 	}
 	.carta2{
-		background-image: url(img/TalleresUTT/carrousel/4.jpg);
+		background-image: url('img/TalleresUTT/carrousel/4.jpg');
 		background-size: cover;
 	}
 	.carta3{
-		background-image: url(img/TalleresUTT/carrousel/2.jpg);
+		background-image: url("img/TalleresUTT/carrousel/2.jpg");
 		background-size: cover;
 	}
 	a{
@@ -164,7 +166,10 @@
 	@media (max-width: 800px){
 		.tarjeta{
 			width: 350px;
-		height: 350px;
+			height: 350px;
+		}
+		#cartax1{
+			width: 450px;height: 350px;
 		}
 	}
 </style>
@@ -200,7 +205,7 @@
 	        <div class="wrap">
 	        	<div class="tarjeta-wrap">
 	        		<div class="tarjeta">
-	        			<div class="adelante carta1"></div>
+	        			<div class="adelante carta1"><img src="{{ 'img/TalleresUTT/carrousel/3.jpg'}}" id="cartax1" style="width: 450px;height: 350px;"></div>
 	        			<div class="atras">
 	        				<h1><a href="/registrotalleres"> Registrar Taller </a></h1>
 	        			</div>
@@ -246,7 +251,7 @@
 	        <div class="wrap">
 	        	<div class="tarjeta-wrap">
 	        		<div class="tarjeta">
-	        			<div class="adelante carta1"></div>
+	        			<div class="adelante carta4"></div>
 	        			<div class="atras">
 	        				<h1><a href="/registrotalleres"> Registrar Taller </a></h1>
 	        			</div>
@@ -258,7 +263,7 @@
 	        <div class="wrap">
 	        	<div class="tarjeta-wrap">
 	        		<div class="tarjeta">
-	        			<div class="adelante carta2"></div>
+	        			<div class="adelante carta5"></div>
 	        			<div class="atras">
 	        				<h1><a href="/mostrartalleres"> Modificar Taller </a></h1>		
 	        			</div>
@@ -270,7 +275,7 @@
 	        <div class="wrap">
 	        	<div class="tarjeta-wrap">
 	        		<div class="tarjeta">
-	        			<div class="adelante carta3"></div>
+	        			<div class="adelante carta6"></div>
 	        			<div class="atras">
 	        				<h1><a href=""> Asignar Evento </a></h1>	
 	        			</div>
