@@ -126,11 +126,11 @@
 		background-size: cover;
 	}
 	.carta2{
-		background-image: url('img/TalleresUTT/carrousel/4.jpg');
+		background-image: url('img/4.jpg');
 		background-size: cover;
 	}
 	.carta3{
-		background-image: url("img/TalleresUTT/carrousel/2.jpg");
+		background-image: url("img/2.jpg");
 		background-size: cover;
 	}
 	a{
@@ -147,7 +147,7 @@
 	.box1{
 		height: 100vh;
 		width: 100%;
-		background-image: url("img/TalleresUTT/carrousel/UTT3.jpg");
+		background-image: url("img/UTT3.jpg");
 		background-size: cover;
 		display: table;
 		background-attachment: fixed;
@@ -155,7 +155,7 @@
 	.box2{
 		height: 100vh;
 		width: 100%;
-		background-image: url("img/TalleresUTT/carrousel/utt.jpeg");
+		background-image: url("img/utt.jpeg");
 		background-size: cover;
 		display: table;
 		background-attachment: fixed;
@@ -205,7 +205,7 @@
 	        <div class="wrap">
 	        	<div class="tarjeta-wrap">
 	        		<div class="tarjeta">
-	        			<div class="adelante carta1"><img src="{{'img/TalleresUTT/carrousel/3.jpg'}}" id="cartax1" style="width: 450px;height: 350px;"></div>
+	        			<div class="adelante carta1"><img src="{{'img/3.jpg'}}" id="cartax1" style="width: 450px;height: 350px;"></div>
 	        			<div class="atras">
 	        				<h1><a href="/registrotalleres"> Registrar Taller </a></h1>
 	        			</div>
