@@ -205,7 +205,7 @@
 	        <div class="wrap">
 	        	<div class="tarjeta-wrap">
 	        		<div class="tarjeta">
-	        			<div class="adelante carta1"><img src="{{ 'img/TalleresUTT/carrousel/3.jpg'}}" id="cartax1" style="width: 450px;height: 350px;"></div>
+	        			<div class="adelante carta1"><img src="{{'img/TalleresUTT/carrousel/3.jpg'}}" id="cartax1" style="width: 450px;height: 350px;"></div>
 	        			<div class="atras">
 	        				<h1><a href="/registrotalleres"> Registrar Taller </a></h1>
 	        			</div>
