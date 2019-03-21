@@ -45,14 +45,17 @@ class TalleresController extends Controller
     	//dd($request->get('tipo'));
     	$talleres->save();
 
-        return redirect('/registrotalleres')
-            ->with('message', 'El taller se registró correctamente, vuelva pronto');
+        return redirect('/mostrartalleres')
+            ->with('taller', 'El taller se registró correctamente, vuelva pronto');
     }
 
     function viewMostrarTalleres(){
-    	$talleres = Taller::all();
+    	$taller = DB::table('talleres')
+                ->select('talleres.id_taller','talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
+                ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')->get();
+        $tipos_taller = DB::table('tipos_taller')->get();
 
-    	   return view('TalleresUTT.Talleres.mostrarTalleres', compact('talleres'));
+    	   return view('TalleresUTT.Talleres.mostrarTalleres', compact('taller', 'tipos_taller'));
     }
 
     function viewActualizarTalleres($id){
@@ -65,14 +68,14 @@ class TalleresController extends Controller
         $this->validate($request, [
             'nombre' => 'required|max:255',
             'encargado' => 'required|max:255',
-            'tipo' => 'required',
+            'tipo' => 'required|int|min:1',
             'descripcion' => 'required|max:255',
             'horarios' => 'required|max:50',
             'radio' => 'required',],
 
             ['nombre.required' => 'Ingrese el nombre de taller',
             'encargado.required' => 'Ingrese un encargado de taller',
-            'tipo.required' => 'Ingrese el tipo de taller',
+            'tipo.integer' => 'Seleccione un tipo de taller',
             'descripcion.required' => 'Ingrese una descripción de taller',
             'horarios.required' => 'Ingrese el horario del taller',
             'radio.required' => 'Seleccione una imagen',]);

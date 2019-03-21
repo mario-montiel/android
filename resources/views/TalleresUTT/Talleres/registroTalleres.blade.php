@@ -360,7 +360,7 @@
 
  <script>
  	jQuery(document).ready(function($) {
-
+ 		
  		$(".img").click(function(){
  			$('.radio').removeProp('checked');
  		});
