@@ -85,6 +85,7 @@
     <p class="alert alert-primary">!!Taller Registrado con Éxito!!</p>
 @endif
 
+
 <button class="btn btn-primary nav-link" href="#" data-toggle="modal" data-target="#modalRegistroTalleres">Agregar Nuevo Taller
 </button>
 
@@ -114,7 +115,7 @@
 		        </ul>
 			@endif
 
-             <form action="{{ url('talleres')}}" method="post">
+             <form action="/talleres" method="post">
                 {{ csrf_field() }}
                 
                 <div class="form-group">
@@ -226,7 +227,9 @@
 
 
 
-
+@if(Session::has('actualizacion'))
+    <p class="alert alert-primary">!!Taller Actualizado con Éxito!!</p>
+@endif
 
 
 <!-- Modal Actualizar Taller-->
@@ -258,8 +261,10 @@
 			@foreach($taller as $t)
              <form action="{{ url('editartaller',$t->id_taller)}}" method="post">
              	{{ csrf_field() }}
-             	{{  method_field('PUT') }}
-             	@endforeach
+             	<input id="idActualizar" type="hidden" name="id_taller" value="">
+            @endforeach
+             	
+             
                 
                 
                 <div class="form-group">
@@ -366,8 +371,9 @@
         <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
     </div>
-	</form>
+	
   </div>
+  </form>
 </div>
 
 	
@@ -378,9 +384,10 @@
 <br>
 <br>
 
-
+@if( count($numtalleres)>0)
 <div id="container" class="container-fluid">
-		<table class="table table-responsive table-bordered" id="table">
+		<table class="table table-responsive table-bordered display table-hover" cellspacing="0" id="table"
+		width="100">
 		<head>
 			<th>Nombre de Taller</th>
 			<th>Encargado</th>
@@ -391,25 +398,43 @@
 			<th>Eliminar</th>
 		</head>
 		<tbody id="mostrardatos">
-			@foreach($taller as $t)
-			<tr>
-				<td> {{$t->nombre}} </td>
-				<td> {{$t->encargado}} </td>
-				<td> {{$t->tipo}} </td>
-				<td> {{$t->descripcion}} </td>
-				<td> {{$t->horarios}} </td>
-				<td> <a data-toggle='modal' data-nombre="{{$t->nombre}}" data-encargado="{{$t->encargado}}" 
-					data-tipo="{{$t->tipo}}" data-descripcion="{{$t->descripcion}}" data-horarios="{{$t->horarios}}"
-					data-target='#modalActualizarTalleres' class='btn btn-primary' href='/editartaller/{{$t->id_taller}}'>Actualizar</a></td>
-				<td> {{$t->horarios}} </td>
-			</tr>
-			@endforeach
+			
+				@foreach($taller as $t)
+				<tr>
+					<td> {{$t->nombre}} </td>
+					<td> {{$t->encargado}} </td>
+					<td> {{$t->tipo}} </td>
+					<td> {{$t->descripcion}} </td>
+					<td> {{$t->horarios}} </td>
+					<td> <a data-toggle='modal' data-nombre="{{$t->nombre}}" data-encargado="{{$t->encargado}}" 
+						data-tipo="{{$t->tipo}}" data-descripcion="{{$t->descripcion}}" data-horarios="{{$t->horarios}}" data-id="{{$t->id_taller}}" data-target='#modalActualizarTalleres' class='btn btn-warning' 
+						 onclick="mostrartaller()">Actualizar</a></td>
+					<td> <a href="/eliminartaller/{{$t->id_taller}}" class="btn btn-danger">Eliminar</a> </td>
+				</tr>
+				@endforeach
+			
 		</tbody>
 	</table>
 	</div>
 </div>	
 
+{{$numtalleres->render()}}
+
+@else
+<div class="container"><center><br><label class="alert alert-primary"> No hay ningún Taller registrado </label></h1></center></div>
+@endif
+
+
+
+
+
+
+
 <script type="text/javascript">
+
+	function mostrartaller($id_taller){
+		var url = "editartaller/"+$id_taller;
+	}
 
 	setTimeout(function() {
 		        $("p").fadeOut(1500);
@@ -432,11 +457,9 @@
 									item.tipo + "</td><td>" +
 									item.descripcion + "</td><td>" +
 									item.horarios + "</td><td>"  +
-									"<a data-nombre="+item.nombre+" data-encargado="+item.encargado+" data-tipo="+item.tipo+" data-descripcion="+item.descripcion+" data-horarios="+item.horarios+" data-toggle='modal' data-target='#modalActualizarTalleres' class='btn btn-primary' href='/editartaller/"+item.id_taller+"'>Actualizar</a>" +
-									"</td>" +
-									"<a class='btn btn-primary' href='/editartaller/"+item.id_taller+"'>Actualizar</a>" +
+									"<a data-id="+item.id_taller+" data-nombre="+item.nombre+" data-encargado="+item.encargado+" data-tipo="+item.tipo+" data-descripcion="+item.descripcion+" data-horarios="+item.horarios+" data-toggle='modal' data-target='#modalActualizarTalleres' class='btn btn-warning'>Actualizar</a>" +
 									"</td><td>" +
-									"<a class='btn btn-primary' href='/eliminartaller/"+item.id_taller+"'>Eliminar</a>";
+									"<a class='btn btn-danger' href='/eliminartaller/"+item.id_taller+"'>Eliminar</a>";
 								$('#mostrardatos').append(changos);
 
 						});
@@ -569,40 +592,10 @@
 		});
 
 		//VALIDACIONES
-		console.log($('.radio').val());
-		  
-
-
-     	    $('#modalRegistroTalleres').on('show.bs.modal', function (event) {
-			  var button = $(event.relatedTarget) // Button that triggered the modal
-			  var recipient = button.data('whatever')
-
-			  $('button[type="submit"]').attr('disabled','disabled');
-
-     	  $('input[type="text"]').keypress(function(){
-
-            if ($( $('input[type="text"]')).val() != '' && $( $('textarea')).val() != '' 
-            	&& $("option:selected").val() != "Seleccione el tipo de taller" && $('input[type="radio"]:checked')){
-
-	            	if($("option:selected").val() == "Seleccione el tipo de taller"){
-	            		alert("Seleccione un tipo de taller");
-	            	}
-
-            	$('button[type="submit"]').removeAttr('disabled');
-               $('button[type="submit"]').attr('enable','enable');
-
-            }
-    	 });
-
-
-			  var modal = $(this)
-			  
-			  modal.find('.modal-body input').val(recipient)
-			})
-
 
      	  $('#modalActualizarTalleres').on('show.bs.modal', function (event) {
 		  var button = $(event.relatedTarget) // Button that triggered the modal
+		  var id = button.data('id')
 		  var nombre = button.data('nombre') 
 		  var encargado = button.data('encargado')
 		  var tipo = button.data('tipo')
@@ -611,6 +604,7 @@
 
 		  var modal = $(this)
 		  //modal.find('.modal-title').text('New message to ' + recipient)
+		  modal.find('.modal-body #idActualizar').val(id)
 		  modal.find('.modal-body #nombreActualizar').val(nombre)
 		  modal.find('.modal-body #encargadoActualizar').val(encargado)
 		  modal.find('.modal-body #tipoActualizar').val(tipo)

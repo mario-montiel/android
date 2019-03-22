@@ -30,7 +30,7 @@ class TalleresController extends Controller
             'horarios.required' => 'Ingrese un horario',
             'radio.required' => 'Seleccione una imagen',]);
 
-    	$taller = DB::table('talleres')->get();
+    	//$taller = DB::table('talleres')->get();
     	//$collection = collect($taller[0]->nombre);
     	
     	//dd($request->get('radio'));
@@ -50,19 +50,20 @@ class TalleresController extends Controller
     }
 
     function viewMostrarTalleres(){
+        $numtalleres = Taller::paginate(2);
     	$taller = DB::table('talleres')
                 ->select('talleres.id_taller','talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
                 ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')->get();
         $tipos_taller = DB::table('tipos_taller')->get();
 
-    	   return view('TalleresUTT.Talleres.mostrarTalleres', compact('taller', 'tipos_taller'));
+    	   return view('TalleresUTT.Talleres.mostrarTalleres', compact('taller', 'tipos_taller', 'numtalleres'));
     }
 
-    function viewActualizarTalleres($id){
+   /*function viewActualizarTalleres($id){
     	$taller = Taller::findOrFail($id);
     	$tipos_taller = DB::table('tipos_taller')->get();
 		return view('TalleresUTT.Talleres.actualizarTaller', compact('taller', 'tipos_taller'));
-    }
+    }*/
 
     function actualizarTaller(Request $request, $id){
         $this->validate($request, [
@@ -80,7 +81,10 @@ class TalleresController extends Controller
             'horarios.required' => 'Ingrese el horario del taller',
             'radio.required' => 'Seleccione una imagen',]);
 
-    	$taller = Taller::findOrFail($id);
+        $id_taller = $request->id_taller;
+        //dd($id_taller);
+    	$taller = Taller::findOrFail($id_taller);
+        //dd($taller);
     	$taller->nombre = $request->get('nombre');
     	$taller->encargado = $request->get('encargado');
     	$taller->tipos_taller = $request->get('tipo');
@@ -143,40 +147,13 @@ class TalleresController extends Controller
         else{
             return Response()->json(['no'=>'No se encontro nachus']);*/
             return $tabla;
-
-         /*if ($request->ajax()) {
-            $query = $request->get('query');
-            if ($query != '') {
-                
-            }
-            else{
-                $data = DB::table('talleres')
-                    ->orderBy('')
-            }
-        }
-        return $query;*/
-
-        //$resultado = $request->resultado;
-
-        //dd($resultado);
-
-        /*$resultado = Taller::orderBy('encargado', 'DESC')
-            ->where('encargado', 'LIKE', "%$resultado%")
-            ->get();
-
-        $talleres = DB::table("talleres")
-            ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')
-            ->select('talleres.id_taller', 'talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
-            //->where('talleres.encargado', 'LIKE', '%resultado%')
-            ->get();
-
-        return view('TalleresUTT.Talleres.mostrarTalleres', compact('resultado','talleres'));*/
-
-
        
+    }
+
+    public function listado_talleres(){
+
+        
+        return  view('TalleresUTT.Talleres.mostrarTalleres', compact('Talleres'));
     }
 }
 
-
-
-//<a href="{{ url("editartaller", $taller->id_taller) }}><button class="btn btn-primary">'.'Actualizar'.'</button></a>
