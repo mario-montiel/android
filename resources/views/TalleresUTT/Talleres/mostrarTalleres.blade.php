@@ -34,7 +34,7 @@
 		background-color: #B7B6C5;
 		color: #000;
 			margin: auto;
-			width: 80%;
+			width: 100%;
 			border-radius: 15px;
 			margin-bottom: 50px;
 			transition: width 1s, height 1s, margin 1s, background-color 2s;
@@ -60,6 +60,16 @@
 		#radio:hover{
 			background-color: #A1BFB7;
 		}
+	#modalRegistroTalleres{
+		background-color: rgba(0,0,0,0.7);
+	}
+	.modal-body{
+	}
+	.modal-backdrop
+	{
+		filter: blur(6px);
+	    opacity:0.5 !important;
+	}
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -74,16 +84,19 @@
       <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="modal" data-target="#modalRegistroTalleres">Agregar Nuevo Taller</a>
       </li>
-      
-     
     </ul>
-      <input name="buscador" id="buscador" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    @if(Session::has('usuario'))
+			<span style="color: white;">USUARIO: {{ Session::get('usuario') }}</span>
+		        <a id="solicitudes" class="btn btn-primary" href="/logout">Cerrar Sesion<span class="sr-only"></span></a>
+		      @endif
   </div>
 </nav>
 
 @if(Session::has('taller'))
     <p class="alert alert-primary">!!Taller Registrado con Éxito!!</p>
 @endif
+
+<center><input name="buscador" id="buscador" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
 
 
 <button class="btn btn-primary nav-link" href="#" data-toggle="modal" data-target="#modalRegistroTalleres">Agregar Nuevo Taller
@@ -104,8 +117,6 @@
 
 	<div class="container-fluid">
 	
-    <div id="card" class="card">
-        <div class="card-body">
 
             @if ($errors->any())
 		        <ul style="color: white; margin-top: 25px; margin: auto;">
@@ -213,8 +224,6 @@
 				</div>
         </div>
     </div>
-</div>
-</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -248,8 +257,6 @@
 
 <div class="container-fluid">
 	
-    <div id="card" class="card">
-        <div class="card-body">
 
             @if ($errors->any())
 		        <ul style="color: white; margin-top: 25px; margin: auto;">
@@ -269,7 +276,7 @@
                 
                 <div class="form-group">
 				    <label for="exampleFormControlInput1"> Nombre del Taller </label>
-				    <input id="nombreActualizar" type="text" class="form-control" id="input" name="nombre" value="">
+				    <input id="nombreActualizar" type="text" class="form-control" name="nombre" value="">
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleFormControlSelect2"> Encargado </label>
@@ -362,8 +369,6 @@
 				</div>
         </div>
     </div>
-</div>
-</div>
 
       </div>
       <div class="modal-footer">
@@ -407,8 +412,7 @@
 					<td> {{$t->descripcion}} </td>
 					<td> {{$t->horarios}} </td>
 					<td> <a data-toggle='modal' data-nombre="{{$t->nombre}}" data-encargado="{{$t->encargado}}" 
-						data-tipo="{{$t->tipo}}" data-descripcion="{{$t->descripcion}}" data-horarios="{{$t->horarios}}" data-id="{{$t->id_taller}}" data-target='#modalActualizarTalleres' class='btn btn-warning' 
-						 onclick="mostrartaller()">Actualizar</a></td>
+						data-tipo="{{$t->tipo}}" data-descripcion="{{$t->descripcion}}" data-horarios="{{$t->horarios}}" data-id="{{$t->id_taller}}" data-target='#modalActualizarTalleres' class='btn btn-warning'>Actualizar</a></td>
 					<td> <a href="/eliminartaller/{{$t->id_taller}}" class="btn btn-danger">Eliminar</a> </td>
 				</tr>
 				@endforeach
@@ -431,10 +435,6 @@
 
 
 <script type="text/javascript">
-
-	function mostrartaller($id_taller){
-		var url = "editartaller/"+$id_taller;
-	}
 
 	setTimeout(function() {
 		        $("p").fadeOut(1500);
@@ -471,156 +471,6 @@
 			         alert("Nachus");
 			     }
 			});
-	});
-
-
-	jQuery(document).ready(function($) {
-		$(".img").click(function(){
- 			$('.radio').removeProp('checked');
- 		});
-
-	    $("#img1").click(function(){
-
-			 if($('#saxophone').is('checked') == false){
-			  	$('input:radio[value="saxophone"]').prop('checked', true);
-			  }
-		});
-
-		$("#img2").click(function(){
-
-			 if($('#guitarelectric').is('checked') == false){
-			  	$('input:radio[value="guitarelectric"]').prop('checked', true);
-			  }
-		});
-
-		$("#img3").click(function(){
-
-			 if($('#guitaracoustic').is('checked') == false){
-			  	$('input:radio[value="guitaracoustic"]').prop('checked', true);
-			  }
-		});
-
-		$("#img4").click(function(){
-
-			 if($('#soccer').is('checked') == false){
-			  	$('input:radio[value="soccer"]').prop('checked', true);
-			  }
-		});
-
-		$("#img5").click(function(){
-
-			 if($('#runfast').is('checked') == false){
-			  	$('input:radio[value="runfast"]').prop('checked', true);
-			  }
-		});
-
-		$("#img6").click(function(){
-
-			 if($('#dramamasks').is('checked') == false){
-			  	$('input:radio[value="dramamasks"]').prop('checked', true);
-			  }
-		});
-
-		$("#img7").click(function(){
-
-			 if($('#speaker').is('checked') == false){
-			  	$('input:radio[value="speaker"]').prop('checked', true);
-			  }
-		});
-
-		$("#img8").click(function(){
-
-			 if($('#chessrook').is('checked') == false){
-			  	$('input:radio[value="chessrook"]').prop('checked', true);
-			  }
-		});
-
-		$("#img9").click(function(){
-
-			 if($('#baseball').is('checked') == false){
-			  	$('input:radio[value="baseball"]').prop('checked', true);
-			  }
-		});
-
-		$("#img10").click(function(){
-
-			 if($('#basketball').is('checked') == false){
-			  	$('input:radio[value="basketball"]').prop('checked', true);
-			  }
-		});
-
-		$("#img11").click(function(){
-
-			 if($('#volleyball').is('checked') == false){
-			  	$('input:radio[value="volleyball"]').prop('checked', true);
-			  }
-		});
-
-		$("#img12").click(function(){
-
-			 if($('#football').is('checked') == false){
-			  	$('input:radio[value="football"]').prop('checked', true);
-			  }
-		});
-
-		$("#img13").click(function(){
-
-			 if($('#bookopenvariant').is('checked') == false){
-			  	$('input:radio[value="bookopenvariant"]').prop('checked', true);
-			  }
-		});
-
-		$("#img14").click(function(){
-			 if($('#gamepadvariant').is('checked') == false){
-			  	$('input:radio[value="gamepadvariant"]').prop('checked', true);
-			  }
-		});
-
-		$("#img15").click(function(){
-
-			 if($('#karate').is('checked') == false){
-			  	$('input:radio[value="karate"]').prop('checked', true);
-			  }
-		});
-
-
-		$("#img16").click(function(){
-
-			 if($('#soccerfield').is('checked') == false){
-			  	$('input:radio[value="soccerfield"]').prop('checked', true);
-			  }
-		});
-
-		//VALIDACIONES
-
-     	  $('#modalActualizarTalleres').on('show.bs.modal', function (event) {
-		  var button = $(event.relatedTarget) // Button that triggered the modal
-		  var id = button.data('id')
-		  var nombre = button.data('nombre') 
-		  var encargado = button.data('encargado')
-		  var tipo = button.data('tipo')
-		  var descripcion = button.data('descripcion')
-		  var horarios = button.data('horarios')
-
-		  var modal = $(this)
-		  //modal.find('.modal-title').text('New message to ' + recipient)
-		  modal.find('.modal-body #idActualizar').val(id)
-		  modal.find('.modal-body #nombreActualizar').val(nombre)
-		  modal.find('.modal-body #encargadoActualizar').val(encargado)
-		  modal.find('.modal-body #tipoActualizar').val(tipo)
-		  modal.find('.modal-body #descripcionActualizar').val(descripcion)
-		  modal.find('.modal-body #horariosActualizar').val(horarios)
-
-            /*if($( $('input[type="submit"]')).val() != ''){
-               $('input[type="submit"]').removeAttr('disabled');
-               $('button[type="submit"]').attr('enable','enable');
-            }*/
-            
-            
-		})
-			
-		
-
 	});
 </script>
 @endsection

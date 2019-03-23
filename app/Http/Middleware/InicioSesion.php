@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Support\Facades\DB;
 use Closure;
+use Session;
 
 class InicioSesion
 {
@@ -16,16 +18,21 @@ class InicioSesion
     public function handle($request, Closure $next)
     {
         $vato = DB::table('usuarios')->first();
-
+        //dd($vato);
         $usuario = $request->get('usuario');
         $pass = $request->get('password');
-        //dd($vato->contraseña);
+        //dd($usuario);
 
-        if ($vato->usuario == $usuario && $vato->contraseña == $pass) {
-           return $next($request);
+        Session::get('usuario');
+        //dd(Session::get('usuario'));
+
+        if (Session::get('usuario')) {
+            $usuario = $next($request);
         }
-       
-       return redirect('/inicioSesion');
-        
+        else if($usuario == null && $pass == null){
+            return redirect('/iniciosesion')
+                ->with('hacker', 'Hacker Detectado!...');
+        }
+        return $usuario;
     }
 }

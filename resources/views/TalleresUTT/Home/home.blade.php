@@ -187,11 +187,16 @@
 		        <a id="solicitudes" class="nav-link" href="#">Ver Solicitudes <span class="sr-only">(current)</span></a>
 		      </li>
 		  </ul>
+		   
+			@if(Session::has('usuario'))
+			<span style="color: white;">USUARIO: {{ Session::get('usuario') }}</span>
+		        <a id="solicitudes" class="btn btn-primary" href="/logout">Cerrar Sesion<span class="sr-only"></span></a>
+		      @endif
+		      
 		  </div>
 		</nav>
 
-
-			@if(Session::has('message'))
+			@if(Session::has('conectado'))
                <center><span><p class="alert alert-primary">Su cuenta se inicio correctamente.</p></span></center>
             @endif
 

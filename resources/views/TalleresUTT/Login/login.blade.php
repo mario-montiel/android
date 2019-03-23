@@ -116,7 +116,8 @@
 		left: 88%;
 	}
 	.alert{
-		
+		text-align: center;
+		font-size: 20px;
 	}
 	@media (max-width: 800px){
 		#imgiluminati{
@@ -191,8 +192,14 @@
 		            @endforeach
 		        </ul>
 			@endif
-			@if(Session::has('message'))
-               <span><p class="alert alert-primary">Se inicio correctamente su cuenta.</p></span> 
+			@if(Session::has('userIncorrecto'))
+               <span><p class="alert alert-primary">Usuario o Contraseña incorrectos</p></span> 
+            @endif
+            @if(Session::has('logout'))
+               <span><p class="alert alert-primary">Su cuenta ha sido cerrada</p></span> 
+            @endif
+            @if(Session::has('hacker'))
+               <span><p id="hacker" class="alert alert-primary">Inicie sesion o registrese para poder acceder!...</p></span> 
             @endif
 
             <form action="{{ url('iniciosesion') }}" method="post">
@@ -213,8 +220,24 @@
 <img id="imgiluminati" src="{{ asset('img/iluminati.png') }}">
 </div>
 <script type="text/javascript">
-
-</script>
+	$(document).ready(function() {
+		    setTimeout(function() {
+		        $("p").fadeOut(1500);
+		    },3000);
+		 
+		    /*setTimeout(function() {
+		        $(".content2").fadeIn(1500);
+		    },6000);*/
+		});
+	$(document).ready(function() {
+		    setTimeout(function() {
+		        $("#hacker").fadeOut(1500);
+		    },4000);
+		 
+		    /*setTimeout(function() {
+		        $(".content2").fadeIn(1500);
+		    },6000);*/
+		});
 </script>
 
 @endsection

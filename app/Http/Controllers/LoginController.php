@@ -10,6 +10,11 @@ use Session;
 
 class LoginController extends Controller
 {
+    public function __construct()
+    {
+            $this->middleware('inicioSesion', ['except' => ['viewLogin', 'login', 'logout']]);
+    }
+
     function viewLogin(Request $request)
     {
         $vato = DB::table('usuarios')->first();
@@ -31,16 +36,30 @@ class LoginController extends Controller
         $pass = $request->get('password');
         //dd($vato->usuario);
 
+        $user = Session::put('usuario', $usuario);
+        $user = Session::save('usuario', $usuario);
+        $user = Session::get('usuario', $usuario);
+
         if ($vato->usuario == $usuario && $vato->contraseña == $pass) {
-           return redirect('/')
-                ->with('message', 'Se cuenta se inicio correctamente');
+           return view('TalleresUTT.Home.home')
+                ->with('conectado', 'Se cuenta se inició correctamente')
+                ->with('user', $user);
+        }
+
+        if ($usuario == null && $pass == null) {
+           return redirect('/iniciosesion')
+                ->with('hacker', 'Hacker Detectado!...');
         }
        
-       return redirect('/iniciosesion')
-                ->with('message', 'Cuenta o Contraseña incorrectas');
+        return redirect('/iniciosesion')
+                ->with('userIncorrecto', 'Cuenta o Contraseña incorrectas');  
+    }
 
+    function logout(){
+        Session::flush();
 
-        
+        return redirect('/iniciosesion')
+            ->with('logout', 'Su cuenta ha sido cerrada');
     }
 
     function viewRegistroUsuario()

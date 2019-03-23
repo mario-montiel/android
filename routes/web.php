@@ -48,6 +48,7 @@ Route::get('/', 'HomeController@viewHome');
 
 Route::get('/iniciosesion', 'LoginController@viewLogin');
 Route::post('/iniciosesion', 'LoginController@login');
+Route::get('/logout', 'LoginController@logout');
 
 
 Route::get('/registrarse', 'LoginController@viewRegistroUsuario');

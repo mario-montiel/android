@@ -7,9 +7,16 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Modelos\Taller;
 use App\Modelos\Tipo_Taller;
+use Session;
 
 class TalleresController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('inicioSesion');
+        
+    }
+
 	function viewTalleres(){
 		$tipos_taller = DB::table('tipos_taller')->get();
 		return view('TalleresUTT.Talleres.registroTalleres', compact('tipos_taller'));
