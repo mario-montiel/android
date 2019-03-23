@@ -36,11 +36,11 @@ class LoginController extends Controller
         $pass = $request->get('password');
         //dd($vato->usuario);
 
-        $user = Session::put('usuario', $usuario);
-        $user = Session::save('usuario', $usuario);
-        $user = Session::get('usuario', $usuario);
-
         if ($vato->usuario == $usuario && $vato->contraseña == $pass) {
+            $user = Session::put('usuario', $usuario);
+            $user = Session::save('usuario', $usuario);
+            $user = Session::get('usuario', $usuario);
+            
            return view('TalleresUTT.Home.home')
                 ->with('conectado', 'Se cuenta se inició correctamente')
                 ->with('user', $user);
