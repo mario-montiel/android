@@ -11,6 +11,9 @@
 @if(Session::has('taller'))
     <p class="alert alert-primary">!!Taller Registrado con Éxito!!</p>
 @endif
+@if(Session::has('actualizacion'))
+    <p class="alert alert-primary">!!Taller Actualizado con Éxito!!</p>
+@endif
 
 <center><input name="buscador" id="buscador" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
 
@@ -21,9 +24,7 @@
 
 @extends('TalleresUTT.Talleres.actualizarTaller')
 
-@if(Session::has('actualizacion'))
-    <p class="alert alert-primary">!!Taller Actualizado con Éxito!!</p>
-@endif
+
 
 
 

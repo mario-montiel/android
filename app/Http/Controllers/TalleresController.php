@@ -49,7 +49,7 @@ class TalleresController extends Controller
     	$talleres->horarios = $request->get('horarios');
     	$talleres->icono = $request->get('radio');
     	//$talleres->eventos_id_evento = 1;
-    	//dd($request->get('tipo'));
+    	//dd($talleres);
     	$talleres->save();
 
         return redirect('/mostrartalleres')

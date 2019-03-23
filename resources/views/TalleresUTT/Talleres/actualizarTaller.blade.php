@@ -1,6 +1,6 @@
 <!-- Modal Actualizar Taller-->
 <div class="modal fade" id="modalActualizarTalleres" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalScrollableTitle">Actualizar Taller</h5>
@@ -44,7 +44,7 @@
 				     <select name="tipo" class="form-control" id="tipoActualizar">
 				     	<option>Seleccione el tipo de taller</option>
 				    	@foreach($tipos_taller as $tp)
-				    		<option value="old {{ $tp->id_tipotaller }}" {{ old('tipo') == $tp->id_tipotaller ? 'selected' : '' }}>{{ $tp->tipo }}</option>
+				    		<option value="{{ $tp->id_tipotaller }}" {{ old('tipo') == $tp->id_tipotaller ? 'selected' : '' }}>{{ $tp->tipo }}</option>
 				    	@endforeach
 				    </select>
 				  </div>
@@ -60,7 +60,7 @@
 				    <label for="exampleFormControlTextarea1"> Elegir icono del taller </label>
 				    
 				 <div class="row" id="selectores">
-				    <div class="col"> <img class="img" id="img1" src="{{ asset('img/talleresUTT/saxophone.png') }}">
+				    <div class="col"> <img class="img" name="img1" id="img1" src="{{ asset('img/talleresUTT/saxophone.png') }}">
 				    	<div><input checked="" id="saxophone" type="radio" class="radio" name="radio" value="saxophone"></div>
 				     </div> 
 				    	
@@ -130,7 +130,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button id="btnactualizate" type="submit" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
     </div>
 	

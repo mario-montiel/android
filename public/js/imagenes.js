@@ -168,11 +168,6 @@ setTimeout(function() {
 			}
 		
 		});
-
-		
-	});
-
-     	   $(document).ready(function(){
 			$('#btnactualizate').click(function(){
 			var nombre = $('#nombreActualizar').val();
 			var encargado = $('#encargadoActualizar').val();

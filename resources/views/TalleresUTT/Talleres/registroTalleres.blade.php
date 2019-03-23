@@ -132,5 +132,5 @@
   </div>
 </div>
 
-<button class="btn btn-primary" href="#" data-toggle="modal" data-target="#modalRegistroTalleres">Agregar Nuevo Taller
+<button class="btn btn-primary" href="#" data-toggle="modal" data-target="#modalActualizarTalleres">Agregar Nuevo Taller
 </button>
