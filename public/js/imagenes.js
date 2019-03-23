@@ -1,4 +1,10 @@
-$(".img").click(function(){
+
+setTimeout(function() {
+		        $("p").fadeOut(1500);
+		    },3000);
+		
+
+		$(".img").click(function(){
  			$('.radio').removeProp('checked');
  		});
 
@@ -116,6 +122,7 @@ $(".img").click(function(){
 
 		//VALIDACIONES
 
+
      	  $('#modalActualizarTalleres').on('show.bs.modal', function (event) {
 		  
 		  var button = $(event.relatedTarget) // Button that triggered the modal
@@ -143,4 +150,41 @@ $(".img").click(function(){
             }*/
             
             
+	});
+
+     	  $(document).ready(function(){
+		$('#btnsubmit').click(function(){
+			var nombre = $('#nombre').val();
+			var encargado = $('#encargado').val();
+			var tipo = $('#select').val(); //num
+			var textarea = $('#textarea').val();
+			var horario = $('#horario').val();
+
+			if(nombre.length == "" || encargado.length == "" || 
+				tipo == "Seleccione el tipo de taller" || textarea.length == "" || 
+				horario.length == ""){
+				alert("Llene todos los campos para continuar.");
+				return false;
+			}
+		
+		});
+
+		
+	});
+
+     	   $(document).ready(function(){
+			$('#btnactualizate').click(function(){
+			var nombre = $('#nombreActualizar').val();
+			var encargado = $('#encargadoActualizar').val();
+			var tipo = $('#tipoActualizar').val(); //num
+			var textarea = $('#descripcionActualizar').val();
+			var horario = $('#horariosActualizar').val();
+
+			if(nombre.length == "" || encargado.length == "" || 
+				tipo == "Seleccione el tipo de taller" || textarea.length == "" || 
+				horario.length == ""){
+				alert("Llene todos los campos para continuar.");
+				return false;
+			}
+		});
 	});

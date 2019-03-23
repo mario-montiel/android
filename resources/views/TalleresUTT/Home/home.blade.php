@@ -196,8 +196,8 @@
 		  </div>
 		</nav>
 
-			@if(Session::has('conectado'))
-               <center><span><p class="alert alert-primary">Su cuenta se inicio correctamente.</p></span></center>
+			@if(Session::has('conected'))
+               <center><span ><p class="alert alert-primary">Su cuenta se inicio correctamente.</p></span></center>
             @endif
 
 	
@@ -210,7 +210,7 @@
 	        		<div class="tarjeta">
 	        			<div class="adelante carta1"></div>
 	        			<div class="atras">
-	        				<h1><a href="/registrotalleres"> Registrar Taller </a></h1>
+	        				<h1><a href="/registrotalleres"> Talleres </a></h1>
 	        			</div>
 	        		</div>
 	        	</div>
@@ -222,7 +222,7 @@
 	        		<div class="tarjeta">
 	        			<div class="adelante carta2"></div>
 	        			<div class="atras">
-	        				<h1><a href="/mostrartalleres"> Modificar Taller </a></h1>		
+	        				<h1><a href="/mostrartalleres"> Alumnos </a></h1>		
 	        			</div>
 	        		</div>
 	        	</div>
@@ -234,7 +234,7 @@
 	        		<div class="tarjeta">
 	        			<div class="adelante carta3"></div>
 	        			<div class="atras">
-	        				<h1><a href=""> Asignar Evento </a></h1>	
+	        				<h1><a href=""> Eventos </a></h1>	
 	        			</div>
 	        		</div>
 	        	</div>

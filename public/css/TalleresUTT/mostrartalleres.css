@@ -1,0 +1,90 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+#contenedor{
+		position: absolute;
+	}
+	.table:hover{
+		
+	}
+	#tituloNavBar{
+			position: absolute;
+			left: 44%;
+	}
+	#tituloNavBar:hover{
+			color: #A1BFB7;
+	}
+	#imgiluminati{
+			height: 55px;
+	}
+	#navbar{
+			color: white;
+	}
+	#nel{
+		display: none;
+	}
+	#card{
+		background-color: #B7B6C5;
+		color: #000;
+			margin: auto;
+			width: 100%;
+			border-radius: 15px;
+			margin-bottom: 50px;
+			transition: width 1s, height 1s, margin 1s, background-color 2s;
+		}
+	#card:hover{
+		background-color: #9896AA;
+		color: #000;
+	}
+	.img{
+			height: 55px;
+			margin-left: 10px;
+			border-radius: 5px;
+			padding: 8px;
+			transition: width 1s, height 1s, margin 1s, background-color 2s;
+		}
+		.img:hover{
+			height: 60px;
+			background-color: #A1BFB7;
+		}
+		.radio{
+			margin-left: 30px;
+		}
+		#radio:hover{
+			background-color: #A1BFB7;
+		}
+	#modalRegistroTalleres{
+		background-color: rgba(0,0,0,0.7);
+	}
+	#modalActualizarTalleres{
+		background-color: rgba(0,0,0,0.7);
+	}
+	.table{
+		width: auto; margin-left: 17%;
+	}
+	p{
+		text-align: center;
+	}
+	#update{
+		height: 25px;
+		padding: 1px;
+	}
+	#delete{
+		height: 25px;
+		padding: 3px;
+	}
+	#add{
+		height: 15px;
+		margin: auto;
+		margin-left: 8px;
+	}
+	#btnadd{
+		margin-top: 1%;
+		margin-left: 50px;
+	}
+	@media (max-width: 1200px){
+		.table{
+			margin-left: 0%;
+		}
+	}

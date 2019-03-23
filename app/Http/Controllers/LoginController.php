@@ -41,8 +41,8 @@ class LoginController extends Controller
             $user = Session::save('usuario', $usuario);
             $user = Session::get('usuario', $usuario);
             
-           return view('TalleresUTT.Home.home')
-                ->with('conectado', 'Se cuenta se inició correctamente')
+           return redirect('/')
+                ->with('conected', 'Su cuenta se inició correctamente')
                 ->with('user', $user);
         }
 
