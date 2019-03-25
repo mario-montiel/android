@@ -13,7 +13,7 @@ class LoginController extends Controller
     /*public function __construct()
     {
             $this->middleware('inicioSesion', ['except' => ['viewLogin', 'login', 'logout']]);
-    }*/
+    }
 
     function viewLogin(Request $request)
     {
@@ -88,6 +88,6 @@ class LoginController extends Controller
 
     function viewLoading(){
         return view('TalleresUTT.Loading.loading');
-    }
+    }*/
 
 }

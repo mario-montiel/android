@@ -221,7 +221,16 @@ $(document).ready(function(){
 
 			$.post(urls, forms.serialize(), function(result){
 				//row.fadeOut();
-				
+				$.ajax({
+				type: 'GET',
+				url:  '/search',
+				 success: function(){  
+				        $("form#updatejob").hide(function(){$("div.success").fadeIn();});  
+				    },
+				    error: function(XMLHttpRequest, textStatus, errorThrown) { 
+				        alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+				    }       
+				});
 				
 						/*$('#mostrardatos').html("");
 						$.each(data, function(i, item) {
@@ -263,8 +272,7 @@ $(document).ready(function(){
 										});
 						});*/
 				
-				
-			})
+			});
 		});
 });
 
