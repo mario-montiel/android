@@ -210,7 +210,7 @@
 	        		<div class="tarjeta">
 	        			<div class="adelante carta1"></div>
 	        			<div class="atras">
-	        				<h1><a href="/registrotalleres"> Talleres </a></h1>
+	        				<h1><a href="/mostrartalleres"> Talleres </a></h1>
 	        			</div>
 	        		</div>
 	        	</div>
@@ -222,7 +222,7 @@
 	        		<div class="tarjeta">
 	        			<div class="adelante carta2"></div>
 	        			<div class="atras">
-	        				<h1><a href="/mostrartalleres"> Alumnos </a></h1>		
+	        				<h1><a href=""> Alumnos </a></h1>		
 	        			</div>
 	        		</div>
 	        	</div>

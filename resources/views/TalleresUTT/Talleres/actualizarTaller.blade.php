@@ -1,6 +1,6 @@
 <!-- Modal Actualizar Taller-->
 <div class="modal fade" id="modalActualizarTalleres" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable" role="document">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalScrollableTitle">Actualizar Taller</h5>
@@ -23,7 +23,7 @@
 		        </ul>
 			@endif
 			@foreach($taller as $t)
-             <form action="{{ url('editartaller',$t->id_taller)}}" method="post">
+             <form id="form-actualizar" action="{{ url('editartaller',$t->id_taller)}}" method="post">
              	{{ csrf_field() }}
              	<input id="idActualizar" type="hidden" name="id_taller" value="">
             @endforeach
@@ -41,8 +41,8 @@
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleFormControlSelect1"> Tipo de taller </label>
-				     <select name="tipo" class="form-control" id="tipoActualizar">
-				     	<option>Seleccione el tipo de taller</option>
+				     <select name="tipo" class="form-control tipoActualizar">
+				     	<option id="tipoActualizar">Seleccione el tipo de taller</option>
 				    	@foreach($tipos_taller as $tp)
 				    		<option value="{{ $tp->id_tipotaller }}" {{ old('tipo') == $tp->id_tipotaller ? 'selected' : '' }}>{{ $tp->tipo }}</option>
 				    	@endforeach
@@ -129,8 +129,8 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary btn-closeupd" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary btn-upd" data-dismiss="modal">Guardar Cambios</button>
       </div>
     </div>
 	

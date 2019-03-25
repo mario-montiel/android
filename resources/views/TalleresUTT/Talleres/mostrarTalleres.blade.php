@@ -35,8 +35,8 @@
 
 @if( count($numtalleres)>0)
 <div id="container" class="container-fluid">
-		<table class="table table-responsive table-hover">
-		<head>
+		<table id="table" class="table table-responsive table-hover">
+		<thead>
 			<tr>
 			<th>Nombre de Taller</th>
 			<th>Encargado</th>
@@ -46,37 +46,48 @@
 			<th>Actualizar</th>
 			<th>Eliminar</th>
 			</tr>
-		</head>
+		</thead>
 		<tbody id="mostrardatos">
-			
 				@foreach($taller as $t)
-				<tr>
-					<td> {{$t->nombre}} </td>
+				<tr data-id="{{ $t->id_taller }}" data-nombre="{{ $t->nombre}}" data-encargado="{{ $t->encargado}}" data-tipo="{{ $t->tipo }}" data-descripcion="{{ $t->descripcion}}" data-horarios="{{ $t->horarios}}">
+					<td > {{$t->nombre}} </td>
 					<td> {{$t->encargado}} </td>
 					<td> {{$t->tipo}} </td>
 					<td> {{$t->descripcion}} </td>
 					<td> {{$t->horarios}} </td>
-					<td> <a id="btnupdate" data-toggle='modal' data-nombre="{{$t->nombre}}" data-encargado="{{$t->encargado}}" 
+					<td> 
+						 <form id="form-actualizar" action="{{ url('editartaller',$t->id_taller)}}" method="post">
+             	{{ csrf_field() }}
+             	<input id="idActualizar" type="hidden" name="id_taller" value="">
+						<a id="btnupdate" data-toggle='modal' data-nombre="{{$t->nombre}}" data-encargado="{{$t->encargado}}" 
 						data-tipo="{{$t->tipo}}" data-descripcion="{{$t->descripcion}}" data-horarios="{{$t->horarios}}" data-id="{{$t->id_taller}}" data-target='#modalActualizarTalleres' class='btn btn-warning'>
 						<img id="update" src="{{ asset('img/update.png') }}">
 					</a></td>
 					<td> <a href="/eliminartaller/{{$t->id_taller}}" class="btn btn-danger">
 					<img id="delete" src="{{ asset('img/delete.png') }}"></a> </td>
 				</tr>
-				@endforeach
+			</form>
+			@endforeach
 			
 		</tbody>
 	</table>
 	</div>
 </div>	
 
-{{$numtalleres->render()}}
+<div style="position: absolute; left:42%;">{{$taller->render()}}</div>
 
 @else
 <div class="container"><center><br><label class="alert alert-primary"> No hay ningún Taller registrado </label></h1></center></div>
 @endif
 
+
 <script type="text/javascript">
+
+	$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+	});
 	$('#buscador').on('keyup',function(){
 			$value = $('#buscador').val();
 			
@@ -109,6 +120,9 @@
 			});
 	});
 
-	
+
 </script>
 @endsection
+
+
+

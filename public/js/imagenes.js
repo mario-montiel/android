@@ -1,8 +1,11 @@
 
+
+$(document).ready(function(){
 setTimeout(function() {
 		        $("p").fadeOut(1500);
 		    },3000);
 		
+
 
 		$(".img").click(function(){
  			$('.radio').removeProp('checked');
@@ -152,7 +155,7 @@ setTimeout(function() {
             
 	});
 
-     	  $(document).ready(function(){
+     	  
 		$('#btnsubmit').click(function(){
 			var nombre = $('#nombre').val();
 			var encargado = $('#encargado').val();
@@ -182,4 +185,130 @@ setTimeout(function() {
 				return false;
 			}
 		});
+	});
+
+$(document).ready(function(){
+	var row;
+	var id = '';
+	var form;
+	var url;
+	var raw;
+	var idxw = '';
+	var nombrex = '';
+	var encargadox = '';
+	var tipox = '';
+	var descripcionx = '';
+	var horariox = '';
+
+							$('.btn-warning').click(function(e){
+								row =  $(this).parents('tr');
+								id = row.data('id');
+								form = $('#form-actualizar');
+								url = form.attr('action');
+								
+							});
+
+	$('.btn-upd').click(function(e){
+			e.preventDefault();
+			/*if ( ! confirm("¿Estas seguro de eliminar?")) {
+				return false;
+			}*/
+
+			var rows = row;
+			var id_taller = id;
+			var forms = form;
+			var urls = url;
+
+			$.post(urls, forms.serialize(), function(result){
+				//row.fadeOut();
+				
+				
+						/*$('#mostrardatos').html("");
+						$.each(data, function(i, item) {
+								changos = "<tr data-idx="+item.id+" data-name="+item.nombre+" data-encargadoxd="+item.encargado+" data-tipoxd="+item.tipo+" data-descripcionxd="+item.descripcion+" data-horarioxd="+item.horarios+"><td>" +
+									item.nombre+ "</td><td>" +
+									item.encargado + "</td><td>" +
+									item.tipo + "</td><td>" +
+									item.descripcion + "</td><td>" +
+									item.horarios + "</td><td>"  +
+									"<button data-toggle='modal' href='#modalActualizarTalleres' class='btn btn-warning btn-hey'><img id='update' src='img/update.png'></button>" + 
+									"</td><td>" +
+									"<a class='btn btn-danger' href='/eliminartaller/"+item.id_taller+"'><img id='delete' src='img/delete.png'></a>";
+								$('#mostrardatos').append(changos);
+
+
+								$('.btn-hey').click(function(){
+									raw =  $(this).parents('tr');
+									idxw = raw.data('idx');
+									nombrex = raw.data('name');
+									encargadox = raw.data('encargadoxd');
+									tipox = raw.data('tipoxd');
+									descripcionx = raw.data('descripcionxd');
+									horariox = raw.data('horarioxd');
+								});
+
+										$('#modalActualizarTalleres').on('show.bs.modal', function (event) {
+												  
+												  var button = $(this).parents('tr'); // Button that triggered the modal
+
+												  var modal = $(this)
+												  //modal.find('.modal-title').text('New message to ' + recipient)
+												  modal.find('.modal-body #idActualizar').val(idxw)
+												  modal.find('.modal-body #nombreActualizar').val(nombrex)
+												  modal.find('.modal-body #encargadoActualizar').val(encargadox)
+												  modal.find('.modal-body #tipoActualizar').val(tipox)
+												  modal.find('.modal-body #descripcionActualizar').val(descripcionx)
+												  modal.find('.modal-body #horariosActualizar').val(horariox)
+
+										});
+						});*/
+				
+				
+			})
+		});
+});
+
+$(document).ready(function(){
+
+	$('.btn-registrar').click(function(e){
+		e.preventDefault();
+		form = $('#form-registrar');
+		url = form.attr('action');
+		//alert(form.serialize());
+		$.post(url, form.serialize(), function(result){
+				//alert(result)
+				//row.fadeOut();
+
+				$.ajax({
+				type: 'GET',
+				url:  '/search',
+				success:function(data){
+						$('#mostrardatos').html("");
+						$.each(data, function(i, item) {
+								
+								changos = "<tr><td>" +
+									item.nombre+ "</td><td>" +
+									item.encargado + "</td><td>" +
+									item.tipo + "</td><td>" +
+									item.descripcion + "</td><td>" +
+									item.horarios + "</td><td>"  +
+									"<a data-id="+item.id_taller+" data-nombre="+item.nombre+
+									" data-encargado="+item.encargado+" data-tipo="+item.tipo+
+									" data-descripcion="+item.descripcion+" data-horarios="+item.horarios+
+									"data-toggle='modal' data-target='#modalActualizarTalleres' class='btn btn-warning'><img id='update' src='{{ asset('img/talleresUTT/update.png') }}''></a>" + 
+									"</td><td>" +
+									"<a class='btn btn-danger' href='/eliminartaller/"+item.id_taller+"'><img id='delete' src='{{ asset('img/delete.png') }}'></a>";
+								$('#mostrardatos').append(changos);
+						});
+					
+					
+				},
+			     error: function () {
+			         alert("Error del Servidor");
+			     }
+			});
+		});
+
+	});
+
 	});

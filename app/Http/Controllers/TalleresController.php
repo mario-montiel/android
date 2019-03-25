@@ -11,18 +11,18 @@ use Session;
 
 class TalleresController extends Controller
 {
-    public function __construct()
+    /*public function __construct()
     {
         $this->middleware('inicioSesion');
         
-    }
+    }*/
 
 	function viewTalleres(){
 		$tipos_taller = DB::table('tipos_taller')->get();
 		return view('TalleresUTT.Talleres.registroTalleres', compact('tipos_taller'));
 	}
     function talleres(Request $request){
-        $this->validate($request, [
+        /*$this->validate($request, [
             'nombre' => 'required|max:255',
             'encargado' => 'required|max:255',
             'tipo' => 'required|int|min:1',
@@ -35,12 +35,13 @@ class TalleresController extends Controller
             'tipo.integer' => 'Seleccione un tipo de taller',
             'descripcion.required' => 'Ingrese una descripción',
             'horarios.required' => 'Ingrese un horario',
-            'radio.required' => 'Seleccione una imagen',]);
+            'radio.required' => 'Seleccione una imagen',]);*/
 
     	//$taller = DB::table('talleres')->get();
     	//$collection = collect($taller[0]->nombre);
     	
     	//dd($request->get('radio'));
+            //dd($request);
     	$talleres = new Taller();
     	$talleres->nombre = $request->get('nombre');
     	$talleres->encargado = $request->get('encargado');
@@ -49,19 +50,22 @@ class TalleresController extends Controller
     	$talleres->horarios = $request->get('horarios');
     	$talleres->icono = $request->get('radio');
     	//$talleres->eventos_id_evento = 1;
-    	//dd($talleres);
+    	//dd($request->get('tipo'));
     	$talleres->save();
 
-        return redirect('/mostrartalleres')
-            ->with('taller', 'El taller se registró correctamente, vuelva pronto');
+        /*return redirect('/mostrartalleres')
+            ->with('taller', 'El taller se registró correctamente, vuelva pronto');*/
+            /*return Response()->json({
+                'taller' => 'El taller se registró correctamente, vuelva pronto';
+            });*/
     }
 
     function viewMostrarTalleres(){
-        $numtalleres = Taller::paginate(2);
+        $numtalleres = Taller::paginate(5);
     	$taller = DB::table('talleres')
                 ->select('talleres.id_taller','talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
-                ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')->get();
-        $tipos_taller = DB::table('tipos_taller')->get();
+                ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')->paginate(5);
+        $tipos_taller = DB::table('tipos_taller')->get();   
 
     	   return view('TalleresUTT.Talleres.mostrarTalleres', compact('taller', 'tipos_taller', 'numtalleres'));
     }
@@ -73,7 +77,7 @@ class TalleresController extends Controller
     }*/
 
     function actualizarTaller(Request $request, $id){
-        $this->validate($request, [
+        /*$this->validate($request, [
             'nombre' => 'required|max:255',
             'encargado' => 'required|max:255',
             'tipo' => 'required|int|min:1',
@@ -86,22 +90,30 @@ class TalleresController extends Controller
             'tipo.integer' => 'Seleccione un tipo de taller',
             'descripcion.required' => 'Ingrese una descripción de taller',
             'horarios.required' => 'Ingrese el horario del taller',
-            'radio.required' => 'Seleccione una imagen',]);
+            'radio.required' => 'Seleccione una imagen',]);*/
 
-        $id_taller = $request->id_taller;
-        //dd($id_taller);
-    	$taller = Taller::findOrFail($id_taller);
-        //dd($taller);
-    	$taller->nombre = $request->get('nombre');
-    	$taller->encargado = $request->get('encargado');
-    	$taller->tipos_taller = $request->get('tipo');
-    	$taller->descripcion = $request->get('descripcion');
-    	$taller->horarios = $request->get('horarios');
-    	$taller->icono = $request->get('radio');
-    	$taller->save();
+       $id_taller = $request->id_taller;
+        //return $id_taller;
 
-    	return redirect('/mostrartalleres')
-            ->with('actualizacion', 'El taller se actualizó correctamente');
+        if($request->ajax()){
+            $id_taller = $request->id_taller;
+            //dd($id_taller);
+            $taller = Taller::findOrFail($id_taller);
+            //dd($taller);
+            $taller->nombre = $request->get('nombre');
+            $taller->encargado = $request->get('encargado');
+            $taller->tipos_taller = $request->get('tipo');
+            $taller->descripcion = $request->get('descripcion');
+            $taller->horarios = $request->get('horarios');
+            $taller->icono = $request->get('radio');
+            $taller->save();
+
+            /*return Response()->json([
+                'actualizado' => $taller->nombre
+            ]);*/
+            //return "ajax";
+        }
+        //return "http";
     }
 
     function arregloJohnnyLand(){
