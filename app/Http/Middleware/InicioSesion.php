@@ -17,7 +17,7 @@ class InicioSesion
      */
     public function handle($request, Closure $next)
     {
-       /* $vato = DB::table('usuarios')->first();
+        $vato = DB::table('usuarios')->first();
         //dd($vato);
         $usuario = $request->get('usuario');
         $pass = $request->get('password');
@@ -33,6 +33,6 @@ class InicioSesion
             return redirect('/iniciosesion')
                 ->with('hacker', 'Hacker Detectado!...');
         }
-        return $usuario;*/
+        return $usuario;
     }
 }
