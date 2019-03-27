@@ -57,6 +57,7 @@ Route::post('/registrar', 'LoginController@registrarse');
 //Route::get('/registrotalleres', 'TalleresController@viewTalleres');
 Route::post('/talleres', 'TalleresController@talleres');
 Route::get('/mostrartalleres', 'TalleresController@viewMostrarTalleres');
+Route::get('/mostrarresultado', 'TalleresController@viewMostrarResultado');
 //Route::get('/editartaller/{id}', 'TalleresController@viewActualizarTalleres');
 Route::post('/editartaller/{id}', 'TalleresController@actualizarTaller');
 Route::post('/eliminartaller/{id}', 'TalleresController@eliminarTaller');

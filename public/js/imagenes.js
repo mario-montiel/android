@@ -198,12 +198,28 @@ setTimeout(function() {
 
 
 	$('.btn-registrar').click(function(e){
+		e.preventDefault();
 		form = $('#form-registrar');
 		url = form.attr('action');
 		//alert(url);
 		$.post(url, form.serialize(), function(result){
 				//row.fadeOut();
+				//$('tbody').append(result);
+
 				$('body').html(result);
+				/*$.ajax({
+				type: 'GET',
+				url:  '/mostrarresultado',
+				success:function(data){
+						console.log(data);
+								$('tbody').html(data);
+				},
+			     error: function () {
+			         alert("Error del Servidor");
+			     }
+				});*/
+
+
 		}).fail(function(){
 				alert("El registro del taller falló, intentelo de nuevo");
 		})
@@ -216,7 +232,6 @@ setTimeout(function() {
 		  
 		  var button = $(event.relatedTarget) // Button that triggered the modal
 		  id = button.data('id')
-		  alert(id);
 		  var modal = $(this)
 		  modal.find('.modal-body #id_eliminar').val(id)
             
@@ -224,8 +239,7 @@ setTimeout(function() {
 
 
 		$('.btn-delete').click(function(e){
-			e.preventDefault();
-			alert(id);	
+			e.preventDefault();	
 			row_destroy = $(this).parents('tr')
 			var xxx = row_destroy.data('id');
 			var form_destroy = $('#form-eliminar');
@@ -234,7 +248,6 @@ setTimeout(function() {
 
 			$.post(url_destroy, form_destroy.serialize(), function(result){
 					//row.fadeOut();
-					//alert(result);
 					$('body').html(result);
 					
 			}).fail(function(){

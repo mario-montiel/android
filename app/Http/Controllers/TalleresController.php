@@ -41,7 +41,7 @@ class TalleresController extends Controller
             # code...
             $talleres = new Taller();
             $talleres->nombre = $request->get('nombre');
-            //dd($request);
+            $taller = $request->get('nombre');
             $talleres->encargado = $request->get('encargado');
             $talleres->tipos_taller = $request->get('tipo');
             $talleres->descripcion = $request->get('descripcion');
@@ -50,7 +50,10 @@ class TalleresController extends Controller
             $talleres->save();
 
            return redirect('/mostrartalleres')
-            ->with('taller', 'El taller se creó correctamente');
+            ->with('taller', ' se creó correctamente');
+            /*return response()->json([
+                'taller' => $taller->nombre . ' fue registrado correctamente'
+             ]);*/
         }
     	
     }
@@ -63,6 +66,14 @@ class TalleresController extends Controller
         $tipos_taller = DB::table('tipos_taller')->get();   
 
     	   return view('TalleresUTT.Talleres.mostrarTalleres', compact('taller', 'tipos_taller', 'numtalleres'));
+    }
+
+    function viewMostrarResultado(){
+        $taller = DB::table('talleres')
+                ->select('talleres.id_taller','talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
+                ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')->get();
+
+            return $taller;
     }
 
     function actualizarTaller(Request $request, $id){
@@ -91,11 +102,15 @@ class TalleresController extends Controller
             $taller->horarios = $request->get('horarios');
             $taller->icono = $request->get('radio');
             $taller->save();
-        }
+
              return redirect('/mostrartalleres')
             ->with('actualizacion', 'El taller se actualizó correctamente');
+        }
+            /*return response()->json([
+                'actualizacion' => $taller->nombre . ' fue actualizado correctamente'
+             ]);*/
     }
-    
+
     function eliminarTaller(Request $request, $id){
        
        
