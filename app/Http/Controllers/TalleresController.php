@@ -49,8 +49,14 @@ class TalleresController extends Controller
             $talleres->icono = $request->get('radio');
             $talleres->save();
 
-           return redirect('/mostrartalleres')
-            ->with('taller', ' se creó correctamente');
+            $tallerx = DB::table('talleres')
+            ->select('talleres.id_taller','talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
+            ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')->get();
+
+            return $tallerx;
+
+           /*return redirect('/mostrartalleres')
+            ->with('taller', ' se creó correctamente');*/
             /*return response()->json([
                 'taller' => $taller->nombre . ' fue registrado correctamente'
              ]);*/
@@ -103,8 +109,8 @@ class TalleresController extends Controller
             $taller->icono = $request->get('radio');
             $taller->save();
 
-             return redirect('/mostrartalleres')
-            ->with('actualizacion', 'El taller se actualizó correctamente');
+             /*return redirect('/mostrartalleres')
+            ->with('actualizacion', 'El taller se actualizó correctamente');*/
         }
             /*return response()->json([
                 'actualizacion' => $taller->nombre . ' fue actualizado correctamente'
@@ -118,12 +124,18 @@ class TalleresController extends Controller
             $id_taller = $request->id_taller;
              $taller = Taller::findOrFail($id);
             $taller->delete($id);
-            return redirect('/mostrartalleres')
-            ->with('eliminacion', 'El taller se actualizó correctamente');
+            /*return redirect('/mostrartalleres')
+            ->with('eliminacion', 'El taller se actualizó correctamente');*/
             //return $eliminacion = $taller->nombre . ' fue eliminado correctamente.'; 
             /*return response()->json([
                 'eliminacion' => $taller->nombre . ' fue eliminado correctamente'
              ]);*/
+
+             $eliminar = DB::table('talleres')
+             ->select('talleres.id_taller','talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
+             ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')->get();
+ 
+             return $eliminar;
         }
 
         Session::flash('eliminacion', 'eliminacion');

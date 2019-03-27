@@ -5,7 +5,6 @@
 @section('contenido')
 	<link rel="stylesheet" type="text/css" href="css/TalleresUTT/login.css">
 	<style type="text/css">
-	
 </style>
 </head>
 <body id="fondo">

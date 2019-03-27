@@ -50,7 +50,7 @@
 		</thead>
 		<tbody id="mostrardatos">
 				@foreach($taller as $t)
-				<tr data-id="{{ $t->id_taller }}" data-nombre="{{ $t->nombre}}" data-encargado="{{ $t->encargado}}" data-tipo="{{ $t->tipo }}" data-descripcion="{{ $t->descripcion}}" data-horarios="{{ $t->horarios}}">
+				<tr data-id="{{ $t->id_taller }}">
 					<td > {{$t->nombre}} </td>
 					<td> {{$t->encargado}} </td>
 					<td> {{$t->tipo}} </td>
