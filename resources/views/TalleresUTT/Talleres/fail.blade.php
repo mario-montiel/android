@@ -8,16 +8,14 @@
 
 @extends('TalleresUTT.Login.navbar')
 
-<div class="loader"></div>
-
 @if(Session::has('taller'))
     <p class="alert alert-primary">!!Taller Registrado con Éxito!!</p>
 @endif
 @if(Session::has('actualizacion'))
-    <p class="alert alert-primary">{{Session::get('actualizacion')}}</p>
+    <p class="alert alert-primary">!!Taller Actualizado con Éxito!!</p>
 @endif
 @if(Session::has('eliminacion'))
-    <p id="eliminacion" class="alert alert-primary">!!Taller Eliminado con Éxito!!</p>
+    <p class="alert alert-primary">!!Taller Eliminado con Éxito!!</p>
 @endif
 
 <center><input name="buscador" id="buscador" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
@@ -57,14 +55,17 @@
 					<td> {{$t->descripcion}} </td>
 					<td> {{$t->horarios}} </td>
 					<td> 
+						 <form id="form-actualizar" action="{{ url('editartaller',$t->id_taller)}}" method="post">
 			             	{{ csrf_field() }}
-								<a data-toggle='modal' data-id="{{$t->id_taller}}" data-nombre="{{$t->nombre}}" data-encargado="{{$t->encargado}}" 
-								data-tipo="{{$t->tipo}}" data-descripcion="{{$t->descripcion}}" data-horarios="{{$t->horarios}}"  data-target='#modalActualizarTalleres' class='btn btn-warning'>
+			             	<input id="idActualizar" type="hidden" name="id_taller" value="">
+								<a id="btnupdate" data-toggle='modal' data-nombre="{{$t->nombre}}" data-encargado="{{$t->encargado}}" 
+								data-tipo="{{$t->tipo}}" data-descripcion="{{$t->descripcion}}" data-horarios="{{$t->horarios}}" data-id="{{$t->id_taller}}" data-target='#modalActualizarTalleres' class='btn btn-warning'>
 								<img id="update" src="{{ asset('img/update.png') }}">
-							</a></td>
-						
-							<td> <button data-id='{{$t->id_taller}}' class="btn btn-danger btn-eliminar" data-toggle='modal' data-target='#eliminarModal'>
+							</a></td></form>
+						<form id="form-eliminar" action="{{ url('eliminartaller',$t->id_taller)}}" method="post">
+							<td> <button data-eliminar='{{$t->id_taller}}' class="btn btn-danger btn-eliminar" data-toggle='modal' data-target='#eliminarModal'>
 							<img id="delete" src="{{ asset('img/delete.png') }}"></button> </td>
+						</form>
 				</tr>
 			
 			@endforeach
@@ -74,6 +75,7 @@
 	</div>
 </div>	
 
+<div style="position: absolute; left:42%;">{{$taller->render()}}</div>
 
 @else
 <div class="container"><center><br><label class="alert alert-primary"> No hay ningún Taller registrado </label></h1></center></div>
@@ -87,8 +89,7 @@
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 	});
-	$('#buscador').on('keyup',function(e){
-		e.preventDefault();
+	$('#buscador').on('keyup',function(){
 			$value = $('#buscador').val();
 			
 			$.ajax({
@@ -100,15 +101,15 @@
 						$('#mostrardatos').html("");
 						$.each(data, function(i, item) {
 								
-								changos = "<tr data-id="+item.id_taller+"><td>" +
+								changos = "<tr><td>" +
 									item.nombre+ "</td><td>" +
 									item.encargado + "</td><td>" +
 									item.tipo + "</td><td>" +
 									item.descripcion + "</td><td>" +
-									item.horarios + "</td><td>"  + 
-									"<button data-id="+item.id_taller+" data-nombre="+item.nombre+" data-encargado="+item.encargado+" data-tipo="+item.tipo+" data-descripcion="+item.descripcion+" data-horarios="+item.horarios+" data-toggle='modal' data-target='#modalActualizarTalleres' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+									item.horarios + "</td><td>"  +
+									"<a data-id="+item.id_taller+" data-nombre="+item.nombre+" data-encargado="+item.encargado+" data-tipo="+item.tipo+" data-descripcion="+item.descripcion+" data-horarios="+item.horarios+" data-toggle='modal' data-target='#modalActualizarTalleres' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></a>" + 
 									"</td><td>" +
-									"<button data-id="+item.id_taller+" data-toggle='modal' data-target='#eliminarModal' class='btn btn-danger btn-eliminar'><img id='delete' src='{{ asset('img/delete.png') }}'></button>";
+									"<a class='btn btn-danger' href='/eliminartaller/"+item.id_taller+"'><img id='delete' src='{{ asset('img/delete.png') }}'></a>";
 								$('#mostrardatos').append(changos);
 						});
 					}

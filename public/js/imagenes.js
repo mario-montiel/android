@@ -124,38 +124,6 @@ setTimeout(function() {
 		});
 
 		//VALIDACIONES
-
-
-     	  $('#modalActualizarTalleres').on('show.bs.modal', function (event) {
-		  
-		  var button = $(event.relatedTarget) // Button that triggered the modal
-		  var id = button.data('id')
-		  var nombre = button.data('nombre') 
-		  var encargado = button.data('encargado')
-		  var tipo = button.data('tipo')
-		  var descripcion = button.data('descripcion')
-		  var horarios = button.data('horarios')
-
-		  var modal = $(this)
-		  //modal.find('.modal-title').text('New message to ' + recipient)
-		  modal.find('.modal-body #idActualizar').val(id)
-		  modal.find('.modal-body #nombreActualizar').val(nombre)
-		  modal.find('.modal-body #encargadoActualizar').val(encargado)
-		  modal.find('.modal-body #tipoActualizar').val(tipo)
-		  modal.find('.modal-body #descripcionActualizar').val(descripcion)
-		  modal.find('.modal-body #horariosActualizar').val(horarios)
-
-
-
-            /*if($( $('input[type="submit"]')).val() != ''){
-               $('input[type="submit"]').removeAttr('disabled');
-               $('button[type="submit"]').attr('enable','enable');
-            }*/
-            
-            
-	});
-
-     	  
 		$('#btnsubmit').click(function(){
 			var nombre = $('#nombre').val();
 			var encargado = $('#encargado').val();
@@ -185,138 +153,94 @@ setTimeout(function() {
 				return false;
 			}
 		});
+
+
+     	$('#modalActualizarTalleres').on('show.bs.modal', function (event) {
+		  
+		  var button = $(event.relatedTarget) // Button that triggered the modal
+		  var id = button.data('id')
+		  var nombre = button.data('nombre') 
+		  var encargado = button.data('encargado')
+		  var tipo = button.data('tipo')
+		  var descripcion = button.data('descripcion')
+		  var horarios = button.data('horarios')
+
+		  var modal = $(this)
+		  modal.find('.modal-body #idActualizar').val(id)
+		  modal.find('.modal-body #nombreActualizar').val(nombre)
+		  modal.find('.modal-body #encargadoActualizar').val(encargado)
+		  modal.find('.modal-body #tipoActualizar').val(tipo)
+		  modal.find('.modal-body #descripcionActualizar').val(descripcion)
+		  modal.find('.modal-body #horariosActualizar').val(horarios)
+            
 	});
 
-$(document).ready(function(){
 	var row;
 	var id = '';
 	var form;
 	var url;
-	var raw;
-	var idxw = '';
-	var nombrex = '';
-	var encargadox = '';
-	var tipox = '';
-	var descripcionx = '';
-	var horariox = '';
-
-							$('.btn-warning').click(function(e){
-								row =  $(this).parents('tr');
-								id = row.data('id');
-								form = $('#form-actualizar');
-								url = form.attr('action');
-								
-							});
+	var namex = '';
 
 	$('.btn-upd').click(function(e){
-			e.preventDefault();
 			/*if ( ! confirm("¿Estas seguro de eliminar?")) {
 				return false;
 			}*/
-
-			var rows = row;
-			var id_taller = id;
-			var forms = form;
-			var urls = url;
-
+			e.preventDefault();
+			var forms = $('#form-actualizar');
+			var urls = forms.attr('action');
 			$.post(urls, forms.serialize(), function(result){
 				//row.fadeOut();
-				$.ajax({
-				type: 'GET',
-				url:  '/search',
-				 success: function(){  
-				        $("form#updatejob").hide(function(){$("div.success").fadeIn();});  
-				    },
-				    error: function(XMLHttpRequest, textStatus, errorThrown) { 
-				        alert("Status: " + textStatus); alert("Error: " + errorThrown); 
-				    }       
-				});
-				
-						/*$('#mostrardatos').html("");
-						$.each(data, function(i, item) {
-								changos = "<tr data-idx="+item.id+" data-name="+item.nombre+" data-encargadoxd="+item.encargado+" data-tipoxd="+item.tipo+" data-descripcionxd="+item.descripcion+" data-horarioxd="+item.horarios+"><td>" +
-									item.nombre+ "</td><td>" +
-									item.encargado + "</td><td>" +
-									item.tipo + "</td><td>" +
-									item.descripcion + "</td><td>" +
-									item.horarios + "</td><td>"  +
-									"<button data-toggle='modal' href='#modalActualizarTalleres' class='btn btn-warning btn-hey'><img id='update' src='img/update.png'></button>" + 
-									"</td><td>" +
-									"<a class='btn btn-danger' href='/eliminartaller/"+item.id_taller+"'><img id='delete' src='img/delete.png'></a>";
-								$('#mostrardatos').append(changos);
-
-
-								$('.btn-hey').click(function(){
-									raw =  $(this).parents('tr');
-									idxw = raw.data('idx');
-									nombrex = raw.data('name');
-									encargadox = raw.data('encargadoxd');
-									tipox = raw.data('tipoxd');
-									descripcionx = raw.data('descripcionxd');
-									horariox = raw.data('horarioxd');
-								});
-
-										$('#modalActualizarTalleres').on('show.bs.modal', function (event) {
-												  
-												  var button = $(this).parents('tr'); // Button that triggered the modal
-
-												  var modal = $(this)
-												  //modal.find('.modal-title').text('New message to ' + recipient)
-												  modal.find('.modal-body #idActualizar').val(idxw)
-												  modal.find('.modal-body #nombreActualizar').val(nombrex)
-												  modal.find('.modal-body #encargadoActualizar').val(encargadox)
-												  modal.find('.modal-body #tipoActualizar').val(tipox)
-												  modal.find('.modal-body #descripcionActualizar').val(descripcionx)
-												  modal.find('.modal-body #horariosActualizar').val(horariox)
-
-										});
-						});*/
-				
-			});
+						$('body').html(result);		
+			}).fail(function(){
+				alert("La actualización del taller falló, intentelo de nuevo");
+			})
 		});
-});
 
-$(document).ready(function(){
 
 	$('.btn-registrar').click(function(e){
-		e.preventDefault();
 		form = $('#form-registrar');
 		url = form.attr('action');
-		//alert(form.serialize());
+		//alert(url);
 		$.post(url, form.serialize(), function(result){
-				//alert(result)
 				//row.fadeOut();
-
-				$.ajax({
-				type: 'GET',
-				url:  '/search',
-				success:function(data){
-						$('#mostrardatos').html("");
-						$.each(data, function(i, item) {
-								
-								changos = "<tr><td>" +
-									item.nombre+ "</td><td>" +
-									item.encargado + "</td><td>" +
-									item.tipo + "</td><td>" +
-									item.descripcion + "</td><td>" +
-									item.horarios + "</td><td>"  +
-									"<a data-id="+item.id_taller+" data-nombre="+item.nombre+
-									" data-encargado="+item.encargado+" data-tipo="+item.tipo+
-									" data-descripcion="+item.descripcion+" data-horarios="+item.horarios+
-									"data-toggle='modal' data-target='#modalActualizarTalleres' class='btn btn-warning'><img id='update' src='{{ asset('img/talleresUTT/update.png') }}''></a>" + 
-									"</td><td>" +
-									"<a class='btn btn-danger' href='/eliminartaller/"+item.id_taller+"'><img id='delete' src='{{ asset('img/delete.png') }}'></a>";
-								$('#mostrardatos').append(changos);
-						});
-					
-					
-				},
-			     error: function () {
-			         alert("Error del Servidor");
-			     }
-			});
-		});
+				$('body').html(result);
+		}).fail(function(){
+				alert("El registro del taller falló, intentelo de nuevo");
+		})
 
 	});
+
+	var id= '';
+
+	$('#eliminarModal').on('show.bs.modal', function (event) {
+		  
+		  var button = $(event.relatedTarget) // Button that triggered the modal
+		  id = button.data('id')
+		  alert(id);
+		  var modal = $(this)
+		  modal.find('.modal-body #id_eliminar').val(id)
+            
+	});
+
+
+		$('.btn-delete').click(function(e){
+			e.preventDefault();
+			alert(id);	
+			row_destroy = $(this).parents('tr')
+			var xxx = row_destroy.data('id');
+			var form_destroy = $('#form-eliminar');
+			var urldestroy = form_destroy.attr('action');
+			var url_destroy = urldestroy+"/"+id;
+
+			$.post(url_destroy, form_destroy.serialize(), function(result){
+					//row.fadeOut();
+					//alert(result);
+					$('body').html(result);
+					
+			}).fail(function(){
+				alert("La eliminación del taller falló, intentelo de nuevo");
+			})
+		});
+	
 
 	});

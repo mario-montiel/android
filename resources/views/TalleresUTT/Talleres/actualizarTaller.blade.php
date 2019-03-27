@@ -133,7 +133,7 @@
         <button type="submit" class="btn btn-primary btn-upd" data-dismiss="modal">Guardar Cambios</button>
       </div>
     </div>
-	
+	</form>
   </div>
-  </form>
+  
 </div>

@@ -54,15 +54,18 @@ Route::get('/logout', 'LoginController@logout');
 Route::get('/registrarse', 'LoginController@viewRegistroUsuario');
 Route::post('/registrar', 'LoginController@registrarse');
 
-Route::get('/registrotalleres', 'TalleresController@viewTalleres');
+//Route::get('/registrotalleres', 'TalleresController@viewTalleres');
 Route::post('/talleres', 'TalleresController@talleres');
 Route::get('/mostrartalleres', 'TalleresController@viewMostrarTalleres');
 //Route::get('/editartaller/{id}', 'TalleresController@viewActualizarTalleres');
 Route::post('/editartaller/{id}', 'TalleresController@actualizarTaller');
-Route::get('/eliminartaller/{id}', 'TalleresController@eliminarTaller');
+Route::post('/eliminartaller/{id}', 'TalleresController@eliminarTaller');
 Route::get('/search', 'TalleresController@search');
 
-Route::get('/JohnnyLand', 'TalleresController@arregloJohnnyLand');
-Route::get('/JohnnyLandDepo', 'TalleresController@arregloJohnnyLandDepo');
-Route::get('/JohnnyLandCult', 'TalleresController@arregloJohnnyLandCult');
+Route::get('/johnnyland', 'ArreglosWebSite@arregloJohnnyLand');
+Route::get('/johnnylanddepo', 'ArreglosWebSite@arregloJohnnyLandDepo');
+Route::get('/johnnylandcult', 'ArreglosWebSite@arregloJohnnyLandCult');
+Route::get('/johnnylandcarrera', 'ArreglosWebSite@arregloJohnnyLandCarreras');
+Route::get('/johnnylandcuatri', 'ArreglosWebSite@arregloJohhnyLandCuatri');
+Route::get('/johnnylandsolicitud', 'ArreglosWebSite@arregloJohhnyLandSolicitud');
 

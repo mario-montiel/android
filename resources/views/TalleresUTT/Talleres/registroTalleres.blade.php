@@ -2,9 +2,9 @@
 
 <!-- Modal Registro Talleres -->
 <div class="modal fade" id="modalRegistroTalleres" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
- 6 <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">542810
+ <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
  	<!--  -->
-3    <div class="modal-content" style="">
+   <div class="modal-content" style="">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalScrollableTitle">Registrar Taller</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -25,16 +25,16 @@
 		        </ul>
 			@endif
 
-             <form id="form-registrar" action="{{ url('talleres')}}" method="post">
+             <form id="form-registrar" action="{{ url('talleres')}}" method="post" role="form">
                 {{ csrf_field() }}
                 
                 <div class="form-group">
 				    <label for="exampleFormControlInput1"> Nombre del Taller </label>
-				    <input id="nombre" type="text" class="form-control" id="input" name="nombre" value="">
+				    <input id="nombre" type="text" class="form-control" id="input" name="nombre">
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleFormControlSelect2"> Encargado </label>
-				   <input type="text" class="form-control" id="encargado" name="encargado" value=""> 
+				   <input type="text" class="form-control" id="encargado" name="encargado"> 
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleFormControlSelect1"> Tipo de taller </label>
@@ -47,11 +47,11 @@
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleFormControlSelect2"> Descripción </label>
-				   <textarea id="textarea" class="form-control" rows="3" name="descripcion" value=""></textarea>
+				   <textarea id="textarea" class="form-control" rows="3" name="descripcion"></textarea>
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleFormControlTextarea1"> Horarios del taller</label>
-				    <input type="text" class="form-control" id="horario" name="horarios" value="">
+				    <input type="text" class="form-control" id="horario" name="horarios" >
 				  </div>
                   <div class="form-group">
 				    <label for="exampleFormControlTextarea1"> Elegir icono del taller </label>
@@ -125,7 +125,7 @@
     </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button id="btnsubmit" type="submit" class="btn btn-primary btn-registrar" data-dismiss="modal">Registrar Taller</button>
       </div>
     </div>
