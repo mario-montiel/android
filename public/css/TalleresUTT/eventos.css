@@ -1,0 +1,23 @@
+#imgiluminati{
+    height: 55px;
+}
+#botones{
+    margin-top: 2%;
+}
+#btnadd{
+    margin-left: 5%;
+}
+#add{
+    height: 15px;
+}
+#update{
+    height: 15px;
+}
+#delete{
+    height: 15px;
+}
+.table{
+    margin-top: 3%;
+    margin-left: 5%;
+    text-align: center;
+}

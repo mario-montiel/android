@@ -1,11 +1,7 @@
-
-
 $(document).ready(function(){
 setTimeout(function() {
 		        $("p").fadeOut(1500);
 		    },3000);
-		
-
 
 		$(".img").click(function(){
  			$('.radio').removeProp('checked');
@@ -216,7 +212,6 @@ setTimeout(function() {
 						 alert("Error del Servidor");
 					 }
 				});
-				
 			}).fail(function(){
 				alert("La actualización del taller falló, intentelo de nuevo");
 			})
@@ -257,25 +252,19 @@ setTimeout(function() {
 						 alert("Error del Servidor");
 					 }
 				});
-
-
 		}).fail(function(){
 				alert("El registro del taller falló, intentelo de nuevo");
 		})
-
 	});
 
 	var id= '';
 
 	$('#eliminarModal').on('show.bs.modal', function (event) {
-		  
 		  var button = $(event.relatedTarget) // Button that triggered the modal
 		  id = button.data('id')
 		  var modal = $(this)
 		  modal.find('.modal-body #id_eliminar').val(id)
-            
 	});
-
 
 		$('.btn-delete').click(function(e){
 			e.preventDefault();	
@@ -315,11 +304,8 @@ setTimeout(function() {
 									 alert("Error del Servidor");
 								 }
 							});
-					
 			}).fail(function(){
 				alert("La eliminación del taller falló, intentelo de nuevo");
 			});
 		});
-	
-
 	});

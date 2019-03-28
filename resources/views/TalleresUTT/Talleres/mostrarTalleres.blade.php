@@ -1,6 +1,6 @@
 @extends('TalleresUTT.Complements.plugins')
 <link rel="stylesheet" type="text/css" href="css/TalleresUTT/mostrartalleres.css">
-@section('titulo', 'Mostrar Talleres')
+@section('titulo', 'Talleres')
 
 @section('contenido')
 

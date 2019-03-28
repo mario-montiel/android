@@ -234,7 +234,7 @@
 	        		<div class="tarjeta">
 	        			<div class="adelante carta3"></div>
 	        			<div class="atras">
-	        				<h1><a href=""> Eventos </a></h1>	
+	        				<h1><a href="/eventos"> Eventos </a></h1>	
 	        			</div>
 	        		</div>
 	        	</div>

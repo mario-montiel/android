@@ -70,3 +70,9 @@ Route::get('/johnnylandcarrera', 'ArreglosWebSite@arregloJohnnyLandCarreras');
 Route::get('/johnnylandcuatri', 'ArreglosWebSite@arregloJohhnyLandCuatri');
 Route::get('/johnnylandsolicitud', 'ArreglosWebSite@arregloJohhnyLandSolicitud');
 
+Route::get('/eventos', 'EventosController@viewEventos');
+Route::post('/evento', 'EventosController@eventos');
+Route::post('/editarevento/{id}', 'EventosController@actualizar');
+Route::post('/eliminarevento/{id}', 'EventosController@eliminar');
+Route::get('/buscador', 'EventosController@buscador');
+
