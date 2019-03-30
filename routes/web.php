@@ -74,5 +74,6 @@ Route::get('/eventos', 'EventosController@viewEventos');
 Route::post('/evento', 'EventosController@eventos');
 Route::post('/editarevento/{id}', 'EventosController@actualizar');
 Route::post('/eliminarevento/{id}', 'EventosController@eliminar');
+Route::post('/asignarevento', 'EventosController@asignacion');
 Route::get('/buscador', 'EventosController@buscador');
 

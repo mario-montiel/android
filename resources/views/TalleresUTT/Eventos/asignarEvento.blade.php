@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Actualizar Taller</h5>
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Asignar Eventos</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -22,8 +22,13 @@
 		            @endforeach
 		        </ul>
             @endif
-            <form id="form-asignar" action="{{ url('editarevento')}}" method="post">
+            <form id="form-asignar" action="{{ url('asignarevento')}}" method="post">
             {{ csrf_field() }}
+
+        <div class="form-group">
+					<label for="exampleFormControlInput1"> Nombre del Evento Asignado </label>
+					<input id="eventasig" type="text" class="form-control" name="eventasig">
+				</div>
             <div class="form-group">
 				<label for="exampleFormControlSelect1"> Evento </label>
 				<select name="eventoselect" class="form-control" id="eventoselect">
@@ -36,9 +41,9 @@
             
             <div class="form-group">
 				<label for="exampleFormControlSelect1"> Taller </label>
-				<select name="eventoselect" class="form-control" id="eventoselect">
+				<select name="tallerselect" class="form-control" id="tallerselect">
 				    <option>Seleccione un taller</option>
-				    @foreach($event as $ev)
+				    @foreach($talleres as $ev)
 				    	<option value="{{ $ev->id_taller }}" {{ old('nombre') == $ev->id_taller ? 'selected' : '' }}>{{ $ev->nombre }}</option>
 				    @endforeach
 				</select>
@@ -48,7 +53,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-closeupd" data-dismiss="modal">Cerrar</button>
-        <button id="btnactualizate" type="submit" class="btn btn-primary btn-upd" data-dismiss="modal">Guardar Cambios</button>
+        <button id="btnasignar" type="submit" class="btn btn-primary btn-asignar" data-dismiss="modal">Guardar Cambios</button>
       </div>
     </div>
     </form>

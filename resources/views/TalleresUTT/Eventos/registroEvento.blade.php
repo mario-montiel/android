@@ -6,7 +6,7 @@
  	<!--  -->
    <div class="modal-content" style="">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Registrar Taller</h5>
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Registrar Evento</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

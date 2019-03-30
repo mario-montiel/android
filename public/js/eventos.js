@@ -181,4 +181,52 @@ $('.btn-delete').click(function(e){
 });
 
 
+$('.btn-asignar').click(function(e){
+    e.preventDefault();
+    var id_evento = $('#eventoselect').val();
+    var id_taller = $('#tallerselect').val();
+    var form = $('#form-asignar');
+    var url = form.attr('action');
+    var urlx = url+"/"+id_evento+"/"+id_taller;
+    
+    alert(id_evento);
+    alert(id_taller);
+    alert(form.serialize());
+    alert(urlx);
+    
+        $.post(url, form.serialize(), function(result){
+                //row.fadeOut();
+        }).fail(function(){
+                alert("El evento no pudo ser asignado, intentelo de nuevo");
+        })
+    
+});
+
+
+
+
+    
+$('.btn-designar').click(function(e){
+    e.preventDefault();
+    
+    var id_evento = $('#idev').val();
+    var id_taller = $('#idta').val();
+    var ids = $('#btndesignar').val();
+    /*var form = $('#form-asignar');
+    var url = form.attr('action');
+    var urlx = url+"/"+id_evento+"/"+id_taller;*/
+    alert(ids);
+    alert(id_evento);
+    alert(id_taller);
+    alert(form.serialize());
+    alert(urlx);
+    
+        $.post(url, form.serialize(), function(result){
+                //row.fadeOut();
+        }).fail(function(){
+                alert("El evento no pudo ser asignado, intentelo de nuevo");
+        })
+    
+});
+
 });
