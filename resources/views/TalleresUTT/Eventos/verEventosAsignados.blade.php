@@ -8,12 +8,9 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-       
-
+      <div class="modal-body">                                                                                                                                                      
 
 <div class="container-fluid">
-	
 
             @if ($errors->any())
 		        <ul style="color: white; margin-top: 25px; margin: auto;">
@@ -39,7 +36,7 @@
                         <input class="idta" value="{{$te->tallleres_id_taller}}" type="text" name="taller" id="idta" disabled>
                     </div>
                 </div>
-                <div class="col-4"><button id="btndesignar" value="{{$te->eventos_id_evento}}" name="ev" type="submit" class="btn btn-danger btn-designar" data-dismiss="modal"><img id="delete" src="{{ asset('img/delete.png') }}" alt=""></button></div>
+                <div class="col-4"><button id="btndesignar" value="" name="ev" type="submit" class="btn btn-danger btn-designar" data-dismiss="modal"><img id="delete" src="{{ asset('img/delete.png') }}" alt=""></button></div>
             </div>
             @endforeach
                  

@@ -25,7 +25,7 @@ class ArreglosWebSite extends Controller
     }
 
     function arregloJohnnyLandCarreras(){
-    	return $carreras = DB::table('talleres')->get();
+    	return $carreras = DB::table('carreras')->get();
     }
 
     function arregloJohhnyLandCuatri(){
