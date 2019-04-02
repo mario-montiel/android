@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Modelos\Login;
 use Session;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate \ Support \ Facades \ Auth;
 
 class LoginController extends Controller
 {
@@ -23,28 +26,41 @@ class LoginController extends Controller
 
     function login(Request $request)
     {
-        $this->validate($request, [
+        $credenciales = $this->validate($request, [
             'usuario' => 'required|max:255',
             'password' => 'required',],
 
             ['usuario.required' => 'Ingrese un usuario',
             'password.required' => 'Ingrese una contraseña',]);
 
-        $vato = DB::table('usuarios')->first();
+            //return $credenciales;
 
+        
+        //dd($vato[2]->password);
+        
+        
         $usuario = $request->get('usuario');
         $pass = $request->get('password');
-        //dd($vato->usuario);
+        //dd($confirmar);
 
-        if ($vato->usuario == $usuario && $vato->contraseña == $pass) {
-            $user = Session::put('usuario', $usuario);
-            $user = Session::save('usuario', $usuario);
-            $user = Session::get('usuario', $usuario);
-            
-           return redirect('/')
-                ->with('conected', 'Su cuenta se inició correctamente')
-                ->with('user', $user);
+        $vato = DB::table('usuarios')->where('usuario', $usuario)->first();
+        
+        $confirmarpass = $vato->password;
+        $confirmar = $vato->usuario;
+        
+        if (Hash::check($pass, $confirmarpass) && $confirmar == $usuario) {
+                $user = Session::put('usuario', $vato);
+                $user = Session::save('usuario', $vato);
+                
+            return redirect('/')
+                    ->with('conected', 'Su cuenta se inició correctamente')
+                    ->with('user', $user);
         }
+
+        /*if(Auth::attempt($credenciales)){
+            return "yeah";
+        }*/
+        
 
         if ($usuario == null && $pass == null) {
            return redirect('/iniciosesion')
@@ -73,13 +89,22 @@ class LoginController extends Controller
 		    'password' => 'required',], 
 
 		    ['usuario.required' => 'Ingrese un usuario',
-    		'password.required' => 'Ingrese una contraseña',]);
-
+            'password.required' => 'Ingrese una contraseña',]);
+            
+        
+        $con = $request->get('password');
+        //$clave = Hash::make($con);
+        //dd($con);
+        $password = Hash::make($con);
+        $token = Str::random(60);
+        //dd($token);
 
 
         $usuario = new Login();
 		$usuario->usuario = $request->get('usuario');
-		$usuario->contraseña = $request->get('password');
+        $usuario->password = $password;
+        $usuario->api_token = $token;
+        //dd($usuario->usuario);
 		$usuario->save();
 
 		return view('TalleresUTT.Login.login');
@@ -88,6 +113,14 @@ class LoginController extends Controller
 
     function viewLoading(){
         return view('TalleresUTT.Loading.loading');
+    }
+
+    function token(){
+        $user = Session::get('usuario');
+        //dd($user);
+        //$token = $user->api_token;
+        $usuario = Login::find(1);
+        return $usuario->api_token;
     }
 
 }

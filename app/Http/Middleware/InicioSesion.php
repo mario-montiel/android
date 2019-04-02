@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Closure;
 use Session;
 
+
 class InicioSesion
 {
     /**
@@ -21,6 +22,7 @@ class InicioSesion
         //dd($vato);
         $usuario = $request->get('usuario');
         $pass = $request->get('password');
+        //dd($pass);
         //dd($usuario);
 
         Session::get('usuario');

@@ -46,6 +46,15 @@ Route::get('/seleccionFoto','IngenieriaSoftware@viewSeleccionFoto');
 
 Route::get('/', 'HomeController@viewHome');
 
+Route::get('/home', function () {
+    $usuario = Session::get('usuario');
+
+    if(Session::has('usuario')){
+        return $usuario->api_token;
+    }
+    return "Nachus";
+   });
+
 Route::get('/iniciosesion', 'LoginController@viewLogin');
 Route::post('/iniciosesion', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout');
