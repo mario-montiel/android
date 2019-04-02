@@ -13,8 +13,12 @@
       </li>
     </ul>
     @if(Session::has('usuario'))
-			<span style="color: white;">USUARIO: {{ Session::get('usuario') }}</span>
-		        <a id="solicitudes" class="btn btn-primary" href="/logout">Cerrar Sesion<span class="sr-only"></span></a>
-		      @endif
+			<span style="color: white;">USUARIO: {{ Session::get('usuario')->usuario }}</span>
+		  <a id="solicitudes" class="btn btn-primary" href="/logout">Cerrar Sesion<span class="sr-only"></span></a>
+		@endif
   </div>
 </nav>
+
+
+
+
