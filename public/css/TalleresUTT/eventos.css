@@ -1,6 +1,10 @@
 #imgiluminati{
     height: 55px;
 }
+#tituloNavBar{
+    position: absolute;
+    left: 44%;
+}
 #botones{
     margin-top: 2%;
 }

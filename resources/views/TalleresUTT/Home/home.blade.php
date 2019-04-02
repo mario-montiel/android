@@ -18,6 +18,10 @@
 		height: 50px;
 		margin-left: 2%;
 	}
+	#tituloNavBar{
+			position: absolute;
+			left: 44%;
+	}
 	#contenedor1{
 		background-color: black;
 		width: 100%;
@@ -27,7 +31,7 @@
 		margin-left: 3%;
 	}
 	#solicitudes{
-		font-size: 20px;
+		font-size: 15px;
 		text-align: center;
 	}
 	#contenedor2{
@@ -161,6 +165,11 @@
 	.box3{
 
 	}
+	#logout{
+		height: 20px;
+		margin-top:-2px;
+		padding-left: 5px;
+	}
 	@media (max-width: 800px){
 		.tarjeta{
 			width: 350px;
@@ -183,17 +192,16 @@
 
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav mr-auto">
-		      <li class="nav-item active">
-		        <a id="solicitudes" class="nav-link" href="#">Ver Solicitudes <span class="sr-only">(current)</span></a>
-		      </li>
+		      
 		  </ul>
 		   
-			@if(Session::has('usuario'))
-			<span style="color: white;">USUARIO: {{ Session::get('usuario')->usuario }}</span>
-		        <a id="solicitudes" class="btn btn-primary" href="/logout">Cerrar Sesion<span class="sr-only"></span></a>
-		      @endif
+			
 		      
 		  </div>
+			@if(Session::has('usuario'))
+        <button class="btn disabled" style="backgroud-color: transparent;"><span style="color: white;">Hola {{ Session::get('usuario')->usuario }} </span></button>
+       <a id="solicitudes" class="btn alert-danger" href="/logout"> Cerrar Sesión	<img id="logout" src="{{ asset('img/logout.png') }}"><span class="sr-only"></span></a>
+			@endif
 		</nav>
 
 			@if(Session::has('conected'))

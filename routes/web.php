@@ -53,7 +53,7 @@ Route::get('/home', function () {
         return $usuario->api_token;
     }
     return "Nachus";
-   });
+});
 
 Route::get('/iniciosesion', 'LoginController@viewLogin');
 Route::post('/iniciosesion', 'LoginController@login');

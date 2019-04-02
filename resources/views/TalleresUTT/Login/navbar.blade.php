@@ -8,13 +8,11 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="modal" data-target="#modalRegistroTalleres">Agregar Nuevo Taller</a>
-      </li>
     </ul>
     @if(Session::has('usuario'))
-			<span style="color: white;">USUARIO: {{ Session::get('usuario')->usuario }}</span>
-		  <a id="solicitudes" class="btn btn-primary" href="/logout">Cerrar Sesion<span class="sr-only"></span></a>
+        <button class="btn disabled" style="backgroud-color: transparent;"><span style="color: white;">Hola {{ Session::get('usuario')->usuario }} </span></button>
+       <a id="solicitudes" class="btn alert-danger" href="/logout"> Cerrar Sesión	<img id="logout" style="height: 20px; margin-top:-2px; padding-left: 5px;" 
+       src="{{ asset('img/logout.png') }}"><span class="sr-only"></span></a>
 		@endif
   </div>
 </nav>
