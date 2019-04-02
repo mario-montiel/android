@@ -199,7 +199,7 @@
 		      
 		  </div>
 			@if(Session::has('usuario'))
-        <button class="btn disabled" style="backgroud-color: transparent;"><span style="color: white;">Hola {{ Session::get('usuario')->usuario }} </span></button>
+        <button class="btn disabled" style="backgroud-color: transparent;"><span style="color: white;">Hola! {{ Session::get('usuario')->usuario }} </span></button>
        <a id="solicitudes" class="btn alert-danger" href="/logout"> Cerrar Sesión	<img id="logout" src="{{ asset('img/logout.png') }}"><span class="sr-only"></span></a>
 			@endif
 		</nav>
