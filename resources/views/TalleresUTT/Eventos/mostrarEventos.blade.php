@@ -16,7 +16,6 @@
 
 @extends('TalleresUTT.Eventos.asignarEvento')
 
-@extends('TalleresUTT.Eventos.VerEventosAsignados')
 
 <div id="botones" class="container">
     <div class="row">

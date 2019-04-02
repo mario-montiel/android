@@ -12,11 +12,11 @@ use Session;
 
 class TalleresController extends Controller
 {
-    /*public function __construct()
+    public function __construct()
     {
         $this->middleware('inicioSesion');
         
-    }*/
+    }
 
 	function viewTalleres(){
 		$tipos_taller = DB::table('tipos_taller')->get();

@@ -13,10 +13,10 @@ use Illuminate \ Support \ Facades \ Auth;
 
 class LoginController extends Controller
 {
-    /*public function __construct()
+    public function __construct()
     {
             $this->middleware('inicioSesion', ['except' => ['viewLogin', 'login', 'logout']]);
-    }*/
+    }
 
     function viewLogin(Request $request)
     {
@@ -45,22 +45,19 @@ class LoginController extends Controller
 
         $vato = DB::table('usuarios')->where('usuario', $usuario)->first();
         
-        $confirmarpass = $vato->password;
-        $confirmar = $vato->usuario;
-        
-        if (Hash::check($pass, $confirmarpass) && $confirmar == $usuario) {
+        if($vato){
+            $confirmarpass = $vato->password;
+            $confirmar = $vato->usuario;
+
+            if (Hash::check($pass, $confirmarpass) && $confirmar == $usuario) {
                 $user = Session::put('usuario', $vato);
                 $user = Session::save('usuario', $vato);
                 
             return redirect('/')
                     ->with('conected', 'Su cuenta se inició correctamente')
                     ->with('user', $user);
+            }
         }
-
-        /*if(Auth::attempt($credenciales)){
-            return "yeah";
-        }*/
-        
 
         if ($usuario == null && $pass == null) {
            return redirect('/iniciosesion')
