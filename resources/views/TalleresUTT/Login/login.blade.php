@@ -34,6 +34,9 @@
             @if(Session::has('hacker'))
                <span><p id="hacker" class="alert alert-primary">Inicie sesion o registrese para poder acceder!...</p></span> 
             @endif
+			@if(Session::has('created'))
+               <span><p id="hacker" class="alert alert-primary">Su cuenta se creó con éxito!</p></span> 
+            @endif
 
             <form action="{{ url('iniciosesion') }}" method="post">
                 {{ csrf_field() }}

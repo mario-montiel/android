@@ -104,7 +104,8 @@ class LoginController extends Controller
         //dd($usuario->usuario);
 		$usuario->save();
 
-		return view('TalleresUTT.Login.login');
+		return redirect('/iniciosesion')
+                    ->with('created', 'Su cuenta se creó con éxito!');
     
 	}
 
