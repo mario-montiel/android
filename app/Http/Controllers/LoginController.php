@@ -15,7 +15,7 @@ class LoginController extends Controller
 {
     public function __construct()
     {
-            $this->middleware('inicioSesion', ['except' => ['viewLogin', 'login', 'logout']]);
+            $this->middleware('inicioSesion', ['except' => ['viewLogin', 'login', 'logout', 'registrarse', 'viewRegistroUsuario']]);
     }
 
     function viewLogin(Request $request)
