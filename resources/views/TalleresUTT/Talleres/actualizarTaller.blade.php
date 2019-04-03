@@ -41,8 +41,7 @@
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleFormControlSelect1"> Tipo de taller </label>
-				     <select name="tipo" class="form-control tipoActualizar">
-				     	<option id="tipoActualizar">Seleccione el tipo de taller</option>
+				     <select name="tipo" class="form-control tipoActualizar" id="seleccion">
 				    	@foreach($tipos_taller as $tp)
 				    		<option value="{{ $tp->id_tipotaller }}" {{ old('tipo') == $tp->id_tipotaller ? 'selected' : '' }}>{{ $tp->tipo }}</option>
 				    	@endforeach
@@ -130,7 +129,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-closeupd" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary btn-upd" data-dismiss="modal">Guardar Cambios</button>
+        <button id="btnactualizate" type="submit" class="btn btn-primary btn-upd" data-dismiss="modal">Guardar Cambios</button>
       </div>
     </div>
 	</form>

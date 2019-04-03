@@ -118,7 +118,7 @@ setTimeout(function() {
 			  	$('input:radio[value="soccerfield"]').prop('checked', true);
 			  }
 		});
-
+		
 		//VALIDACIONES
 		$('#btnsubmit').click(function(){
 			var nombre = $('#nombre').val();
@@ -133,7 +133,7 @@ setTimeout(function() {
 				alert("Llene todos los campos para continuar.");
 				return false;
 			}
-		
+			
 		});
 			$('#btnactualizate').click(function(){
 			var nombre = $('#nombreActualizar').val();
@@ -142,8 +142,7 @@ setTimeout(function() {
 			var textarea = $('#descripcionActualizar').val();
 			var horario = $('#horariosActualizar').val();
 
-			if(nombre.length == "" || encargado.length == "" || 
-				tipo == "Seleccione el tipo de taller" || textarea.length == "" || 
+			if(nombre.length == "" || encargado.length == "" || textarea.length == "" || 
 				horario.length == ""){
 				alert("Llene todos los campos para continuar.");
 				return false;
