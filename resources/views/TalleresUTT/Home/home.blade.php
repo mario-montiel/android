@@ -166,7 +166,7 @@
 
 	}
 	#logout{
-		height: 20px;
+		height: 18px;
 		margin-top:-2px;
 		padding-left: 5px;
 	}
@@ -205,7 +205,7 @@
 		</nav>
 
 			@if(Session::has('conected'))
-               <center><span ><p class="alert alert-primary">Su cuenta se inicio correctamente.</p></span></center>
+               <center><span ><p class="alert alert-success">Su cuenta se inició correctamente.</p></span></center>
             @endif
 
 	
@@ -296,13 +296,6 @@
 	     </div>
     </div>
 </div>
-
-
-
-
-
-
-
 
 <div class="box2"></div>
 <div class="box3"></div>

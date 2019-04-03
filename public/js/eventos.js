@@ -70,6 +70,13 @@ $('.btn-act').click(function(e){
                                         "</td><td>" +
                                         "<button data-id="+item.id_evento+" data-toggle='modal' data-target='#modalEliminarEventos' class='btn btn-danger btn-eliminar'><img id='delete' src='img/delete.png'></button>";
                                     $('tbody').append(changos);
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        type: 'success',
+                                        title: 'Evento actualizado correctamente',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                      })
                             });
                     },
                      error: function () {
@@ -112,6 +119,13 @@ $.post(urlx, formx.serialize(), function(result){
                                 "</td><td>" +
                                 "<button data-id="+item.id_evento+" data-toggle='modal' data-target='#modalEliminarEventos' class='btn btn-danger btn-eliminar'><img id='delete' src='img/delete.png'></button>";
                             $('tbody').append(changos);
+                            Swal.fire({
+                                position: 'top-end',
+                                type: 'success',
+                                title: 'Evento registrado correctamente',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
                     });
             },
              error: function () {
@@ -168,6 +182,13 @@ $('.btn-delete').click(function(e){
                                     "</td><td>" +
                                     "<button data-id="+item.id_evento+" data-toggle='modal' data-target='#modalEliminarEventos' class='btn btn-danger btn-eliminar'><img id='delete' src='img/delete.png'></button>";
                                 $('tbody').append(changos);
+                                Swal.fire({
+                                    position: 'top-end',
+                                    type: 'success',
+                                    title: 'Evento eliminado correctamente',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
                         });
                 },
                  error: function () {
@@ -196,6 +217,13 @@ $('.btn-asignar').click(function(e){
     
         $.post(url, form.serialize(), function(result){
                 //row.fadeOut();
+                Swal.fire({
+                    position: 'top-end',
+                    type: 'success',
+                    title: 'Evento asignado correctamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
         }).fail(function(){
                 alert("El evento no pudo ser asignado, intentelo de nuevo");
         })

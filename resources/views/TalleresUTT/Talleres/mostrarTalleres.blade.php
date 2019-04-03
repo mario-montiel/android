@@ -8,16 +8,16 @@
 
 @extends('TalleresUTT.Login.navbar')
 
-<div class="loader"></div>
+<div class="loader"><p id="exito" ></p></div>
 
 @if(Session::has('taller'))
-    <p class="alert alert-primary">!!Taller Registrado con Éxito!!</p>
+    <p id="exito" class="alert alert-success">!!Taller Registrado con Éxito!!</p>
 @endif
 @if(Session::has('actualizacion'))
-    <p class="alert alert-primary">{{Session::get('actualizacion')}}</p>
+    <p class="alert alert-success">{{Session::get('actualizacion')}}</p>
 @endif
 @if(Session::has('eliminacion'))
-    <p id="eliminacion" class="alert alert-primary">!!Taller Eliminado con Éxito!!</p>
+    <p id="eliminacion" class="alert alert-success">!!Taller Eliminado con Éxito!!</p>
 @endif
 
 <center><input name="buscador" id="buscador" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>

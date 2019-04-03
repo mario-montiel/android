@@ -15,7 +15,6 @@ class TalleresController extends Controller
     public function __construct()
     {
         $this->middleware('inicioSesion');
-        
     }
 
 	function viewTalleres(){
@@ -39,7 +38,8 @@ class TalleresController extends Controller
             ->select('talleres.id_taller','talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
             ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')->get();
 
-            return $tallerx;
+            return response()->json(['taller' => 'Taller registrado correctamente']);
+            
         }
     	
     }

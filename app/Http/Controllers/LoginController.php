@@ -32,12 +32,6 @@ class LoginController extends Controller
 
             ['usuario.required' => 'Ingrese un usuario',
             'password.required' => 'Ingrese una contraseña',]);
-
-            //return $credenciales;
-
-        
-        //dd($vato[2]->password);
-        
         
         $usuario = $request->get('usuario');
         $pass = $request->get('password');

@@ -11,7 +11,7 @@
     </ul>
     @if(Session::has('usuario'))
         <button class="btn disabled" style="backgroud-color: transparent;"><span style="color: white;">Hola! {{ Session::get('usuario')->usuario }} </span></button>
-       <a id="solicitudes" class="btn alert-danger" href="/logout"> Cerrar Sesión	<img id="logout" style="height: 20px; margin-top:-2px; padding-left: 5px;" 
+       <a id="solicitudes" class="btn alert-danger" href="/logout"> Cerrar Sesión	<img id="logout" style="height: 18px; margin-top:-2px; padding-left: 5px;" 
        src="{{ asset('img/logout.png') }}"><span class="sr-only"></span></a>
 		@endif
   </div>

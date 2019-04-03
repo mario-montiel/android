@@ -206,6 +206,13 @@ setTimeout(function() {
 									"</td><td>" +
 									"<button data-id="+item.id_taller+" data-toggle='modal' data-target='#eliminarModal' class='btn btn-danger btn-eliminar'><img id='delete' src='img/delete.png'></button>";
 								$('#mostrardatos').append(changos);
+								Swal.fire({
+									position: 'top-end',
+									type: 'success',
+									title: 'Taller actualizado correctamente',
+									showConfirmButton: false,
+									timer: 1500
+								})
 							});
 					},
 					 error: function () {
@@ -217,7 +224,7 @@ setTimeout(function() {
 			})
 		});
 
-
+		var mensaje = $('#exito');
 	$('.btn-registrar').click(function(e){
 		e.preventDefault();
 		form = $('#form-registrar');
@@ -234,6 +241,7 @@ setTimeout(function() {
 					data: {'search':$value},
 					success:function(data){
 							$('#mostrardatos').html("");
+							
 							$.each(data, function(i, item) {
 					
 								changos = "<tr data-id="+item.id_taller+"><td>" +
@@ -246,6 +254,13 @@ setTimeout(function() {
 									"</td><td>" +
 									"<button data-id="+item.id_taller+" data-toggle='modal' data-target='#eliminarModal' class='btn btn-danger btn-eliminar'><img id='delete' src='img/delete.png'></button>";
 								$('#mostrardatos').append(changos);
+								Swal.fire({
+									position: 'top-end',
+									type: 'success',
+									title: 'Taller registrado correctamente',
+									showConfirmButton: false,
+									timer: 1500
+								})
 							});
 					},
 					 error: function () {
@@ -298,6 +313,13 @@ setTimeout(function() {
 												"</td><td>" +
 												"<button data-id="+item.id_taller+" data-toggle='modal' data-target='#eliminarModal' class='btn btn-danger btn-eliminar'><img id='delete' src='img/delete.png'></button>";
 											$('#mostrardatos').append(changos);
+											Swal.fire({
+												position: 'top-end',
+												type: 'success',
+												title: 'Taller eliminado correctamente',
+												showConfirmButton: false,
+												timer: 1500
+											})
 										});
 								},
 								 error: function () {

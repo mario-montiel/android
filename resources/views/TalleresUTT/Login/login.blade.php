@@ -26,16 +26,16 @@
 		        </ul>
 			@endif
 			@if(Session::has('userIncorrecto'))
-               <span><p class="alert alert-primary">Usuario o Contraseña incorrectos</p></span> 
+               <span><p class="alert alert-success">Usuario o Contraseña incorrectos</p></span> 
             @endif
             @if(Session::has('logout'))
-               <span><p class="alert alert-primary">Su cuenta ha sido cerrada</p></span> 
+               <span><p class="alert alert-success">Su cuenta ha sido cerrada</p></span> 
             @endif
             @if(Session::has('hacker'))
-               <span><p id="hacker" class="alert alert-primary">Inicie sesion o registrese para poder acceder!...</p></span> 
+               <span><p id="hacker" class="alert alert-success">Inicie sesion o registrese para poder acceder!...</p></span> 
             @endif
 			@if(Session::has('created'))
-               <span><p id="hacker" class="alert alert-primary">Su cuenta se creó con éxito!</p></span> 
+               <span><p id="hacker" class="alert alert-success">Su cuenta se creó con éxito!</p></span> 
             @endif
 
             <form action="{{ url('iniciosesion') }}" method="post">
