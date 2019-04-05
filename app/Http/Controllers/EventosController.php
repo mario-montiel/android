@@ -131,8 +131,9 @@ class EventosController extends Controller
             $evento = Evento::find($id_evento);
             //return $evento;
             $evento->talleres()->attach($id_taller);
-            $the_nombre = new Evento_Taller();
-            $the_nombre = $request->eventasig;
+            /*$the_nombre = new Evento_Taller();
+            $the_nombre->nombre = $request->eventasig;
+            $the_nombre->save();*/
             return $evento;
         }
         

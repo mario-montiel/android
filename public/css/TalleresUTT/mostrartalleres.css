@@ -67,11 +67,11 @@ body{
 		text-align: center;
 	}
 	#update{
-		height: 25px;
+		height: 15px;
 		padding: 1px;
 	}
 	#delete{
-		height: 25px;
+		height: 15px;
 		padding: 3px;
 	}
 	#add{
@@ -80,8 +80,7 @@ body{
 		margin-left: 8px;
 	}
 	#btnadd{
-		margin-top: 1%;
-		margin-left: 50px;
+		margin-top: 2%;
 	}
 	/*.loader {
     position: fixed;
@@ -96,5 +95,7 @@ body{
 	@media (max-width: 1200px){
 		.table{
 			margin-left: 0%;
+		}
+		#btnadd{
 		}
 	}

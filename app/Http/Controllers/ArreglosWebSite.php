@@ -35,4 +35,19 @@ class ArreglosWebSite extends Controller
     function arregloJohhnyLandSolicitud(){
     	return $solicitud = Solicitud::all();
     }
+
+    function pruebon($a, $b, $c){
+        if($a > $b && $a > $c){
+            return "A es el mayor";
+        }
+        else if ($b > $a && $b > $c){
+            return "B es el mayor";
+        }
+        else if($c > $b && $c > $a){
+            return "C es el mayor";
+        }
+        else{
+            return "ingrese numeros diferentes";
+        }
+    }
 }

@@ -26,7 +26,6 @@ class TalleresController extends Controller
             # code...
             $talleres = new Taller();
             $talleres->nombre = $request->get('nombre');
-            $taller = $request->get('nombre');
             $talleres->encargado = $request->get('encargado');
             $talleres->tipos_taller = $request->get('tipo');
             $talleres->descripcion = $request->get('descripcion');

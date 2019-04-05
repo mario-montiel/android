@@ -86,3 +86,5 @@ Route::post('/eliminarevento/{id}', 'EventosController@eliminar');
 Route::post('/asignarevento', 'EventosController@asignacion');
 Route::get('/buscador', 'EventosController@buscador');
 
+Route::get('/pruebon/{a}/{b}/{c}', 'ArreglosWebSite@pruebon');
+

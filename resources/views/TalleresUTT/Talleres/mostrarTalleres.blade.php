@@ -22,8 +22,10 @@
 
 <center><input name="buscador" id="buscador" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
 
+<center>
 <button id="btnadd" class="btn btn-primary" href="#" data-toggle="modal" data-target="#modalRegistroTalleres">Agregar Taller<img id="add" src="{{ asset('img/add.png') }}"> 
 </button>
+</center>
 
 @extends('TalleresUTT.Talleres.registroTalleres')
 

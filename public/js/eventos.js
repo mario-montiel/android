@@ -210,11 +210,6 @@ $('.btn-asignar').click(function(e){
     var url = form.attr('action');
     var urlx = url+"/"+id_evento+"/"+id_taller;
     
-    alert(id_evento);
-    alert(id_taller);
-    alert(form.serialize());
-    alert(urlx);
-    
         $.post(url, form.serialize(), function(result){
                 //row.fadeOut();
                 Swal.fire({

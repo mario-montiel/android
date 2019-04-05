@@ -25,10 +25,10 @@
             <form id="form-asignar" action="{{ url('asignarevento')}}" method="post">
             {{ csrf_field() }}
 
-        <div class="form-group">
+        <!--<div class="form-group">
 					<label for="exampleFormControlInput1"> Nombre del Evento Asignado </label>
 					<input id="eventasig" type="text" class="form-control" name="eventasig">
-				</div>
+				</div>-->
             <div class="form-group">
 				<label for="exampleFormControlSelect1"> Evento </label>
 				<select name="eventoselect" class="form-control" id="eventoselect">

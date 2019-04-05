@@ -26,10 +26,6 @@
 		background-color: black;
 		width: 100%;
 	}
-	#tituloNavBar{
-		margin: 0;
-		margin-left: 3%;
-	}
 	#solicitudes{
 		font-size: 15px;
 		text-align: center;
@@ -179,6 +175,19 @@
 			width: 450px;height: 350px;
 		}
 	}
+	@media (max-width: 2000px){
+		center{
+		margin-top: 0px;
+		}
+	}
+	@media (max-width: 991.5px){
+		center{
+		margin-top: 40px;
+		}
+		#tituloNavBar{
+			padding-bottom: 1%;
+		}
+	}
 </style>
 
 <body id="fondo">
@@ -194,14 +203,14 @@
 		    <ul class="navbar-nav mr-auto">
 		      
 		  </ul>
-		   
-			
-		      
-		  </div>
-			@if(Session::has('usuario'))
-        <button class="btn disabled" style="backgroud-color: transparent;"><span style="color: white;">Hola! {{ Session::get('usuario')->usuario }} </span></button>
-       <a id="solicitudes" class="btn alert-danger" href="/logout"> Cerrar Sesión	<img id="logout" src="{{ asset('img/logout.png') }}"><span class="sr-only"></span></a>
+		  @if(Session::has('usuario'))
+		  <center>
+		  <button class="btn disabled" style="backgroud-color: transparent;"><span style="color: white;">Hola! {{ Session::get('usuario')->usuario }} </span></button>
+       	  <a id="solicitudes" class="btn alert-danger" href="/logout"> Cerrar Sesión	<img id="logout" src="{{ asset('img/logout.png') }}"><span class="sr-only"></span></a>
+		  </center>
 			@endif
+		  </div>
+			
 		</nav>
 
 			@if(Session::has('conected'))
