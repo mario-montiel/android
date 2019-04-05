@@ -26,6 +26,9 @@
         <div class="col"><button id="btnVer"  class="btn btn-secondary" data-toggle="modal" data-target="#verEventoAsignado">Ver Eventos Asignados <img id="add" src="{{ asset('img/add.png') }}"></button></div>
     </div>
 </div>
+
+<br>
+<br>
 @if( count($event)>0)
 <div class="container-fluid">
     <table class="table table-responsive">
