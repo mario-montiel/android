@@ -29,6 +29,11 @@
 	#solicitudes{
 		font-size: 15px;
 		text-align: center;
+		transition: color 1s; background-color 1s; 
+	}
+	#solicitudes:hover{
+		background-color: #9D2A2A;
+		color:white;
 	}
 	#contenedor2{
 	}
@@ -239,7 +244,7 @@
 	        		<div class="tarjeta">
 	        			<div class="adelante carta2"></div>
 	        			<div class="atras">
-	        				<h1><a href=""> Alumnos </a></h1>		
+	        				<h1><a href="/mostraralumnos"> Alumnos </a></h1>		
 	        			</div>
 	        		</div>
 	        	</div>

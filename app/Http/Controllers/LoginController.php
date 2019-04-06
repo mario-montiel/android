@@ -76,10 +76,12 @@ class LoginController extends Controller
     function registrarse(Request $request)
     {
 		$this->validate($request, [
-		    'usuario' => 'required|max:255',
+            'usuario' => 'required|max:255',
+            'alumno' => 'required|max:255',
 		    'password' => 'required',], 
 
-		    ['usuario.required' => 'Ingrese un usuario',
+            ['usuario.required' => 'Ingrese un usuario',
+            'alumno.required' => 'Ingrese el nombre completo del alumno',
             'password.required' => 'Ingrese una contraseña',]);
             
         
@@ -92,9 +94,12 @@ class LoginController extends Controller
 
 
         $usuario = new Login();
-		$usuario->usuario = $request->get('usuario');
+        $usuario->usuario = $request->get('usuario');
+        $usuario->alumno = $request->get('alumno');
         $usuario->password = $password;
         $usuario->api_token = $token;
+        $usuario->timestamps;
+        $usuario->horas_servicio_social = 0;
         //dd($usuario->usuario);
 		$usuario->save();
 
@@ -112,7 +117,7 @@ class LoginController extends Controller
         //dd($user);
         //$token = $user->api_token;
         $usuario = Login::find(1);
-        return $usuario->api_token;
+        return $usuario;
     }
 
 }

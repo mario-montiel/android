@@ -5,6 +5,13 @@
     left:90px;
     margin-top:-10px;
   }
+  #solicitudes{
+    transition: color 1s; background-color 1s; 
+  }
+  #solicitudes:hover{
+    background-color: #9D2A2A;
+    color: white;
+  }
   @media (max-width: 2000px){
 		center{
     margin-top: 0px;
@@ -22,7 +29,7 @@
   <a href="/"><img id="back" src="{{ asset('img/back.png') }}"></a>
   <a class="navbar-brand" href="/" id="tituloNavBar" style="margin-top-10px;"> Talleres UTT</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+  <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">

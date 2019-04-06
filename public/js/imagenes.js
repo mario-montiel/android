@@ -1,14 +1,17 @@
 $(document).ready(function(){
+	
 setTimeout(function() {
 		        $("p").fadeOut(1500);
 		    },3000);
 
 		$(".img").click(function(){
+			
  			$('.radio').removeProp('checked');
  		});
 
 	    $("#img1").click(function(){
-
+			console.log($("#img1").val());
+			alert($("#img1").val());
 			 if($('#saxophone').is('checked') == false){
 			  	$('input:radio[value="saxophone"]').prop('checked', true);
 			  }

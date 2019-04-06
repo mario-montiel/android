@@ -60,8 +60,6 @@
 <div class="container"><center><br><label class="alert alert-primary"> No hay ningún Evento registrado </label></h1></center></div>
 @endif
 
-
-
 <script>
     $.ajaxSetup({
     headers: {

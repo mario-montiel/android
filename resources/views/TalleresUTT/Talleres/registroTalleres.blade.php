@@ -23,7 +23,7 @@
 		                <li>{{ $error }}</li>
 		            @endforeach
 		        </ul>
-			@endif
+						@endif
 
              <form id="form-registrar" action="{{ url('talleres')}}" method="post" role="form">
                 {{ csrf_field() }}
@@ -57,7 +57,7 @@
 				    <label for="exampleFormControlTextarea1"> Elegir icono del taller </label>
 				    
 				 <div class="row" id="selectores">
-				    <div class="col"> <img class="img" id="img1" src="{{ asset('img/talleresUTT/saxophone.png') }}">
+				 <div class="col"> <img class="img" name="img1" id="img1" src="{{ asset('img/talleresUTT/saxophone.png') }}">
 				    	<div><input checked="" id="saxophone" type="radio" class="radio" name="radio" value="saxophone"></div>
 				     </div> 
 				    	
