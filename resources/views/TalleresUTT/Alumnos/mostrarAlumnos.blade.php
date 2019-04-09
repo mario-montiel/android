@@ -20,6 +20,7 @@
                 <th>Alumno</th>
                 <th>Horas De Servicio Social</th>
                 <th>Fecha de Ingreso (dd,mm,aaaa)</th>
+                <th>Última modificación</th>
                 <th>Actualizar</th>
             </tr>
         </thead>
@@ -36,6 +37,7 @@
                 @endif
                 </td>
                 <td>{{ Carbon\Carbon::parse($alumno->created_at)->format('d-m-Y') }}</td>
+                <td>{{ Carbon\Carbon::parse($alumno->updated_at)->format('d-m-Y') }}</td>
                 {{ csrf_field() }}
                 <td><button data-id="{{$alumno->id_usuario}}" data-usuario="{{$alumno->usuario}}" data-alumno="{{$alumno->alumno}}" data-horas="{{$alumno->horas_servicio_social}}" data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
             </tr>
