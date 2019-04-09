@@ -24,25 +24,33 @@
 									@endforeach
 							</ul>
 						@endif
-
-        <!--<form id="form-registracion" action="{{ url('evento')}}" method="post" role="form">-->
+            @foreach($ta_has_ev as $the)
+        <form id="designar" action="{{ url('designarevento')}}" method="post">
         {{ csrf_field() }}
                 
-                @foreach($ta_has_ev as $the)
+                
+                <input type="hidden" id="even" class="evento_id" name="ev" value="{{$the->eventos_id_evento}}">
+                <input type="hidden" id="tller" name="tllr" value="{{$the->tallleres_id_taller}}">
                 <div class="row">
-                <div class="col-4">
+                <div class="col-3">
                     <div class="form-group">
-                        <label for="exampleFormControlInput1"> Nombre del Evento </label>
-                        <input id="the_taller" type="text" class="form-control" name="the_taller" value="{{$the->tallleres_id_taller}}" disabled>
+                        <label for="exampleFormControlInput1"> Evento Asignado </label>
+                        <input id="eventoasignado" type="text" class="form-control" name="x" value="{{$the->nombre}}" disabled>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <div class="form-group">
-                        <label for="exampleFormControlSelect2"> Información </label>
-                        <input  class="form-control" type="text" id="the_evento" name="the_evento" value="{{$the->eventos_id_evento}}" disabled> 
+                        <label for="exampleFormControlInput1"> Evento </label>
+                        <input id="" type="text" class="form-control" name="the_event" value="{{$the->evento}}" disabled>
                     </div>
                 </div>
-				<div class="col-4">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect2"> Taller </label>
+                        <input  class="form-control" type="text" id="" name="the_taller" value="{{$the->taller}}" disabled> 
+                    </div>
+                </div>
+				        <div class="col-3">
                     <button class="btn btn-danger btn-borrar-asignacion"><img id="borrar" src="{{ asset('img/borrar.png') }}"></button>
                 </div>
                 
@@ -56,6 +64,6 @@
         <button type="submit" class="btn btn-primary" data-dismiss="modal">Registrar Taller</button>
       </div>
     </div>
-    <!--</form>-->
+   </form>
   </div>
 </div>

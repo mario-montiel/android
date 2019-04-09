@@ -46,15 +46,22 @@ Route::get('/seleccionFoto','IngenieriaSoftware@viewSeleccionFoto');
 
 Route::get('/', 'HomeController@viewHome');
 
-Route::get('/home', function () {
-    
+/*Route::get('/home', function () {
+    $usuario = Session::get('usuario');
     if(Session::has('usuario')){
-        $usuario = Session::get('usuario');
-
-        return response()->json(Session::get('usuario'));
+        
+        return [
+            'id_usuario' => $usuario->id_usuario,
+            'usuario' => $usuario->usuario,
+            'alumno' => $usuario->alumno,
+            'password' => $usuario->password,
+            'api_token' => $usuario->api_token,
+            'created_at' => $usuario->created_at,
+        ];
+        //return response()->json(Session::get('usuario'));
     }
     return "Nachus";
-});
+})->middleware('apitoken');*/
 
 Route::get('/iniciosesion', 'LoginController@viewLogin');
 Route::post('/iniciosesion', 'LoginController@login');
@@ -85,6 +92,7 @@ Route::post('/evento', 'EventosController@eventos');
 Route::post('/editarevento/{id}', 'EventosController@actualizar');
 Route::post('/eliminarevento/{id}', 'EventosController@eliminar');
 Route::post('/asignarevento', 'EventosController@asignacion');
+Route::post('/designarevento', 'EventosController@eliminarpivote');
 Route::get('/buscador', 'EventosController@buscador');
 
 Route::get('/mostraralumnos', 'AlumnosController@viewMostrarAlumnos');

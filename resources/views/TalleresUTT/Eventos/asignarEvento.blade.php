@@ -25,22 +25,24 @@
             <form id="form-asignar" action="{{ url('asignarevento')}}" method="post">
             {{ csrf_field() }}
 
-        <!--<div class="form-group">
+        <div class="form-group">
 					<label for="exampleFormControlInput1"> Nombre del Evento Asignado </label>
 					<input id="eventasig" type="text" class="form-control" name="eventasig">
-				</div>-->
+				</div>
             <div class="form-group">
 				<label for="exampleFormControlSelect1"> Evento </label>
 				<select name="eventoselect" class="form-control" id="eventoselect">
 				    <option>Seleccione un evento</option>
 				    @foreach($event as $ev)
 				    	<option value="{{ $ev->id_evento }}" {{ old('evento') == $ev->id_evento ? 'selected' : '' }}>{{ $ev->evento }}</option>
+              
 				    @endforeach
 				</select>
             </div>
             
             <div class="form-group">
 				<label for="exampleFormControlSelect1"> Taller </label>
+        <input type="hidden" name="talle">
 				<select name="tallerselect" class="form-control" id="tallerselect">
 				    <option>Seleccione un taller</option>
 				    @foreach($talleres as $ev)

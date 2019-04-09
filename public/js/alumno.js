@@ -39,7 +39,12 @@ $('.btn-act-alumno').click(function(e){
    var url_update = url+"/"+id;
    var horas = $('#horas').val();
    if(horas > 480){
-        alert("Solo se permiten 480 horas");
+    Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Solo se permiten 480 horas!',
+        footer: '<a href>Ingrese una cantidad menor a 480 horas</a>'
+      })
         return false;
     }
    $.post(url_update, form_update.serialize(), function(result){
@@ -80,12 +85,22 @@ $('.btn-act-alumno').click(function(e){
                            });
                    },
                     error: function () {
-                        alert("Error del Servidor");
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'Algo salió mal!',
+                            footer: '<a href>Intentelo de nuevo</a>'
+                          })
                     }
                });
        
    }).fail(function(){
-       alert("La actualización del evento falló, intentelo de nuevo");
+    Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'La actualización del evento falló',
+        footer: '<a href>Intentelo de nuevo</a>'
+      })
    })
 })
 

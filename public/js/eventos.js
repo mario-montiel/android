@@ -9,7 +9,7 @@ $('#btnregistro').click(function(){
     var fecha = $('#fecha').val();
 
     if(eventos.length == "" || info.length == "" || eventos.length == ""){
-        alert("Llene todos los campos para continuar.");
+        alert("LLENE TODOS LOS CAMPOS PARA CONTINUAR");
         return false;
     }
 
@@ -20,7 +20,7 @@ $('#btnregistro').click(function(){
         var fecha = $('#fechaActualizar').val();
 
         if(eventos.length == "" || info.length == "" || eventos.length == "" || fecha.length == ""){
-            alert("Llene todos los campos para continuar.");
+            alert("LLENE TODOS LOS CAMPOS PARA CONTINUAR");
             return false;
         }
 });
@@ -80,12 +80,22 @@ $('.btn-act').click(function(e){
                             });
                     },
                      error: function () {
-                         alert("Error del Servidor");
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'Error del Servidor',
+                            footer: '<span class="alert alert-danger">¿Porqué no intenta de nuevo?. Estaria genial</span>'
+                          });
                      }
                 });
         
     }).fail(function(){
-        alert("La actualización del evento falló, intentelo de nuevo");
+        Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'La actualización del evento falló!',
+            footer: '<span class="alert alert-danger">¿Porqué no intenta de nuevo?. Estaria genial</span>'
+          })
     })
 });
 
@@ -129,13 +139,23 @@ $.post(urlx, formx.serialize(), function(result){
                     });
             },
              error: function () {
-                 alert("Error del Servidor");
+                Swal.fire({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'Error del Servidor',
+                    footer: '<span class="alert alert-danger">¿Porqué no intenta de nuevo?. Estaria genial</span>'
+                  })
              }
         });
 
 
 }).fail(function(){
-        alert("El registro del evento falló, intentelo de nuevo");
+        Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'El registro del evento falló!',
+            footer: '<span class="alert alert-danger">¿Porqué no intenta de nuevo?. Estaria genial</span>'
+          })
 })
 
 });
@@ -192,25 +212,33 @@ $('.btn-delete').click(function(e){
                         });
                 },
                  error: function () {
-                     alert("Error del Servidor");
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Error del Servidor',
+                        footer: '<span class="alert alert-danger">¿Porqué no intenta de nuevo?. Estaria genial</span>'
+                      })
                  }
             });
             
     }).fail(function(){
-        alert("La eliminación del evento falló, intentelo de nuevo");
+        Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'La eliminación del evento falló!',
+            footer: '<span class="alert alert-danger">¿Porqué no intenta de nuevo?. Estaria genial</span>'
+          })
     });
 });
-
 
 $('.btn-asignar').click(function(e){
     e.preventDefault();
     var id_evento = $('#eventoselect').val();
     var id_taller = $('#tallerselect').val();
-    var form = $('#form-asignar');
-    var url = form.attr('action');
-    var urlx = url+"/"+id_evento+"/"+id_taller;
-    
-        $.post(url, form.serialize(), function(result){
+    var form_asignar = $('#form-asignar');
+    var url = form_asignar.attr('action');
+
+        $.post(url, form_asignar.serialize(), function(result){
                 //row.fadeOut();
                 Swal.fire({
                     position: 'top-end',
@@ -220,7 +248,12 @@ $('.btn-asignar').click(function(e){
                     timer: 1500
                   })
         }).fail(function(){
-                alert("El evento no pudo ser asignado, intentelo de nuevo");
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'La asignación del evento falló!',
+                footer: '<span class="alert alert-danger">¿Porqué no lo intenta de nuevo?. Estaria genial</span>'
+            })
         })
     
 });
@@ -229,25 +262,29 @@ $('.btn-asignar').click(function(e){
 
 
     
-$('.btn-designar').click(function(e){
+$('.btn-borrar-asignacion').click(function(e){
     e.preventDefault();
-    
-    var id_evento = $('#idev').val();
-    var id_taller = $('#idta').val();
-    var ids = $('#btndesignar').val();
-    /*var form = $('#form-asignar');
+    var id_evento = $('.evento_id').val();
+    var id_taller = $('#tller').val();
+    var nombre = $('#eventoasignado').val();
+    var form = $('#designar');
     var url = form.attr('action');
-    var urlx = url+"/"+id_evento+"/"+id_taller;*/
-    alert(ids);
     alert(id_evento);
     alert(id_taller);
+    alert(nombre);
+    //var urlx = url+"/"+id_evento+"/"+id_taller;
     alert(form.serialize());
-    alert(urlx);
+    alert(url);
     
         $.post(url, form.serialize(), function(result){
                 //row.fadeOut();
         }).fail(function(){
-                alert("El evento no pudo ser asignado, intentelo de nuevo");
+            /*Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'El evento no pudo ser asignado!',
+                footer: '<a href>Intentelo de nuevo</a>'
+              })*/
         })
     
 });

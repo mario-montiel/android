@@ -15,7 +15,7 @@ class LoginController extends Controller
 {
     public function __construct()
     {
-            $this->middleware('inicioSesion', ['except' => ['viewLogin', 'login', 'logout', 'registrarse', 'viewRegistroUsuario']]);
+        $this->middleware('inicioSesion', ['except' => ['viewLogin', 'login', 'logout', 'registrarse', 'viewRegistroUsuario', 'token']]);
     }
 
     function viewLogin(Request $request)
@@ -113,11 +113,12 @@ class LoginController extends Controller
     }
 
     function token(){
-        $user = Session::get('usuario');
+        //$user = Session::get('usuario');
         //dd($user);
         //$token = $user->api_token;
-        $usuario = Login::find(1);
-        return $usuario;
+        //$usuario = Login::findOrFail(1);
+        $usuarios = Login::all();
+        return response()->json($usuarios);
     }
 
 }

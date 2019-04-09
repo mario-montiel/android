@@ -26,38 +26,9 @@ class EventosController extends Controller
         ->leftjoin('talleres', 'talleres.id_taller', '=', 'tallleres_has_eventos.tallleres_id_taller')
         ->select('eventos.id_evento','eventos.evento', 'eventos.informacion', 'eventos.fecha', 'talleres.id_taller', 'talleres.*')
         ->get();*/
-        //$event = Evento::all();
         $event = Evento::all();
         $talleres = DB::table('talleres')->get();
         $ta_has_ev = DB::table('tallleres_has_eventos')->get();
-        //$idev = '';
-        /*$idev = $request->ev;
-        dd($idev);
-        if($request->ev != false){
-            
-            dd($request->ev != null);
-        }*/
-        /*$evento = '';
-        $idev = collect();
-        $the = collect();
-        for ($i=0; $i < count($event); $i++) { 
-            $idev[$i] = $event[$i]->id_evento;
-        }
-        for ($i=0; $i < count($ta_has_ev); $i++) { 
-            $the[$i] = $ta_has_ev[$i]->eventos_id_evento;
-        }
-
-        for ($i=0; $i < count($ta_has_ev); $i++) { 
-            if($the[$i] == $idev[$i]){
-                 dd($evento = $event[$i]->evento);
-               
-            }
-        }*/
-        
-        //dd($evento);
-
-        
-        //dd($the);
 
         return view('TalleresUTT.Eventos.mostrarEventos', compact('event', 'talleres', 'ta_has_ev'));
     }
@@ -119,22 +90,20 @@ class EventosController extends Controller
     }
 
     function asignacion(Request $request){
-        //Lo correcto
-        //dd($id_evento);
-        //return "hola";
         if($request->ajax()){
-            //return $request;
             $id_evento = $request->eventoselect;
             $id_taller = $request->tallerselect;
-            //return $id_taller;
-            //return $id_taller;
+            $nombre = $request->eventasig;
             $evento = Evento::find($id_evento);
-            //return $evento;
-            $evento->talleres()->attach($id_taller);
-            /*$the_nombre = new Evento_Taller();
-            $the_nombre->nombre = $request->eventasig;
-            $the_nombre->save();*/
-            return $evento;
+            $event = $evento->evento;
+            $taller = Taller::find($id_taller);
+            $talle = $taller->nombre;
+           //$evento->talleres()->attach($id_taller);     --->   SIN WITHPIVOT
+            return $evento->talleres()->attach($id_taller, 
+                ['nombre' => $nombre,
+                'taller' => $talle,
+                'evento' => $event]);
+            //$evento->talleres()->attach;
         }
         
 
@@ -148,9 +117,23 @@ class EventosController extends Controller
         $signature = Signature::create($values)->users()->save($user);*/
     }
 
-    function eliminarpivote($id_evento, $id_taller){
-        $evento = Evento::find($id_evento);
-        $evento->talleres()->attach($id_taller);
+    function eliminarpivote(Request $request){
+        //$evento = Evento::find($id_evento);
+        //$evento->talleres()->attach($id_taller);
+        if($request->ajax()){
+            $id_evento = $request->ev;
+            $id_taller = $request->tllr;
+            $nombre = $request->x;
+            $evento = Evento::find($id_evento);
+            $event = $evento->the_event;
+            $taller = Taller::find($id_taller);
+            $talle = $taller->the_taller;
+           //$evento->talleres()->attach($id_taller);     --->   SIN WITHPIVOT
+            return $evento->talleres()->detach($id_taller, 
+                ['nombre' => $nombre,
+                'taller' => $talle,
+                'evento' => $event]);
+        }
     }
 
 

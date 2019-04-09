@@ -10,6 +10,7 @@ class Login extends Model
     protected $primaryKey = "id_usuario";
     protected $dateFormat = 'Y-m-d H:i:s.u';
     public $timestamps = true;
+    protected $guarded = ['api_token'];
     
     /*protected function getDateFormat()
     {

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Modelos\Login;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,16 +13,28 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/home/{id}', function ($id) {
-    $usuario = Session::get('usuario');
+//Route::get('/home', 'LoginController@token');
 
+Route::get('/home/{usuario}', function ($usuario) {
+    $usuario = DB::table('usuarios')
+        ->where('usuario', '=', $usuario)
+        ->get();
+    
     if(Session::has('usuario')){
-        return $usuario->api_token;
+        
+        return [
+            'id_usuario' => $usuario->id_usuario,
+            'usuario' => $usuario->usuario,
+            'alumno' => $usuario->alumno,
+            'password' => $usuario->password,
+            'api_token' => $usuario->api_token,
+            'created_at' => $usuario->created_at,
+        ];
+        //return response()->json(Session::get('usuario'));
     }
-    return "Nachus";
+    return $usuario;
 });
