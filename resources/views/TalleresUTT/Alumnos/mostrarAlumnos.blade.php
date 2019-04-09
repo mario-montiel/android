@@ -13,7 +13,7 @@
 <br>
 @if( count($alumnos)>0)
 <div class="container-fluid">
-    <table class="table table-responsive" style="margin-left:12%;">
+    <table class="table table-responsive" style="margin-left:15%;">
         <thead>
             <tr>
                 <th>Usuario</th>
