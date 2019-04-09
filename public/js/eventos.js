@@ -240,13 +240,14 @@ $('.btn-asignar').click(function(e){
 
         $.post(url, form_asignar.serialize(), function(result){
                 //row.fadeOut();
+                e.preventDefault();
                 Swal.fire({
                     position: 'top-end',
                     type: 'success',
-                    title: 'Evento asignado correctamente',
+                    title: 'Evento eliminado correctamente',
                     showConfirmButton: false,
                     timer: 1500
-                  })
+                })              
         }).fail(function(){
             Swal.fire({
                 type: 'error',

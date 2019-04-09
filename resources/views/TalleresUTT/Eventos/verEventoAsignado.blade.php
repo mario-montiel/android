@@ -50,6 +50,7 @@
                         <input  class="form-control" type="text" id="" name="the_taller" value="{{$the->taller}}" disabled> 
                     </div>
                 </div>
+                <div id="respuesta"></div>
 				        <div class="col-3">
                     <button class="btn btn-danger btn-borrar-asignacion"><img id="borrar" src="{{ asset('img/borrar.png') }}"></button>
                 </div>
