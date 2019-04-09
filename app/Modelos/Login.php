@@ -8,7 +8,7 @@ class Login extends Model
 {
     protected $table = "usuarios";
     protected $primaryKey = "id_usuario";
-    protected $dateFormat = 'Y-m-d H:i:s.u';
+    protected $dateFormat = 'Y-m-d H:i:s';
     public $timestamps = true;
     protected $guarded = ['api_token'];
     
