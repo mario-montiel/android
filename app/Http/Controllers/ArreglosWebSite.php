@@ -12,6 +12,7 @@ use App\Modelos\Tipo_Taller;
 
 class ArreglosWebSite extends Controller
 {
+    public $siono = 0;
     function arregloJohnnyLand(){
         return $talleres = DB::table('talleres')->get();
     }
