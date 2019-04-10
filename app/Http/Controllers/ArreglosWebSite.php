@@ -38,12 +38,12 @@ class ArreglosWebSite extends Controller
     }
 
     function arregloJohnnyLandUusario(Request $request){
-        $usuario = Usuario::where('usuario', '=', $request->usuario)->get();
+        $usuario = Usuario::where('usuario', '=', $request->usuario)->first();
         if(sizeof($usuario)){
             $this->siono=1;
         }
         else{
-            $contraseña = Usuario::where('password', '=', $request->contraseña)->get();
+            $contraseña = Usuario::where('password', '=', $request->contraseña)->first();
             if(sizeof($contraseña)){
                 $this->siono=1;
             }
