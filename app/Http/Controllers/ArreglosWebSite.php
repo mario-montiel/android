@@ -36,6 +36,23 @@ class ArreglosWebSite extends Controller
     	return $solicitud = Solicitud::all();
     }
 
+    function arregloJohnnyLandUusario(Request $request){
+        $usuario = Usuario::where('usuario', '=', $request->usuario)->get();
+        if(sizeof($usuario)){
+            $this->siono=1;
+        }
+        else{
+            $contraseña = Usuario::where('password', '=', $request->contraseña)->get();
+            if(sizeof($contraseña)){
+                $this->siono=1;
+            }
+        }
+    }
+
+    function arregloJohnnyLandUusarioGet(){
+        return $this->siono;
+    }
+
     function pruebon($a, $b, $c){
         if($a > $b && $a > $c){
             return "A es el mayor";
