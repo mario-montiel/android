@@ -117,18 +117,13 @@ class EventosController extends Controller
         $signature = Signature::create($values)->users()->save($user);*/
     }
 
-    function eliminarpivote(Request $request){
-        //$evento = Evento::find($id_evento);
-        //$evento->talleres()->attach($id_taller);
+    function eliminarpivote(Request $request, $id_evento, $id_taller){
         if($request->ajax()){
-            $id_evento = $request->ev;
-            $id_taller = $request->tllr;
             $nombre = $request->x;
             $evento = Evento::find($id_evento);
             $event = $evento->the_event;
             $taller = Taller::find($id_taller);
             $talle = $taller->the_taller;
-           //$evento->talleres()->attach($id_taller);     --->   SIN WITHPIVOT
             return $evento->talleres()->detach($id_taller, 
                 ['nombre' => $nombre,
                 'taller' => $talle,

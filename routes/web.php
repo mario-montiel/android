@@ -86,21 +86,31 @@ Route::get('/johnnylandcult', 'ArreglosWebSite@arregloJohnnyLandCult');
 Route::get('/johnnylandcarrera', 'ArreglosWebSite@arregloJohnnyLandCarreras');
 Route::get('/johnnylandcuatri', 'ArreglosWebSite@arregloJohhnyLandCuatri');
 Route::get('/johnnylandsolicitud', 'ArreglosWebSite@arregloJohhnyLandSolicitud');
+
 Route::post('/johnnylandusuarios', 'ArreglosWebSite@arregloJohnnyLandUsuario');
 Route::get('/johnnylandusuariosget', 'ArreglosWebSite@arregloJohnnyLandUsuarioget');
 Route::get('/johnnylandhoras', 'ArreglosWebSite@arregloJohnnylandHoras');
+
+Route::post('/johnnylandusuario', 'ArreglosWebSite@arregloJohnnyLandUusario');
+Route::get('/johnnylandobtenerusuario', 'ArreglosWebSite@arregloJohnnyLandUsuarioget');
+Route::post('/rutonpruebon', 'ArreglosWebSite@rutonpruebon');
 
 Route::get('/eventos', 'EventosController@viewEventos');
 Route::post('/evento', 'EventosController@eventos');
 Route::post('/editarevento/{id}', 'EventosController@actualizar');
 Route::post('/eliminarevento/{id}', 'EventosController@eliminar');
 Route::post('/asignarevento', 'EventosController@asignacion');
-Route::post('/designarevento', 'EventosController@eliminarpivote');
+Route::post('/designarevento/{id_evento}/{id_taller}', 'EventosController@eliminarpivote');
 Route::get('/buscador', 'EventosController@buscador');
 
 Route::get('/mostraralumnos', 'AlumnosController@viewMostrarAlumnos');
 Route::post('/editaralumno/{id}', 'AlumnosController@actualizarAlumno');
 Route::get('/buscadoralumno', 'AlumnosController@buscador');
+
+Route::get('/eventosasignados', 'EventosAsignadosController@viewEventosAsignados');
+Route::get('/asignacion', 'EventosAsignadosController@asignacion');
+Route::post('/actualizarAsignacion', 'EventosAsignadosController@actualizarAsignacion');
+Route::get('/buscadorasignado', 'EventosAsignadosController@buscador');
 
 ////////////////////////////////////////////////////////////////////
 Route::get('/pruebon/{a}/{b}/{c}', 'ArreglosWebSite@pruebon');

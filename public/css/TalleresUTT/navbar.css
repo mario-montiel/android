@@ -1,0 +1,36 @@
+#back{
+    position: absolute;
+    height:25px;
+    left:90px;
+    margin-top:-10px;
+  }
+  #solicitudes{
+    transition: color 1s; background-color: 1s;
+  }
+  #solicitudes:hover{
+    background-color: #9D2A2A;
+    color: white;
+  }
+  #taller{
+    position: absolute;
+    height:25px;
+    left:120px;
+    margin-top: -15px;
+  }
+  #tituloNavbar{
+    position: absolute;
+		left: 49%;
+  }
+  @media (max-width: 2000px){
+		center{
+    margin-top: 0px;
+    }
+  }
+  @media (max-width: 991.5px){
+		center{
+    margin-top: 50px;
+    }
+    #tituloNavBar{
+      display:none;
+    }
+  }
