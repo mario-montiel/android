@@ -15,7 +15,6 @@ use App\Modelos\Usuario;
 class ArreglosWebSite extends Controller
 {
     public $siono=0;
-    public $siono = 0;
     public $nombre;
     function arregloJohnnyLand(){
         return $talleres = DB::table('talleres')->get();
