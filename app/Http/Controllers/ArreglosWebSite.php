@@ -76,22 +76,11 @@ class ArreglosWebSite extends Controller
 
     function arregloJohnnyLandUusario(Request $request){
         $usuario = Login::where("usuario", "=", $request->usuario)->get();
-        if ($usuario=="[]") {
-            $this->siono=1;
-        }else{
-            $contraseña = Login::where("password", "=", $request->contraseña)->get();
-            if ($contraseña=="[]") {
-                $this->siono=1;
-            }
-            else{
-                $us = Login::select("usuario","password")->where("usuario", "=", $request->usuario)->get();
-                if($us->password=$request->contraseña){
-                    $this->siono=0;
-                    $this->nombre=$request->usuario;
-                }
-            }
-        }
-        return $usuario;
+        $usuarios = new Login();
+        $usuarios->usuario = $request->usuario;
+        $usuarios->password = $request->contraseña;
+        $usuarios->save();
+        return $usuarios;
     }
     function arregloJohnnyLandUsuarioget(){
 
