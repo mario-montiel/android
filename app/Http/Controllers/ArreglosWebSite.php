@@ -8,6 +8,7 @@ use App\Modelos\Carrera;
 use App\Modelos\Cuatrimestre;
 use App\Modelos\Solicitud;
 use App\Modelos\Taller;
+use App\Modelos\Login;
 use App\Modelos\Tipo_Taller;
 
 class ArreglosWebSite extends Controller
@@ -39,26 +40,16 @@ class ArreglosWebSite extends Controller
     }
 
     function arregloJohnnyLandUusario(Request $request){
-        /*$usuario = Usuario::where('usuario', '=', $request->usuario)->first();
-        if(sizeof($usuario)){
-            $this->siono=1;
-        }
-        else{
-            $contraseña = Usuario::where('password', '=', $request->contraseña)->first();
-            if(sizeof($contraseña)){
-                $this->siono=1;
-            }
-        }*/
-        $usuario = Usuario::where("usuario", "=", $request->usuario)->get();
+        $usuario = Login::where("usuario", "=", $request->usuario)->get();
         if ($usuario=="[]") {
             $this->siono=1;
         }else{
-            $contraseña = Usuario::where("password", "=", $request->contraseña)->get();
+            $contraseña = Login::where("password", "=", $request->contraseña)->get();
             if ($contraseña=="[]") {
                 $this->siono=1;
             }
             else{
-                $us = Usuario::select("usuario","password")->where("usuario", "=", $request->usuario)->get();
+                $us = Login::select("usuario","password")->where("usuario", "=", $request->usuario)->get();
                 if($us->password=$request->contraseña){
                     $this->siono=0;
                     $this->nombre=$request->usuario;
@@ -69,7 +60,7 @@ class ArreglosWebSite extends Controller
     function arregloJohnnyLandUsuarioget(){
 
         if($this->siono==0){
-            return Usuario::select("usuario")->where("usuario", "=", $this->nombre)->get();
+            return Login::select("usuario")->where("usuario", "=", $this->nombre)->get();
         }
         else{
             return $obj = array('usuario' => "nada" );
