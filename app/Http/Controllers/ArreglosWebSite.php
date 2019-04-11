@@ -108,8 +108,8 @@ class ArreglosWebSite extends Controller
         }
     }
 
-    function WuW(Request $request){
+    public function WuW(Request $request){
         $usuario = /*Usuario::where("usuario", "=", $request->usuario)->get()*/"hola";
-        return$usuario;
+        return "hola";
     }
 }
