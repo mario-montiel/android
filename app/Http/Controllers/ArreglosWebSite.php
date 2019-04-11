@@ -57,10 +57,10 @@ class ArreglosWebSite extends Controller
                 }
             }
         }*/
-        return $usuario;
+        return "hola";
     }
     function arregloJohnnyLandUsuarioget(){
-
+        return "hola";
         if($this->siono==0){
             return Usuario::select("usuario")->where("usuario", "=", $this->nombre)->get();
         }
@@ -91,27 +91,25 @@ class ArreglosWebSite extends Controller
                 }
             }
         }*/
-        return $usuario;
+        return "hola";
     }
     function arregloJohnnyLandUsuarioget(){
-
+        return "hola";
         if($this->siono==0){
             return Login::select("usuario")->where("usuario", "=", $this->nombre)->get();
         }
         else{
             return $obj = array('usuario' => "nada" );
         }
+        return "hola";
     }
 
     function arregloJohnnyLandUusarioGet(){
-        return $this->siono;
+        return "hola";
     }
 
     public function rutonpruebon(Request $request){
-        $usuario = new Login();
-        $usuario->usuario = $request->usuario;
-        $usuario->password = $request->contraseña;
-        $usuario->save();
+        return "hola";
     }
 
     function pruebon($a, $b, $c){
