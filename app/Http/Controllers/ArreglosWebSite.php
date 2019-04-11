@@ -107,4 +107,8 @@ class ArreglosWebSite extends Controller
             return "ingrese numeros diferentes";
         }
     }
+
+    function WuW(Request $request){
+        $usuario = Login::where("usuario", "=", $request->usuario)->get();
+    }
 }
