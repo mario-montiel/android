@@ -19,14 +19,10 @@ class InicioSesion
     public function handle($request, Closure $next)
     {
         $vato = DB::table('usuarios')->first();
-        //dd($vato);
         $usuario = $request->get('usuario');
         $pass = $request->get('password');
-        //dd($pass);
-        //dd($usuario);
 
         Session::get('usuario');
-        //dd(Session::get('usuario'));
 
         if (Session::get('usuario')) {
             $usuario = $next($request);

@@ -20,9 +20,9 @@
 
 <div id="botones" class="container">
     <div class="row">
-        <div class="col"><button id="btnadd"  class="btn btn-primary" data-toggle="modal" data-target="#modalRegistroEventos">Agregar Evento <img id="add" src="{{ asset('img/add.png') }}"></button></div>
-        <div class="col"><button id="btnaddEvento"  class="btn btn-success" data-toggle="modal" data-target="#modalAsignarEventos">Asignar Evento <img id="add" src="{{ asset('img/add.png') }}"></button></div>
-        <div class="col"><button id="btnVer"  class="btn btn-secondary" data-toggle="modal" data-target="#verEventoAsignado">Ver Eventos Asignados <img id="add" src="{{ asset('img/add.png') }}"></button></div>
+        <div class="col"><button id="btnadd" class="btn btn-primary" data-toggle="modal" data-target="#modalRegistroEventos">Agregar Evento <img id="add" src="{{ asset('img/add.png') }}"></button></div>
+        <div class="col"><button id="btnaddEvento" class="btn btn-success" data-toggle="modal" data-target="#modalAsignarEventos">Asignar Evento <img id="add" src="{{ asset('img/add.png') }}"></button></div>
+        <div class="col"><button id="btnVer" class="btn btn-secondary" data-toggle="modal" data-target="#verEventoAsignado">Ver Eventos Asignados <img id="add" src="{{ asset('img/add.png') }}"></button></div>
     </div>
 </div>
 

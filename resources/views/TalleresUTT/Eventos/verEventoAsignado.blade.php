@@ -15,7 +15,6 @@
          
 
 		<div class="container-fluid">
-	
 
             @if ($errors->any())
 							<ul style="color: white; margin-top: 25px; margin: auto;">
@@ -27,7 +26,6 @@
             @foreach($ta_has_ev as $the)
         <form id="designar" action="{{ url('designarevento')}}" method="post">
         {{ csrf_field() }}
-                
                 
                 <input type="hidden" id="even" class="evento_id" name="ev" value="{{$the->eventos_id_evento}}">
                 <input type="hidden" id="tller" name="tllr" value="{{$the->tallleres_id_taller}}">
@@ -54,7 +52,6 @@
 				        <div class="col-3">
                     <button class="btn btn-danger btn-borrar-asignacion"><img id="borrar" src="{{ asset('img/borrar.png') }}"></button>
                 </div>
-                
                 </div>
                   @endforeach
                  

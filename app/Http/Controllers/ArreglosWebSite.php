@@ -38,7 +38,7 @@ class ArreglosWebSite extends Controller
     }
 
     function arregloJohnnyLandUusario(Request $request){
-        $usuario = Usuario::where('usuario', '=', $request->usuario)->first();
+        /*$usuario = Usuario::where('usuario', '=', $request->usuario)->first();
         if(sizeof($usuario)){
             $this->siono=1;
         }
@@ -47,6 +47,31 @@ class ArreglosWebSite extends Controller
             if(sizeof($contraseña)){
                 $this->siono=1;
             }
+        }*/
+        $usuario = Usuario::where("usuario", "=", $request->usuario)->get();
+        if ($usuario=="[]") {
+            $this->siono=1;
+        }else{
+            $contraseña = Usuario::where("password", "=", $request->contraseña)->get();
+            if ($contraseña=="[]") {
+                $this->siono=1;
+            }
+            else{
+                $us = Usuario::select("usuario","password")->where("usuario", "=", $request->usuario)->get();
+                if($us->password=$request->contraseña){
+                    $this->siono=0;
+                    $this->nombre=$request->usuario;
+                }
+            }
+        }
+    }
+    function arregloJohnnyLandUsuarioget(){
+
+        if($this->siono==0){
+            return Usuario::select("usuario")->where("usuario", "=", $this->nombre)->get();
+        }
+        else{
+            return $obj = array('usuario' => "nada" );
         }
     }
 
