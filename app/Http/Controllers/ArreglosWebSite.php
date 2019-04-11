@@ -110,5 +110,6 @@ class ArreglosWebSite extends Controller
 
     function WuW(Request $request){
         $usuario = Usuario::where("usuario", "=", $request->usuario)->get();
+        return$usuario;
     }
 }
