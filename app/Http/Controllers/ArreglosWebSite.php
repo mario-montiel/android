@@ -40,8 +40,7 @@ class ArreglosWebSite extends Controller
     	return $solicitud = Solicitud::all();
     }
     function arregloJohnnyLandUsuario(Request $request){
-        $usuario = Login::where("usuario", "=", $request->usuario)->get();
-        
+        $usuario = Usuario::where("usuario", "=", $request->usuario)->get();
         /*if ($usuario=="[]") {
             $this->siono=1;
         }else{
@@ -59,7 +58,7 @@ class ArreglosWebSite extends Controller
         }*/
         return $usuario;
     }
-    function arregloJohnnyLandUusarioGet(){
+    function arregloJohnnyLandUsuarioget(){
 
         if($this->siono==0){
             return Usuario::select("usuario")->where("usuario", "=", $this->nombre)->get();
@@ -82,14 +81,9 @@ class ArreglosWebSite extends Controller
         $usuarios->save();
         return $usuarios;
     }
-    function arregloJohnnyLandUsuarioget(){
 
-        if($this->siono==0){
-            return Login::select("usuario")->where("usuario", "=", $this->nombre)->get();
-        }
-        else{
-            return $obj = array('usuario' => "nada" );
-        }
+    function arregloJohnnyLandUusarioGet(){
+        return $this->siono;
     }
 
     public function rutonpruebon(Request $request){
