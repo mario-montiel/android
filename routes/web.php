@@ -79,7 +79,7 @@ Route::get('/mostrarresultado', 'TalleresController@viewMostrarResultado');
 Route::post('/editartaller/{id}', 'TalleresController@actualizarTaller');
 Route::post('/eliminartaller/{id}', 'TalleresController@eliminarTaller');
 Route::get('/search', 'TalleresController@search');
-
+//
 Route::get('/johnnyland', 'ArreglosWebSite@arregloJohnnyLand');
 Route::get('/johnnylanddepo', 'ArreglosWebSite@arregloJohnnyLandDepo');
 Route::get('/johnnylandcult', 'ArreglosWebSite@arregloJohnnyLandCult');
