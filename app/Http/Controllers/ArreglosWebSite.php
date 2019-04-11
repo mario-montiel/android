@@ -9,9 +9,12 @@ use App\Modelos\Cuatrimestre;
 use App\Modelos\Solicitud;
 use App\Modelos\Taller;
 use App\Modelos\Tipo_Taller;
+use App\Modelos\Usuario;
 
 class ArreglosWebSite extends Controller
 {
+    public $siono=0;
+    public $nombre;
     function arregloJohnnyLand(){
         return $talleres = DB::table('talleres')->get();
     }
@@ -34,6 +37,39 @@ class ArreglosWebSite extends Controller
 
     function arregloJohhnyLandSolicitud(){
     	return $solicitud = Solicitud::all();
+    }
+    function arregloJohnnyLandUsuario(Request $request){
+        $usuario = Usuario::where("usuario", "=", $request->usuario)->get();
+        /*if ($usuario=="[]") {
+            $this->siono=1;
+        }else{
+            $contraseña = Usuario::where("password", "=", $request->contraseña)->get();
+            if ($contraseña=="[]") {
+                $this->siono=1;
+            }
+            else{
+                $us = Usuario::select("usuario","password")->where("usuario", "=", $request->usuario)->get();
+                if($us->password=$request->contraseña){
+                    $this->siono=0;
+                    $this->nombre=$request->usuario;
+                }
+            }
+        }*/
+        return $usuario;
+    }
+    function arregloJohnnyLandUsuarioget(){
+
+        if($this->siono==0){
+            return Usuario::select("usuario")->where("usuario", "=", $this->nombre)->get();
+        }
+        else{
+            return $obj = array('usuario' => "nada" );
+        }
+    }
+    function arregloJohnnylandHoras(){
+        $talleres = Taller::all();
+        $usuario = Usuario::all();
+        return array($talleres->encargado, $talleres->nombre, $usuario->alumno);
     }
 
     function pruebon($a, $b, $c){

@@ -86,6 +86,9 @@ Route::get('/johnnylandcult', 'ArreglosWebSite@arregloJohnnyLandCult');
 Route::get('/johnnylandcarrera', 'ArreglosWebSite@arregloJohnnyLandCarreras');
 Route::get('/johnnylandcuatri', 'ArreglosWebSite@arregloJohhnyLandCuatri');
 Route::get('/johnnylandsolicitud', 'ArreglosWebSite@arregloJohhnyLandSolicitud');
+Route::post('/johnnylandusuarios', 'ArreglosWebSite@arregloJohnnyLandUsuario');
+Route::get('/johnnylandusuariosget', 'ArreglosWebSite@arregloJohnnyLandUsuarioget');
+Route::get('/johnnylandhoras', 'ArreglosWebSite@arregloJohnnylandHoras');
 
 Route::get('/eventos', 'EventosController@viewEventos');
 Route::post('/evento', 'EventosController@eventos');
