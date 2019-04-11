@@ -9,6 +9,13 @@
 		padding: 0;
 		box-sizing: border-box;
 	}
+	#back{
+		position: absolute;
+		height:25px;
+		left:130px;
+		margin-left:20px;
+		margin-top:-10px;
+  	}
 	#fondo{
 			background-color: #282B30;
 			margin: 0;
@@ -20,7 +27,7 @@
 	}
 	#tituloNavBar{
 			position: absolute;
-			left: 44%;
+			left: 49%;
 	}
 	#contenedor1{
 		background-color: black;
@@ -194,29 +201,41 @@
 		}
 	}
 </style>
+<link rel="stylesheet" type="text/css" href="css/TalleresUTT/navbar.css">
 
 <body id="fondo">
 
-    	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    		<img id="imgiluminati" src="{{ asset('img/iluminati.png') }}">
-		  <a id="tituloNavBar" class="navbar-brand" href="#"> Talleres UTT</a>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-		  </button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<img id="imgiluminati" src="{{ asset('img/iluminati.png') }}">
+  <a href="/"><img id="back" src="{{ asset('img/back.png') }}"></a>
+  <a class="navbar-brand" href="/" id="tituloNavBar" style="margin-top-10px;"> Talleres UTT</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
 
-		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		    <ul class="navbar-nav mr-auto">
-		      
-		  </ul>
-		  @if(Session::has('usuario'))
-		  <center>
-		  <button class="btn disabled" style="backgroud-color: transparent;"><span style="color: white;">Hola! {{ Session::get('usuario')->usuario }} </span></button>
-       	  <a id="solicitudes" class="btn alert-danger" href="/logout"> Cerrar Sesión	<img id="logout" src="{{ asset('img/logout.png') }}"><span class="sr-only"></span></a>
-		  </center>
-			@endif
-		  </div>
-			
-		</nav>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" style="margin-left:50px;">
+      <li class="nav-item active">
+        <a  class="nav-link" href="/mostrartalleres">Talleres <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a  class="nav-link" href="/mostraralumnos">Alumnos <span class="sr-only">(current)</span></a>
+      </li>
+	  <li class="nav-item active">
+        <a  class="nav-link" href="/eventos">Eventos <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a  class="nav-link" href="/eventosasignados">Asignar Evento <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    @if(Session::has('usuario'))
+    <button class="btn disabled" style="backgroud-color: transparent;"><span style="color: white; margin-left:36px;">Hola! {{ Session::get('usuario')->usuario }} </span></button>
+       <a id="solicitudes" class="btn alert-danger" href="/logout"> Cerrar Sesión	<img id="logout" style="height: 18px; margin-top:-2px; padding-left: 5px;" 
+       src="{{ asset('img/logout.png') }}"><span class="sr-only"></span></a>
+       
+		@endif
+  </div>
+</nav>
 
 			@if(Session::has('conected'))
                <center><span ><p class="alert alert-success">Su cuenta se inició correctamente.</p></span></center>

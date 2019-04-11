@@ -1,10 +1,39 @@
 @extends('TalleresUTT.Complements.plugins')
 <link rel="stylesheet" type="text/css" href="css/TalleresUTT/eventos.css">
+<link rel="stylesheet" type="text/css" href="css/TalleresUTT/navbar.css">
 @section('titulo', 'Eventos')
 
 @section('contenido')
 <script type="text/javascript" src="js/eventos.js"></script>
-@extends('TalleresUTT.Login.navbar')
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<img id="imgiluminati" src="{{ asset('img/iluminati.png') }}">
+  <a href="/"><img id="back" src="{{ asset('img/back.png') }}"></a>
+  <a class="navbar-brand" href="/" id="tituloNavBar" style="margin-top-10px;"> Talleres UTT</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" style="margin-left:50px;">
+      <li class="nav-item active">
+        <a  class="nav-link" href="/mostrartalleres">Talleres <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a  class="nav-link" href="/mostraralumnos">Alumnos <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a  class="nav-link" href="/eventosasignados">Asignar Evento <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    @if(Session::has('usuario'))
+    <button class="btn disabled" style="backgroud-color: transparent;"><span style="color: white; margin-left:36px;">Hola! {{ Session::get('usuario')->usuario }} </span></button>
+       <a id="solicitudes" class="btn alert-danger" href="/logout"> Cerrar Sesión	<img id="logout" style="height: 18px; margin-top:-2px; padding-left: 5px;" 
+       src="{{ asset('img/logout.png') }}"><span class="sr-only"></span></a>
+       
+		@endif
+  </div>
+</nav>
 
 <center><input name="buscador" id="buscador" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
 
