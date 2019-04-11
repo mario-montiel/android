@@ -15,6 +15,7 @@ use App\Modelos\Usuario;
 class ArreglosWebSite extends Controller
 {
     public $siono=0;
+    public $siono = 0;
     public $nombre;
     function arregloJohnnyLand(){
         return $talleres = DB::table('talleres')->get();
@@ -74,8 +75,32 @@ class ArreglosWebSite extends Controller
     }
 
     function arregloJohnnyLandUusario(Request $request){
-        $usuario = "hola";
-        return "hola";
+        $usuario = Login::where("usuario", "=", $request->usuario)->get();
+        /*if ($usuario=="[]") {
+            $this->siono=1;
+        }else{
+            $contraseña = Login::where("password", "=", $request->contraseña)->get();
+            if ($contraseña=="[]") {
+                $this->siono=1;
+            }
+            else{
+                $us = Login::select("usuario","password")->where("usuario", "=", $request->usuario)->get();
+                if($us->password=$request->contraseña){
+                    $this->siono=0;
+                    $this->nombre=$request->usuario;
+                }
+            }
+        }*/
+        return $usuario;
+    }
+    function arregloJohnnyLandUsuarioget(){
+
+        if($this->siono==0){
+            return Login::select("usuario")->where("usuario", "=", $this->nombre)->get();
+        }
+        else{
+            return $obj = array('usuario' => "nada" );
+        }
     }
 
     function arregloJohnnyLandUusarioGet(){
@@ -102,10 +127,5 @@ class ArreglosWebSite extends Controller
         else{
             return "ingrese numeros diferentes";
         }
-    }
-
-    public function WuW(Request $request){
-        $usuario = /*Usuario::where("usuario", "=", $request->usuario)->get()*/"hola";
-        return "hola";
     }
 }
