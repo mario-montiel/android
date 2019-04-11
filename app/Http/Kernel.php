@@ -33,11 +33,7 @@ class Kernel extends HttpKernel
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-<<<<<<< HEAD
-           // \App\Http\Middleware\VerifyCsrfToken::class,
-=======
-            //\App\Http\Middleware\VerifyCsrfToken::class,
->>>>>>> 88bebcab1e38959284bd59143f0ebf71a459f488
+            \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
