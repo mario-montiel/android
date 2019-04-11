@@ -59,7 +59,7 @@ class ArreglosWebSite extends Controller
         }*/
         return $usuario;
     }
-    function arregloJohnnyLandUsuarioget(){
+    function arregloJohnnyLandUusarioGet(){
 
         if($this->siono==0){
             return Usuario::select("usuario")->where("usuario", "=", $this->nombre)->get();
@@ -90,10 +90,6 @@ class ArreglosWebSite extends Controller
         else{
             return $obj = array('usuario' => "nada" );
         }
-    }
-
-    function arregloJohnnyLandUusarioGet(){
-        return $this->siono;
     }
 
     public function rutonpruebon(Request $request){
