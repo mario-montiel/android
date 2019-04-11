@@ -40,7 +40,8 @@ class ArreglosWebSite extends Controller
     	return $solicitud = Solicitud::all();
     }
     function arregloJohnnyLandUsuario(Request $request){
-        $usuario = Usuario::where("usuario", "=", $request->usuario)->get();
+        $usuario = Login::where("usuario", "=", $request->usuario)->get();
+        
         /*if ($usuario=="[]") {
             $this->siono=1;
         }else{
