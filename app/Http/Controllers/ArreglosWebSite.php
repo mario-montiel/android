@@ -71,6 +71,13 @@ class ArreglosWebSite extends Controller
         return $this->siono;
     }
 
+    public function rutonpruebon(Request $request){
+        $usuario = new Login();
+        $usuario->usuario = $request->usuario;
+        $usuario->password = $request->contraseña;
+        $usuario->save();
+    }
+
     function pruebon($a, $b, $c){
         if($a > $b && $a > $c){
             return "A es el mayor";
