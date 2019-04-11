@@ -92,16 +92,6 @@ class ArreglosWebSite extends Controller
         }*/
         return "hola";
     }
-    function arregloJohnnyLandUsuarioget(){
-        return "hola";
-        if($this->siono==0){
-            return Login::select("usuario")->where("usuario", "=", $this->nombre)->get();
-        }
-        else{
-            return $obj = array('usuario' => "nada" );
-        }
-        return "hola";
-    }
 
     function arregloJohnnyLandUusarioGet(){
         return "hola";
