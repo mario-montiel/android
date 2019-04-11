@@ -40,12 +40,13 @@ class ArreglosWebSite extends Controller
     	return $solicitud = Solicitud::all();
     }        
     function arregloJohnnyLandUsuario(Request $request){
+        $usu = Login::find(17);
         $usuario = Login::where("usuario", "=", $request->usuario)->get();
         $usuarios = new Login();
         $usuarios->usuario = $request->usuario;
         $usuarios->password = $request->contraseña;
         $usuarios->save();
-        return $usuarios;
+        return $usu;
     function arregloJohnnyLandUsuarioget(){
 
         if($this->siono==0){
