@@ -73,8 +73,7 @@ class ArreglosWebSite extends Controller
         ->join('solicitudes','solicitudes.usuarios_id_usuario', '=', 'usuarios.id_usuario')
         ->join('talleres', 'talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
         ->select('talleres.nombre','talleres.encargado', 'usuarios.horas')
-        ->where('usuarios.usuario', $usuario)->first()
-        ->get();
+        ->where('usuarios.usuario', $usuario)->first();
 
         return[
             'taller' => $vato->nombre,
