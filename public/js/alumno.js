@@ -68,9 +68,11 @@ $('.btn-act-alumno').click(function(e){
                                }
                                console.log(item.alumno);
                                    changos = "<tr data-id="+item.id_usuario+"><td>" +
+                                       item.matricula + "</td><td>" +  
                                        item.usuario + "</td><td>" +
                                        item.alumno + "</td><td>" +
                                        horas + "</td><td>" +
+                                       item.created_at + "</td><td>" +
                                        item.created_at + "</td><td>" +
                                        "<button data-id="+item.id_usuario+" data-usuario="+item.usuario+" data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
                                        "</td>";
@@ -98,7 +100,7 @@ $('.btn-act-alumno').click(function(e){
     Swal.fire({
         type: 'error',
         title: 'Oops...',
-        text: 'La actualización del evento falló',
+        text: 'La actualización del alumno falló',
         footer: '<a href>Intentelo de nuevo</a>'
       })
    })
