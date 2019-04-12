@@ -59,7 +59,6 @@
                 <th>Nombre</th>
                 <th>Taller</th>
                 <th>Evento</th>
-                <th>Actualizar</th>
                 <th>Eliminar</th>
             </tr>
         </thead>
@@ -70,7 +69,6 @@
                 <td>{{$the->taller}}</td>
                 <td>{{$the->evento}}</td>
                 {{ csrf_field() }}
-                <td><button data-idevento="{{$the->eventos_id_evento}}" data-idtaller="{{$the->tallleres_id_taller}}" data-nombre="{{$the->nombre}}" data-evento="{{$the->evento}}" data-taller="{{$the->taller}}" data-toggle='modal' data-target='#modalActualizarEventosAsignados' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
                 <td><button data-idevento='{{$the->eventos_id_evento}}' data-idtaller="{{$the->tallleres_id_taller}}" data-nombre="{{$the->nombre}}" data-evento="{{$the->evento}}" data-taller="{{$the->taller}}" data-toggle='modal' data-target='#modalEliminarEventosAsignados' class="btn btn-danger btn-eliminar" data-toggle='modal' data-target='#modalEliminarEventos'><img id="delete" src="{{ asset('img/delete.png') }}" alt=""></button></td>
             </tr>
             @endforeach
