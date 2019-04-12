@@ -49,8 +49,9 @@ class LoginController extends Controller
                 $user = Session::put('usuario', $vato);
                 $user = Session::save('usuario', $vato);
                 
-            return redirect('/registraralumno')
-                    ->with('correcto', 'Su cuenta se creó correctamente');
+            return redirect('/')
+                    ->with('conected', 'Su cuenta se inició correctamente')
+                    ->with('user', $user);
             }
         }
 
@@ -110,8 +111,8 @@ class LoginController extends Controller
         //dd($usuario->usuario);
 		$usuario->save();
 
-		return redirect('/iniciosesion')
-                    ->with('created', 'Su cuenta se creó con éxito!');
+		return redirect('/registraralumno')
+                    ->with('correcto', 'Su cuenta se creó correctamente');
     
 	}
 
