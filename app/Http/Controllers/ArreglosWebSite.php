@@ -51,9 +51,9 @@ class ArreglosWebSite extends Controller
         $user = DB::table('usuarios')->where('usuario', $usuario)->first();
         //$usuario = Usuario::where("usuario", "=", $request->usuario)->get();
         if($user){
-            return "hola";
+            return $user;
         }
-        return "bye prro desgraciado";
+        return $user;
     }
 
     function pruebon($a, $b, $c){
