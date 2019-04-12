@@ -108,7 +108,6 @@ var urlx = formx.attr('action');
 $.post(urlx, formx.serialize(), function(result){
         //row.fadeOut();
         //$('tbody').append(result);
-        console.log(result);
         e.preventDefault();
         $value = $('#buscador').val();
         
