@@ -270,12 +270,11 @@ $(document).ready(function(){
 
 		if(matricula.length != 8){
 			Swal.fire({
-                                            position: 'top-end',
-                                            type: 'success',
-                                            title: 'LA MATRÍCULA DEBE TENER 8 DÍGITOS',
-                                            showConfirmButton: false,
-                                            timer: 1500
-                                        })                                      
+                                  type: 'error',
+                                  title: 'Oops...',
+                                  text: 'LA MATRÍCULA DEBE CONTENER 8 DÍGITOS',
+                                  footer: '<span class="alert alert-danger">¿Porqué no intenta de nuevo?. Estaria genial</span>'
+                                });                                  
 			return false;
 		}
 	});
