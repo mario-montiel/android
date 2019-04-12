@@ -208,7 +208,11 @@
 <div id="contenedorlogin" class="container">
     <div id="card" class="card">
         <div class="card-body">
-            <h3 id="title" class="card-title text-center"> Registrarse </h3>
+			<h3 id="title" class="card-title text-center"> Registrarse </h3>
+			
+			@if(Session::has('correcto'))
+				<center><span ><p class="alert alert-success">Su cuenta se creó correctamente.</p></span></center>
+			@endif
 
 @if ($errors->any())
         <ul style="color: white; margin-top: 25px; margin: auto;">

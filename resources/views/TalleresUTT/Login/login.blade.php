@@ -11,8 +11,8 @@
 
 <center><img align="center" border="0" id="img1" src="{{ asset('img/utt.png') }}"> </center>
 
-@if(Session::has('correcto'))
-    <center><span ><p class="alert alert-success">Su cuenta se creó correctamente.</p></span></center>
+@if(Session::has('conected'))
+               <center><span ><p class="alert alert-success">Su cuenta se inició correctamente.</p></span></center>
 @endif
 
 <div id="contenedorlogin" class="container">
