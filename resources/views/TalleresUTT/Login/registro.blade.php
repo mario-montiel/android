@@ -267,9 +267,8 @@ $(document).ready(function(){
 		var cuatrimestre = $('#select').val();
 		var carrera = $('#info').val();
 		var matricula = $('#input7').val();
-		alert(matricula);
 
-		if(matricula.length > 8 && matricula.length < 8){
+		if(matricula.length != 8){
 			alert("LA MATRÍCULA SOLO PUEDE CONTENER 8 DÍGITOS");
 			return false;
 		}
