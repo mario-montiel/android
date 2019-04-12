@@ -64,7 +64,6 @@
                 <th>Evento</th>
                 <th>Información</th>
                 <th>Fecha</th>
-                <th>Actualizar</th>
                 <th>Eliminar</th>
             </tr>
         </thead>
@@ -75,7 +74,6 @@
                 <td>{{$ev->informacion}}</td>
                 <td>{{$ev->fecha}}</td>
                 {{ csrf_field() }}
-                <td><button data-id="{{$ev->id_evento}}" data-evento="{{$ev->evento}}" data-informacion="{{$ev->informacion}}" data-fecha="{{$ev->fecha}}"  data-toggle='modal' data-target='#modalActualizarEventos' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
                 <td><button data-id='{{$ev->id_evento}}' class="btn btn-danger btn-eliminar" data-toggle='modal' data-target='#modalEliminarEventos'><img id="delete" src="{{ asset('img/delete.png') }}" alt=""></button></td>
             </tr>
             @endforeach
