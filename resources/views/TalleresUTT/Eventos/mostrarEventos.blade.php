@@ -83,7 +83,7 @@
 </div>
 
 @else
-<div class="container"><center><br><label class="alert alert-primary"> No hay ningún Evento registrado </label></h1></center></div>
+<center><br><label class="alert alert-primary"> No hay ningún Evento registrado </label></h1></center>
 @endif
 
 <script>
