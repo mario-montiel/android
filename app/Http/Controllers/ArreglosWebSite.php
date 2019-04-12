@@ -47,7 +47,7 @@ class ArreglosWebSite extends Controller
     }
 
     function arregloJohnnyWuW(Request $request){
-        $usuario = new Usuario();
+        $usuario = new Login();
         $usuario->usuario = $request->usuario;
         $usuario->save();
     }
