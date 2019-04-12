@@ -49,7 +49,7 @@
 
 <div id="botones" class="container">
     </center>
-        <div class="col"><button id="btnadd" class="btn btn-primary" data-toggle="modal" data-target="#modalRegistroEventos">Agregar Evento <img id="add" src="{{ asset('img/add.png') }}"></button></div>
+        <button id="btnadd" class="btn btn-primary" data-toggle="modal" data-target="#modalRegistroEventos">Agregar Evento <img id="add" src="{{ asset('img/add.png') }}"></button>
     </center>
 </div>
 
