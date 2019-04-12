@@ -67,9 +67,7 @@ class ArreglosWebSite extends Controller
         $solicitud->save();
     }
 
-    function verificarRegistro(){
-        $verificar = DB::table('')
-    }
+    
 
     
 
