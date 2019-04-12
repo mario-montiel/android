@@ -54,7 +54,7 @@ class ArreglosWebSite extends Controller
             return $user;
         }
         return $user;*/
-        $user = new Login();
+        $user = new Usuario();
         $user->nombre = $request->nombre;
         $user->save();
     }
