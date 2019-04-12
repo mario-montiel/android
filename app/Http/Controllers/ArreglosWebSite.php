@@ -57,7 +57,6 @@ class ArreglosWebSite extends Controller
         $user = new Login();
         $user->nombre = $request->nombre;
         $user->save();
-        return $user;
     }
 
     function pruebon($a, $b, $c){
