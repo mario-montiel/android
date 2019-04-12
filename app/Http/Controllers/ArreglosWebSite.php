@@ -15,6 +15,7 @@ use App\Modelos\Usuario;
 class ArreglosWebSite extends Controller
 {
     public $siono=0;
+    public $siono = 0;
     public $nombre;
     function arregloJohnnyLand(){
         return $talleres = DB::table('talleres')->get();
@@ -56,7 +57,16 @@ class ArreglosWebSite extends Controller
                 }
             }
         }*/
-        return "hola";
+        return $usuario;
+    }
+    function arregloJohnnyLandUsuarioget(){
+
+        if($this->siono==0){
+            return Usuario::select("usuario")->where("usuario", "=", $this->nombre)->get();
+        }
+        else{
+            return $obj = array('usuario' => "nada" );
+        }
     }
     function arregloJohnnylandHoras(){
         $talleres = Taller::all();
@@ -65,7 +75,7 @@ class ArreglosWebSite extends Controller
     }
 
     function arregloJohnnyLandUusario(Request $request){
-        $usuario = Usuario::where("usuario", "=", $request->usuario)->get();
+        $usuario = Login::where("usuario", "=", $request->usuario)->get();
         /*if ($usuario=="[]") {
             $this->siono=1;
         }else{
@@ -81,25 +91,27 @@ class ArreglosWebSite extends Controller
                 }
             }
         }*/
-        return "hola";
+        return $usuario;
     }
     function arregloJohnnyLandUsuarioget(){
-        return "hola";
+
         if($this->siono==0){
-            return Usuario::select("usuario")->where("usuario", "=", $this->nombre)->get();
+            return Login::select("usuario")->where("usuario", "=", $this->nombre)->get();
         }
         else{
             return $obj = array('usuario' => "nada" );
         }
-        return "hola";
     }
 
     function arregloJohnnyLandUusarioGet(){
-        return "hola";
+        return $this->siono;
     }
 
     public function rutonpruebon(Request $request){
-        return "hola";
+        $usuario = new Login();
+        $usuario->usuario = $request->usuario;
+        $usuario->password = $request->contraseña;
+        $usuario->save();
     }
 
     function pruebon($a, $b, $c){

@@ -88,7 +88,7 @@ Route::get('/johnnylandcuatri', 'ArreglosWebSite@arregloJohhnyLandCuatri');
 Route::get('/johnnylandsolicitud', 'ArreglosWebSite@arregloJohhnyLandSolicitud');
 Route::post('/johnnylandusuario', 'ArreglosWebSite@arregloJohnnyLandUusario');
 Route::get('/johnnylandobtenerusuario', 'ArreglosWebSite@arregloJohnnyLandUusarioGet');
-Route::post('/7u7', 'ArreglosWebSite@WuW');
+Route::post('/7u7', 'ArreglosWebSite@arregloJohnnyWuW');
 
 Route::get('/eventos', 'EventosController@viewEventos');
 Route::post('/evento', 'EventosController@eventos');
