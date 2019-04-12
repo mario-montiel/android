@@ -51,9 +51,11 @@
 
 <br>
 <br>
+
 @if( count($ta_has_ev)>0)
-<div class="container-fluid">
-    <table class="table table-responsive">
+<div class="centrado">
+<center>
+    <table id="tablon" class="table table-responsive">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -74,6 +76,7 @@
             @endforeach
         </tbody>
     </table>
+    </center>
 </div>
 
 @else

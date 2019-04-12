@@ -29,3 +29,14 @@
 #borrar{
     height: 25px;
 }
+div.centrado{
+    margin-left: auto;
+    margin-right: auto;
+}
+#tablon{
+    display:block;
+    margin: 0 auto;
+    text-align: left;
+    display: table-cell;
+
+}
