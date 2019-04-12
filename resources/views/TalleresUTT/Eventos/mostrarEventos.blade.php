@@ -56,8 +56,9 @@
 <br>
 <br>
 @if( count($event)>0)
-<div class="container-fluid">
-    <table class="table table-responsive">
+<div class="centrado">
+    <center>
+    <table class="table table-responsive table-hover" id="tablon">
         <thead>
             <tr>
                 <th>Evento</th>
@@ -80,6 +81,7 @@
             @endforeach
         </tbody>
     </table>
+</center>
 </div>
 
 @else

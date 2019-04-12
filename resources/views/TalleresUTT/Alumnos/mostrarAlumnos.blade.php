@@ -41,8 +41,13 @@
 <br>
 <br>
 @if( count($alumnos)>0)
-<div class="container-fluid">
-    <table class="table table-responsive" style="margin-left:5%;">
+<div class="centrado" style=" margin-left: auto;
+    margin-right: auto;">
+    <center>
+    <table class="table table-responsive table-hover" style="display:block;
+    margin: 0 auto;
+    text-align: left;
+    display: table-cell;">
         <thead>
             <tr>
                 <th>Matrícula</th>
@@ -75,6 +80,7 @@
             @endforeach
         </tbody>
     </table>
+</center>
 </div>
 
 @else

@@ -82,6 +82,16 @@ body{
 	#btnadd{
 		margin-top: 2%;
 	}
+	div.centrado{
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#tablon{
+		display:block;
+		margin: 0 auto;
+		text-align: left;
+		display: table-cell;
+	}
 	/*.loader {
     position: fixed;
     left: 0px;

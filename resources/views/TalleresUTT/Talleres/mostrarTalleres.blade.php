@@ -65,8 +65,10 @@
 <br>
 
 @if( count($numtalleres)>0)
-<div id="container" class="container-fluid">
-		<table id="table" class="table table-responsive table-hover">
+
+<div class="centrado">
+<center>
+		<table id="tablon" class="table table-responsive table-hover">
 		<thead>
 			<tr>
 			<th>Nombre de Taller</th>
@@ -101,8 +103,8 @@
 			
 		</tbody>
 	</table>
+</centrado>
 	</div>
-</div>	
 
 
 @else
