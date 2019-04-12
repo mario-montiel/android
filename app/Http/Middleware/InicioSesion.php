@@ -18,15 +18,17 @@ class InicioSesion
      */
     public function handle($request, Closure $next)
     {
-        $vato = DB::table('usuarios')->first();
+        //$vato = DB::table('usuarios')->first();
         $usuario = $request->get('usuario');
         $pass = $request->get('password');
 
+        $vato = DB::table('usuarios')->where('usuario', $usuario)->first();
+
         $yeah = Session::get('usuario');
 
-        $verificacion = $yeah->privilegios;
+        $verificacion = $vato->privilegios;
 
-        if (Session::get('usuario') && $verificacion == 1) {
+        if (Session::get('usuario') && $verificacion->privilegios == 1) {
             $usuario = $next($request);
         }
         else if($usuario == null && $pass == null){
