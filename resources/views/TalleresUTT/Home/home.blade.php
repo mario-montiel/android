@@ -143,6 +143,30 @@
 		background-image: url("img/2.jpg");
 		background-size: cover;
 	}
+	.carta4{
+		background-image: url("img/talleresUTT/carrousel/synfonica3.jpg");
+		background-size: cover;
+	}
+	.carta4atras{
+		background-image: url("img/talleresUTT/carrousel/synfonica4.jpg");
+		background-size: cover;
+	}
+	.carta5{
+		background-image: url("img/talleresUTT/carrousel/synfonica1.jpg");
+		background-size: cover;
+	}
+	.carta5atras{
+		background-image: url("img/talleresUTT/carrousel/7.jpg");
+		background-size: cover;
+	}
+	.carta6{
+		background-image: url("img/8.jpg");
+		background-size: cover;
+	}
+	.carta6atras{
+		background-image: url("img/talleresUTT/carrousel/5.jpg");
+		background-size: cover;
+	}
 	a{
 		color: white;
 		font-family: sans-serif;
@@ -296,8 +320,7 @@
 	        	<div class="tarjeta-wrap">
 	        		<div class="tarjeta">
 	        			<div class="adelante carta4"></div>
-	        			<div class="atras">
-	        				<h1><a href="/registrotalleres"> Registrar Taller </a></h1>
+	        			<div class="atras carta4atras">
 	        			</div>
 	        		</div>
 	        	</div>
@@ -308,7 +331,7 @@
 	        	<div class="tarjeta-wrap">
 	        		<div class="tarjeta">
 	        			<div class="adelante carta5"></div>
-	        			<div class="atras">
+	        			<div class="atras carta5atras">
 	        				<h1><a href="/mostrartalleres"> Modificar Taller </a></h1>		
 	        			</div>
 	        		</div>
@@ -320,7 +343,7 @@
 	        	<div class="tarjeta-wrap">
 	        		<div class="tarjeta">
 	        			<div class="adelante carta6"></div>
-	        			<div class="atras">
+	        			<div class="atras carta6atras">
 	        				<h1><a href=""> Asignar Evento </a></h1>	
 	        			</div>
 	        		</div>
