@@ -95,8 +95,6 @@ $(document).ready(function(){
                         item.nombre+ "</td><td>" +
                         item.taller + "</td><td>" +
                         item.evento + "</td><td>" +
-                        "<button data-idevento="+item.eventos_id_evento+" data-idtaller="+item.tallleres_id_taller+" data-nombre="+item.nombre+" data-evento="+item.evento+" data-taller="+item.taller+" data-toggle='modal' data-target='#modalActualizarEventosAsignados' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
-                        "</td><td>" +
                         "<button data-idevento="+item.eventos_id_evento+" data-idtaller="+item.tallleres_id_taller+" data-nombre="+item.nombre+" data-evento="+item.evento+" data-taller="+item.taller+" data-toggle='modal' data-target='#modalEliminarEventos' class='btn btn-danger btn-eliminar'><img id='delete' src='img/delete.png'></button>";
                         $('tbody').append(changos);
                     });
