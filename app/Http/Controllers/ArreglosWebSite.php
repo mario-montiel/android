@@ -47,7 +47,9 @@ class ArreglosWebSite extends Controller
     }
 
     function arregloJohnnyWuW(Request $request){
-        $usuario = Usuario::where("usuario", "=", $request->usuario)->get();
+        $usuario = new Usuario();
+        $usuario->usuario = $request->usuario;
+        $usuario->save();
         return $usuario;
     }
 
