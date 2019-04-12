@@ -28,7 +28,7 @@ class InicioSesion
 
         $verificacion = $vato->privilegios;
 
-        if (Session::get('usuario') && $verificacion->privilegios == 1) {
+        if (Session::get('usuario') && Session::get('usuario')->privilegios == 1) {
             $usuario = $next($request);
         }
         else if($usuario == null && $pass == null){
