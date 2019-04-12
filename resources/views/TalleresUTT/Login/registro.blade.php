@@ -269,7 +269,13 @@ $(document).ready(function(){
 		var matricula = $('#input7').val();
 
 		if(matricula.length != 8){
-			alert("LA MATRÍCULA SOLO PUEDE CONTENER 8 DÍGITOS");
+			Swal.fire({
+                                            position: 'top-end',
+                                            type: 'success',
+                                            title: 'LA MATRÍCULA DEBE TENER 8 DÍGITOS',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        })                                      
 			return false;
 		}
 	});

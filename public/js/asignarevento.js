@@ -164,13 +164,13 @@ var idtaller;
                                               "</td><td>" +
                                               "<button data-idevento="+item.eventos_id_evento+" data-idtaller="+item.tallleres_id_taller+" data-nombre="+item.nombre+" data-evento="+item.evento+" data-taller="+item.taller+" data-toggle='modal' data-target='#modalEliminarEventosAsignados' class='btn btn-danger btn-eliminar'><img id='delete' src='img/delete.png'></button>";
                                           $('tbody').append(changos);
-                                        /*Swal.fire({
+                                        Swal.fire({
                                             position: 'top-end',
                                             type: 'success',
                                             title: 'Evento asignado correctamente',
                                             showConfirmButton: false,
                                             timer: 1500
-                                        })*/        
+                                        })       
                                   });
                           },
                            error: function () {
