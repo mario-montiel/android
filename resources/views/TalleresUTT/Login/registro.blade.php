@@ -13,7 +13,7 @@
 		margin-top: 30px;
 	}
 	#card{
-		width: 28rem; height: 34rem; margin: auto; background-color: #282B30; border-color: transparent;
+		width: 28rem; height: 55rem; margin: auto; background-color: #282B30; border-color: transparent;
 	}
 	#card:hover{
 		background-color: #2E3239;
@@ -164,6 +164,32 @@
 		position: relative;
 		left: 88%;
 	}
+	#select{
+		width: 350px;
+		height: 60px;
+		background-color: #333338;
+		border-radius: 45px;
+		color: #ffff;
+		text-align: center;
+		margin-top: 30px;
+		margin-left:30px;
+		background-repeat: no-repeat;
+		background-size: 30px;
+		background-position: 40px;
+	}
+	#select2{
+		width: 350px;
+		height: 60px;
+		background-color: #333338;
+		border-radius: 45px;
+		color: #ffff;
+		text-align: center;
+		margin-top: 15px;
+		margin-left:30px;
+		background-repeat: no-repeat;
+		background-size: 30px;
+		background-position: 40px;
+	}
 	@media (max-width: 700px)
 	{
 		#imgiluminati{
@@ -200,6 +226,26 @@
 				    <div id="col1" class="col-12"> <input id="input6" type="text" placeholder="Usuario" name="usuario"> </div>
 				    <div id="col2" class="col-12"> <input id="input3" type="password" placeholder="Contraseña" name="password"> </div>
 					<div id="col2" class="col-12"> <input id="input7" type="text" placeholder="Matrícula" name="matricula"> </div>
+					<div id="col2" class="col-12"> 
+						<div class="form-group">
+						<select name="carrera" class="form-control" id="select">
+							<option>Seleccione la carrrera</option>
+							@foreach($carreras as $carrera)
+								<option value="{{ $carrera->id_carrera }}" {{ old('tipo') == $carrera->id_carrera ? 'selected' : '' }}>{{ $carrera->nombre }}</option>
+							@endforeach
+						</select>
+					</div>
+					</div>
+					<div id="col2" class="col-12"> 
+						<div class="form-group">
+						<select name="cuatrimestre" class="form-control" id="select2">
+							<option>Seleccione el cuatrimestre</option>
+							@foreach($cuatrimestres as $cuatrimestre)
+								<option value="{{ $cuatrimestre->id_cuatrimestre }}" {{ old('tipo') == $cuatrimestre->id_cuatrimestre ? 'selected' : '' }}>{{ $cuatrimestre->cuatrimestre }}</option>
+							@endforeach
+						</select>
+					</div>
+					</div>
 				    <div id="col3" class="col-12"> <button id="boton1" type="submit" class="btn btn-dark"> Registrarse </button> </div>
 				    <div id="col4" class="col-12"> <p id="p2">© 2019 Desarrollado por el equipo Amarillo de la Carrera de Sistemas Informáticos</p> </div>
 				  </div>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponseRedirectResponseredirect;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Modelos\Cuatrimestre;
+use App\Modelos\Carrera;
 use App\Modelos\Login;
 use Session;
 use Illuminate\Support\Facades\Hash;
@@ -71,7 +73,9 @@ class LoginController extends Controller
 
     function viewRegistroUsuario()
     {
-    	return view('TalleresUTT.Login.registro');
+        $carreras = Carrera::all();
+        $cuatrimestres = Cuatrimestre::all();
+    	return view('TalleresUTT.Login.registro', compact('carreras', 'cuatrimestres'));
     }
     function registrarse(Request $request)
     {
@@ -101,6 +105,8 @@ class LoginController extends Controller
         $usuario->api_token = $token;
         $usuario->timestamps;
         $usuario->horas_servicio_social = 0;
+        $usuario->carrera = $request->carreara;
+        $usuario->cuatrimestre = $request->cuatrimestre;
         //dd($usuario->usuario);
 		$usuario->save();
 
