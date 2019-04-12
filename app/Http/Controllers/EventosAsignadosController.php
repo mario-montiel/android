@@ -12,6 +12,11 @@ use App\Modelos\Evento_Taller;
 
 class EventosAsignadosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('inicioSesion');
+    }
+
     function viewEventosAsignados(){
         $event = Evento::all();
         $talleres = DB::table('talleres')->get();

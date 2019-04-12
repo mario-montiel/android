@@ -16,7 +16,6 @@ class EventosController extends Controller
     public function __construct()
     {
         $this->middleware('inicioSesion');
-        
     }
 
     function viewEventos(Request $request){

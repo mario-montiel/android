@@ -204,7 +204,6 @@
 <script src="http://code.jquery.com/jquery-3.3.1.js"integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
 <center><img align="center" border="0" id="img1" src="{{ asset('img/utt.png') }}"> </center>
 
-
 <div id="contenedorlogin" class="container">
     <div id="card" class="card">
         <div class="card-body">

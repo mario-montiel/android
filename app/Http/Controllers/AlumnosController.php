@@ -10,6 +10,11 @@ use Carbon\Carbon;
 
 class AlumnosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('inicioSesion');
+    }
+
     function viewMostrarAlumnos(){
         $alumnos = Login::all();
 

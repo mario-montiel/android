@@ -19,7 +19,6 @@ $(document).ready(function(){
                           url:  '/buscadorasignado',
                           data: {'buscadorasignado':$value},
                           success:function(data){
-                              console.log(data);
                             $('tbody').html("");
                             $.each(data, function(i, item) {
                                     
@@ -162,7 +161,7 @@ var idtaller;
                                         Swal.fire({
                                             position: 'top-end',
                                             type: 'success',
-                                            title: 'Evento asignado correctamente',
+                                            title: 'La eliminación del evento asignado fue correcto',
                                             showConfirmButton: false,
                                             timer: 1500
                                         })       
@@ -178,12 +177,12 @@ var idtaller;
                            }
                       });
             }).fail(function(){
-                /*Swal.fire({
+                Swal.fire({
                     type: 'error',
                     title: 'Oops...',
                     text: 'El evento no pudo ser asignado!',
                     footer: '<a href>Intentelo de nuevo</a>'
-                  })*/
+                  })
             })
     });
 });
