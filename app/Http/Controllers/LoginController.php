@@ -105,7 +105,7 @@ class LoginController extends Controller
         $usuario->api_token = $token;
         $usuario->timestamps;
         $usuario->horas_servicio_social = 0;
-        $usuario->carrera = $request->carreara;
+        $usuario->carrera = $request->carrera;
         $usuario->cuatrimestre = $request->cuatrimestre;
         //dd($usuario->usuario);
 		$usuario->save();
