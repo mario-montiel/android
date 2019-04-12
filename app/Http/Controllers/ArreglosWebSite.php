@@ -11,6 +11,7 @@ use App\Modelos\Taller;
 use App\Modelos\Login;
 use App\Modelos\Tipo_Taller;
 use App\Modelos\Usuario;
+use Session;
 
 class ArreglosWebSite extends Controller
 {
@@ -56,8 +57,18 @@ class ArreglosWebSite extends Controller
             ];
     }
 
-    function solicitud(){
-        $solicitud = new Solicitud;
+    function solicitud(Request $request){
+        $usuario = $request->usuario;
+        $vato = DB::table('usuarios')->where('usuario', $usuario)->first();
+        
+        $solicitud = new Solicitud();
+        $solicitud->tallleres_id_taller = $request->taller;
+        $solicitud->usuarios_id_usuario = $vato->id_usuario;
+        $solicitud->save();
+    }
+
+    function verificarRegistro(){
+        $verificar = DB::table('')
     }
 
     
