@@ -48,10 +48,11 @@ class ArreglosWebSite extends Controller
 
     function arregloJohnnyWuW(Request $request){
         $usuario = Usuario::where("usuario", "=", $request->usuario)->get();
-        if($usuario->password == $request->contraseña){
-            return true;
+        $user = Session::get('user', $usuario);
+        if($user){
+            return "hola";
         }
-        return false;
+        return "bye prro desgraciado";
     }
 
     function pruebon($a, $b, $c){
