@@ -38,3 +38,5 @@ Route::get('/home/{usuario}', function ($usuario) {
     }
     return $usuario;
 });
+
+Route::post('/johnnylandusuario', 'ArreglosWebSite@arregloJohnnyLandUusario');
