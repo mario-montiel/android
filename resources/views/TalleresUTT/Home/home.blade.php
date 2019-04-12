@@ -331,8 +331,7 @@
 	        	<div class="tarjeta-wrap">
 	        		<div class="tarjeta">
 	        			<div class="adelante carta5"></div>
-	        			<div class="atras carta5atras">
-	        				<h1><a href="/mostrartalleres"> Modificar Taller </a></h1>		
+	        			<div class="atras carta5atras">	
 	        			</div>
 	        		</div>
 	        	</div>
@@ -344,7 +343,6 @@
 	        		<div class="tarjeta">
 	        			<div class="adelante carta6"></div>
 	        			<div class="atras carta6atras">
-	        				<h1><a href=""> Asignar Evento </a></h1>	
 	        			</div>
 	        		</div>
 	        	</div>
