@@ -67,7 +67,7 @@ class ArreglosWebSite extends Controller
         $solicitud->save();
     }
 
-    function solicitudusuario(){
+    function solicitudusuario(Request $request){
         $usuario = $request->usuario;
         $vato = DB::table('usuarios')
         ->join('solicitudes','solicitudes.usuarios_id_usuario', '=', 'usuarios.id_usuario')
