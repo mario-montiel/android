@@ -64,6 +64,7 @@
                 <th>Evento</th>
                 <th>Información</th>
                 <th>Fecha</th>
+                <th>Actualizar</th>
                 <th>Eliminar</th>
             </tr>
         </thead>
@@ -74,6 +75,7 @@
                 <td>{{$ev->informacion}}</td>
                 <td>{{$ev->fecha}}</td>
                 {{ csrf_field() }}
+                <td><button data-id="{{$ev->id_evento}}" data-evento="{{$ev->evento}}" data-informacion="{{$ev->informacion}}" data-fecha="{{$ev->fecha}}"  data-toggle='modal' data-target='#modalActualizarEventos' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
                 <td><button data-id='{{$ev->id_evento}}' class="btn btn-danger btn-eliminar" data-toggle='modal' data-target='#modalEliminarEventos'><img id="delete" src="{{ asset('img/delete.png') }}" alt=""></button></td>
             </tr>
             @endforeach
@@ -109,6 +111,8 @@
 									item.evento+ "</td><td>" +
 									item.informacion + "</td><td>" +
 									item.fecha + "</td><td>" +
+									"<button data-id="+item.id_evento+" data-evento="+item.evento+" data-informacion="+item.informacion+" data-fecha="+item.fecha+" data-toggle='modal' data-target='#modalActualizarEventos' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+									"</td><td>" +
 									"<button data-id="+item.id_evento+" data-toggle='modal' data-target='#modalEliminarEventos' class='btn btn-danger btn-eliminar'><img id='delete' src='{{ asset('img/delete.png') }}'></button>";
 								$('tbody').append(changos);
 						});
