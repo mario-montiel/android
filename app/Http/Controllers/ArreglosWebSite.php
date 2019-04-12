@@ -67,6 +67,24 @@ class ArreglosWebSite extends Controller
         $solicitud->save();
     }
 
+    function solicitudusuario(){
+        $usuario = $request->usuario;
+        $vato = DB::table('usuarios')
+        ->join('solicitudes','solicitudes.usuarios_id_usuario', '=', 'usuarios.id_usuario')
+        ->join('talleres', 'talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
+        ->select('talleres.nombre','talleres.encargado', 'usuarios.horas')
+        ->where('usuario', $usuario)->first()
+        ->get();
+
+        return[
+            'taller' => $vato->nombre,
+            'encargado' => $vato->encargado,
+            'horas' => $vato->horas
+        ];
+    }
+
+    
+
     function pruebon($a, $b, $c){
         if($a > $b && $a > $c){
             return "A es el mayor";

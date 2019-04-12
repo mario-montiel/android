@@ -90,6 +90,7 @@ Route::post('/johnnylandusuario', 'ArreglosWebSite@arregloJohnnyLandUusario');
 Route::get('/johnnylandobtenerusuario', 'ArreglosWebSite@arregloJohnnyLandUusarioGet');
 Route::post('/7u7', 'ArreglosWebSite@arregloJohnnyWuW');
 Route::post('/solicitud', 'ArreglosWebSite@solicitud');
+Route::post('/solicitudusuario', 'ArreglosWebSite@solicitudusuario');
 
 Route::get('/eventos', 'EventosController@viewEventos');
 Route::post('/evento', 'EventosController@eventos');
