@@ -201,7 +201,7 @@
 </style>
 </head>
 <body id="fondo">
-
+<script src="http://code.jquery.com/jquery-3.3.1.js"integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
 <center><img align="center" border="0" id="img1" src="{{ asset('img/utt.png') }}"> </center>
 
 
@@ -261,4 +261,19 @@
 
 <img id="imgiluminati" src="{{ asset('img/iluminati.png') }}">
 
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#btnregistro').click(function(){
+		var cuatrimestre = $('#select').val();
+		var carrera = $('#info').val();
+		var matricula = $('#matricula').val();
+
+		if(matricula.length > 8 && matricula.length < 8){
+			alert("LA MATRÍCULA SOLO PUEDE CONTENER 8 DÍGITOS");
+			return false;
+		}
+	});
+});
+</script>
 @endsection
+

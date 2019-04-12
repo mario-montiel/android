@@ -67,10 +67,6 @@ class ArreglosWebSite extends Controller
         $solicitud->save();
     }
 
-    
-
-    
-
     function pruebon($a, $b, $c){
         if($a > $b && $a > $c){
             return "A es el mayor";
