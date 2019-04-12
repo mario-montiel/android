@@ -54,7 +54,10 @@ class ArreglosWebSite extends Controller
                 'usuario' => $usuario,
                 'password' => $vato->password
             ];
-        
+    }
+
+    function solicitud(){
+        $solicitud = new Solicitud;
     }
 
     

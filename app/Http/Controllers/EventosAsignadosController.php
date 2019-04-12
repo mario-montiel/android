@@ -23,6 +23,7 @@ class EventosAsignadosController extends Controller
     function asignacion(Request $request){
         if($request->ajax()){
             $id_evento = $request->eventoselect;
+            return $id_evento;
             $id_taller = $request->tallerselect;
             $nombre = $request->eventasig;
             $evento = Evento::find($id_evento);
@@ -54,16 +55,15 @@ class EventosAsignadosController extends Controller
        }
     }
 
-    function eliminarpivote(Request $request){
+    function eliminarpivote(Request $request, $idevento, $idtaller){
+        
         if($request->ajax()){
-            $id_evento = $request->ev;
-            $id_taller = $request->tllr;
             $nombre = $request->x;
-            $evento = Evento::find($id_evento);
+            $evento = Evento::find($idevento);
             $event = $evento->the_event;
-            $taller = Taller::find($id_taller);
+            $taller = Taller::find($idtaller);
             $talle = $taller->the_taller;
-            return $evento->talleres()->detach($id_taller, 
+            return $evento->talleres()->detach($idtaller, 
                 ['nombre' => $nombre,
                 'taller' => $talle,
                 'evento' => $event]);

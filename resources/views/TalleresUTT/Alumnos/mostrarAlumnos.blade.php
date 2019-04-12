@@ -45,6 +45,7 @@
     <table class="table table-responsive" style="margin-left:15%;">
         <thead>
             <tr>
+                <th>Matrícula</th>
                 <th>Usuario</th>
                 <th>Alumno</th>
                 <th>Horas De Servicio Social</th>
@@ -56,6 +57,7 @@
         <tbody id="tbody" style="text-align:center;">
             @foreach($alumnos as $alumno)
             <tr>
+                <td>{{$alumno->matricula}}</td>
                 <td>{{$alumno->usuario}}</td>
                 <td>{{$alumno->alumno}}</td>
                 <td>

@@ -4,15 +4,13 @@ $(document).ready(function(){
     },3000);
 
 
-    $('.form-modificar-asignacion').click(function(e){
+    $('#btnasignar').click(function(e){
         e.preventDefault();
-        var id_evento = $('#eventoselect').val();
-        var id_taller = $('#tallerselect').val();
-        var form_modificar = $('#form-asignar');
-        var url = form_modificar.attr('action');
-        alert(form_modificar.serialize());
+        var form_asignar = $('#form-asignar');
+        var url = form_asignar.attr('action');
+        alert(form_asignar.serialize());
         alert(url);
-            $.post(url, form_modificar.serialize(), function(result){
+            $.post(url, form_asignar.serialize(), function(result){
                     //row.fadeOut();
                     alert(result);
                     e.preventDefault();
@@ -23,27 +21,27 @@ $(document).ready(function(){
                           url:  '/buscadorasignado',
                           data: {'buscadorasignado':$value},
                           success:function(data){
-                              
-                              $('tbody').html("");
-                                  $.each(data, function(i, item) {
-                                          
-                                          changos = "<tr><td>" +
-                                              item.nombre+ "</td><td>" +
-                                              item.taller + "</td><td>" +
-                                              item.evento + "</td><td>" +
-                                              "<button data-idevento="+item.eventos_id_evento+" data-idtaller="+item.tallleres_id_taller+" data-nombre="+item.nombre+" data-evento="+item.evento+" data-taller="+item.taller+" data-toggle='modal' data-target='#modalActualizarEventosAsignados' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
-                                              "</td><td>" +
-                                              "<button data-idevento="+item.eventos_id_evento+" data-idtaller="+item.tallleres_id_taller+" data-nombre="+item.nombre+" data-evento="+item.evento+" data-taller="+item.taller+" data-toggle='modal' data-target='#modalEliminarEventosAsignados' class='btn btn-danger btn-eliminar'><img id='delete' src='img/delete.png'></button>";
-                                          $('tbody').append(changos);
-                                        Swal.fire({
-                                            position: 'top-end',
-                                            type: 'success',
-                                            title: 'Evento asignado correctamente',
-                                            showConfirmButton: false,
-                                            timer: 1500
-                                        })        
-                                  });
-                          },
+                              console.log(data);
+                            $('tbody').html("");
+                            $.each(data, function(i, item) {
+                                    
+                                    changos = "<tr><td>" +
+                                        item.nombre+ "</td><td>" +
+                                        item.taller + "</td><td>" +
+                                        item.evento + "</td><td>" +
+                                        "<button data-idevento="+item.eventos_id_evento+" data-idtaller="+item.tallleres_id_taller+" data-nombre="+item.nombre+" data-evento="+item.evento+" data-taller="+item.taller+" data-toggle='modal' data-target='#modalActualizarEventosAsignados' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
+                                        "</td><td>" +
+                                        "<button data-idevento="+item.eventos_id_evento+" data-idtaller="+item.tallleres_id_taller+" data-nombre="+item.nombre+" data-evento="+item.evento+" data-taller="+item.taller+" data-toggle='modal' data-target='#modalEliminarEventosAsignados' class='btn btn-danger btn-eliminar'><img id='delete' src='img/delete.png'></button>";
+                                    $('tbody').append(changos);
+                                  Swal.fire({
+                                      position: 'top-end',
+                                      type: 'success',
+                                      title: 'Evento asignado correctamente',
+                                      showConfirmButton: false,
+                                      timer: 1500
+                                  })        
+                            });
+                    },
                            error: function () {
                               Swal.fire({
                                   type: 'error',
@@ -132,8 +130,6 @@ var idtaller;
         var button = $(event.relatedTarget) // Button that triggered the modal
         idevento = button.data('idevento')
         idtaller = button.data('idtaller')
-        alert(idevento);
-        alert(idtaller);
         var modal = $(this)
           
       });
@@ -145,12 +141,6 @@ var idtaller;
         var form = $('#designar');
         var url = form.attr('action');
         var url_eliminar = url+"/"+id_evento+"/"+id_taller;
-        alert(id_evento);
-        alert(id_taller);
-        alert(form.serialize());
-        alert(url);
-        alert(url_eliminar);
-        //var urlx = url+"/"+id_evento+"/"+id_taller;
         
             $.post(url_eliminar, form.serialize(), function(result){
                     //row.fadeOut();
@@ -174,13 +164,13 @@ var idtaller;
                                               "</td><td>" +
                                               "<button data-idevento="+item.eventos_id_evento+" data-idtaller="+item.tallleres_id_taller+" data-nombre="+item.nombre+" data-evento="+item.evento+" data-taller="+item.taller+" data-toggle='modal' data-target='#modalEliminarEventosAsignados' class='btn btn-danger btn-eliminar'><img id='delete' src='img/delete.png'></button>";
                                           $('tbody').append(changos);
-                                        Swal.fire({
+                                        /*Swal.fire({
                                             position: 'top-end',
                                             type: 'success',
                                             title: 'Evento asignado correctamente',
                                             showConfirmButton: false,
                                             timer: 1500
-                                        })        
+                                        })*/        
                                   });
                           },
                            error: function () {
