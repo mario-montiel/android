@@ -8,11 +8,9 @@ $(document).ready(function(){
         e.preventDefault();
         var form_asignar = $('#form-asignar');
         var url = form_asignar.attr('action');
-        alert(form_asignar.serialize());
-        alert(url);
+        
             $.post(url, form_asignar.serialize(), function(result){
                     //row.fadeOut();
-                    alert(result);
                     e.preventDefault();
                       $value = $('#buscadorasignado').val();
                       
@@ -82,11 +80,8 @@ $(document).ready(function(){
           e.preventDefault();
           var form_update = $('#form-modificar-asignacion');
           var url = form_update.attr('action');
-          alert(form_update.serialize());
-          alert(url);
           $.post(url, form_update.serialize(), function(result){
               //row.fadeOut();
-              alert("hola");
 		e.preventDefault();
             $value = $('#buscadorasignado').val();
 			$.ajax({
