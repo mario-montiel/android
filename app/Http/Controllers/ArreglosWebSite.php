@@ -76,9 +76,7 @@ class ArreglosWebSite extends Controller
         ->where('usuarios.usuario', $usuario)->first();
 
         return[
-            'taller' => $vato->nombre,
-            'encargado' => $vato->encargado,
-            'horas' => $vato->horas
+            'alumno' => $vato
         ];
     }
 
