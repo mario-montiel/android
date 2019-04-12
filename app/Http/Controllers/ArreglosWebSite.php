@@ -47,9 +47,11 @@ class ArreglosWebSite extends Controller
     }
 
     function arregloJohnnyWuW(Request $request){
-        $usuario = new Login();
-        $usuario->usuario = $request->usuario;
-        $usuario->save();
+        $vato = DB::table('usuarios')->where('usuario', $usuario)->first();
+        if($vato){
+            return true;
+        }
+        return false;
     }
 
     function pruebon($a, $b, $c){
