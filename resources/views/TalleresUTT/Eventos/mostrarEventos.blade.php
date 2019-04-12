@@ -48,7 +48,7 @@
 @extends('TalleresUTT.Eventos.verEventoAsignado')
 
 
-    </center>
+    <center>
         <button id="btnadd" class="btn btn-primary" data-toggle="modal" data-target="#modalRegistroEventos">Agregar Evento <img id="add" src="{{ asset('img/add.png') }}"></button>
     </center>
 
