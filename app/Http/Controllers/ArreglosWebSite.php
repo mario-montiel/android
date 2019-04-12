@@ -75,8 +75,14 @@ class ArreglosWebSite extends Controller
         ->select('talleres.nombre','talleres.encargado', 'usuarios.horas_servicio_social')
         ->where('usuarios.usuario', $usuario)->first();
 
+        $taller = $vato->nombre;
+        $encargado = $vato->encargado;
+        $horas = $vato->horas_servicio_social;
+
         return[
-            'alumno' => $vato
+            'taller' => $taller,
+            'encargado' => $encargado,
+            'horas' => $horas
         ];
     }
 
