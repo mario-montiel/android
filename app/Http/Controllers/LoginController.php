@@ -96,6 +96,7 @@ class LoginController extends Controller
         $usuario = new Login();
         $usuario->usuario = $request->get('usuario');
         $usuario->alumno = $request->get('alumno');
+        $usuario->matricula = $request->matricula;
         $usuario->password = $password;
         $usuario->api_token = $token;
         $usuario->timestamps;

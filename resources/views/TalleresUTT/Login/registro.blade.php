@@ -113,6 +113,22 @@
 	#input6::placeholder {
 		color: white;
 	}
+	#input7{
+		width: 350px;
+		height: 60px;
+		background-color: #333338;
+		border-radius: 45px;
+		color: #ffff;
+		text-align: center;
+		margin-top: 30px;
+		background-image: url('img/acount.png');
+		background-repeat: no-repeat;
+		background-size: 30px;
+		background-position: 40px;
+	}
+	#input7::placeholder {
+		color: white;
+	}
 	#col1{
 		text-align: center;
 	}
@@ -183,6 +199,7 @@
 					<div id="col5" class="col-12"> <input id="input5" type="text" placeholder="Nombre del Alumno" name="alumno"> </div>
 				    <div id="col1" class="col-12"> <input id="input6" type="text" placeholder="Usuario" name="usuario"> </div>
 				    <div id="col2" class="col-12"> <input id="input3" type="password" placeholder="Contraseña" name="password"> </div>
+					<div id="col2" class="col-12"> <input id="input7" type="text" placeholder="Matrícula" name="matricula"> </div>
 				    <div id="col3" class="col-12"> <button id="boton1" type="submit" class="btn btn-dark"> Registrarse </button> </div>
 				    <div id="col4" class="col-12"> <p id="p2">© 2019 Desarrollado por el equipo Amarillo de la Carrera de Sistemas Informáticos</p> </div>
 				  </div>

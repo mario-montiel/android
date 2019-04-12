@@ -33,6 +33,7 @@ class AlumnosController extends Controller
         ->where('usuario', 'LIKE', '%'.$request->buscadoralumno.'%')
         ->orWhere('alumno', 'LIKE', '%'.$request->buscadoralumno.'%')
         ->orWhere('horas_servicio_social', 'LIKE', '%'.$request->buscadoralumno.'%')
+        ->orWhere('matricula', 'LIKE', '%'.$request->buscadoralumno.'%')
         ->get();
 
         return $alumnos;
