@@ -51,7 +51,7 @@ class ArreglosWebSite extends Controller
         $vato = DB::table('usuarios')->where('usuario', $usuario)->first();
         
             return [
-                'usuario' => $vato->nombre,
+                'usuario' => $usuario,
                 'password' => $vato->password
             ];
         
