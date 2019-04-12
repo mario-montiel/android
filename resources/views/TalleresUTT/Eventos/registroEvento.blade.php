@@ -46,7 +46,7 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button id="btnregistro" type="submit" class="btn btn-primary btn-registrar" data-dismiss="modal">Registrar Taller</button>
+        <button id="btnregistro" type="submit" class="btn btn-primary btn-registrar" data-dismiss="modal">Registrar Evento</button>
       </div>
     </div>
     </form>

@@ -55,7 +55,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-closeupd" data-dismiss="modal">Cerrar</button>
-        <button id="btnasignar" type="submit" class="btn btn-primary btn-asignar" data-dismiss="modal">Guardar Cambios</button>
+        <button id="btnasignar" type="submit" class="btn btn-primary btn-asignar" data-dismiss="modal">Asignar Evento</button>
       </div>
     </div>
     </form>
