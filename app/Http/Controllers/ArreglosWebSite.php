@@ -46,7 +46,7 @@ class ArreglosWebSite extends Controller
         return array($talleres->encargado, $talleres->nombre, $usuario->alumno);
     }
 
-    function arregloJohnnyWuW(){
+    function arregloJohnnyWuW(Request $request){
         $usuario = Usuario::where("usuario", "=", $request->usuario)->get();
         return $usuario;
     }
