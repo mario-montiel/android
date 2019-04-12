@@ -107,6 +107,7 @@ class LoginController extends Controller
         $usuario->horas_servicio_social = 0;
         $usuario->carreras_id_carrera = $request->carrera;
         $usuario->cuatrimestre_id_cuatrimestre = $request->cuatrimestre;
+        $usuario->privilegios = 2;
         //dd($usuario->usuario);
 		$usuario->save();
 

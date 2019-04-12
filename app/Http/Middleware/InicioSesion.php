@@ -22,9 +22,11 @@ class InicioSesion
         $usuario = $request->get('usuario');
         $pass = $request->get('password');
 
-        Session::get('usuario');
+        $yeah = Session::get('usuario');
 
-        if (Session::get('usuario')) {
+        $verificacion = $yeah->privilegios;
+
+        if (Session::get('usuario') && $verificacion == 1) {
             $usuario = $next($request);
         }
         else if($usuario == null && $pass == null){
