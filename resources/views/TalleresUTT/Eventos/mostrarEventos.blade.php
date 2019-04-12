@@ -111,8 +111,6 @@
 									item.evento+ "</td><td>" +
 									item.informacion + "</td><td>" +
 									item.fecha + "</td><td>" +
-									"<button data-id="+item.id_evento+" data-evento="+item.evento+" data-informacion="+item.informacion+" data-fecha="+item.fecha+" data-toggle='modal' data-target='#modalActualizarEventos' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
-									"</td><td>" +
 									"<button data-id="+item.id_evento+" data-toggle='modal' data-target='#modalEliminarEventos' class='btn btn-danger btn-eliminar'><img id='delete' src='{{ asset('img/delete.png') }}'></button>";
 								$('tbody').append(changos);
 						});
