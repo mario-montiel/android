@@ -16,7 +16,11 @@ class AlumnosController extends Controller
     }
 
     function viewMostrarAlumnos(){
-        $alumnos = Login::all();
+        $taller = DB::table('personas')
+                ->select('personas.matricula','personas.nombre', 'personas.carreras_id_carrera', 'personas.cuatrimestre_id_cuatrimestre', 'solicitudes.horas_servicio_social')
+                ->join('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
+                ->join('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
+                ->get();
 
         return view('TalleresUTT.Alumnos.mostrarAlumnos', compact('alumnos'));
     }
