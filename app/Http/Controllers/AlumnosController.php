@@ -43,4 +43,6 @@ class AlumnosController extends Controller
 
         return $alumnos;
     }
+
+    //matricula, nombre, carrera, cuatrimestre(si alcanza el tiempo; "temporizador"), taller, horas,
 }

@@ -9,6 +9,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 	<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<title>@yield('titulo')</title>
 </head>
 <body>

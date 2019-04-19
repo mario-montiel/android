@@ -26,7 +26,7 @@ class InicioSesion
 
         $yeah = Session::get('usuario');
 
-        if (Session::get('usuario') && Session::get('usuario')->privilegios == 1) {
+        if (Session::get('usuario')) {
             $usuario = $next($request);
         }
         else if($usuario == null && $pass == null){
