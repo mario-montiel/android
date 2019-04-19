@@ -40,7 +40,7 @@
 @extends('TalleresUTT.Alumnos.actualizarAlumnos')
 <br>
 <br>
-@if( count($alumnos)>0)
+@if( count($personas)>0)
 <div class="centrado" style=" margin-left: auto;
     margin-right: auto;">
     <center>
