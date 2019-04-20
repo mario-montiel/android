@@ -63,7 +63,7 @@
             @foreach($alumnos as $alumno)
             <tr>
                 <td>{{$alumno->matricula}}</td>
-                <td>{{$alumno->alumno}}</td>
+                <td>{{$alumno->nombre}}</td>
                 <td>
                 @if( $alumno->horas_servicio_social == null)
                     0
