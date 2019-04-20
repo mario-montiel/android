@@ -64,7 +64,7 @@
                 <th>Nombre</th>
                 <th>Carrera</th>
                 <th>Cuatrimestre</th>
-                <th>Taller</th>
+                <th>Nombre del Taller</th>
                 <th>Horas</th>
                 <th>Fecha de ingreso (dd,mm,aaaa)</th>
                 <th>Última actualización</th>
