@@ -140,7 +140,7 @@
 
 	select.addEventListener("change", function(event) {
        
-            if(select.value == item.value){
+            
                 $.ajax({
 				type: 'GET',
 				url:  '/buscatesta',
@@ -157,7 +157,7 @@
 			         alert("Error del Servidor");
 			     }
 			}); 
-            }
+            
         
     });
 
