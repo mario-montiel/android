@@ -140,7 +140,10 @@
 
 	select.addEventListener("change", function(event) {
         $.each(select, function(i, item) {
-            alert("hola"+select.value);
+            alert(item.value);
+            if(select.value == item.value){
+
+            }
         });
     });
 
