@@ -73,8 +73,7 @@ class TalleresController extends Controller
             $taller->descripcion = $request->get('descripcion');
             $taller->horarios = $request->get('horarios');
             $taller->icono = $request->get('radio');
-            return $request->encargado;
-            $taller->id_maistro = $request->profesor;
+            $taller->id_maistro = $request->encargado;
             $taller->save();
         }
     }
