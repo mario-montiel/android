@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use App\Modelos\Login;
+use App\Modelos\Taller;
 use Carbon\Carbon;
 
 class AlumnosController extends Controller
