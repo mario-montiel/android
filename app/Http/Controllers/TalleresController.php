@@ -46,7 +46,7 @@ class TalleresController extends Controller
     function viewMostrarTalleres(){
         $numtalleres = Taller::paginate(5);
     	$taller = DB::table('talleres')
-                ->select('talleres.id_taller','talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
+                ->select('talleres.id_taller','talleres.taller', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
                 ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')->get();//paginate(5);
         $tipos_taller = DB::table('tipos_taller')->get();   
 
