@@ -136,26 +136,7 @@
                                 <table class="table" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Project Name</th>
-                                            <th>Employer</th>
-                                            <th>Time</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><a href="#">Work 1</a></td>
-                                            <td>Doe</td>
-                                            <td>john@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">Work 2</a></td>
-                                            <td>Moe</td>
-                                            <td>mary@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">Work 3</a></td>
-                                            <td>Dooley</td>
-                                            <td>july@example.com</td>
+                                            
                                         </tr>
                                     </tbody>
                                 </table>
