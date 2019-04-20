@@ -33,8 +33,13 @@
 				    <input id="nombre" type="text" class="form-control" id="input" name="nombre">
 				  </div>
 				  <div class="form-group">
-				    <label for="exampleFormControlSelect2"> Encargado </label>
-				   <input type="text" class="form-control" id="encargado" name="encargado"> 
+				    <label for="exampleFormControlSelect1"> Encargado </label>
+				     <select name="encargado" class="form-control" id="encargado">
+						 <option>Seleccione un encargado de taller</option>
+				    	@foreach($profesor as $prof)
+				    		<option value="{{ $prof->id_persona }}" {{ old('tipo') == $prof->id_persona ? 'selected' : '' }}>{{ $prof->nombre }}</option>
+				    	@endforeach
+				    </select>
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleFormControlSelect1"> Tipo de taller </label>

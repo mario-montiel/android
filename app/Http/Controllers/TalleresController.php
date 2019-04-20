@@ -25,21 +25,15 @@ class TalleresController extends Controller
     function talleres(Request $request){
         if ($request->ajax()) {
             # code...
+            //return $request;
             $talleres = new Taller();
-            $talleres->nombre = $request->get('nombre');
-            $talleres->encargado = $request->get('encargado');
             $talleres->tipos_taller = $request->get('tipo');
+            $talleres->taller = $request->get('nombre');
             $talleres->descripcion = $request->get('descripcion');
             $talleres->horarios = $request->get('horarios');
             $talleres->icono = $request->get('radio');
+            $talleres->id_maistro = $request->encargado;
             $talleres->save();
-
-            $tallerx = DB::table('talleres')
-            ->select('talleres.id_taller','talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
-            ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')->get();
-
-            return response()->json(['taller' => 'Taller registrado correctamente']);
-            
         }
     	
     }
@@ -85,12 +79,6 @@ class TalleresController extends Controller
             $id_taller = $request->id_taller;
              $taller = Taller::findOrFail($id);
             $taller->delete($id);
-
-             $eliminar = DB::table('talleres')
-             ->select('talleres.id_taller','talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
-             ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')->get();
- 
-             return $eliminar;
         }
 
         Session::flash('eliminacion', 'eliminacion');

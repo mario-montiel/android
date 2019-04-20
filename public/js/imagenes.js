@@ -249,15 +249,15 @@ setTimeout(function() {
 							$.each(data, function(i, item) {
 					
 								changos = "<tr data-id="+item.id_taller+"><td>" +
-									item.nombre+ "</td><td>" +
-									item.encargado + "</td><td>" +
-									item.tipo + "</td><td>" +
-									item.descripcion + "</td><td>" +
-									item.horarios + "</td><td>"  + 
-									"<button data-id="+item.id_taller+" data-nombre="+item.nombre+" data-encargado="+item.encargado+" data-tipo="+item.tipo+" data-descripcion="+item.descripcion+" data-horarios="+item.horarios+" data-toggle='modal' data-target='#modalActualizarTalleres' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
-									"</td><td>" +
-									"<button data-id="+item.id_taller+" data-toggle='modal' data-target='#eliminarModal' class='btn btn-danger btn-eliminar'><img id='delete' src='img/delete.png'></button>";
-								$('#mostrardatos').append(changos);
+								item.taller+ "</td><td>" +
+								item.descripcion + "</td><td>" +
+								item.horarios + "</td><td>" +
+								item.tipo + "</td><td>" +
+								item.nombre + "</td><td>"  + 
+								"<button data-id="+item.id_taller+" data-nombre="+item.taller+" data-encargado="+item.nombre+" data-tipo="+item.tipo+" data-descripcion="+item.descripcion+" data-horarios="+item.horarios+" data-toggle='modal' data-target='#modalActualizarTalleres' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
+								"</td><td>" +
+								"<button data-id="+item.id_taller+" data-toggle='modal' data-target='#eliminarModal' class='btn btn-danger btn-eliminar'><img id='delete' src='img/delete.png'></button>";
+							$('#mostrardatos').append(changos);
 								Swal.fire({
 									position: 'top-end',
 									type: 'success',
@@ -308,15 +308,15 @@ setTimeout(function() {
 										$.each(data, function(i, item) {
 								
 											changos = "<tr data-id="+item.id_taller+"><td>" +
-												item.nombre+ "</td><td>" +
-												item.encargado + "</td><td>" +
-												item.tipo + "</td><td>" +
-												item.descripcion + "</td><td>" +
-												item.horarios + "</td><td>"  + 
-												"<button data-id="+item.id_taller+" data-nombre="+item.nombre+" data-encargado="+item.encargado+" data-tipo="+item.tipo+" data-descripcion="+item.descripcion+" data-horarios="+item.horarios+" data-toggle='modal' data-target='#modalActualizarTalleres' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
-												"</td><td>" +
-												"<button data-id="+item.id_taller+" data-toggle='modal' data-target='#eliminarModal' class='btn btn-danger btn-eliminar'><img id='delete' src='img/delete.png'></button>";
-											$('#mostrardatos').append(changos);
+											item.taller+ "</td><td>" +
+											item.descripcion + "</td><td>" +
+											item.horarios + "</td><td>" +
+											item.tipo + "</td><td>" +
+											item.nombre + "</td><td>"  + 
+											"<button data-id="+item.id_taller+" data-nombre="+item.taller+" data-encargado="+item.nombre+" data-tipo="+item.tipo+" data-descripcion="+item.descripcion+" data-horarios="+item.horarios+" data-toggle='modal' data-target='#modalActualizarTalleres' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
+											"</td><td>" +
+											"<button data-id="+item.id_taller+" data-toggle='modal' data-target='#eliminarModal' class='btn btn-danger btn-eliminar'><img id='delete' src='img/delete.png'></button>";
+										$('#mostrardatos').append(changos);
 											Swal.fire({
 												position: 'top-end',
 												type: 'success',
