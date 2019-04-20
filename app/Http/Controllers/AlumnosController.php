@@ -59,6 +59,8 @@ class AlumnosController extends Controller
         ->rightjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
         ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
         ->rightjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
+        ->leftjoin('cuatrimestres','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
+        ->leftjoin('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
         ->where('personas.tipos_personas_id_tipo_persona', '=', 2)
         ->get();
 
