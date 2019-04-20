@@ -50,6 +50,7 @@
 
 <center><input name="buscador" id="buscador" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
 
+
 <center>
 <button id="btnadd" class="btn btn-primary" href="#" data-toggle="modal" data-target="#modalRegistroTalleres">Agregar Taller<img id="add" src="{{ asset('img/add.png') }}"> 
 </button>
@@ -72,10 +73,10 @@
 		<thead>
 			<tr>
 			<th>Nombre de Taller</th>
-			<th>Encargado</th>
-			<th>Tipo de Taller</th>
 			<th>Descripción</th>
 			<th>Horarios</th>
+			<th>Tipo de Taller</th>
+			<th>Encargado</th>
 			<th>Actualizar</th>
 			<th>Eliminar</th>
 			</tr>
@@ -84,13 +85,13 @@
 				@foreach($taller as $t)
 				<tr data-id="{{ $t->id_taller }}">
 					<td > {{$t->taller}} </td>
-					<td> {{$t->encargado}} </td>
-					<td> {{$t->tipo}} </td>
 					<td> {{$t->descripcion}} </td>
 					<td> {{$t->horarios}} </td>
+					<td> {{$t->tipo}} </td>
+					<td> {{$t->nombre}} </td>
 					<td> 
 			             	{{ csrf_field() }}
-								<a data-toggle='modal' data-id="{{$t->id_taller}}" data-nombre="{{$t->taller}}" data-encargado="{{$t->encargado}}" 
+								<a data-toggle='modal' data-id="{{$t->id_taller}}" data-nombre="{{$t->taller}}" data-encargado="{{$t->nombre}}" 
 								data-tipo="{{$t->tipo}}" data-descripcion="{{$t->descripcion}}" data-horarios="{{$t->horarios}}"  data-target='#modalActualizarTalleres' class='btn btn-warning'>
 								<img id="update" src="{{ asset('img/update.png') }}">
 							</a></td>
@@ -133,12 +134,12 @@
 						$.each(data, function(i, item) {
 								
 								changos = "<tr data-id="+item.id_taller+"><td>" +
-									item.nombre+ "</td><td>" +
-									item.encargado + "</td><td>" +
-									item.tipo + "</td><td>" +
+									item.taller+ "</td><td>" +
 									item.descripcion + "</td><td>" +
-									item.horarios + "</td><td>"  + 
-									"<button data-id="+item.id_taller+" data-nombre="+item.nombre+" data-encargado="+item.encargado+" data-tipo="+item.tipo+" data-descripcion="+item.descripcion+" data-horarios="+item.horarios+" data-toggle='modal' data-target='#modalActualizarTalleres' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+									item.horarios + "</td><td>" +
+									item.tipo + "</td><td>" +
+									item.nombre + "</td><td>"  + 
+									"<button data-id="+item.id_taller+" data-nombre="+item.taller+" data-encargado="+item.encargado+" data-tipo="+item.tipo+" data-descripcion="+item.descripcion+" data-horarios="+item.horarios+" data-toggle='modal' data-target='#modalActualizarTalleres' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
 									"</td><td>" +
 									"<button data-id="+item.id_taller+" data-toggle='modal' data-target='#eliminarModal' class='btn btn-danger btn-eliminar'><img id='delete' src='{{ asset('img/delete.png') }}'></button>";
 								$('#mostrardatos').append(changos);

@@ -82,22 +82,44 @@ class LoginController extends Controller
     }
     function registrarPersona(Request $request)
     {
+        if($request->tpersona == 1){
+            $this->validate($request, [
+                'usuario' => 'required|max:255',
+                'password' => 'required|max:255',
+                'alumno' => 'required|max:255',
+                'tpersona' => 'required|integer'], 
+    
+                ['usuario.required' => 'Ingrese el nombre de un usuario',
+                'password.required' => 'Ingrese una contraseña',
+                'alumno.required' => 'Ingrese el nombre completo del alumno',
+                'tpersona.required' => 'Seleccione un tipo de persona',
+                'tpersona.integer' => 'Seleccione un tipo de persona']);
+        }
+        else if($request->tpersona == 2){
 		$this->validate($request, [
             'usuario' => 'required|max:255',
             'password' => 'required|max:255',
             'alumno' => 'required|max:255',
-            //'matricula' => 'required|max:255',
-            //'seccion' => 'required|max:1',
+            'matricula' => 'required|max:255',
+            'seccion' => 'required|max:1',
             'tpersona' => 'required|integer'], 
 
             ['usuario.required' => 'Ingrese el nombre de un usuario',
             'password.required' => 'Ingrese una contraseña',
             'alumno.required' => 'Ingrese el nombre completo del alumno',
-            /*'matricula.required' => 'Ingrese la matrícula',
+            'matricula.required' => 'Ingrese la matrícula',
             'seccion.required' => 'Ingrese una sección',
-            'seccion.max' => 'La sección debe contener solo 1 caracter',*/
+            'seccion.max' => 'La sección debe contener solo 1 caracter',
             'tpersona.required' => 'Seleccione un tipo de persona',
             'tpersona.integer' => 'Seleccione un tipo de persona']);
+        }
+        else{
+            $this->validate($request, [
+                'tpersona' => 'required|integer'], 
+    
+                ['tpersona.required' => 'Seleccione un tipo de persona',
+                'tpersona.integer' => 'Seleccione un tipo de persona']);
+        }
 
         $con = $request->get('password');
         $password = Hash::make($con);

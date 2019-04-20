@@ -46,7 +46,8 @@ class TalleresController extends Controller
     function viewMostrarTalleres(){
         $numtalleres = Taller::paginate(5);
     	$taller = DB::table('talleres')
-                ->select('talleres.id_taller','talleres.taller', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
+                ->select('talleres.id_taller','talleres.taller', 'personas.nombre', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
+                ->join('personas', 'personas.id_persona', '=', 'talleres.id_maistro')
                 ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')->get();//paginate(5);
         $tipos_taller = DB::table('tipos_taller')->get();   
 
@@ -63,14 +64,14 @@ class TalleresController extends Controller
 
     function actualizarTaller(Request $request, $id){
         if($request->ajax()){
-             $id_taller = $request->id_taller;
+            $id_taller = $request->id_taller;
             $taller = Taller::findOrFail($id_taller);
-            $taller->nombre = $request->get('nombre');
-            $taller->encargado = $request->get('encargado');
             $taller->tipos_taller = $request->get('tipo');
+            $taller->taller = $request->get('nombre');
             $taller->descripcion = $request->get('descripcion');
             $taller->horarios = $request->get('horarios');
             $taller->icono = $request->get('radio');
+            $taller->id_maistro = 5;
             $taller->save();
         }
     }
@@ -95,17 +96,18 @@ class TalleresController extends Controller
 
     public function search(Request $request){
     
-            $tabla = DB::table('talleres')
-                ->select('talleres.id_taller','talleres.nombre', 'talleres.encargado', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
-                ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')
-                ->orWhere('encargado', 'LIKE', '%'.$request->search.'%')
-                ->orWhere('nombre', 'LIKE', '%'.$request->search.'%')
+        $taller = DB::table('talleres')
+        ->select('talleres.id_taller','talleres.taller', 'personas.nombre', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
+        ->join('personas', 'personas.id_persona', '=', 'talleres.id_maistro')
+        ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')
+                ->Where('taller', 'LIKE', '%'.$request->search.'%')
                 ->orWhere('tipo', 'LIKE', '%'.$request->search.'%')
                 ->orWhere('descripcion', 'LIKE', '%'.$request->search.'%')
                 ->orWhere('horarios', 'LIKE', '%'.$request->search.'%')
+                ->orWhere('id_maistro', 'LIKE', '%'.$request->search.'%')
                 ->get();
 
-            return $tabla;
+            return $taller;
        
     }
 }

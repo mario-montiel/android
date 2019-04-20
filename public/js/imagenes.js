@@ -161,7 +161,9 @@ setTimeout(function() {
 		  var encargado = button.data('encargado')
 		  var tipo = button.data('tipo')
 		  var descripcion = button.data('descripcion')
-		  var horarios = button.data('horarios')
+			var horarios = button.data('horarios')
+			
+			alert(id);
 
 		  var modal = $(this)
 		  modal.find('.modal-body #idActualizar').val(id)
@@ -187,7 +189,7 @@ setTimeout(function() {
 			var urls = forms.attr('action');
 			$.post(urls, forms.serialize(), function(result){
 				//row.fadeOut();
-						
+				console.log(result);
 			e.preventDefault();
 			$value = $('#buscador').val();
 				$.ajax({
@@ -195,16 +197,17 @@ setTimeout(function() {
 					url:  '/search',
 					data: {'search':$value},
 					success:function(data){
+						
 							$('#mostrardatos').html("");
 							$.each(data, function(i, item) {
 					
 								changos = "<tr data-id="+item.id_taller+"><td>" +
-									item.nombre+ "</td><td>" +
-									item.encargado + "</td><td>" +
-									item.tipo + "</td><td>" +
+									item.taller+ "</td><td>" +
 									item.descripcion + "</td><td>" +
-									item.horarios + "</td><td>"  + 
-									"<button data-id="+item.id_taller+" data-nombre="+item.nombre+" data-encargado="+item.encargado+" data-tipo="+item.tipo+" data-descripcion="+item.descripcion+" data-horarios="+item.horarios+" data-toggle='modal' data-target='#modalActualizarTalleres' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
+									item.horarios + "</td><td>" +
+									item.tipo + "</td><td>" +
+									item.nombre + "</td><td>"  + 
+									"<button data-id="+item.id_taller+" data-nombre="+item.taller+" data-encargado="+item.nombre+" data-tipo="+item.tipo+" data-descripcion="+item.descripcion+" data-horarios="+item.horarios+" data-toggle='modal' data-target='#modalActualizarTalleres' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
 									"</td><td>" +
 									"<button data-id="+item.id_taller+" data-toggle='modal' data-target='#eliminarModal' class='btn btn-danger btn-eliminar'><img id='delete' src='img/delete.png'></button>";
 								$('#mostrardatos').append(changos);
