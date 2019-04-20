@@ -23,9 +23,9 @@ class AlumnosController extends Controller
                 ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
                 ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
                 ->get();
+        $talleres = Taller::all();
 
-
-        return view('TalleresUTT.Alumnos.mostrarAlumnos', compact('alumnos', 'personas'));
+        return view('TalleresUTT.Alumnos.mostrarAlumnos', compact('alumnos', 'personas', 'talleres'));
     }
 
     function actualizarAlumno(Request $request, $id){
