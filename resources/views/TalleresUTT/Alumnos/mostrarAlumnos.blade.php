@@ -139,7 +139,7 @@
     var select = document.getElementById("select");
 
 	select.addEventListener("change", function(event) {
-        $.each(select, function(i, item) {
+       
             if(select.value == item.value){
                 $.ajax({
 				type: 'GET',
@@ -147,16 +147,18 @@
 				data: {'buscatesta':select},
 				success:function(data){
                         $('#tbody').html("");
+                        $.each(data, function(i, item) {
 								changos = "<tr><td>" +
 									item.nombre + "</td><td>" +
 								$('#tbody').append(changos);
+                        });
 				},
 			     error: function () {
 			         alert("Error del Servidor");
 			     }
 			}); 
             }
-        });
+        
     });
 
 </script>
