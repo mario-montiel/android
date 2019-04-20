@@ -139,7 +139,9 @@
     var select = document.getElementById("select");
 
 	select.addEventListener("change", function(event) {
-        alert("Hola");
+        $.each(select, function(i, item) {
+            alert("hola"+select);
+        });
     });
 
 </script>
