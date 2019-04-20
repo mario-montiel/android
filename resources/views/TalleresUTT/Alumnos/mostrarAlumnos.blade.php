@@ -54,7 +54,7 @@
                 <th>Nombre</th>
                 <th>Carrera</th>
                 <th>Cuatrimestre</th>
-                <th>Tallerrrrrrrrr</th>
+                <th>Taller</th>
                 <th>Horas</th>
                 <th>Fecha de ingreso (dd,mm,aaaa)</th>
                 <th>Última actualización</th>
@@ -68,6 +68,7 @@
                 <td>{{$alumno->nombre}}</td>
                 <td>{{$alumno->carreras_id_carrera}}</td>
                 <td>{{$alumno->cuatrimestre_id_cuatrimestre}}</td>
+                <td>{{$alumno->nombre}}</td>
                 <td>
                 @if( $alumno->horas_servicio_social == null)
                     0
