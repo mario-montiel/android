@@ -22,7 +22,7 @@ class AlumnosController extends Controller
                 ->select('personas.matricula', 'personas.nombre', 'personas.carreras_id_carrera', 'personas.cuatrimestre_id_cuatrimestre', 'talleres.taller', 'solicitudes.horas_servicio_social', 'usuarios.created_at', 'usuarios.updated_at')
                 ->rightjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
                 ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
-                ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
+                ->rightjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
                 ->where('personas.tipos_personas_id_tipo_persona', '=', 2)
                 ->get();
         $talleres = Taller::all();
