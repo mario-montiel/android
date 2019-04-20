@@ -50,12 +50,15 @@
     display: table-cell;">
         <thead>
             <tr>
+    //matricula, nombre, carrera, cuatrimestre(si alcanza el tiempo; "temporizador"), taller, horas,
                 <th>Matrícula</th>
-                <th>Usuario</th>
-                <th>Alumno</th>
-                <th>Horas De Servicio Social</th>
-                <th>Fecha de Ingreso (dd,mm,aaaa)</th>
-                <th>Última modificación</th>
+                <th>Nombre</th>
+                <th>Carrera</th>
+                <th>Cuatrimestre</th>
+                <th>Taller</th>
+                <th>Horas</th>
+                <th>Fecha de ingreso (dd,mm,aaaa)</th>
+                <th>Última actualización</th>
                 <th>Actualizar</th>
             </tr>
         </thead>
