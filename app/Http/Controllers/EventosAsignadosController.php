@@ -20,7 +20,7 @@ class EventosAsignadosController extends Controller
     function viewEventosAsignados(){
         $event = Evento::all();
         $talleres = DB::table('talleres')->get();
-        $ta_has_ev = DB::table('tallleres_has_eventos')->get();
+        $ta_has_ev = DB::table('talleres_has_eventos')->get();
 
         return view('TalleresUTT.EventosAsignados.mostrareventosasignados', compact('event', 'talleres', 'ta_has_ev'));
     }
@@ -28,17 +28,17 @@ class EventosAsignadosController extends Controller
     function asignacion(Request $request){
         if($request->ajax()){
             $id_evento = $request->eventoselect;
-            return $id_evento;
             $id_taller = $request->tallerselect;
             $nombre = $request->eventasig;
             $evento = Evento::find($id_evento);
             $event = $evento->evento;
             $taller = Taller::find($id_taller);
-            $talle = $taller->nombre;
-            return $evento->talleres()->attach($id_taller, 
+            $talle = $taller->taller;
+            $evento->talleres()->attach($id_taller, 
                 ['nombre' => $nombre,
-                'taller' => $talle,
-                'evento' => $event]);
+                'evento' => $event,
+                'taller' => $talle
+                ]);
         }
     }
 
@@ -46,7 +46,7 @@ class EventosAsignadosController extends Controller
         if($request->ajax()){
             $id_evento = $request->eventoselect;
             $id_taller = $request->tallerselect;
-            return $id_taller = $request->tallerselect;
+            $id_taller = $request->tallerselect;
             $nombre = $request->eventasig;
             $evento = Evento::find($id_evento);
             $event = $evento->evento;
@@ -76,7 +76,7 @@ class EventosAsignadosController extends Controller
     }
 
     function buscador(Request $request){
-        $alumnos = DB::table('tallleres_has_eventos')
+        $alumnos = DB::table('talleres_has_eventos')
         ->where('nombre', 'LIKE', '%'.$request->buscadorasignado.'%')
         ->orWhere('taller', 'LIKE', '%'.$request->buscadorasignado.'%')
         ->orWhere('evento', 'LIKE', '%'.$request->buscadorasignado.'%')

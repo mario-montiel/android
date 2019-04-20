@@ -98,11 +98,12 @@ Route::get('/eventos', 'EventosController@viewEventos');
 Route::post('/evento', 'EventosController@eventos');
 Route::post('/editarevento/{id}', 'EventosController@actualizar');
 Route::post('/eliminarevento/{id}', 'EventosController@eliminar');
-Route::post('/asignarevento', 'EventosController@asignacion');
+//Route::post('/asignarevento', 'EventosController@asignacion');
 Route::post('/designarevento', 'EventosController@eliminarpivote');
 Route::get('/buscador', 'EventosController@buscador');
 
 Route::get('/eventosasignados', 'EventosAsignadosController@viewEventosAsignados');
+Route::post('/asignarevento', 'EventosAsignadosController@asignacion');
 Route::post('/designarevento/{idevento}/{idtaller}', 'EventosAsignadosController@eliminarpivote');
 Route::get('/buscadorasignado', 'EventosAsignadosController@buscador');
 

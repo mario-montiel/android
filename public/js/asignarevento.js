@@ -8,7 +8,6 @@ $(document).ready(function(){
         e.preventDefault();
         var form_asignar = $('#form-asignar');
         var url = form_asignar.attr('action');
-        
             $.post(url, form_asignar.serialize(), function(result){
                     //row.fadeOut();
                     e.preventDefault();
@@ -36,7 +35,7 @@ $(document).ready(function(){
                                       title: 'Evento asignado correctamente',
                                       showConfirmButton: false,
                                       timer: 1500
-                                  })        
+                                  })    
                             });
                     },
                            error: function () {

@@ -27,7 +27,7 @@ class EventosController extends Controller
         ->get();*/
         $event = Evento::all();
         $talleres = DB::table('talleres')->get();
-        $ta_has_ev = DB::table('tallleres_has_eventos')->get();
+        $ta_has_ev = DB::table('talleres_has_eventos')->get();
 
         return view('TalleresUTT.Eventos.mostrarEventos', compact('event', 'talleres', 'ta_has_ev'));
     }
@@ -41,8 +41,6 @@ class EventosController extends Controller
             $eventos->fecha = $request->fecha;
             //dd($request->evento);
             $eventos->save();
-            
-            return $event = DB::table('eventos')->get();
         }
     }
 
@@ -55,8 +53,6 @@ class EventosController extends Controller
             $eventos->informacion = $request->informacion;
             $eventos->fecha = $request->fecha;
             $eventos->save();
-
-            return $event = DB::table('eventos')->get();
        }
     }
 

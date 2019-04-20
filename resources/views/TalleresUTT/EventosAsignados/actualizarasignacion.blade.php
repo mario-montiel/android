@@ -35,14 +35,14 @@
 				     <select name="taller" class="form-control" id="tallerActualizar">
 				     	<option>Seleccione el tipo de taller</option>
 				    	@foreach($talleres as $t)
-				    		<option value="{{ $t->id_taller }}" {{ old('taller') == $t->id_taller ? 'selected' : '' }}>{{ $t->nombre }}</option>
+				    		<option value="{{ $t->id_taller }}" {{ old('taller') == $t->id_taller ? 'selected' : '' }}>{{ $t->taller }}</option>
 				    	@endforeach
 				    </select>
           </div>
           <div class="form-group">
 				    <label for="exampleFormControlSelect1"> Evento </label>
 				     <select name="evento" class="form-control" id="eventoActualizar">
-				     	<option>Seleccione el tipo de taller</option>
+				     	<option>Seleccione el tipo de evento</option>
 				    	@foreach($event as $ev)
 				    		<option value="{{ $ev->id_evento }}" {{ old('evento') == $ev->id_evento ? 'selected' : '' }}>{{ $ev->evento }}</option>
 				    	@endforeach

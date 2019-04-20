@@ -46,7 +46,7 @@
 				<select name="tallerselect" class="form-control" id="tallerselect">
 				    <option>Seleccione un taller</option>
 				    @foreach($talleres as $ev)
-				    	<option value="{{ $ev->id_taller }}" {{ old('nombre') == $ev->id_taller ? 'selected' : '' }}>{{ $ev->nombre }}</option>
+				    	<option value="{{ $ev->id_taller }}" {{ old('nombre') == $ev->id_taller ? 'selected' : '' }}>{{ $ev->taller }}</option>
 				    @endforeach
 				</select>
 		    </div>

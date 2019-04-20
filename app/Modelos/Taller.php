@@ -12,6 +12,6 @@ class Taller extends Model
     public $timestamps = false;
 
     public function eventos(){
-        return $this->belongsToMany(Evento::class, 'tallleres_has_eventos', 'tallleres_id_taller', 'eventos_id_evento')->withPivot('nombre', 'taller', 'evento');
+        return $this->belongsToMany(Evento::class, 'talleres_has_eventos', 'tallleres_id_taller', 'eventos_id_evento')->withPivot('nombre', 'evento', 'taller');
     }
 }

@@ -104,7 +104,6 @@ $('.btn-registrar').click(function(e){
 e.preventDefault();
 var formx = $('#form-registracion');
 var urlx = formx.attr('action');
-
 $.post(urlx, formx.serialize(), function(result){
         //row.fadeOut();
         //$('tbody').append(result);
@@ -137,14 +136,14 @@ $.post(urlx, formx.serialize(), function(result){
                             })
                     });
             },
-             error: function () {
+             /*error: function () {
                 Swal.fire({
                     type: 'error',
                     title: 'Oops...',
                     text: 'Error del Servidor',
                     footer: '<span class="alert alert-danger">¿Porqué no intenta de nuevo?. Estaria genial</span>'
                   })
-             }
+             }*/
         });
 
 

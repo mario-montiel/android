@@ -15,8 +15,6 @@
          
 
 		<div class="container-fluid">
-	
-
             @if ($errors->any())
 							<ul style="color: white; margin-top: 25px; margin: auto;">
 									@foreach ($errors->all() as $error)
