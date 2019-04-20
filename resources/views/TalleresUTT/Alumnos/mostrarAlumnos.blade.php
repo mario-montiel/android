@@ -88,7 +88,7 @@
                     <div class="col-md-12">
                         <nav>
                             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#alumno" role="tab" aria-controls="nav-home" aria-selected="true">Alumnos</a>
+                                <a class="nav-item nav-link active" id="alumno-tap" data-toggle="tab" href="#alumno" role="tab" aria-controls="alumno" aria-selected="true">Alumnos</a>
                                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#profesor" role="tab" aria-controls="nav-profile" aria-selected="false">Profesores</a>
                             </div>
                         </nav>
@@ -136,7 +136,23 @@
                                 <table class="table" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            
+                                            <th>Nombre</th>
+                                            <th>Nombre del taller</th>
+                                            <th>Fecha de ingreso (dd,mm,aaaa)</th>
+                                            <th>Última actualización</th>
+                                            <th>Actualizar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        @foreach($profesores as $profesor)
+                                            <td>{{$profesor->nombre}}</td>
+                                            <td>{{$profesor->taller}}</td>
+                                            <td>{{ Carbon\Carbon::parse($profesor->created_at)->format('d-m-Y') }}</td>
+                                            <td>{{ Carbon\Carbon::parse($profesor->updated_at)->format('d-m-Y') }}</td>
+                                            {{ csrf_field() }}
+                                            <td><button data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
+                                        @endforeach
                                         </tr>
                                     </tbody>
                                 </table>
