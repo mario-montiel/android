@@ -83,14 +83,14 @@
 		<tbody id="mostrardatos">
 				@foreach($taller as $t)
 				<tr data-id="{{ $t->id_taller }}">
-					<td > {{$t->nombre}} </td>
+					<td > {{$t->taller}} </td>
 					<td> {{$t->encargado}} </td>
 					<td> {{$t->tipo}} </td>
 					<td> {{$t->descripcion}} </td>
 					<td> {{$t->horarios}} </td>
 					<td> 
 			             	{{ csrf_field() }}
-								<a data-toggle='modal' data-id="{{$t->id_taller}}" data-nombre="{{$t->nombre}}" data-encargado="{{$t->encargado}}" 
+								<a data-toggle='modal' data-id="{{$t->id_taller}}" data-nombre="{{$t->taller}}" data-encargado="{{$t->encargado}}" 
 								data-tipo="{{$t->tipo}}" data-descripcion="{{$t->descripcion}}" data-horarios="{{$t->horarios}}"  data-target='#modalActualizarTalleres' class='btn btn-warning'>
 								<img id="update" src="{{ asset('img/update.png') }}">
 							</a></td>
