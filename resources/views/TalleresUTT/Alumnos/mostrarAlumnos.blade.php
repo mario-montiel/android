@@ -139,8 +139,8 @@
     var select = document.getElementById("select");
 
 	select.addEventListener("change", function(event) {
-        $.each(select, function(i, item) {
-            alert("hola"+select);
+        $.each($talleres, function(i, item) {
+            alert("hola"+select.val());
         });
     });
 
