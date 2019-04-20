@@ -66,6 +66,8 @@
             <tr>
                 <td>{{$alumno->matricula}}</td>
                 <td>{{$alumno->nombre}}</td>
+                <td>{{$alumno->carrera}}</td>
+                <td>{{$alumno->cuatrimestre}}</td>
                 <td>
                 @if( $alumno->horas_servicio_social == null)
                     0
