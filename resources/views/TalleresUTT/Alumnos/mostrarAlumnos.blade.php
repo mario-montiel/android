@@ -142,7 +142,7 @@
         $.each(select, function(i, item) {
             alert(item.value);
             if(select.value == item.value){
-
+                alert("mames");
             }
         });
     });
