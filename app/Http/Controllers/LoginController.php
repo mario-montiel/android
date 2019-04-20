@@ -127,15 +127,13 @@ class LoginController extends Controller
 
         $persona = new Persona();
         $persona->nombre = $request->get('alumno');
-        if($request->tpersona == 1){
+        if($request->tpersona == 2){
             $persona->matricula = $request->get('matricula');
             $persona->seccion = $request->get('seccion');
-        }
-        $persona->tipos_personas_id_tipo_persona = $request->tpersona;
-        if($request->tpersona == 2){
             $persona->carreras_id_carrera =$request->carrera;
             $persona->cuatrimestre_id_cuatrimestre = $request->cuatrimestre;
         }
+        $persona->tipos_personas_id_tipo_persona = $request->tpersona;
         $persona->save();
 
         $person = Session::put('persona', $persona);

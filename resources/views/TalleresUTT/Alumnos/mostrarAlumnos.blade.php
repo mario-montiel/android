@@ -60,42 +60,127 @@
     display: table-cell;">
         <thead>
             <tr>
-                <th>Matrícula</th>
-                <th>Nombre</th>
-                <th>Carrera</th>
-                <th>Cuatrimestre</th>
-                <th>Nombre del Taller</th>
-                <th>Horas</th>
-                <th>Fecha de ingreso (dd,mm,aaaa)</th>
-                <th>Última actualización</th>
-                <th>Actualizar</th>
+                
             </tr>
         </thead>
         <tbody id="tbody" style="text-align:center;">
-            @foreach($alumnos as $alumno)
+            
             <tr>
-                <td>{{$alumno->matricula}}</td>
-                <td>{{$alumno->nombre}}</td>
-                <td>{{$alumno->carrera}}</td>
-                <td>{{$alumno->cuatrimestre}}</td>
-                <td>{{$alumno->taller}}</td>
-                <td>
-                @if( $alumno->horas_servicio_social == null)
-                    0
-                @else
-                    {{$alumno->horas_servicio_social}}
-                @endif
-                </td>
-                <td>{{ Carbon\Carbon::parse($alumno->created_at)->format('d-m-Y') }}</td>
-                <td>{{ Carbon\Carbon::parse($alumno->updated_at)->format('d-m-Y') }}</td>
-                {{ csrf_field() }}
-                <td><button data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
+                
             </tr>
-            @endforeach
+           
         </tbody>
     </table>
 </center>
 </div>
+
+
+
+
+
+
+
+
+
+<section id="tabs" class="project-tab">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav>
+                            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#alumno" role="tab" aria-controls="nav-home" aria-selected="true">Alumnos</a>
+                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#profesor" role="tab" aria-controls="nav-profile" aria-selected="false">Profesores</a>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="alumno" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <table class="table" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Matrícula</th>
+                                            <th>Nombre</th>
+                                            <th>Carrera</th>
+                                            <th>Cuatrimestre</th>
+                                            <th>Nombre del Taller</th>
+                                            <th>Horas</th>
+                                            <th>Fecha de ingreso (dd,mm,aaaa)</th>
+                                            <th>Última actualización</th>
+                                            <th>Actualizar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        @foreach($alumnos as $alumno)
+                                            <td>{{$alumno->matricula}}</td>
+                                            <td>{{$alumno->nombre}}</td>
+                                            <td>{{$alumno->carrera}}</td>
+                                            <td>{{$alumno->cuatrimestre}}</td>
+                                            <td>{{$alumno->taller}}</td>
+                                            <td>
+                                            @if( $alumno->horas_servicio_social == null)
+                                                0
+                                            @else
+                                                {{$alumno->horas_servicio_social}}
+                                            @endif
+                                            </td>
+                                            <td>{{ Carbon\Carbon::parse($alumno->created_at)->format('d-m-Y') }}</td>
+                                            <td>{{ Carbon\Carbon::parse($alumno->updated_at)->format('d-m-Y') }}</td>
+                                            {{ csrf_field() }}
+                                            <td><button data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
+                                        @endforeach
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="profesor" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <table class="table" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Project Name</th>
+                                            <th>Employer</th>
+                                            <th>Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="#">Work 1</a></td>
+                                            <td>Doe</td>
+                                            <td>john@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Work 2</a></td>
+                                            <td>Moe</td>
+                                            <td>mary@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Work 3</a></td>
+                                            <td>Dooley</td>
+                                            <td>july@example.com</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @else
 <div class="container"><center><br><label class="alert alert-primary"> No hay ningún Alumno registrado </label></h1></center></div>

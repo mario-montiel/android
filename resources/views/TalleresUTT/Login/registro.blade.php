@@ -291,7 +291,7 @@
 						<select name="carrera" class="form-control" id="select2">
 							<option>Seleccione la carrrera</option>
 							@foreach($carreras as $carrera)
-								<option value="{{ $carrera->id_carrera }}" {{ old('tipo') == $carrera->id_carrera ? 'selected' : '' }}>{{ $carrera->nombre }}</option>
+								<option value="{{ $carrera->id_carrera }}" {{ old('tipo') == $carrera->id_carrera ? 'selected' : '' }}>{{ $carrera->carrera }}</option>
 							@endforeach
 						</select>
 					</div>
