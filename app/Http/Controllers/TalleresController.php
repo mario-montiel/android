@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Collection as Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Request as Rq; 
+use Illuminate\Support\Facades\Request as Rq;
+use App\Modelos\Persona;
 use App\Modelos\Taller;
 use App\Modelos\Tipo_Taller;
 use Session;
@@ -18,7 +19,7 @@ class TalleresController extends Controller
     }
 
 	function viewTalleres(){
-		$tipos_taller = DB::table('tipos_taller')->get();
+        $tipos_taller = DB::table('tipos_taller')->get();
 		return view('TalleresUTT.Talleres.registroTalleres', compact('tipos_taller'));
 	}
     function talleres(Request $request){
@@ -49,9 +50,10 @@ class TalleresController extends Controller
                 ->select('talleres.id_taller','talleres.taller', 'personas.nombre', 'tipos_taller.tipo', 'talleres.descripcion', 'talleres.horarios')
                 ->join('personas', 'personas.id_persona', '=', 'talleres.id_maistro')
                 ->join('tipos_taller','tipos_taller.id_tipotaller', '=', 'talleres.tipos_taller')->get();//paginate(5);
-        $tipos_taller = DB::table('tipos_taller')->get();   
+        $tipos_taller = DB::table('tipos_taller')->get();
+        $profesor = DB::table('personas')->where('tipos_personas_id_tipo_persona', '=', 1)->get();
 
-    	   return view('TalleresUTT.Talleres.mostrarTalleres', compact('taller', 'tipos_taller', 'numtalleres'));
+    	   return view('TalleresUTT.Talleres.mostrarTalleres', compact('taller', 'tipos_taller', 'numtalleres', 'profesor'));
     }
 
     function viewMostrarResultado(){
@@ -71,7 +73,8 @@ class TalleresController extends Controller
             $taller->descripcion = $request->get('descripcion');
             $taller->horarios = $request->get('horarios');
             $taller->icono = $request->get('radio');
-            $taller->id_maistro = 5;
+            return $request->encargado;
+            $taller->id_maistro = $request->profesor;
             $taller->save();
         }
     }
@@ -104,7 +107,7 @@ class TalleresController extends Controller
                 ->orWhere('tipo', 'LIKE', '%'.$request->search.'%')
                 ->orWhere('descripcion', 'LIKE', '%'.$request->search.'%')
                 ->orWhere('horarios', 'LIKE', '%'.$request->search.'%')
-                ->orWhere('id_maistro', 'LIKE', '%'.$request->search.'%')
+                ->orWhere('nombre', 'LIKE', '%'.$request->search.'%')
                 ->get();
 
             return $taller;

@@ -162,16 +162,14 @@ setTimeout(function() {
 		  var tipo = button.data('tipo')
 		  var descripcion = button.data('descripcion')
 			var horarios = button.data('horarios')
-			
-			alert(id);
 
 		  var modal = $(this)
 		  modal.find('.modal-body #idActualizar').val(id)
 		  modal.find('.modal-body #nombreActualizar').val(nombre)
-		  modal.find('.modal-body #encargadoActualizar').val(encargado)
+		  modal.find('.modal-body #profesorActualizar').val(encargado)
 		  modal.find('.modal-body #tipoActualizar').val(tipo)
 		  modal.find('.modal-body #descripcionActualizar').val(descripcion)
-		  modal.find('.modal-body #horariosActualizar').val(horarios)
+			modal.find('.modal-body #horariosActualizar').val(horarios)
 	});
 
 	var row;
@@ -187,9 +185,10 @@ setTimeout(function() {
 			e.preventDefault();
 			var forms = $('#form-actualizar');
 			var urls = forms.attr('action');
+			alert()
 			$.post(urls, forms.serialize(), function(result){
 				//row.fadeOut();
-				console.log(result);
+				alert(result);
 			e.preventDefault();
 			$value = $('#buscador').val();
 				$.ajax({
