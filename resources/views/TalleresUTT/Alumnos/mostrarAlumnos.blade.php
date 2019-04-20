@@ -50,7 +50,6 @@
     display: table-cell;">
         <thead>
             <tr>
-    //matricula, nombre, carrera, cuatrimestre(si alcanza el tiempo; "temporizador"), taller, horas,
                 <th>Matrícula</th>
                 <th>Nombre</th>
                 <th>Carrera</th>

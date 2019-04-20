@@ -19,7 +19,7 @@ class AlumnosController extends Controller
         $personas = DB::table('personas')->where('tipos_personas_id_tipo_persona', '=', 2)->get();
         $alumnos = DB::table('usuarios')
                 ->select('personas.matricula', 'personas.nombre', 'personas.carreras_id_carrera', 'personas.cuatrimestre_id_cuatrimestre', 'solicitudes.horas_servicio_social', 'usuarios.created_at', 'usuarios.updated_at')
-                ->leftjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
+                ->rightjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
                 ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
                 ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
                 ->get();
