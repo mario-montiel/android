@@ -76,8 +76,8 @@
             <tr>
                 <td>{{$alumno->matricula}}</td>
                 <td>{{$alumno->nombre}}</td>
-                <td>{{$alumno->carreras_id_carrera}}</td>
-                <td>{{$alumno->cuatrimestre_id_cuatrimestre}}</td>
+                <td>{{$alumno->carrera}}</td>
+                <td>{{$alumno->cuatrimestre}}</td>
                 <td>{{$alumno->taller}}</td>
                 <td>
                 @if( $alumno->horas_servicio_social == null)
