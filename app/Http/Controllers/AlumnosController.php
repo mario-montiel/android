@@ -18,7 +18,7 @@ class AlumnosController extends Controller
     function viewMostrarAlumnos(){
         $personas = DB::table('personas')->where('tipos_personas_id_tipo_persona', '=', 2)->get();
         $alumnos = DB::table('personas')
-                ->select('personas.matricula', 'personas.nombre', 'personas.usuario', 'personas.carreras_id_carrera', 'personas.cuatrimestre_id_cuatrimestre', 'solicitudes.horas_servicio_social')
+                ->select('personas.matricula', 'personas.nombre', 'personas.carreras_id_carrera', 'personas.cuatrimestre_id_cuatrimestre', 'solicitudes.horas_servicio_social')
                 ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
                 ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
                 ->get();
