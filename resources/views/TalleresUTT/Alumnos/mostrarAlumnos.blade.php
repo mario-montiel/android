@@ -140,9 +140,21 @@
 
 	select.addEventListener("change", function(event) {
         $.each(select, function(i, item) {
-            alert(item.value);
             if(select.value == item.value){
-                alert("mames");
+                $.ajax({
+				type: 'GET',
+				url:  '/buscatesta',
+				data: {'buscatesta':select},
+				success:function(data){
+                        $('#tbody').html("");
+								changos = "<tr><td>" +
+									item.nombre + "</td><td>" +
+								$('#tbody').append(changos);
+				},
+			     error: function () {
+			         alert("Error del Servidor");
+			     }
+			}); 
             }
         });
     });
