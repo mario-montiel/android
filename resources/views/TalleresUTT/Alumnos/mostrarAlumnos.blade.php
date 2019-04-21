@@ -119,7 +119,7 @@
                                             <td>{{ Carbon\Carbon::parse($alumno->created_at)->format('d-m-Y') }}</td>
                                             <td>{{ Carbon\Carbon::parse($alumno->updated_at)->format('d-m-Y') }}</td>
                                             {{ csrf_field() }}
-                                            <td><button data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
+                                            <td><button data-id='{{$alumno->id_persona}}' data-alumno="{{$alumno->nombre}}" data-horas="{{$alumno->horas_servicio_social}}" data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -157,26 +157,12 @@
                                 <table class="table" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Contest Name</th>
-                                            <th>Date</th>
-                                            <th>Award Position</th>
+                                            <th>MAMES CABRON... </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><a href="#">Work 1</a></td>
-                                            <td>Doe</td>
-                                            <td>john@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">Work 2</a></td>
-                                            <td>Moe</td>
-                                            <td>mary@example.com</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">Work 3</a></td>
-                                            <td>Dooley</td>
-                                            <td>july@example.com</td>
+                                            <td>NO SE QUE VERGAS PONER AQUIIIÍ!!!</td>
                                         </tr>
                                     </tbody>
                                 </table>

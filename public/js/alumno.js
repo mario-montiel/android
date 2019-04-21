@@ -24,12 +24,13 @@ $('#modalActualizarAlumno').on('show.bs.modal', function (event) {
  var usuario = button.data('usuario') 
  var alumno = button.data('alumno') 
  var horas = button.data('horas')
- 
+ alert(alumno);
+ alert(horas);
  var modal = $(this)
  modal.find('.modal-body #idActualizar').val(id)
  modal.find('.modal-body #usuario').val(usuario)
  modal.find('.modal-body #alumno').val(alumno)
- modal.find('.modal-body #horas').val(horas)
+ modal.find('.modal-body #horasActualizar').val(horas)
 });
 
 $('.btn-act-alumno').click(function(e){

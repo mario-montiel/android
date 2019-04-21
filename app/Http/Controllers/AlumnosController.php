@@ -7,6 +7,8 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use App\Modelos\Login;
 use App\Modelos\Taller;
+use App\Modelos\Cuatrimestre;
+use App\Modelos\Carrera;
 use Carbon\Carbon;
 
 class AlumnosController extends Controller
@@ -19,7 +21,7 @@ class AlumnosController extends Controller
     function viewMostrarAlumnos(){
         $personas = DB::table('personas')->where('tipos_personas_id_tipo_persona', '=', 2)->get();
         $alumnos = DB::table('usuarios')
-        ->select('personas.matricula', 'personas.nombre', 'carreras.carrera', 'cuatrimestre.cuatrimestre', 'talleres.taller', 'solicitudes.horas_servicio_social', 'usuarios.created_at', 'usuarios.updated_at', 'personas.tipos_personas_id_tipo_persona')
+        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', 'carreras.carrera', 'cuatrimestre.cuatrimestre', 'talleres.taller', 'solicitudes.horas_servicio_social', 'usuarios.created_at', 'usuarios.updated_at', 'personas.tipos_personas_id_tipo_persona')
         ->rightjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
         ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
         ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
@@ -29,7 +31,7 @@ class AlumnosController extends Controller
         ->get();
         $talleres = Taller::all();
         $profesores = DB::table('usuarios')
-        ->select('personas.matricula', 'personas.nombre', 'carreras.carrera', 'cuatrimestre.cuatrimestre', 'talleres.taller', 'solicitudes.horas_servicio_social', 'usuarios.created_at', 'usuarios.updated_at')
+        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', 'carreras.carrera', 'cuatrimestre.cuatrimestre', 'talleres.taller', 'solicitudes.horas_servicio_social', 'usuarios.created_at', 'usuarios.updated_at')
         ->rightjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
         ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
         ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
@@ -37,8 +39,10 @@ class AlumnosController extends Controller
         ->leftjoin('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
         ->where('personas.tipos_personas_id_tipo_persona', '=', 1)
         ->get();
+        $carrera = Carrera::all();
+        $cuatrimestre = Cuatrimestre::all();
 
-        return view('TalleresUTT.Alumnos.mostrarAlumnos', compact('alumnos', 'personas', 'talleres', 'profesores'));
+        return view('TalleresUTT.Alumnos.mostrarAlumnos', compact('alumnos', 'personas', 'talleres', 'profesores', 'carrera', 'cuatrimestre'));
     }
 
     function actualizarAlumno(Request $request, $id){
@@ -55,7 +59,7 @@ class AlumnosController extends Controller
 
     function buscador(Request $request){
         $alumnos = DB::table('usuarios')
-        ->select('personas.matricula', 'personas.nombre', 'carreras.carrera', 'cuatrimestre.cuatrimestre', 'talleres.taller', 'solicitudes.horas_servicio_social', 'usuarios.created_at', 'usuarios.updated_at', 'personas.tipos_personas_id_tipo_persona')
+        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', 'carreras.carrera', 'cuatrimestre.cuatrimestre', 'talleres.taller', 'solicitudes.horas_servicio_social', 'usuarios.created_at', 'usuarios.updated_at', 'personas.tipos_personas_id_tipo_persona')
         ->rightjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
         ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
         ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')

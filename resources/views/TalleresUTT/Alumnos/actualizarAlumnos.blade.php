@@ -27,17 +27,38 @@
              <form id="form-act-alumno" action="{{ url('editaralumno')}}" method="post">	
             @endforeach
             {{ csrf_field() }}
-          <div class="form-group">
-						<label for="exampleFormControlInput1"> Usuario </label>
-						<input id="usuario" type="text" class="form-control" name="usuario">
-					</div>
+          
           <div class="form-group">
 						<label for="exampleFormControlInput1"> Alumno </label>
-						<input id="alumno" type="text" class="form-control" name="alumno">
+						<input id="alumnoActualizar" type="text" class="form-control" name="alumno">
 					</div>
+          <div class="form-group">
+				    <label for="exampleFormControlSelect1"> Carrera </label>
+				     <select name="taller" class="form-control" id="carreraActualizar">
+				    	@foreach($carrera as $c)
+				    		<option value="{{ $c->id_carrera }}" {{ old('carrera') == $c->id_carrera ? 'selected' : '' }}>{{ $c->carrera }}</option>
+				    	@endforeach
+				    </select>
+          </div>
+          <div class="form-group">
+				    <label for="exampleFormControlSelect1"> Cuatrimestre </label>
+				     <select name="taller" class="form-control" id="cuatrimestreActualizar">
+				    	@foreach($cuatrimestre as $cuatri)
+				    		<option value="{{ $cuatri->id_cuatrimestre }}" {{ old('cuatrimestre') == $cuatri->id_cuatrimestre ? 'selected' : '' }}>{{ $cuatri->cuatrimestre }}</option>
+				    	@endforeach
+				    </select>
+          </div>
+          <div class="form-group">
+				    <label for="exampleFormControlSelect1"> Taller </label>
+				     <select name="taller" class="form-control" id="tallerActualizar">
+				    	@foreach($talleres as $t)
+				    		<option value="{{ $t->id_taller }}" {{ old('taller') == $t->id_taller ? 'selected' : '' }}>{{ $t->taller }}</option>
+				    	@endforeach
+				    </select>
+          </div>
 				  <div class="form-group">
 				    <label for="exampleFormControlSelect2"> Horas de Servicio Social </label>
-				   	<input type="text" class="form-control" id="horas" name="horas"> 
+				   	<input type="text" class="form-control" id="horasActualizar" name="horas"> 
 				  </div>
                  
     </div>
