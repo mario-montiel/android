@@ -66,7 +66,6 @@ $('.btn-act-alumno').click(function(e){
                                else{
                                    horas = item.horas_servicio_social;
                                }
-                               console.log(item.alumno);
                                    changos = "<tr data-id="+item.id_usuario+"><td>" +
                                        item.matricula + "</td><td>" +  
                                        item.usuario + "</td><td>" +

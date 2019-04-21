@@ -73,11 +73,6 @@
     </table>
 </center>
 </div>
-
-
-
-
-
         <section id="tabs" class="project-tab">
             <div class="container">
                 <div class="row">
@@ -86,14 +81,16 @@
                             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Alumno</a>
                                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profesor</a>
+                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Talleres</a>
                             </div>
                         </nav>
+                        @if( count($alumnos)>0)
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                 <table class="table" cellspacing="0">
                                     <thead>
                                         <tr>
-                                        <th>Matrícula</th>
+                                            <th>Matrícula</th>
                                             <th>Nombre</th>
                                             <th>Carrera</th>
                                             <th>Cuatrimestre</th>
@@ -105,8 +102,8 @@
                                         </tr>
                                     </thead>
                                     <tbody id="alumnos">
+                                    @foreach($alumnos as $alumno)   
                                         <tr>
-                                        @foreach($alumnos as $alumno)
                                             <td>{{$alumno->matricula}}</td>
                                             <td>{{$alumno->nombre}}</td>
                                             <td>{{$alumno->carrera}}</td>
@@ -123,11 +120,13 @@
                                             <td>{{ Carbon\Carbon::parse($alumno->updated_at)->format('d-m-Y') }}</td>
                                             {{ csrf_field() }}
                                             <td><button data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
-                                        @endforeach
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
+                            @endif
+                            @if( count($profesores)>0)
                             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                 <table class="table" cellspacing="0">
                                     <thead>
@@ -139,16 +138,45 @@
                                             <th>Actualizar</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="profesores">
+                                    @foreach($profesores as $profesor)
                                         <tr>
-                                        @foreach($profesores as $profesor)
                                             <td>{{$profesor->nombre}}</td>
                                             <td>{{$profesor->taller}}</td>
                                             <td>{{ Carbon\Carbon::parse($profesor->created_at)->format('d-m-Y') }}</td>
                                             <td>{{ Carbon\Carbon::parse($profesor->updated_at)->format('d-m-Y') }}</td>
                                             {{ csrf_field() }}
                                             <td><button data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
+                                        </tr>
                                         @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            @endif
+                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                <table class="table" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Contest Name</th>
+                                            <th>Date</th>
+                                            <th>Award Position</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="#">Work 1</a></td>
+                                            <td>Doe</td>
+                                            <td>john@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Work 2</a></td>
+                                            <td>Moe</td>
+                                            <td>mary@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Work 3</a></td>
+                                            <td>Dooley</td>
+                                            <td>july@example.com</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -158,18 +186,6 @@
                 </div>
             </div>
         </section>
-
-
-
-
-
-
-
-
-
-
-
-
 @else
 <div class="container"><center><br><label class="alert alert-primary"> No hay ningún Alumno registrado </label></h1></center></div>
 @endif
@@ -181,30 +197,55 @@
     }
     });
 	$('#buscadoralumno').on('keyup',function(e){
-		e.preventDefault();
+        e.preventDefault();
+        var horas;
             $value = $('#buscadoralumno').val();
 			$.ajax({
 				type: 'GET',
 				url:  '/buscadoralumno',
 				data: {'buscadoralumno':$value},
 				success:function(data){
-                    console.log(data);
+                    
 					if(data.no != ""){
                         $('#alumnos').html("");
-						$.each(data, function(i, item) {
+                        $.each(data, function(i, item) {
+                            console.log(item.tipos_personas_id_tipo_persona);
+                        if(item.tipos_personas_id_tipo_persona == 2){
+                                    if( item.horas_servicio_social == null){horas = 0}
+                                    else{
+                                                    horas = item.horas_servicio_social;
+                                    }
+                                    changos = "<tr><td>" +
+                                        item.matricula + "</td><td>" +
+                                        item.nombre + "</td><td>" +
+                                        item.carrera + "</td><td>" +
+                                        item.cuatrimestre + "</td><td>" +
+                                        item.taller + "</td><td>" +
+                                        horas + "</td><td>" +
+                                        item.created_at + "</td><td>" +
+                                        item.updated_at + "</td><td>" +
+                                        "<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+                                        "</td>";
+                                    $('#alumnos').append(changos);
+                               
+                        }
+                        }); 
+                        $('#profesores').html("");
+                        $.each(data, function(i, item) {
+                        if(item.tipos_personas_id_tipo_persona == 1){
+                           
+                                
+                               
                                 changos = "<tr><td>" +
-                                    item.matricula + "</td><td>" +
 									item.nombre + "</td><td>" +
-									item.carrera + "</td><td>" +
-                                    item.cuatrimestre + "</td><td>" +
                                     item.taller + "</td><td>" +
-                                    item.horas_servicio_social + "</td><td>" +
                                     item.created_at + "</td><td>" +
                                     item.updated_at + "</td><td>" +
 									"<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
 									"</td>";
-						$('#alumnos').append(changos);
-						});
+                                $('#profesores').append(changos);
+                        }
+                    });
 					}
 				},
 			     error: function () {
