@@ -1,7 +1,7 @@
 @extends('TalleresUTT.Complements.plugins')
 <link rel="stylesheet" type="text/css" href="css/TalleresUTT/eventos.css">
 <link rel="stylesheet" type="text/css" href="css/TalleresUTT/navbar.css">
-@section('titulo', 'Eventos')
+@section('titulo', 'Eventos Asignados')
 
 @section('contenido')
 <script type="text/javascript" src="js/asignarevento.js"></script>

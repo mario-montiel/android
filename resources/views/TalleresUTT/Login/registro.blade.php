@@ -1,6 +1,6 @@
 @extends('TalleresUTT.Complements.plugins')
 
-@section('titulo', 'Registro Persona')
+@section('titulo', 'Registro')
 
 @section('contenido')
 	<style type="text/css">
