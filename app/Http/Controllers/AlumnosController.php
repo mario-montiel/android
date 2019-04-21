@@ -29,7 +29,7 @@ class AlumnosController extends Controller
         ->get();
         $talleres = Taller::all();
         $profesores = DB::table('usuarios')
-        ->select('personas.nombre', 'talleres.taller', 'usuarios.created_at', 'usuarios.updated_at')
+        ->select('personas.matricula', 'personas.nombre', 'carreras.carrera', 'cuatrimestre.cuatrimestre', 'talleres.taller', 'solicitudes.horas_servicio_social', 'usuarios.created_at', 'usuarios.updated_at')
         ->rightjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
         ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
         ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
@@ -55,13 +55,14 @@ class AlumnosController extends Controller
 
     function buscador(Request $request){
         $alumnos = DB::table('usuarios')
-        ->where('usuario', 'LIKE', '%'.$request->buscadoralumno.'%')
-        ->orWhere('alumno', 'LIKE', '%'.$request->buscadoralumno.'%')
-        ->orWhere('horas_servicio_social', 'LIKE', '%'.$request->buscadoralumno.'%')
-        ->orWhere('matricula', 'LIKE', '%'.$request->buscadoralumno.'%')
+        ->select('personas.matricula', 'personas.nombre', 'carreras.carrera', 'cuatrimestre.cuatrimestre', 'talleres.taller', 'solicitudes.horas_servicio_social', 'usuarios.created_at', 'usuarios.updated_at')
+        ->rightjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
+        ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
+        ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
+        ->leftjoin('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
+        ->leftjoin('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
+        ->Where('matricula', 'LIKE', '%'.$request->buscadoralumno.'%')
         ->get();
-
-        return $alumnos;
     }
 
     function buscatesta(Request $request){
@@ -73,6 +74,10 @@ class AlumnosController extends Controller
         ->leftjoin('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
         ->leftjoin('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
         ->where('personas.tipos_personas_id_tipo_persona', '=', 2)
+        ->orWhere('matricula', 'LIKE', '%'.$request->buscadoralumno.'%')
+        ->orWhere('nombre', 'LIKE', '%'.$request->buscadoralumno.'%')
+        ->orWhere('horas_servicio_social', 'LIKE', '%'.$request->buscadoralumno.'%')
+        ->orWhere('carrera', 'LIKE', '%'.$request->buscadoralumno.'%')
         ->get();
 
         return $alumnos;

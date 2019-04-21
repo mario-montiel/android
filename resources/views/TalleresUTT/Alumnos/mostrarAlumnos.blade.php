@@ -104,7 +104,7 @@
                                             <th>Actualizar</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="alumnos">
                                         <tr>
                                         @foreach($alumnos as $alumno)
                                             <td>{{$alumno->matricula}}</td>
@@ -183,23 +183,27 @@
 	$('#buscadoralumno').on('keyup',function(e){
 		e.preventDefault();
             $value = $('#buscadoralumno').val();
-			
 			$.ajax({
 				type: 'GET',
 				url:  '/buscadoralumno',
 				data: {'buscadoralumno':$value},
 				success:function(data){
+                    console.log(data);
 					if(data.no != ""){
-                        $('#tbody').html("");
+                        $('#alumnos').html("");
 						$.each(data, function(i, item) {
-								changos = "<tr data-id="+item.id_usuario+"><td>" +
-									item.usuario + "</td><td>" +
-									item.alumno + "</td><td>" +
-									item.horas_servicio_social + "</td><td>" +
-									item.created_at + "</td><td>" +
-									"<button data-id="+item.id_usuario+" data-usuario="+item.usuario+" data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+                                changos = "<tr><td>" +
+                                    item.matricula + "</td><td>" +
+									item.nombre + "</td><td>" +
+									item.carrera + "</td><td>" +
+                                    item.cuatrimestre + "</td><td>" +
+                                    item.taller + "</td><td>" +
+                                    item.horas_servicio_social + "</td><td>" +
+                                    item.created_at + "</td><td>" +
+                                    item.updated_at + "</td><td>" +
+									"<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
 									"</td>";
-								$('#tbody').append(changos);
+						$('#alumnos').append(changos);
 						});
 					}
 				},
