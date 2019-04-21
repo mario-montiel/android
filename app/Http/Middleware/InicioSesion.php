@@ -22,15 +22,22 @@ class InicioSesion
         $usuario = $request->get('usuario');
         $pass = $request->get('password');
 
-        $yeah = Session::get('usuario');
-
-        $vato = DB::table('usuarios')->where('usuario', $usuario)->first();
-        $vato2 = DB::table('personas')->where('id_persona', $yeah->personas_id_persona)->first();
-        
-        if (Session::get('usuario') && $vato2->tipos_personas_id_tipo_persona == 1) {
-            $usuario = $next($request);
+        if(Session::get('usuario')){
+            $yeah = Session::get('usuario');
+            $vato = DB::table('usuarios')->where('usuario', $usuario)->first();
+            $vato2 = DB::table('personas')->where('id_persona', $yeah->personas_id_persona)->first();
+            //dd($vato2);
+            if (Session::get('usuario') && $vato2->tipos_personas_id_tipo_persona == 1) {
+                $usuario = $next($request);
+            }
+            else if($usuario == null && $pass == null){
+                return redirect('/iniciosesion')
+                    ->with('hacker', 'Hacker Detectado!...');
+            }
+            return $usuario;
         }
-        else if($usuario == null && $pass == null){
+
+        if($usuario == null && $pass == null){
             return redirect('/iniciosesion')
                 ->with('hacker', 'Hacker Detectado!...');
         }

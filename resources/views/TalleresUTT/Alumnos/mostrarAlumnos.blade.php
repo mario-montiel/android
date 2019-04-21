@@ -88,71 +88,92 @@
                     <div class="col-md-12">
                         <nav>
                             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active" id="alumno-tap" data-toggle="tab" href="#alumno" role="tab" aria-controls="alumno" aria-selected="true">Alumnos</a>
-                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#profesor" role="tab" aria-controls="nav-profile" aria-selected="false">Profesores</a>
+                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Project Tab 1</a>
+                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Project Tab 2</a>
+                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Project Tab 3</a>
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="alumno" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                 <table class="table" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Matrícula</th>
-                                            <th>Nombre</th>
-                                            <th>Carrera</th>
-                                            <th>Cuatrimestre</th>
-                                            <th>Nombre del Taller</th>
-                                            <th>Horas</th>
-                                            <th>Fecha de ingreso (dd,mm,aaaa)</th>
-                                            <th>Última actualización</th>
-                                            <th>Actualizar</th>
+                                            <th>Project Name</th>
+                                            <th>Employer</th>
+                                            <th>Awards</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                        @foreach($alumnos as $alumno)
-                                            <td>{{$alumno->matricula}}</td>
-                                            <td>{{$alumno->nombre}}</td>
-                                            <td>{{$alumno->carrera}}</td>
-                                            <td>{{$alumno->cuatrimestre}}</td>
-                                            <td>{{$alumno->taller}}</td>
-                                            <td>
-                                            @if( $alumno->horas_servicio_social == null)
-                                                0
-                                            @else
-                                                {{$alumno->horas_servicio_social}}
-                                            @endif
-                                            </td>
-                                            <td>{{ Carbon\Carbon::parse($alumno->created_at)->format('d-m-Y') }}</td>
-                                            <td>{{ Carbon\Carbon::parse($alumno->updated_at)->format('d-m-Y') }}</td>
-                                            {{ csrf_field() }}
-                                            <td><button data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
-                                        @endforeach
+                                            <td><a href="#">Work 1</a></td>
+                                            <td>Doe</td>
+                                            <td>john@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Work 2</a></td>
+                                            <td>Moe</td>
+                                            <td>mary@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Work 3</a></td>
+                                            <td>Dooley</td>
+                                            <td>july@example.com</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="tab-pane fade" id="profesor" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                 <table class="table" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Nombre</th>
-                                            <th>Nombre del taller</th>
-                                            <th>Fecha de ingreso (dd,mm,aaaa)</th>
-                                            <th>Última actualización</th>
-                                            <th>Actualizar</th>
+                                            <th>Project Name</th>
+                                            <th>Employer</th>
+                                            <th>Time</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                        @foreach($profesores as $profesor)
-                                            <td>{{$profesor->nombre}}</td>
-                                            <td>{{$profesor->taller}}</td>
-                                            <td>{{ Carbon\Carbon::parse($profesor->created_at)->format('d-m-Y') }}</td>
-                                            <td>{{ Carbon\Carbon::parse($profesor->updated_at)->format('d-m-Y') }}</td>
-                                            {{ csrf_field() }}
-                                            <td><button data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
-                                        @endforeach
+                                            <td><a href="#">Work 1</a></td>
+                                            <td>Doe</td>
+                                            <td>john@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Work 2</a></td>
+                                            <td>Moe</td>
+                                            <td>mary@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Work 3</a></td>
+                                            <td>Dooley</td>
+                                            <td>july@example.com</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                <table class="table" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Contest Name</th>
+                                            <th>Date</th>
+                                            <th>Award Position</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="#">Work 1</a></td>
+                                            <td>Doe</td>
+                                            <td>john@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Work 2</a></td>
+                                            <td>Moe</td>
+                                            <td>mary@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Work 3</a></td>
+                                            <td>Dooley</td>
+                                            <td>july@example.com</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -162,7 +183,6 @@
                 </div>
             </div>
         </section>
-
 
 
 
