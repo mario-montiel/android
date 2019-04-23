@@ -24,21 +24,17 @@
             @endif
             
             @foreach($alumnos as $alumno)
-             <form id="form-act-alumno" action="{{ url('editaralumno')}}" method="post">
-             <input id="idsolicitud" type="hidden" value="{{ $alumno->id_solicitudes }}">
+             <form id="form-act-alumno" action="{{ url('editaralumno')}}" method="post">	
             @endforeach
             {{ csrf_field() }}
-          <div class="form-group">
-						<label for="exampleFormControlInput1"> Matrícula </label>
-						<input id="matriculaActualizar" type="text" class="form-control" name="matricula">
-					</div>
+          
           <div class="form-group">
 						<label for="exampleFormControlInput1"> Alumno </label>
 						<input id="alumnoActualizar" type="text" class="form-control" name="alumno">
 					</div>
           <div class="form-group">
 				    <label for="exampleFormControlSelect1"> Carrera </label>
-				     <select name="carrera" class="form-control" id="carreraActualizar">
+				     <select name="taller" class="form-control" id="carreraActualizar">
 				    	@foreach($carrera as $c)
 				    		<option value="{{ $c->id_carrera }}" {{ old('carrera') == $c->id_carrera ? 'selected' : '' }}>{{ $c->carrera }}</option>
 				    	@endforeach
@@ -46,7 +42,7 @@
           </div>
           <div class="form-group">
 				    <label for="exampleFormControlSelect1"> Cuatrimestre </label>
-				     <select name="cuatrimestre" class="form-control" id="cuatrimestreActualizar">
+				     <select name="taller" class="form-control" id="cuatrimestreActualizar">
 				    	@foreach($cuatrimestre as $cuatri)
 				    		<option value="{{ $cuatri->id_cuatrimestre }}" {{ old('cuatrimestre') == $cuatri->id_cuatrimestre ? 'selected' : '' }}>{{ $cuatri->cuatrimestre }}</option>
 				    	@endforeach

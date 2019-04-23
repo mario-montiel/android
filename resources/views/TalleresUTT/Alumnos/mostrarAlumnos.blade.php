@@ -81,7 +81,7 @@
                             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Alumno</a>
                                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profesor</a>
-                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Talleres</a>
+                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Total de Horas</a>
                             </div>
                         </nav>
                         @if( count($alumnos)>0)
@@ -91,12 +91,12 @@
                                     <thead>
                                         <tr>
                                             <th>Matrícula</th>
-                                            <th>Nombre</th>
+                                            <th>Alumno</th>
                                             <th>Carrera</th>
                                             <th>Cuatrimestre</th>
                                             <th>Nombre del Taller</th>
                                             <th>Horas</th>
-                                            <th>Fecha de ingreso (dd,mm,aaaa)</th>
+                                            <th>Fecha de ingreso (aaa,mm,dd)</th>
                                             <th>Última actualización</th>
                                             <th>Actualizar</th>
                                         </tr>
@@ -116,35 +116,41 @@
                                                 {{$alumno->horas_servicio_social}}
                                             @endif
                                             </td>
-                                            <td>{{ Carbon\Carbon::parse($alumno->created_at)->format('d-m-Y') }}</td>
-                                            <td>{{ Carbon\Carbon::parse($alumno->updated_at)->format('d-m-Y') }}</td>
+                                            <td>{{ Carbon\Carbon::parse($alumno->created_at)->format('Y-m-d') }}</td>
+                                            <td>{{ Carbon\Carbon::parse($alumno->updated_at)->format('Y-m-d') }}</td>
                                             {{ csrf_field() }}
-                                            <td><button data-id='{{$alumno->id_persona}}' data-alumno="{{$alumno->nombre}}" data-horas="{{$alumno->horas_servicio_social}}" data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
+                                            <td><button data-id='{{$alumno->id_persona}}' data-matricula='{{$alumno->matricula}}' 
+                                            data-alumno="{{$alumno->nombre}}" data-carrera="{{$alumno->carrera}}" 
+                                            data-cuatrimestre="{{$alumno->cuatrimestre}}"  data-taller="{{$alumno->taller}}" 
+                                            data-horas="{{$alumno->horas_servicio_social}}" data-idsolicitudes="{{$alumno->id_solicitudes}}" 
+                                            data-toggle='modal' 
+                                            data-target='#modalActualizarAlumno' class="btn btn-warning">
+                                            <img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
                             @endif
-                            @if( count($profesores)>0)
+                            @if( count($profesoresx2)>0)
                             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                 <table class="table" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Nombre</th>
+                                            <th>Profesor</th>
                                             <th>Nombre del Taller</th>
-                                            <th>Fecha de ingreso (dd,mm,aaaa)</th>
+                                            <th>Fecha de ingreso (aaa,mm,dd)</th>
                                             <th>Última actualización</th>
                                             <th>Actualizar</th>
                                         </tr>
                                     </thead>
                                     <tbody id="profesores">
-                                    @foreach($profesores as $profesor)
+                                    @foreach($profesoresx2 as $profesor)
                                         <tr>
                                             <td>{{$profesor->nombre}}</td>
                                             <td>{{$profesor->taller}}</td>
-                                            <td>{{ Carbon\Carbon::parse($profesor->created_at)->format('d-m-Y') }}</td>
-                                            <td>{{ Carbon\Carbon::parse($profesor->updated_at)->format('d-m-Y') }}</td>
+                                            <td>{{ Carbon\Carbon::parse($profesor->created_at)->format('Y-m-d') }}</td>
+                                            <td>{{ Carbon\Carbon::parse($profesor->updated_at)->format('Y-m-d') }}</td>
                                             {{ csrf_field() }}
                                             <td><button data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
                                         </tr>
@@ -157,13 +163,23 @@
                                 <table class="table" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>MAMES CABRON... </th>
+                                            <th>Alumno</th>
+                                            <th>Total de Horas</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($horasTallerX2 as $ht)
                                         <tr>
-                                            <td>NO SE QUE VERGAS PONER AQUIIIÍ!!!</td>
+                                            <td> {{$ht->nombre}} </td>
+                                            <td>
+                                            @if( $ht->horas_servicio_social == null)
+                                                No tiene pito
+                                            @else
+                                                {{$total}}
+                                            @endif
+                                            </td>
                                         </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -195,7 +211,7 @@
 					if(data.no != ""){
                         $('#alumnos').html("");
                         $.each(data, function(i, item) {
-                            console.log(item.tipos_personas_id_tipo_persona);
+                            console.log(item.carrera);
                         if(item.tipos_personas_id_tipo_persona == 2){
                                     if( item.horas_servicio_social == null){horas = 0}
                                     else{

@@ -5,8 +5,8 @@ $(document).ready(function(){
 
 
     $('#btnactalumno').click(function(){
-        var alumno = $('#alumno').val();
-        var horas = $('#horas').val();
+        var alumno = $('#alumnoActualizar').val();
+        var horas = $('#horasActualizar').val();
 
         if(alumno.length == "" || horas.length == ""){
             alert("Llene todos los campos para continuar.");
@@ -15,30 +15,37 @@ $(document).ready(function(){
     });
 
 var id = '';
-
+var idsolicitud = '';
 
 $('#modalActualizarAlumno').on('show.bs.modal', function (event) {
  
  var button = $(event.relatedTarget) // Button that triggered the modal
  id = button.data('id')
- var usuario = button.data('usuario') 
+ var matricula = button.data('matricula') 
  var alumno = button.data('alumno') 
+ var carrera = button.data('carrera')
+ var cuatrimestre = button.data('cuatrimestre')
+ var taller = button.data('taller')
  var horas = button.data('horas')
- alert(alumno);
- alert(horas);
  var modal = $(this)
+ idsolicitud = button.data('idsolicitudes')
+ 
  modal.find('.modal-body #idActualizar').val(id)
- modal.find('.modal-body #usuario').val(usuario)
- modal.find('.modal-body #alumno').val(alumno)
+ modal.find('.modal-body #matriculaActualizar').val(matricula)
+ modal.find('.modal-body #alumnoActualizar').val(alumno)
+ modal.find('.modal-body #carreraActualizar').val(carrera)
+ modal.find('.modal-body #cuatrimestreActualizar').val(cuatrimestre)
  modal.find('.modal-body #horasActualizar').val(horas)
+ modal.find('.modal-body #tallerActualizar').val(taller)
 });
 
 $('.btn-act-alumno').click(function(e){
    e.preventDefault();
    var form_update = $('#form-act-alumno');
    var url = form_update.attr('action');
-   var url_update = url+"/"+id;
+   var url_update = url+"/"+id+"/"+idsolicitud;
    var horas = $('#horas').val();
+   alert(url_update);
    if(horas > 480){
     Swal.fire({
         type: 'error',
@@ -50,6 +57,7 @@ $('.btn-act-alumno').click(function(e){
     }
    $.post(url_update, form_update.serialize(), function(result){
        //row.fadeOut();
+       console.log(result);
               e.preventDefault();
                $value = $('#buscadoralumno').val();
                
@@ -59,33 +67,53 @@ $('.btn-act-alumno').click(function(e){
                    data: {'buscadoralumno':$value},
                    success:function(data){
                        var horas;
-                       $('#tbody').html("");
-                           $.each(data, function(i, item) {
-                               if(item.horas_servicio_social == null){
-                                   horas = 0;
-                               }
-                               else{
-                                   horas = item.horas_servicio_social;
-                               }
-                                   changos = "<tr data-id="+item.id_usuario+"><td>" +
-                                       item.matricula + "</td><td>" +  
-                                       item.usuario + "</td><td>" +
-                                       item.alumno + "</td><td>" +
-                                       horas + "</td><td>" +
-                                       item.created_at + "</td><td>" +
-                                       item.created_at + "</td><td>" +
-                                       "<button data-id="+item.id_usuario+" data-usuario="+item.usuario+" data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
-                                       "</td>";
-                                   $('#tbody').append(changos);
-                                   Swal.fire({
-                                       position: 'top-end',
-                                       type: 'success',
-                                       title: 'Alumno actualizado correctamente',
-                                       showConfirmButton: false,
-                                       timer: 1500
-                                     })
-                           });
-                   },
+                        $('#alumnos').html("");
+                        $.each(data, function(i, item) {
+                            console.log(item.tipos_personas_id_tipo_persona);
+                        if(item.tipos_personas_id_tipo_persona == 2){
+                                    if( item.horas_servicio_social == null){horas = 0}
+                                    else{
+                                                    horas = item.horas_servicio_social;
+                                    }
+                                    changos = "<tr><td>" +
+                                        item.matricula + "</td><td>" +
+                                        item.nombre + "</td><td>" +
+                                        item.carrera + "</td><td>" +
+                                        item.cuatrimestre + "</td><td>" +
+                                        item.taller + "</td><td>" +
+                                        horas + "</td><td>" +
+                                        item.created_at + "</td><td>" +
+                                        item.updated_at + "</td><td>" +
+                                        "<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+                                        "</td>";
+                                    $('#alumnos').append(changos);
+                               
+                        }
+                        }); 
+                        $('#profesores').html("");
+                        $.each(data, function(i, item) {
+                        if(item.tipos_personas_id_tipo_persona == 1){
+                           
+                                
+                               
+                                changos = "<tr><td>" +
+									item.nombre + "</td><td>" +
+                                    item.taller + "</td><td>" +
+                                    item.created_at + "</td><td>" +
+                                    item.updated_at + "</td><td>" +
+									"<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+									"</td>";
+                                $('#profesores').append(changos);
+                        }
+                        Swal.fire({
+                            position: 'top-end',
+                            type: 'success',
+                            title: 'Alumno actualizado correctamente',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    });
+				},
                     error: function () {
                         Swal.fire({
                             type: 'error',
