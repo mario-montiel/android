@@ -96,6 +96,18 @@ class AlumnosController extends Controller
         }
     }
 
+    function actualizarProfesor(Request $request, $id){
+        if($request->ajax()){
+            $profesor = Persona::find($id);
+            $profesor->nombre = $request->profesor;
+            $profesor->save();
+
+            $taller = Solicitud::find($idsolicitud);
+            $taller->personas_id_persona = $request->taller;
+            $taller->save();
+        }
+    }
+
     function buscador(Request $request){
         $alumnos = DB::table('usuarios')
         ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', 'carreras.carrera', 

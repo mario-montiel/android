@@ -48,6 +48,9 @@
 </div>
 
 @extends('TalleresUTT.Alumnos.actualizarAlumnos')
+
+@extends('TalleresUTT.Alumnos.actualizarProfesores')
+
 <br>
 <br>
 @if( count($personas)>0)
@@ -152,7 +155,7 @@
                                             <td>{{ Carbon\Carbon::parse($profesor->created_at)->format('Y-m-d') }}</td>
                                             <td>{{ Carbon\Carbon::parse($profesor->updated_at)->format('Y-m-d') }}</td>
                                             {{ csrf_field() }}
-                                            <td><button data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
+                                            <td><button data-id='{{$profesor->id_persona}}' data-profesor="{{$profesor->nombre}}" data-taller="{{$profesor->taller}}" data-toggle='modal' data-target='#modalActualizarProfesor' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
                                         </tr>
                                         @endforeach
                                     </tbody>

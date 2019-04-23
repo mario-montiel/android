@@ -1,5 +1,5 @@
 <!-- Modal Actualizar Taller-->
-<div class="modal fade" id="modalActualizarAlumno" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+<div class="modal fade" id="modalActualizarProfesor" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -24,30 +24,15 @@
             @endif
             
             @foreach($alumnos as $alumno)
-             <form id="form-act-alumno" action="{{ url('editaralumno')}}" method="post">	
+             <form id="form-act-profesor" action="{{ url('editarprofesor')}}" method="post">
+             <input id="idsolicitud" type="hidden" value="{{ $profesor->id_solicitudes }}">
             @endforeach
             {{ csrf_field() }}
           
           <div class="form-group">
-						<label for="exampleFormControlInput1"> Alumno </label>
-						<input id="alumnoActualizar" type="text" class="form-control" name="alumno">
+						<label for="exampleFormControlInput1"> Profesor </label>
+						<input id="profesorActualizar" type="text" class="form-control" name="profesor">
 					</div>
-          <div class="form-group">
-				    <label for="exampleFormControlSelect1"> Carrera </label>
-				     <select name="taller" class="form-control" id="carreraActualizar">
-				    	@foreach($carrera as $c)
-				    		<option value="{{ $c->id_carrera }}" {{ old('carrera') == $c->id_carrera ? 'selected' : '' }}>{{ $c->carrera }}</option>
-				    	@endforeach
-				    </select>
-          </div>
-          <div class="form-group">
-				    <label for="exampleFormControlSelect1"> Cuatrimestre </label>
-				     <select name="taller" class="form-control" id="cuatrimestreActualizar">
-				    	@foreach($cuatrimestre as $cuatri)
-				    		<option value="{{ $cuatri->id_cuatrimestre }}" {{ old('cuatrimestre') == $cuatri->id_cuatrimestre ? 'selected' : '' }}>{{ $cuatri->cuatrimestre }}</option>
-				    	@endforeach
-				    </select>
-          </div>
           <div class="form-group">
 				    <label for="exampleFormControlSelect1"> Taller </label>
 				     <select name="taller" class="form-control" id="tallerActualizar">
@@ -56,16 +41,12 @@
 				    	@endforeach
 				    </select>
           </div>
-				  <div class="form-group">
-				    <label for="exampleFormControlSelect2"> Horas de Servicio Social </label>
-				   	<input type="text" class="form-control" id="horasActualizar" name="horas"> 
-				  </div>
                  
     </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-closeupd" data-dismiss="modal">Cerrar</button>
-        <button id="btnactalumno" type="submit" class="btn btn-primary btn-act-alumno" data-dismiss="modal">Guardar Cambios</button>
+        <button id="btnactprofesor" type="submit" class="btn btn-primary btn-act-profesor" data-dismiss="modal">Guardar Cambios</button>
       </div>
     </div>
     </form>
