@@ -29,7 +29,7 @@ $('#modalActualizarAlumno').on('show.bs.modal', function (event) {
  var horas = button.data('horas')
  var modal = $(this)
  idsolicitud = button.data('idsolicitudes')
- 
+ alert(horas);
  modal.find('.modal-body #idActualizar').val(id)
  modal.find('.modal-body #matriculaActualizar').val(matricula)
  modal.find('.modal-body #alumnoActualizar').val(alumno)
@@ -45,7 +45,6 @@ $('.btn-act-alumno').click(function(e){
    var url = form_update.attr('action');
    var url_update = url+"/"+id+"/"+idsolicitud;
    var horas = $('#horas').val();
-   alert(url_update);
    if(horas > 480){
     Swal.fire({
         type: 'error',
@@ -87,14 +86,11 @@ $('.btn-act-alumno').click(function(e){
                                         "<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
                                         "</td>";
                                     $('#alumnos').append(changos);
-                               
                         }
                         }); 
                         $('#profesores').html("");
                         $.each(data, function(i, item) {
                         if(item.tipos_personas_id_tipo_persona == 1){
-                           
-                                
                                
                                 changos = "<tr><td>" +
 									item.nombre + "</td><td>" +
@@ -105,14 +101,16 @@ $('.btn-act-alumno').click(function(e){
 									"</td>";
                                 $('#profesores').append(changos);
                         }
-                        Swal.fire({
-                            position: 'top-end',
-                            type: 'success',
-                            title: 'Alumno actualizado correctamente',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
                     });
+                
+                    
+                    Swal.fire({
+                        position: 'top-end',
+                        type: 'success',
+                        title: 'Alumno actualizado correctamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
 				},
                     error: function () {
                         Swal.fire({

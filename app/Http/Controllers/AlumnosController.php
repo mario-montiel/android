@@ -90,7 +90,7 @@ class AlumnosController extends Controller
             $alumno->cuatrimestre_id_cuatrimestre = $request->cuatrimestre;
             $alumno->save();
 
-            return $solicitud = Solicitud::find($idsolicitud);
+            $solicitud = Solicitud::find($idsolicitud);
             $solicitud->horas_servicio_social = $request->horas;
             $solicitud->tallleres_id_taller = $request->taller;
             $solicitud->save();
