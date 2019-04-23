@@ -51,7 +51,6 @@ class AlumnosController extends Controller
         'personas.nombre', 'carreras.carrera', 'cuatrimestre.cuatrimestre', 'talleres.taller', 'usuarios.created_at',
         'usuarios.updated_at', 'personas.tipos_personas_id_tipo_persona')*/
         ->get();
-        $horasTaller->last();
         $carrera = Carrera::all();
         $cuatrimestre = Cuatrimestre::all();
         $horas = 0;

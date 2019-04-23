@@ -30,6 +30,7 @@ $('#modalActualizarAlumno').on('show.bs.modal', function (event) {
  var modal = $(this)
  idsolicitud = button.data('idsolicitudes')
  alert(horas);
+ alert(carrera);
  modal.find('.modal-body #idActualizar').val(id)
  modal.find('.modal-body #matriculaActualizar').val(matricula)
  modal.find('.modal-body #alumnoActualizar').val(alumno)

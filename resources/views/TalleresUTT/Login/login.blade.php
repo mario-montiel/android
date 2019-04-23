@@ -35,7 +35,7 @@
                <span><p class="alert alert-success">Su cuenta ha sido cerrada</p></span> 
             @endif
             @if(Session::has('hacker'))
-               <span><p id="hacker" class="alert alert-success">Inicie sesión como profesor para poder contnuar!...</p></span> 
+               <span><p id="hacker" class="alert alert-success">Inicie sesión como profesor para poder continuar!...</p></span> 
             @endif
 			@if(Session::has('created'))
                <span><p id="hacker" class="alert alert-success">Su cuenta se creó con éxito!</p></span> 
