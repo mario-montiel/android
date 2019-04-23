@@ -34,9 +34,11 @@ class AlumnosController extends Controller
         ->get();
         $talleres = Taller::all();
         $profesoresx2 = DB::table('personas')
-        ->select('personas.id_persona', 'personas.nombre', 'talleres.taller', 'usuarios.created_at', 'usuarios.updated_at')
+        ->select('personas.id_persona', 'personas.nombre', 'talleres.taller', 'usuarios.created_at', 
+        'solicitudes.id_solicitudes', 'usuarios.updated_at')
         ->join('talleres', 'talleres.id_maistro', '=', 'personas.id_persona')
         ->rightjoin('usuarios', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
+        ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
         ->where('personas.tipos_personas_id_tipo_persona', '=', 1)
         ->get();
         $horasTaller = DB::table('usuarios')
