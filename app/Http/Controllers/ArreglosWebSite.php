@@ -86,20 +86,31 @@ class ArreglosWebSite extends Controller
         ];
     }
 
-    
-
-    function pruebon($a, $b, $c){
-        if($a > $b && $a > $c){
-            return "A es el mayor";
+    function traerhoras($horas){
+        $total=0;
+        $siono=1;
+        $horas = DB::table('solicitudes')
+        ->join('personas', 'personas.id_persona', '=', 'solicitudes.personas_id_persona')
+        ->join('usuarios', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
+        ->select('solicitudes.horas_servicio_social')
+        ->where('usuarios.usuario', $horas)->get();
+        foreach ($horas as $hr) {
+            $total= $total+$hr->horas_servicio_social;
         }
-        else if ($b > $a && $b > $c){
-            return "B es el mayor";
+        if($total==0){
+            $siono=0;
         }
-        else if($c > $b && $c > $a){
-            return "C es el mayor";
-        }
-        else{
-            return "ingrese numeros diferentes";
-        }
+        return [
+            'siono'=>$siono];
+    }
+    function horasusuario($usuario){
+        $consulta = DB::table('personas AS profesores')
+        ->join('talleres', 'talleres.id_maistro', '=', 'profesores.id_persona')
+        ->join('solicitudes', 'solicitudes.tallleres_id_taller', '=', 'talleres.id_taller')
+        ->join('personas', 'personas.id_persona', '=', 'solicitudes.personas_id_persona')
+        ->join('usuarios', 'usuarios.personas_id_persona', '=', 'personas.id_persona')
+        ->select('profesores.nombre AS profesor', 'talleres.nombre AS taller', 'solicitudes.horas_servicio_social AS horas')
+        ->where('usuarios.usuario', $usuario)->get();
+        return $consulta;
     }
 }
