@@ -37,16 +37,6 @@
 
 <center><input name="buscador" id="buscadoralumno" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
 
-<div class="form-group">
-    <label for="">Filtro por Taller</label>
-	<select name="filtro" class="form-control" id="select">
-		<option>Elija el taller</option>
-			@foreach($talleres as $t)
-				<option value="{{ $t->id_taller }}" {{ old('select') == $t->id_taller ? 'selected' : '' }}>{{ $t->taller }}</option>
-			@endforeach
-	</select>
-</div>
-
 @extends('TalleresUTT.Alumnos.actualizarAlumnos')
 
 @extends('TalleresUTT.Alumnos.actualizarProfesores')
