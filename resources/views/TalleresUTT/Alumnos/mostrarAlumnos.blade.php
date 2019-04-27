@@ -51,8 +51,6 @@
 
 @extends('TalleresUTT.Alumnos.actualizarProfesores')
 
-@extends('TalleresUTT.Alumnos.EliminarProfesor')
-
 <br>
 <br>
 @if( count($personas)>0)
