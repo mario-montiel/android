@@ -109,7 +109,7 @@ class ArreglosWebSite extends Controller
         ->join('solicitudes', 'solicitudes.tallleres_id_taller', '=', 'talleres.id_taller')
         ->join('personas', 'personas.id_persona', '=', 'solicitudes.personas_id_persona')
         ->join('usuarios', 'usuarios.personas_id_persona', '=', 'personas.id_persona')
-        ->select('profesores.nombre AS profesor', 'talleres.nombre AS taller', 'solicitudes.horas_servicio_social AS horas')
+        ->select('profesores.nombre AS profesor', 'talleres.taller AS taller', 'solicitudes.horas_servicio_social AS horas')
         ->where('usuarios.usuario', $usuario)->get();
         return $consulta;
     }
