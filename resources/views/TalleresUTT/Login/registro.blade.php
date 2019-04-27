@@ -356,6 +356,15 @@ $(document).ready(function(){
                                 });                                  
 			return false;
 		}
+		if($('#input9').val() != 'utt2019'){
+			Swal.fire({
+                                  type: 'error',
+                                  title: 'Oops...',
+                                  text: 'INGRESE CORRECTAMENTE LA PALABRA CLAVE',
+                                  footer: '<span class="alert alert-danger">¿Porqué no intenta de nuevo?. Estaria genial</span>'
+                                });                                  
+			return false;
+		}
 	});
 
 	var select = document.getElementById("select1");

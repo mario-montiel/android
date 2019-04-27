@@ -70,8 +70,6 @@ Route::get('/logout', 'LoginController@logout');
 
 Route::get('/registraralumno', 'LoginController@viewRegistroPersona');
 Route::post('/registrarpersona', 'LoginController@registrarPersona');
-Route::get('/registrarusuario', 'LoginController@viewRegistroUsuario');
-Route::post('/registrarusuario', 'LoginController@registrarse');
 
 //Route::get('/registrotalleres', 'TalleresController@viewTalleres');
 Route::post('/talleres', 'TalleresController@talleres');
@@ -93,8 +91,8 @@ Route::get('/johnnylandobtenerusuario', 'ArreglosWebSite@arregloJohnnyLandUusari
 Route::post('/7u7', 'ArreglosWebSite@arregloJohnnyWuW');
 Route::post('/solicitud', 'ArreglosWebSite@solicitud');
 Route::post('/solicitudusuario', 'ArreglosWebSite@solicitudusuario');
-Route::get('/traerhoras', 'ArreglosWebSite@traerhoras');
-Route::get('/horasusuario', 'ArreglosWebSite@horasusuario');
+Route::get('/traerhoras/{horas}', 'ArreglosWebSite@traerhoras');
+Route::get('/horasusuario/{usuario}', 'ArreglosWebSite@horasusuario');
 
 Route::get('/eventos', 'EventosController@viewEventos');
 Route::post('/evento', 'EventosController@eventos');
