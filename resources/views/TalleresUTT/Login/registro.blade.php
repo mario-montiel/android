@@ -360,7 +360,7 @@ $(document).ready(function(){
 			Swal.fire({
                                   type: 'error',
                                   title: 'Oops...',
-                                  text: 'INGRESE CORRECTAMENTE LA PALABRA CLAVE',
+                                  text: 'INGRESE DE FORMA CORRECTA LA CLAVE DE AUTENTIFICACIÓN',
                                   footer: '<span class="alert alert-danger">¿Porqué no intenta de nuevo?. Estaria genial</span>'
                                 });                                  
 			return false;
