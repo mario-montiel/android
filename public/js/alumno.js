@@ -248,13 +248,11 @@ $('.btn-delete-profesor').click(function(e){
     var form_eliminar = $('#form-delete-profesor');
     var url = form_eliminar.attr('action');
     var url_eliminar = url+"/"+idtaller;
-    alert(url_eliminar);
     
     $.post(url_eliminar, form_eliminar.serialize(), function(result){
         //row.fadeOut();
                e.preventDefault();
                 $value = $('#buscadoralumno').val();
-                console.log(result);
                 $.ajax({
                     type: 'GET',
                     url:  '/buscadoralumno',
