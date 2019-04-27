@@ -87,13 +87,15 @@ class LoginController extends Controller
                 'usuario' => 'required|max:255',
                 'password' => 'required|max:255',
                 'alumno' => 'required|max:255',
-                'tpersona' => 'required|integer'], 
+                'tpersona' => 'required|integer',
+                'clave' => 'required'], 
     
                 ['usuario.required' => 'Ingrese el nombre de un usuario',
                 'password.required' => 'Ingrese una contraseña',
                 'alumno.required' => 'Ingrese el nombre completo del alumno',
                 'tpersona.required' => 'Seleccione un tipo de persona',
-                'tpersona.integer' => 'Seleccione un tipo de persona']);
+                'tpersona.integer' => 'Seleccione un tipo de persona',
+                'clave' => 'Ingrese la clave de autentificación del profesor']);
         }
         else if($request->tpersona == 2){
 		$this->validate($request, [
