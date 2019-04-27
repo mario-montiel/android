@@ -109,7 +109,8 @@ Route::get('/buscadorasignado', 'EventosAsignadosController@buscador');
 
 Route::get('/mostraralumnos', 'AlumnosController@viewMostrarAlumnos');
 Route::post('/editaralumno/{id}/{idsolicitud}', 'AlumnosController@actualizarAlumno');
-Route::post('/editarprofesor/{id}', 'AlumnosController@actualizarProfesor');
+Route::post('/editarprofesor/{idprofe}', 'AlumnosController@actualizarProfesor');
+Route::post('/eliminarprofesor/{idtaller}', 'AlumnosController@eliminarProfesor');
 Route::get('/buscadoralumno', 'AlumnosController@buscador');
 Route::get('/buscatesta', 'AlumnosController@buscatesta');
 

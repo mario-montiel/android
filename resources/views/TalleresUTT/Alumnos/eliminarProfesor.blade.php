@@ -1,5 +1,5 @@
 <!-- Modal Actualizar Taller-->
-<div class="modal fade" id="modalActualizarProfesor" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+<div class="modal fade" id="modalEliminarProfesor" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -24,21 +24,19 @@
             @endif
             
             @foreach($alumnos as $alumno)
-             <form id="form-act-profesor" action="{{ url('editarprofesor')}}" method="post">
-             <input id="idsolicitud" type="hidden" value="{{ $profesor->id_solicitudes }}">
+             <form id="form-delete-profesor" action="{{ url('eliminarprofesor')}}" method="post">
+             <input id="nombre" type="hidden" value="{{ $profesor->id_solicitudes }}">
             @endforeach
             {{ csrf_field() }}
           
-            <div class="form-group">
-				    <label for="exampleFormControlInput1"> Nombre del Profesor </label>
-				    <input id="profesorActualizar" type="text" class="form-control" name="profesor">
-				  </div>
+          	<center><span class="alert alert-danger btn-block" role="alert" style="width: 100%; margin: 0; text-align: center;">¿Desea eliminar el taller en el que esta el profesor?</span>
+			      </center>
                  
     </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-closeupd" data-dismiss="modal">Cerrar</button>
-        <button id="btnactprofesor" type="submit" class="btn btn-primary btn-act-profesor" data-dismiss="modal">Eliminar</button>
+        <button id="btneliminarprofesor" type="submit" class="btn btn-primary btn-delete-profesor" data-dismiss="modal">Eliminar</button>
       </div>
     </div>
     </form>

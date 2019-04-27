@@ -2,7 +2,7 @@
   <div class="modal-dialog bd-example-modal-sm modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Actualizar Taller</h5>
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Eliminar Taller</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -11,8 +11,8 @@
        
 
 
-			<span class="alert alert-danger" role="alert" style="width: 80%; margin: 0; text-align: center; margin-left: 9%;">¿Desea eliminar este taller?</span>
-			<center></center>
+			<center><span class="alert alert-danger btn-block" style="width: 100%; margin: 0; text-align: center;">¿Desea eliminar este taller?</span>
+			</center>
           
 			@foreach($taller as $t)
              <form id="form-eliminar" action="{{ url('eliminartaller')}}" method="post">

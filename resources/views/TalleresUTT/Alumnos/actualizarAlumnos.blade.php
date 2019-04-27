@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Actualizar Evento</h5>
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Actualizar Alumno</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -40,7 +40,7 @@
 				    <label for="exampleFormControlSelect1"> Carrera </label>
 				     <select name="carrera" class="form-control" id="carreraActualizar">
 				    	@foreach($carrera as $c)
-				    		<option value="{{ $c->id_carrera }}" {{ old('carrera') == $c->id_carrera ? 'selected' : '' }}>{{ $c->carrera }}</option>
+				    		<option value="{{ $c->id_carrera }}">{{ $c->carrera }}</option>
 				    	@endforeach
 				    </select>
           </div>

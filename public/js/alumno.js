@@ -29,8 +29,6 @@ $('#modalActualizarAlumno').on('show.bs.modal', function (event) {
  var horas = button.data('horas')
  var modal = $(this)
  idsolicitud = button.data('idsolicitudes')
- alert(horas);
- alert(carrera);
  modal.find('.modal-body #idActualizar').val(id)
  modal.find('.modal-body #matriculaActualizar').val(matricula)
  modal.find('.modal-body #alumnoActualizar').val(alumno)
@@ -134,16 +132,16 @@ $('.btn-act-alumno').click(function(e){
 })
 
 
-
+var idtaller;
+var idprofe;
 
 $('#modalActualizarProfesor').on('show.bs.modal', function (event) {
  
     var button = $(event.relatedTarget) // Button that triggered the modal
-    id = button.data('id')
+    idprofe = button.data('id')
+    idtaller  = button.data('idtaller');
     var profesor = button.data('profesor') 
     var taller = button.data('taller')
-    alert(profesor);
-    alert(taller);
     var modal = $(this)
     modal.find('.modal-body #idActualizar').val(id)
     modal.find('.modal-body #profesorActualizar').val(profesor)
@@ -154,13 +152,10 @@ $('#modalActualizarProfesor').on('show.bs.modal', function (event) {
       e.preventDefault();
       var form_update = $('#form-act-profesor');
       var url = form_update.attr('action');
-      var url_update = url+"/"+id;
-      alert(form_update.serialize());
-      alert(url_update);
+      var url_update = url+"/"+idprofe;
       
       $.post(url_update, form_update.serialize(), function(result){
           //row.fadeOut();
-          console.log(result);
                  e.preventDefault();
                   $value = $('#buscadoralumno').val();
                   
@@ -235,5 +230,103 @@ $('#modalActualizarProfesor').on('show.bs.modal', function (event) {
          })
       })
    })
+
+
+
+
+   $('#modalEliminarProfesor').on('show.bs.modal', function (event) {
+  
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    idprofe = button.data('id')
+    idtaller  = button.data('idtaller');
+    var modal = $(this)
+      
+  });
+    
+$('.btn-delete-profesor').click(function(e){
+    e.preventDefault();
+    var form_eliminar = $('#form-delete-profesor');
+    var url = form_eliminar.attr('action');
+    var url_eliminar = url+"/"+idtaller;
+    alert(url_eliminar);
+    
+    $.post(url_eliminar, form_eliminar.serialize(), function(result){
+        //row.fadeOut();
+               e.preventDefault();
+                $value = $('#buscadoralumno').val();
+                console.log(result);
+                $.ajax({
+                    type: 'GET',
+                    url:  '/buscadoralumno',
+                    data: {'buscadoralumno':$value},
+                    success:function(data){
+                        var horas;
+                         $('#alumnos').html("");
+                         $.each(data, function(i, item) {
+                             console.log(item.tipos_personas_id_tipo_persona);
+                         if(item.tipos_personas_id_tipo_persona == 2){
+                                     if( item.horas_servicio_social == null){horas = 0}
+                                     else{
+                                                     horas = item.horas_servicio_social;
+                                     }
+                                     changos = "<tr><td>" +
+                                         item.matricula + "</td><td>" +
+                                         item.nombre + "</td><td>" +
+                                         item.carrera + "</td><td>" +
+                                         item.cuatrimestre + "</td><td>" +
+                                         item.taller + "</td><td>" +
+                                         horas + "</td><td>" +
+                                         item.created_at + "</td><td>" +
+                                         item.updated_at + "</td><td>" +
+                                         "<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+                                         "</td>";
+                                     $('#alumnos').append(changos);
+                         }
+                         }); 
+                         $('#profesores').html("");
+                         $.each(data, function(i, item) {
+                         if(item.tipos_personas_id_tipo_persona == 1){
+                                
+                                 changos = "<tr><td>" +
+                                     item.nombre + "</td><td>" +
+                                     item.taller + "</td><td>" +
+                                     item.created_at + "</td><td>" +
+                                     item.updated_at + "</td><td>" +
+                                     "<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+                                     "</td>";
+                                 $('#profesores').append(changos);
+                         }
+                     });
+                 
+                     
+                     Swal.fire({
+                         position: 'top-end',
+                         type: 'success',
+                         title: 'Profesor actualizado correctamente',
+                         showConfirmButton: false,
+                         timer: 1500
+                     })
+                 },
+                     error: function () {
+                         Swal.fire({
+                             type: 'error',
+                             title: 'Oops...',
+                             text: 'Algo salió mal!',
+                             footer: '<a href>Intentelo de nuevo</a>'
+                           })
+                     }
+                });
+        
+    }).fail(function(){
+     Swal.fire({
+         type: 'error',
+         title: 'Oops...',
+         text: 'La actualización del profesor falló',
+         footer: '<a href>Intentelo de nuevo</a>'
+       })
+    })
+ })
+
+
 
 });

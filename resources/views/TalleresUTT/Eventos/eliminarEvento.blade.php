@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
 
-			<center><span class="alert alert-danger" role="alert" style="width: 80%; margin: 0; text-align: center; margin-left: 9%;">¿Desea eliminar este taller?</span>
+			<center><span class="alert alert-danger btn-block" role="alert" style="width: 100%; text-align: center;">¿Desea eliminar este evento?</span>
 			</center>
           
       @foreach($event as $ev)

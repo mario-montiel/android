@@ -34,7 +34,7 @@ class AlumnosController extends Controller
         ->get();
         $talleres = Taller::all();
         $profesoresx2 = DB::table('personas')
-        ->select('personas.id_persona', 'personas.nombre', 'talleres.taller', 'usuarios.created_at', 
+        ->select('personas.id_persona', 'personas.nombre', 'talleres.id_taller', 'talleres.taller', 'usuarios.created_at', 
         'solicitudes.id_solicitudes', 'usuarios.updated_at')
         ->join('talleres', 'talleres.id_maistro', '=', 'personas.id_persona')
         ->rightjoin('usuarios', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
@@ -53,7 +53,7 @@ class AlumnosController extends Controller
         'personas.nombre', 'carreras.carrera', 'cuatrimestre.cuatrimestre', 'talleres.taller', 'usuarios.created_at',
         'usuarios.updated_at', 'personas.tipos_personas_id_tipo_persona')*/
         ->get();
-        $carrera = Carrera::all();
+        $carrera = DB::table('carreras')->get();
         $cuatrimestre = Cuatrimestre::all();
         $horas = 0;
         $total = 0;
@@ -98,15 +98,18 @@ class AlumnosController extends Controller
         }
     }
 
-    function actualizarProfesor(Request $request, $id){
+    function actualizarProfesor(Request $request, $idprofe){
         if($request->ajax()){
-            $profesor = Persona::find($id);
+            $profesor = Persona::find($idprofe);
             $profesor->nombre = $request->profesor;
             $profesor->save();
+        }
+    }
 
-            $taller = Solicitud::find($idsolicitud);
-            $taller->personas_id_persona = $request->taller;
-            $taller->save();
+    function eliminarProfesor(Request $request, $idtaller){
+        if($request->ajax()){
+            return $profesor = Taller::find($idtaller);
+            $profesor->destroy();
         }
     }
 
