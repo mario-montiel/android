@@ -86,7 +86,7 @@ class ArreglosWebSite extends Controller
         ];
     }
 
-    function traerhoras($horas){
+    function traerhoras(Request $request){
         $total=0;
         $siono=1;
         $horas = DB::table('solicitudes')

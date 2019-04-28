@@ -91,7 +91,7 @@ Route::get('/johnnylandobtenerusuario', 'ArreglosWebSite@arregloJohnnyLandUusari
 Route::post('/7u7', 'ArreglosWebSite@arregloJohnnyWuW');
 Route::post('/solicitud', 'ArreglosWebSite@solicitud');
 Route::post('/solicitudusuario', 'ArreglosWebSite@solicitudusuario');
-Route::post('/traerhoras/{horas}', 'ArreglosWebSite@traerhoras');
+Route::post('/traerhoras', 'ArreglosWebSite@traerhoras');
 Route::get('/horasusuario/{usuario}', 'ArreglosWebSite@horasusuario');
 
 Route::get('/eventos', 'EventosController@viewEventos');
