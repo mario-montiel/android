@@ -116,7 +116,7 @@ class ArreglosWebSite extends Controller
     
     ////////////////
 
-    function tipodeusuario(Request $usuarios){
+    function tipodeusuario(Request $request){
         $con = $request->usuarios;
         $consulta = DB::table('usuarios')
         ->join('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
