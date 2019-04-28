@@ -94,7 +94,7 @@ Route::post('/solicitudusuario', 'ArreglosWebSite@solicitudusuario');
 Route::post('/traerhoras', 'ArreglosWebSite@traerhoras');
 Route::get('/horasusuario/{usuario}', 'ArreglosWebSite@horasusuario');
 Route::post('/tipodeusuario', 'ArreglosWebSite@tipodeusuario');
-Route::get('/listadosalumnos', 'ArreglosWebSite@listadosalumnos');
+Route::get('/listadosalumnos/{usuario}', 'ArreglosWebSite@listadosalumnos');
 Route::post('/actualizadohoras/{profe}/{horas}', 'ArreglosWebSite@actualizadohoras');
 
 Route::get('/eventos', 'EventosController@viewEventos');
