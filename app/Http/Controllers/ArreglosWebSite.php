@@ -113,4 +113,58 @@ class ArreglosWebSite extends Controller
         ->where('usuarios.usuario', $usuario)->get();
         return $consulta;
     }
+    
+    ////////////////
+
+    function tipodeusuario(Request $usuarios){
+        $con = $request->usuarios;
+        $consulta = DB::table('usuarios')
+        ->join('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
+        ->join('tipos_personas', 'tipos_personas.id_tipo_persona', '=', 'personas.tipos_personas_id_tipo_persona')
+        ->select('tipos_personas.tipo')
+        ->where('usuarios.usuario', $con)->get();
+        return $consulta;
+    }
+    function listadosalumnos($usuario){
+        $consulta = DB::table('usuarios')
+        ->join('personas AS profesores', 'profesores.id_persona', '=', 'usuarios.personas_id_persona')
+        ->join('talleres', 'talleres.id_maistro', '=', 'profesores.id_persona')
+        ->join('solicitudes', 'solicitudes.tallleres_id_taller', '=', 'talleres.id_taller')
+        ->join('personas', 'personas.id_persona', '=', 'solicitudes.personas_id_persona')
+        ->join('cuatrimestre', 'cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
+        ->select('personas.matricula', 'personas.nombre', 'cuatrimestre.cuatrimestre', 'solicitudes.horas_servicio_social AS horas')
+        ->where('usuarios.usuario', $usuario)->get();
+        return $consulta;
+    }
+    function actualizadohoras(Request $id, $profe, $horas){
+        $obj="";
+        $consulta = DB::table('solicitudes')
+        ->join('personas', 'personas.id_persona', '=', 'solicitudes.personas_id_persona')
+        ->join('talleres', 'talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
+        ->join('personas AS profesor', 'profesor.id_persona', '=', 'talleres.id_maistro')
+        ->join('usuarios', 'usuarios.personas_id_persona', '=', 'profesor.id_persona')
+        ->select('solicitudes.id_solicitudes')
+        ->where('personas.matricula',$id)
+        ->where('usuarios.usuario',$profe)->get();
+        $array = json_decode($consulta, true);
+        foreach ($array as $key => $con) {
+            $obj = $con['id_solicitudes'];
+        }
+        $tamaño = count(str_split($horas));
+        $variable="";
+        for ($i=1; $i <$tamaño ; $i++) { 
+            $variable=$variable.$horas[$i];
+        }
+        if($horas[0]=="+"){
+            $solicitudeshoras = Solicitud::find($obj);
+            $horasktiene=$solicitudeshoras->horas_servicio_social;
+            $solicitudeshoras->horas_servicio_social = $horasktiene + $variable;
+            $solicitudeshoras->save(); 
+        }else{
+            $solicitudeshoras = Solicitud::find($obj);
+            $horasktiene=$solicitudeshoras->horas_servicio_social;
+            $solicitudeshoras->horas_servicio_social = $horasktiene - $variable;
+            $solicitudeshoras->save(); 
+        }
+    }
 }

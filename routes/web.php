@@ -93,6 +93,9 @@ Route::post('/solicitud', 'ArreglosWebSite@solicitud');
 Route::post('/solicitudusuario', 'ArreglosWebSite@solicitudusuario');
 Route::post('/traerhoras', 'ArreglosWebSite@traerhoras');
 Route::get('/horasusuario/{usuario}', 'ArreglosWebSite@horasusuario');
+Route::get('/tipodeusuario', 'ArreglosWebSite@tipodeusuario');
+Route::get('/listadosalumnos', 'ArreglosWebSite@listadosalumnos');
+Route::get('/actualizadohoras/{profe}/{horas}', 'ArreglosWebSite@actualizadohoras');
 
 Route::get('/eventos', 'EventosController@viewEventos');
 Route::post('/evento', 'EventosController@eventos');
