@@ -47,13 +47,22 @@ class ArreglosWebSite extends Controller
         return array($talleres->encargado, $talleres->nombre, $usuario->alumno);
     }
 
-    function arregloJohnnyWuW(Request $request){
-        $usuario = $request->usuario;
-        $vato = DB::table('usuarios')->where('usuario', $usuario)->first();
-        
+    function arregloJohnnyWuW($usuario){
+        $consulta = DB::table('usuarios')
+        ->join('personas', 'usuarios.personas_id_persona', '=', 'personas.id_persona')
+        ->join('tipos_personas', 'tipos_personas.id_tipo_persona', '=', 'personas.tipos_personas_id_tipo_persona')
+        ->where('usuario', $usuario)->get();
+        $vato = json_decode($consulta,true);
+        $password="";
+        $tipo="";
+        foreach ($vato as $key => $con) {
+            $password = $con['password'];
+            $tipo =$con['tipo'];
+        }
             return [
                 'usuario' => $usuario,
-                'password' => $vato->password
+                'password' => $password,
+                'tipo' => $tipo
             ];
     }
 
