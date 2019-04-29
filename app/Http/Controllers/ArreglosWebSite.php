@@ -47,7 +47,7 @@ class ArreglosWebSite extends Controller
         return array($talleres->encargado, $talleres->nombre, $usuario->alumno);
     }
 
-    function arregloJohnnyWuW(Request $request, $usuario){
+    function arregloJohnnyWuW(Request $request){
         $consulta = DB::table('usuarios')
         ->join('personas', 'usuarios.personas_id_persona', '=', 'personas.id_persona')
         ->join('tipos_personas', 'tipos_personas.id_tipo_persona', '=', 'personas.tipos_personas_id_tipo_persona')
