@@ -28,8 +28,6 @@ $('#modalActualizarAlumno').on('show.bs.modal', function (event) {
  var cuatrimestre = button.data('cuatrimestre')
  var taller = button.data('taller')
  var horas = button.data('horas')
- alert(alumno);
- alert(idsolicitud);
 
  var modal = $(this)
 
@@ -59,7 +57,6 @@ $('.btn-act-alumno').click(function(e){
     }
    $.post(url_update, form_update.serialize(), function(result){
        //row.fadeOut();
-       console.log(result);
               e.preventDefault();
                $value = $('#buscadoralumno').val();
                
@@ -71,7 +68,6 @@ $('.btn-act-alumno').click(function(e){
                        var horas;
                         $('#alumnos').html("");
                         $.each(data, function(i, item) {
-                            console.log(item.tipos_personas_id_tipo_persona);
                         if(item.tipos_personas_id_tipo_persona == 2){
                                     if( item.horas_servicio_social == null){horas = 0}
                                     else{
@@ -86,7 +82,7 @@ $('.btn-act-alumno').click(function(e){
                                         horas + "</td><td>" +
                                         item.created_at + "</td><td>" +
                                         item.updated_at + "</td><td>" +
-                                        "<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+                                        "<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
                                         "</td>";
                                     $('#alumnos').append(changos);
                         }
@@ -100,7 +96,7 @@ $('.btn-act-alumno').click(function(e){
                                     item.taller + "</td><td>" +
                                     item.created_at + "</td><td>" +
                                     item.updated_at + "</td><td>" +
-									"<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+									"<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
 									"</td>";
                                 $('#profesores').append(changos);
                         }
@@ -186,7 +182,7 @@ $('#modalActualizarProfesor').on('show.bs.modal', function (event) {
                                            horas + "</td><td>" +
                                            item.created_at + "</td><td>" +
                                            item.updated_at + "</td><td>" +
-                                           "<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+                                           "<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
                                            "</td>";
                                        $('#alumnos').append(changos);
                            }
@@ -200,7 +196,7 @@ $('#modalActualizarProfesor').on('show.bs.modal', function (event) {
                                        item.taller + "</td><td>" +
                                        item.created_at + "</td><td>" +
                                        item.updated_at + "</td><td>" +
-                                       "<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+                                       "<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
                                        "</td>";
                                    $('#profesores').append(changos);
                            }
