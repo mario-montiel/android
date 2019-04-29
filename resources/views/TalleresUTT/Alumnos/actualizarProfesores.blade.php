@@ -38,7 +38,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-closeupd" data-dismiss="modal">Cerrar</button>
-        <button id="btnactprofesor" type="submit" class="btn btn-primary btn-act-profesor" data-dismiss="modal">Eliminar</button>
+        <button id="btnactprofesor" type="submit" class="btn btn-primary btn-act-profesor" data-dismiss="modal">Guardar Cambios</button>
       </div>
     </div>
     </form>
