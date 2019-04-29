@@ -4,12 +4,22 @@
 @section('titulo', 'Alumnos')
 
 @section('contenido')
+<style type="text/css">
+	 .img1 {
+             width:100%;
+           
+             
+             background-position:center
+     
+}
+
+</style>
 <script type="text/javascript" src="js/alumno.js"></script>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-light img1" style="background-image: url(img/navbarofi8.png)">
 	<img id="imgiluminati" src="{{ asset('img/iluminati.png') }}">
   <a href="/"><img id="back" src="{{ asset('img/back.png') }}"></a>
-  <a class="navbar-brand" href="/" id="tituloNavBar" style="margin-top-10px;"> Talleres UTT</a>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
   </button>
@@ -17,13 +27,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto" style="margin-left:50px;">
       <li class="nav-item active">
-        <a  class="nav-link" href="/mostrartalleres">Talleres<span class="sr-only">(current)</span></a>
+        <a style="color:#FFFFFF" class="nav-link" href="/mostrartalleres">Talleres<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a  class="nav-link" href="/eventos">Eventos <span class="sr-only">(current)</span></a>
+        <a style="color:#FFFFFF"  class="nav-link" href="/eventos">Eventos <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a  class="nav-link" href="/eventosasignados">Asignar Evento <span class="sr-only">(current)</span></a>
+        <a style="color:#FFFFFF" class="nav-link" href="/eventosasignados">Asignar Evento <span class="sr-only">(current)</span></a>
       </li>
     </ul>
     @if(Session::has('usuario'))

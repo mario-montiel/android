@@ -3,21 +3,24 @@
 @section('titulo', 'Registro')
 
 @section('contenido')
-	<style type="text/css">
+<style type="text/css">
 	#fondo{
-		background-color: #282B30;
+		
 		padding: 0;
 		margin: 0;
+		 background-image: url("{{asset('img/violin.jpg')}}");
+	 display: block; 
+                     
+     
 	}
 	#contenedorlogin{
 		margin-top: 30px;
 	}
 	#card{
-		width: 28rem; height: 65rem; margin: auto; background-color: #282B30; border-color: transparent;
+		width: 28rem; height: 50rem; margin: auto; background-color: #007F62; border-color: transparent;
+		border-radius: 3%;
 	}
-	#card:hover{
-		background-color: #2E3239;
-	}
+
 	#title{
 		color: white;
 	}
@@ -36,9 +39,9 @@
 	#input1{
 		width: 350px;
 		height: 60px;
-		background-color: #333338;
+		background-color: #FFFFFF;
 		border-radius: 45px;
-		color: #ffff;
+		color:#000000;
 		text-align: center;
 		margin-top: 10px;
 		background-image: url('img/acount.png');
@@ -46,15 +49,13 @@
 		background-size: 30px;
 		background-position: 40px;
 	}
-	#input1::placeholder {
-		color: white;
-	}
+
 	#input2{
 		width: 350px;
 		height: 60px;
-		background-color: #333338;
+		background-color: #FFFFFF;
 		border-radius: 45px;
-		color: #ffff;
+		color:#000000;
 		text-align: center;
 		margin-top: 50px;
 		background-image: url('img/password.png');
@@ -62,15 +63,13 @@
 		background-size: 30px;
 		background-position: 40px;
 	}
-	#input2::placeholder {
-		color: white;
-	}
+	
 	#input3{
 		width: 350px;
 		height: 60px;
-		background-color: #333338;
+		background-color: #FFFFFF;
 		border-radius: 45px;
-		color: #ffff;
+		color: #000000;
 		text-align: center;
 		margin-top: 10px;
 		background-image: url('img/password.png');
@@ -78,15 +77,13 @@
 		background-size: 30px;
 		background-position: 40px;
 	}
-	#input3::placeholder {
-		color: white;
-	}
+	
 	#input5{
 		width: 350px;
 		height: 60px;
-		background-color: #333338;
+		background-color: #FFFFFF;
 		border-radius: 45px;
-		color: #ffff;
+		color: #000000;
 		text-align: center;
 		margin-top: 40px;
 		background-image: url('img/acount.png');
@@ -94,15 +91,13 @@
 		background-size: 30px;
 		background-position: 40px;
 	}
-	#input5::placeholder {
-		color: white;
-	}
+	
 	#input6{
 		width: 350px;
 		height: 60px;
-		background-color: #333338;
+		background-color: #FFFFFF;
 		border-radius: 45px;
-		color: #ffff;
+		color: #000000;
 		text-align: center;
 		margin-top: 10px;
 		background-image: url('img/acount.png');
@@ -110,15 +105,13 @@
 		background-size: 30px;
 		background-position: 40px;
 	}
-	#input6::placeholder {
-		color: white;
-	}
+	
 	#input7{
 		width: 350px;
 		height: 60px;
-		background-color: #333338;
+		background-color: #FFFFFF;
 		border-radius: 45px;
-		color: #ffff;
+		color: #000000;
 		text-align: center;
 		margin-top: 10px;
 		background-image: url('img/acount.png');
@@ -126,15 +119,13 @@
 		background-size: 30px;
 		background-position: 40px;
 	}
-	#input7::placeholder {
-		color: white;
-	}
+	
 	#input8{
 		width: 350px;
 		height: 60px;
-		background-color: #333338;
+		background-color: #FFFFFF;
 		border-radius: 45px;
-		color: #ffff;
+		color: #000000;
 		text-align: center;
 		margin-top: 10px;
 		background-image: url('img/acount.png');
@@ -142,15 +133,13 @@
 		background-size: 30px;
 		background-position: 40px;
 	}
-	#input8::placeholder {
-		color: white;
-	}
+	
 	#input9{
 		width: 350px;
 		height: 60px;
-		background-color: #333338;
+		background-color: #FFFFFF;
 		border-radius: 45px;
-		color: #ffff;
+		color: #000000;
 		text-align: center;
 		margin-top: 10px;
 		background-image: url('img/acount.png');
@@ -158,9 +147,7 @@
 		background-size: 30px;
 		background-position: 40px;
 	}
-	#input9::placeholder {
-		color: white;
-	}
+	
 	#col1{
 		text-align: center;
 	}
@@ -199,9 +186,9 @@
 	#select1{
 		width: 350px;
 		height: 60px;
-		background-color: #333338;
+		background-color: #FFFFFF;
 		border-radius: 45px;
-		color: #ffff;
+		color: #000000;
 		text-align: center;
 		margin-top: 30px;
 		margin-left:30px;
@@ -212,9 +199,9 @@
 	#select2{
 		width: 350px;
 		height: 60px;
-		background-color: #333338;
+		background-color: #FFFFFF;
 		border-radius: 45px;
-		color: #ffff;
+		color: #000000;
 		text-align: center;
 		margin-top: 15px;
 		margin-left:30px;
@@ -225,9 +212,9 @@
 	#select3{
 		width: 350px;
 		height: 60px;
-		background-color: #333338;
+		background-color: #FFFFFF;
 		border-radius: 45px;
-		color: #ffff;
+		color: #000000;
 		text-align: center;
 		margin-top: 15px;
 		margin-left:30px;
@@ -243,11 +230,23 @@
 		margin-left: -220px;
 	}
 	}
+	  .img1 {
+             width:100%;
+           
+             
+             background-position:center
+     
+}
+
 </style>
+<nav class="img1" style="background-image: url(img/navbarofi8.png)">
+<img src="{{ asset('img/iluminati.png') }}" width="65px"></div>
+  <a href="/"><img  src="{{ asset('img/back.png') }}" width="20px"></a></div>
+</nav>
 </head>
 <body id="fondo">
 <script src="http://code.jquery.com/jquery-3.3.1.js"integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
-<center><img align="center" border="0" id="img1" src="{{ asset('img/utt.png') }}"> </center>
+
 
 <div id="contenedorlogin" class="container">
     <div id="card" class="card">
@@ -306,7 +305,7 @@
 						</select>
 					</div>
 					</div>
-				    <div id="col3" class="col-12"> <button id="boton1" type="submit" class="btn btn-dark"> Registrarse </button> </div>
+				    <div id="col3" class="col-12"> <button id="boton1" type="submit" class="btn btn-danger"> Registrarse </button> </div>
 				    <div id="col4" class="col-12"> <p id="p2">© 2019 Desarrollado por el equipo Amarillo de la Carrera de Sistemas Informáticos</p> </div>
 				  </div>
                 

@@ -8,8 +8,178 @@
 </style>
 </head>
 <body id="fondo">
+<style type="text/css">
+	#fondo{
+		 background-image: url("{{asset('img/violin.jpg')}}");
+	 display: block; 
+		padding: 0;
+		margin: 0;
+	}
+	#contenedorlogin{
+		margin-top: 30px;
+	}
+	#card{
+		width: 28rem; height: 35rem; margin: auto; background-color: #007F62; border-color: transparent;
+	border-radius: 5%;
+	}
+	
+	#title{
+		color: white;
+	}
+		#boton1{
+		width: 280px;
+		height: 60px;
+		margin-top: -20px;
+		border-radius: 45px;
 
-<center><img align="center" border="0" id="img1" src="{{ asset('img/utt.png') }}"> </center>
+	}
+
+	#input1{
+		width: 350px;
+		height: 60px;
+		background-color:  #FFFFFF;
+		border-radius: 45px;
+		color: #000000;
+		text-align: center;
+		margin-top: 10px;
+		background-image: url('img/acount.png');
+		background-repeat: no-repeat;
+		background-size: 30px;
+		background-position: 40px;
+	}
+	
+	#input2{
+		width: 350px;
+		height: 60px;
+		background-color: #FFFFFF;
+		border-radius: 45px;
+		color: #000000;
+		text-align: center;
+		margin-top: 50px;
+		background-image: url('img/password.png');
+		background-repeat: no-repeat;
+		background-size: 30px;
+		background-position: 40px;
+	}
+	
+	#input3{
+		width: 350px;
+		height: 60px;
+		background-color: #FFFFFF;
+		border-radius: 45px;
+		color:  #000000;
+		text-align: center;
+		margin-top: 30px;
+		background-image: url('img/password.png');
+		background-repeat: no-repeat;
+		background-size: 30px;
+		background-position: 40px;
+	}
+	
+	#input5{
+		width: 350px;
+		height: 60px;
+		background-color: #FFFFFF;
+		border-radius: 45px;
+		color: #ffff;
+		text-align: center;
+		margin-top: 10px;
+		background-image: url('img/acount.png');
+		background-repeat: no-repeat;
+		background-size: 30px;
+		background-position: 40px;
+	}
+	
+	#input6{
+		width: 350px;
+		height: 60px;
+		background-color: #FFFFFF;
+		border-radius: 45px;
+		color: #000000;
+		text-align: center;
+		margin-top: 30px;
+		background-image: url('img/acount.png');
+		background-repeat: no-repeat;
+		background-size: 30px;
+		background-position: 40px;
+	}
+	
+	#input7{
+		width: 350px;
+		height: 60px;
+		background-color: #FFFFFF;
+		border-radius: 45px;
+		color: #000000;
+		text-align: center;
+		margin-top: 30px;
+		background-image: url('img/acount.png');
+		background-repeat: no-repeat;
+		background-size: 30px;
+		background-position: 40px;
+	}
+	
+	#col1{
+		text-align: center;
+	}
+	#col2{
+		text-align: center;
+	}
+	#col5{
+		text-align: center;
+	}
+	#p1{
+		margin-top: 25px;
+		color: white;
+		text-align: center;
+	}
+	#col3{
+		margin-top: 40px;
+		text-align: center;
+	}
+	#col4{
+		color: white;
+	}
+	#p2{
+		text-align: center;
+		margin-top: 25px;
+		font-size: 13px;
+	}
+	#imgusuario{
+		height: 45px;
+		margin-left: 45px;
+	}
+	#imgiluminati{
+		height: 80px;
+		position: relative;
+		left: 88%;
+	}
+	
+	@media (max-width: 700px)
+	{
+		#imgiluminati{
+		height: 80px;
+		margin-top: 40px;
+		margin-left: -220px;
+	}
+	}
+
+	 .img1 {
+             width:100%;
+           
+             
+             background-position:center
+     
+}
+
+</style>
+
+
+<nav class="img1" style="background-image: url(img/navbarofi8.png)">
+<img src="{{ asset('img/iluminati.png') }}" width="65px"></div>
+  <a href="/"><img  src="{{ asset('img/back.png') }}" width="20px"></a></div>
+</nav>
+
+
 
 @if(Session::has('conected'))
                <center><span ><p class="alert alert-success">Su cuenta se inició correctamente.</p></span></center>
@@ -47,7 +217,7 @@
                 <div class="row">
 				    <div id="col1" class="col"> <input id="input1" type="text" placeholder="Usuario" name="usuario"> </div>
 				    <div id="col2" class="col-12"> <input id="input2" type="password" placeholder="Contraseña" name="password"> </div>
-				    <div id="col3" class="col-12"> <button id="boton1" type="submit" class="btn btn-dark"> Iniciar sesión </button> </div>
+				    <div id="col3" class="col-12"> <button id="boton1" type="submit" class="btn btn-danger"> Iniciar sesión </button> </div>
 				    <div id="col4" class="col-12"> <p id="p2">© 2019 Desarrollado por el equipo Amarillo de la Carrera de Sistemas Informáticos</p> </div>
 				  </div>
                 
