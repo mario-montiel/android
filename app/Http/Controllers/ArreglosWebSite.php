@@ -70,14 +70,14 @@ class ArreglosWebSite extends Controller
         $obj="";
         $id= DB::table('usuarios')
         ->join('personas', 'usuarios.personas_id_persona', '=', 'personas.id_persona')
-        ->where('usuarios.usuario', $usuario)->get();
+        ->where('usuarios.usuario', $request->usuario)->get();
         $array = json_decode($id, true);
         foreach ($array as $key => $con) {
             $obj=$con['personas_id_persona'];
         }
         
         $solicitud = new Solicitud();
-        $solicitud->tallleres_id_taller = $taller;
+        $solicitud->tallleres_id_taller = $request->taller;
         $solicitud->horas_servicio_social = 0;
         $solicitud->personas_id_persona = $obj;
         $solicitud->save();
@@ -109,7 +109,7 @@ class ArreglosWebSite extends Controller
         ->join('personas', 'personas.id_persona', '=', 'solicitudes.personas_id_persona')
         ->join('usuarios', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
         ->select('solicitudes.horas_servicio_social')
-        ->where('usuarios.usuario', $horas)->get();
+        ->where('usuarios.usuario', $request->usuario)->get();
         foreach ($horas as $hr) {
             $total= $total+$hr->horas_servicio_social;
         }

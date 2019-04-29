@@ -25,7 +25,7 @@ class AlumnosController extends Controller
         ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', 'carreras.carrera', 
         'cuatrimestre.cuatrimestre', 'talleres.taller', 'solicitudes.id_solicitudes', 'solicitudes.horas_servicio_social', 'usuarios.created_at', 
         'usuarios.updated_at', 'personas.tipos_personas_id_tipo_persona')
-        ->rightjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
+        ->leftjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
         ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
         ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
         ->leftjoin('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')

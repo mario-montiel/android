@@ -214,7 +214,7 @@
 					if(data.no != ""){
                         $('#alumnos').html("");
                         $.each(data, function(i, item) {
-                            console.log(item.carrera);
+                            console.log(item.nombre);
                         if(item.tipos_personas_id_tipo_persona == 2){
                                     if( item.horas_servicio_social == null){horas = 0}
                                     else{
@@ -260,30 +260,7 @@
 			});
 	});
     
-    var select = document.getElementById("select");
-
-	select.addEventListener("change", function(event) {
-       
-            
-                $.ajax({
-				type: 'GET',
-				url:  '/buscatesta',
-				data: {'buscatesta':select},
-				success:function(data){
-                        $('#tbody').html("");
-                        $.each(data, function(i, item) {
-								changos = "<tr><td>" +
-									item.nombre + "</td><td>" +
-								$('#tbody').append(changos);
-                        });
-				},
-			     error: function () {
-			         alert("Error del Servidor");
-			     }
-			}); 
-            
-        
-    });
+    
 
 </script>
 

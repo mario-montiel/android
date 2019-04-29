@@ -20,6 +20,7 @@ var idsolicitud = '';
 $('#modalActualizarAlumno').on('show.bs.modal', function (event) {
  
  var button = $(event.relatedTarget) // Button that triggered the modal
+ idsolicitud = button.data('idsolicitudes')
  id = button.data('id')
  var matricula = button.data('matricula') 
  var alumno = button.data('alumno') 
@@ -27,8 +28,11 @@ $('#modalActualizarAlumno').on('show.bs.modal', function (event) {
  var cuatrimestre = button.data('cuatrimestre')
  var taller = button.data('taller')
  var horas = button.data('horas')
+ alert(alumno);
+ alert(idsolicitud);
+
  var modal = $(this)
- idsolicitud = button.data('idsolicitudes')
+
  modal.find('.modal-body #idActualizar').val(id)
  modal.find('.modal-body #matriculaActualizar').val(matricula)
  modal.find('.modal-body #alumnoActualizar').val(alumno)
