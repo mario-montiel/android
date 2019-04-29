@@ -185,10 +185,8 @@ setTimeout(function() {
 			e.preventDefault();
 			var forms = $('#form-actualizar');
 			var urls = forms.attr('action');
-			alert()
 			$.post(urls, forms.serialize(), function(result){
 				//row.fadeOut();
-				alert(result);
 			e.preventDefault();
 			$value = $('#buscador').val();
 				$.ajax({
