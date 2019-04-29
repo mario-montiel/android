@@ -51,8 +51,8 @@ scc
 		<tbody id="mostrardatos">
 				@foreach($taller as $t)
 				<tr data-id="{{ $t->id_taller }}">
-					<td > {{$t->nombre}} </td>
-					<td> {{$t->encargado}} </td>
+					<td > {{$t->taller}} </td>
+					<td> {{$t->nombre}} </td>
 					<td> {{$t->tipo}} </td>
 					<td> {{$t->descripcion}} </td>
 					<td> {{$t->horarios}} </td>
