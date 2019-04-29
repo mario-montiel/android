@@ -5,9 +5,6 @@ body{
 #contenedor{
 		position: absolute;
 	}
-	.table:hover{
-		
-	}
 	#tituloNavBar{
 			position: absolute;
 			left: 44%;
@@ -23,6 +20,9 @@ body{
 	}
 	#nel{
 		display: none;
+	}
+	#back{
+		height: 15px;
 	}
 	#card{
 		background-color: #B7B6C5;
@@ -105,7 +105,5 @@ body{
 	@media (max-width: 1200px){
 		.table{
 			margin-left: 0%;
-		}
-		#btnadd{
 		}
 	}
