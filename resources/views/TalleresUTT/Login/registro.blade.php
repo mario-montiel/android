@@ -17,7 +17,7 @@
 		margin-top: 30px;
 	}
 	#card{
-		width: 28rem; height: 50rem; margin: auto; background-color: #007F62; border-color: transparent;
+		width: 28rem; height: 57rem; margin: auto; background-color: #007F62; border-color: transparent;
 		border-radius: 3%;
 	}
 
