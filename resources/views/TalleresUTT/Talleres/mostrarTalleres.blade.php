@@ -21,7 +21,7 @@
         <a  class="nav-link" href="/mostraralumnos">Alumnos <span class="sr-only">(current)</span></a>
 	  </li>
 	  <li class="nav-item active">
-        <a  class="nav-link" href="/eventos">eventos <span class="sr-only">(current)</span></a>
+        <a  class="nav-link" href="/eventos">Eventos <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
         <a  class="nav-link" href="/eventosasignados">Asignar Evento <span class="sr-only">(current)</span></a>
