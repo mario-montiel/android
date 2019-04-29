@@ -22,7 +22,10 @@ body{
 		display: none;
 	}
 	#back{
-		height: 15px;
+		position: absolute;
+    height:25px;
+    left:90px;
+    margin-top:-10px;
 	}
 	#card{
 		background-color: #B7B6C5;
