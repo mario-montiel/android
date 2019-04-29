@@ -58,7 +58,7 @@ scc
 					<td> {{$t->horarios}} </td>
 					<td> 
 			             	{{ csrf_field() }}
-								<a data-toggle='modal' data-id="{{$t->id_taller}}" data-nombre="{{$t->nombre}}" data-encargado="{{$t->encargado}}" 
+								<a data-toggle='modal' data-id="{{$t->id_taller}}" data-nombre="{{$t->taller}}" data-encargado="{{$t->nombre}}" 
 								data-tipo="{{$t->tipo}}" data-descripcion="{{$t->descripcion}}" data-horarios="{{$t->horarios}}"  data-target='#modalActualizarTalleres' class='btn btn-warning'>
 								<img id="update" src="{{ asset('img/update.png') }}">
 							</a></td>
@@ -101,12 +101,12 @@ scc
 						$.each(data, function(i, item) {
 								
 								changos = "<tr data-id="+item.id_taller+"><td>" +
-									item.nombre+ "</td><td>" +
-									item.encargado + "</td><td>" +
+									item.taller+ "</td><td>" +
+									item.nombre + "</td><td>" +
 									item.tipo + "</td><td>" +
 									item.descripcion + "</td><td>" +
 									item.horarios + "</td><td>"  + 
-									"<button data-id="+item.id_taller+" data-nombre="+item.nombre+" data-encargado="+item.encargado+" data-tipo="+item.tipo+" data-descripcion="+item.descripcion+" data-horarios="+item.horarios+" data-toggle='modal' data-target='#modalActualizarTalleres' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+									"<button data-id="+item.id_taller+" data-nombre="+item.taller+" data-encargado="+item.nombre+" data-tipo="+item.tipo+" data-descripcion="+item.descripcion+" data-horarios="+item.horarios+" data-toggle='modal' data-target='#modalActualizarTalleres' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
 									"</td><td>" +
 									"<button data-id="+item.id_taller+" data-toggle='modal' data-target='#eliminarModal' class='btn btn-danger btn-eliminar'><img id='delete' src='{{ asset('img/delete.png') }}'></button>";
 								$('#mostrardatos').append(changos);
