@@ -218,7 +218,7 @@
                         if(item.tipos_personas_id_tipo_persona == 2){
                                     if( item.horas_servicio_social == null){horas = 0}
                                     else{
-                                                    horas = item.horas_servicio_social;
+                                        horas = item.horas_servicio_social;
                                     }
                                     changos = "<tr><td>" +
                                         item.matricula + "</td><td>" +
@@ -238,15 +238,12 @@
                         $('#profesores').html("");
                         $.each(data, function(i, item) {
                         if(item.tipos_personas_id_tipo_persona == 1){
-                           
-                                
-                               
                                 changos = "<tr><td>" +
 									item.nombre + "</td><td>" +
                                     item.taller + "</td><td>" +
                                     item.created_at + "</td><td>" +
                                     item.updated_at + "</td><td>" +
-									"<button  data-matricula="+item.matricula+" data-alumno="+item.nombre+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+									"<button  data-matricula="+item.matricula+" data-alumno="+item.nombre+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarProfesor' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
 									"</td>";
                                 $('#profesores').append(changos);
                         }
