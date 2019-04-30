@@ -274,7 +274,7 @@
 					<div id="col5" class="col-12"> <input id="input5" type="text" placeholder="Nombre" name="alumno"> </div>
 				    <div id="col1" class="col-12"> <input id="input7" type="text" placeholder="Matrícula" name="matricula"> </div>
 				    <div id="col2" class="col-12"> <input id="input3" type="text" placeholder="Sección" name="seccion"> </div>
-					<div id="col2" class="col-12"> <input id="input9" type="text" placeholder="Ingrese el pase a utt2019" name="clave"> </div>
+					<div id="col2" class="col-12"> <input id="input9" type="text" placeholder="Ingrese pase de verificación" name="clave"> </div>
 					<div id="col2" class="col-12"> 
 						<div class="form-group">
 						<select name="tpersona" class="form-control" id="select1">
