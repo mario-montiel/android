@@ -40,7 +40,6 @@ $('#modalActualizarAlumno').on('show.bs.modal', function (event) {
 });
 
 $('.btn-act-alumno').click(function(e){
-   e.preventDefault();
    var form_update = $('#form-act-alumno');
    var url = form_update.attr('action');
    var url_update = url+"/"+id+"/"+idsolicitud;
@@ -56,7 +55,6 @@ $('.btn-act-alumno').click(function(e){
     }
    $.post(url_update, form_update.serialize(), function(result){
        //row.fadeOut();
-              e.preventDefault();
                $value = $('#buscadoralumno').val();
                
                $.ajax({
