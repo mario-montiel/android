@@ -68,7 +68,7 @@ Route::post('/iniciosesion', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout');
 
 
-Route::get('/registraralumno', 'LoginController@viewRegistroPersona');
+Route::get('/registrar', 'LoginController@viewRegistroPersona');
 Route::post('/registrarpersona', 'LoginController@registrarPersona');
 
 //Route::get('/registrotalleres', 'TalleresController@viewTalleres');
