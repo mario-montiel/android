@@ -75,7 +75,7 @@ class AlumnosController extends Controller
         ->groupBy('personas.nombre')
         ->get();
         
-
+        dd($horasTallerX2);
        
 
         return view('TalleresUTT.Alumnos.mostrarAlumnos', compact('alumnos', 'personas', 'talleres', 
