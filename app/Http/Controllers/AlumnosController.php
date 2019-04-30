@@ -48,6 +48,7 @@ class AlumnosController extends Controller
         ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
         ->leftjoin('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
         ->leftjoin('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
+        ->groupBy('personas.nombre')
         ->where('personas.tipos_personas_id_tipo_persona', '=', 2)
         /*->groupBy('solicitudes.horas_servicio_social', 'personas.id_persona', 'personas.matricula',
         'personas.nombre', 'carreras.carrera', 'cuatrimestre.cuatrimestre', 'talleres.taller', 'usuarios.created_at',
@@ -56,7 +57,7 @@ class AlumnosController extends Controller
         $carrera = DB::table('carreras')->get();
         $cuatrimestre = Cuatrimestre::all();
         $horas = 0;
-        $total;
+        $total = 0;
         foreach($horasTaller as $ht){
                 $horas = $ht->horas_servicio_social;
                 $total += $horas;
