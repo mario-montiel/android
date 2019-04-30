@@ -3,7 +3,6 @@
 @section('titulo', 'Inicio de Sesión')
 
 @section('contenido')
-	<link rel="stylesheet" type="text/css" href="css/TalleresUTT/login.css">
 	<style type="text/css">
 </style>
 </head>
