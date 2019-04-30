@@ -66,37 +66,46 @@ $('.btn-act-alumno').click(function(e){
                    data: {'buscadoralumno':$value},
                    success:function(data){
                        var horas;
+                       var taller = '';
                         $('#alumnos').html("");
                         $.each(data, function(i, item) {
                         if(item.tipos_personas_id_tipo_persona == 2){
                                     if( item.horas_servicio_social == null){horas = 0}
                                     else{
-                                                    horas = item.horas_servicio_social;
+                                        horas = item.horas_servicio_social;
+                                    }
+                                    if( item.taller == null){taller = "No se le ha asignado ningun taller";}
+                                    else{
+                                        taller = item.taller;
                                     }
                                     changos = "<tr><td>" +
                                         item.matricula + "</td><td>" +
                                         item.nombre + "</td><td>" +
                                         item.carrera + "</td><td>" +
                                         item.cuatrimestre + "</td><td>" +
-                                        item.taller + "</td><td>" +
+                                        taller + "</td><td>" +
                                         horas + "</td><td>" +
                                         item.created_at + "</td><td>" +
                                         item.updated_at + "</td><td>" +
-                                        "<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
+                                        "<button  data-matricula="+item.matricula+" data-alumno="+item.nombre+" data-carrera="+item.nombre+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
                                         "</td>";
                                     $('#alumnos').append(changos);
                         }
                         }); 
+                        var tallerprofe="";
                         $('#profesores').html("");
                         $.each(data, function(i, item) {
                         if(item.tipos_personas_id_tipo_persona == 1){
-                               
+                            if( item.taller == null){tallerprofe = "No se le ha asignado ningun taller";}
+                            else{
+                                tallerprofe = item.taller;
+                            }
                                 changos = "<tr><td>" +
 									item.nombre + "</td><td>" +
-                                    item.taller + "</td><td>" +
+                                    tallerprofe + "</td><td>" +
                                     item.created_at + "</td><td>" +
                                     item.updated_at + "</td><td>" +
-									"<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
+									"<button data-id="+item.id_persona+" data-profesor="+item.nombre+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarProfesor   ' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
 									"</td>";
                                 $('#profesores').append(changos);
                         }
