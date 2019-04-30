@@ -178,7 +178,7 @@
                                             @if( $ht->horas_servicio_social == null)
                                                 No tiene horas
                                             @else
-                                                {{$total}}
+                                                {{$ht->horas_servicio_social}}
                                             @endif
                                             </td>
                                         </tr>
