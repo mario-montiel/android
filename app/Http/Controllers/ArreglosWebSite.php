@@ -67,9 +67,7 @@ class ArreglosWebSite extends Controller
     }
 
     function solicitud(Request $request){
-        $id= DB::table('usuarios')
-        ->select('usuarios.personas_id_persona')
-        ->where('usuarios.usuario', $request->usuario)->get();
+        $id= Usuario::where('usuario', $request->usuario);
 
         //$id = Session::get('usuario')->personas_id_persona; 
         
