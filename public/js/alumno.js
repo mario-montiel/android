@@ -28,7 +28,6 @@ $('#modalActualizarAlumno').on('show.bs.modal', function (event) {
  var cuatrimestre = button.data('cuatrimestre')
  var taller = button.data('taller')
  var horas = button.data('horas')
-
  var modal = $(this)
 
  modal.find('.modal-body #idActualizar').val(id)
