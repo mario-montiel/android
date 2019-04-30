@@ -56,7 +56,7 @@ class AlumnosController extends Controller
         $carrera = DB::table('carreras')->get();
         $cuatrimestre = Cuatrimestre::all();
         $horas = 0;
-        $total = 0;
+        $total;
         foreach($horasTaller as $ht){
                 $horas = $ht->horas_servicio_social;
                 $total += $horas;
