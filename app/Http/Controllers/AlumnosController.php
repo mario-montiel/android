@@ -65,12 +65,12 @@ class AlumnosController extends Controller
         $total = 0;*/
 
         $horasTallerX2 = DB::table('usuarios')
-        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre',  DB::raw('SUM("solicitudes.horas_servicio_social") as horas_servicio_social'))
-        ->rightjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
-        ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
-        ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
-        ->leftjoin('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
-        ->leftjoin('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
+        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', DB::raw('SUM("solicitudes.horas_servicio_social") AS horas_servicio_social'))
+        ->join('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
+        ->join('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
+        ->join('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
+        ->join('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
+        ->join('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
         ->where('personas.tipos_personas_id_tipo_persona', '=', 2)
         ->groupBy('personas.nombre')
         ->get();
