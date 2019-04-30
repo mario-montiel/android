@@ -67,21 +67,15 @@ class ArreglosWebSite extends Controller
     }
 
     function solicitud(Request $request){
-        /*$obj="";
         $id= DB::table('usuarios')
-        ->join('personas', 'usuarios.personas_id_persona', '=', 'personas.id_persona')
         ->where('usuarios.usuario', $request->usuario)->get();
-        $array = json_decode($id, true);
-        foreach ($array as $key => $con) {
-            $obj=$con['personas_id_persona'];
-        }*/
 
-        $id = Session::get('usuario')->personas_id_persona;
+        //$id = Session::get('usuario')->personas_id_persona; 
         
         $solicitud = new Solicitud();
         $solicitud->tallleres_id_taller = $request->taller;
         $solicitud->horas_servicio_social = 0;
-        $solicitud->personas_id_persona = $id;
+        $solicitud->personas_id_persona = $id->personas_id_persona;
         $solicitud->save();
     }
 
