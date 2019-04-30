@@ -229,7 +229,7 @@
                                         horas + "</td><td>" +
                                         item.created_at + "</td><td>" +
                                         item.updated_at + "</td><td>" +
-                                        "<button data-id="+item.id_persona+" data-matricula="+item.matricula+" data-alumno="+item.nombre+" data-carrera="+item.carrera+" data.cuatrimestre="+item-cuatrimestre+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+                                        "<button data-id="+item.id_persona+" data-matricula="+item.matricula+" data-alumno="+item.nombre+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
                                         "</td>";
                                     $('#alumnos').append(changos);
                                
