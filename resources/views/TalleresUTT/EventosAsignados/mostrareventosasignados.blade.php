@@ -17,7 +17,7 @@
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light img1" style="background-image: url(img/navbarofi8.png)">
-	<img id="imgiluminati" src="{{ asset('img/iluminati.png') }}">
+<a href="/"><img id="imgiluminati" src="{{ asset('img/iluminati.png') }}"></a>
   <a href="/"><img id="back" src="{{ asset('img/back.png') }}"></a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
