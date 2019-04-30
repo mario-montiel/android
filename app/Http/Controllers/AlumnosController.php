@@ -79,7 +79,7 @@ class AlumnosController extends Controller
        
 
         return view('TalleresUTT.Alumnos.mostrarAlumnos', compact('alumnos', 'personas', 'talleres', 
-        'carrera', 'cuatrimestre', 'profesoresx2', 'horasTaller', 'ht', 'horasTallerX2'));
+        'carrera', 'cuatrimestre', 'profesoresx2', 'horasTaller', 'horasTallerX2'));
     }
 
     function actualizarAlumno(Request $request, $id, $idsolicitud){
