@@ -40,7 +40,7 @@
 				    <label for="exampleFormControlSelect1"> Carrera </label>
 				     <select name="carrera" class="form-control" id="carreraActualizar">
 				    	@foreach($carrera as $c)
-				    		<option value="{{ $c->carrera }}">{{ $c->carrera }}</option>
+				    		<option value="{{ $c->id_carrera }}">{{ $c->carrera }}</option>
 				    	@endforeach
 				    </select>
           </div>
