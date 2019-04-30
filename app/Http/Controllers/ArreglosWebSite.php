@@ -66,7 +66,7 @@ class ArreglosWebSite extends Controller
             ];
     }
 
-    function solicitud($usuario, $taller){
+    function solicitud(Request $request){
         /*$obj="";
         $id= DB::table('usuarios')
         ->join('personas', 'usuarios.personas_id_persona', '=', 'personas.id_persona')
