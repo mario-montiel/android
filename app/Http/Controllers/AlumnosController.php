@@ -42,7 +42,7 @@ class AlumnosController extends Controller
         ->where('personas.tipos_personas_id_tipo_persona', '=', 1)
         ->get();
         $horasTaller = DB::table('usuarios')
-        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', DB::raw('SUM("solicitudes.horas_servicio_social")'))
+        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', 'solicitudes.horas_servicio_social')
         ->rightjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
         ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
         ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
@@ -65,7 +65,7 @@ class AlumnosController extends Controller
         $total = 0;*/
 
         $horasTallerX2 = DB::table('usuarios')
-        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', 'solicitudes.horas_servicio_social')
+        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre',  DB::raw('SUM("solicitudes.horas_servicio_social")'))
         ->rightjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
         ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
         ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
@@ -79,7 +79,7 @@ class AlumnosController extends Controller
        
 
         return view('TalleresUTT.Alumnos.mostrarAlumnos', compact('alumnos', 'personas', 'talleres', 
-        'carrera', 'cuatrimestre', 'profesoresx2', 'horasTaller', 'horas', 'ht', 'horasTallerX2'));
+        'carrera', 'cuatrimestre', 'profesoresx2', 'horasTaller', 'ht', 'horasTallerX2'));
     }
 
     function actualizarAlumno(Request $request, $id, $idsolicitud){
