@@ -243,7 +243,7 @@
                                     item.taller + "</td><td>" +
                                     item.created_at + "</td><td>" +
                                     item.updated_at + "</td><td>" +
-									"<button  data-matricula="+item.matricula+" data-alumno="+item.nombre+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarProfesor' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+									"<button  data-id="+item.id_persona+" data-profesor="+item.nombre+" data-toggle='modal' data-target='#modalActualizarProfesor' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
 									"</td>";
                                 $('#profesores').append(changos);
                         }
