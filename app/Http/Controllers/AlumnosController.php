@@ -61,8 +61,9 @@ class AlumnosController extends Controller
         foreach($horasTaller as $ht){
                 $horas = $ht->horas_servicio_social;
                 $total += $horas;
+                
         }
-
+        $total = 0;
 
         $horasTallerX2 = DB::table('usuarios')
         ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', 'solicitudes.horas_servicio_social')
