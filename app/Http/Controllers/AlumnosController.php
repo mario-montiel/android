@@ -72,7 +72,6 @@ class AlumnosController extends Controller
         ->leftjoin('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
         ->where('personas.tipos_personas_id_tipo_persona', '=', 2)
         ->orderBy('horas_servicio_social','DESC')
-        ->take(1)
         ->get();
         
 

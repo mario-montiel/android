@@ -176,7 +176,7 @@
                                             <td> {{$ht->nombre}} </td>
                                             <td>
                                             @if( $ht->horas_servicio_social == null)
-                                                No tiene pito
+                                                No tiene horas
                                             @else
                                                 {{$total}}
                                             @endif
