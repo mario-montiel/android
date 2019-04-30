@@ -355,7 +355,7 @@ $(document).ready(function(){
                                 });                                  
 			return false;
 		}
-		if($('#input9').val() != 'utt2019'){
+		if($('#input9').val() != 'utt2019' && $('#input9').is(':visible')){
 			Swal.fire({
                                   type: 'error',
                                   title: 'Oops...',
