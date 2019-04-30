@@ -71,7 +71,7 @@ class AlumnosController extends Controller
         ->leftjoin('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
         ->leftjoin('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
         ->where('personas.tipos_personas_id_tipo_persona', '=', 2)
-        ->orderBy('horas_servicio_social','DESC')
+        ->groupBy('nombre','DESC')
         ->get();
         
 
