@@ -65,7 +65,7 @@ class AlumnosController extends Controller
         $total = 0;*/
 
         $horasTallerX2 = DB::table('usuarios')
-        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre',  DB::raw('SUM("solicitudes.horas_servicio_social")'))
+        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre',  DB::raw('SUM("solicitudes.horas_servicio_social") as horas_servicio_social'))
         ->rightjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
         ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
         ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
