@@ -123,11 +123,11 @@ class AlumnosController extends Controller
         ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', 'carreras.carrera', 
         'cuatrimestre.cuatrimestre', 'talleres.taller', 'solicitudes.id_solicitudes', 'solicitudes.horas_servicio_social', 'usuarios.created_at', 
         'usuarios.updated_at', 'personas.tipos_personas_id_tipo_persona')
-        ->rightjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
-        ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
-        ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
-        ->leftjoin('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
-        ->leftjoin('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
+        ->join('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
+        ->join('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
+        ->join('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
+        ->join('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
+        ->join('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
         ->orWhere('matricula', 'LIKE', '%'.$request->buscadoralumno.'%')
         ->orWhere('nombre', 'LIKE', '%'.$request->buscadoralumno.'%')
         ->orWhere('horas_servicio_social', 'LIKE', '%'.$request->buscadoralumno.'%')

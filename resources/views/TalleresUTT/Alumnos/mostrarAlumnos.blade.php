@@ -96,7 +96,7 @@
                 <th>Actualizar</th>
             </tr>
         </thead>
-        <tbody id="todoslosalumnos">
+        <tbody id="alumnos">
         @foreach($alumnos as $alumno)
             <tr>
                 <td>{{$alumno->matricula}}</td>

@@ -73,8 +73,9 @@
 <br>
 
 @if( count($numtalleres)>0)
+<center>
 <div id="container" class="container-fluid">
-		<table id="table" class="table table-responsive table-hover">
+		<table class="table table-responsive table-hover" id="tablon">
 		<thead>
 			<tr>
 			<th>Nombre de Taller</th>
@@ -111,7 +112,7 @@
 	</table>
 	</div>
 </div>	
-
+</center>
 
 @else
 <div class="container"><center><br><label class="alert alert-primary"> No hay ningún Taller registrado </label></h1></center></div>
