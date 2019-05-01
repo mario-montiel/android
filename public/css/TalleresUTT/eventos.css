@@ -109,13 +109,17 @@ div.centrado{
 
 #buscartodoalumno{
     border-color: black;
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgba(0,84,0,0.6);
 }
 #buscarhoras{
     border-color: black;
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgba(0,84,0,0.6);
 }
 #buscadoralumno{
     border-color: black;
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgba(0,84,0,0.6);
 }
 #buscarprofesor{
     border-color: black;
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgba(0,84,0,0.6);
 }
