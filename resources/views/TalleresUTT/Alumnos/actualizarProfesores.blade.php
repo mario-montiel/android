@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Eliminar Profesor</h5>
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Actualizar Profesor</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -24,8 +24,7 @@
             @endif
             
             @foreach($profesoresx2 as $profesor)
-             <form id="form-act-profesor" action="{{ url('editarprofesor')}}" method="post">
-             <input id="idsolicitud" type="hidden" value="{{ $profesor->id_solicitudes }}">
+           <form id="form-act-profesor" action="{{ url('editarprofesor')}}" method="post">
             @endforeach
             {{ csrf_field() }}
           

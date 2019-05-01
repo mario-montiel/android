@@ -75,6 +75,7 @@
         </thead>
         <tbody id="profesores">
         @foreach($profesoresx2 as $profesor)
+        @if($profesor->tipos_personas_id_tipo_persona == 1)
             <tr>
                 <td>{{$profesor->nombre}}</td>
                 <td>
@@ -88,7 +89,8 @@
                     {{ csrf_field() }}
                 <td><button data-id='{{$profesor->id_persona}}' data-profesor="{{$profesor->nombre}}" data-idtaller="{{$profesor->id_taller}}" data-taller="{{$profesor->taller}}" data-toggle='modal' data-target='#modalActualizarProfesor' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
             </tr>
-                @endforeach
+            @endif
+            @endforeach
         </tbody>
     </table>
 </div>	
@@ -124,7 +126,7 @@
 									item.nombre + "</td><td>" +
                                     taller + "</td><td>" +
                                     item.created_at + "</td><td>" + 
-									"<button  data-id="+item.id_persona+" data-profesor="+item.nombre+" data-toggle='modal' data-target='#modalActualizarProfesor' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
+                                    "<button  data-id="+item.id_persona+" data-profesor="+item.nombre+" data-toggle='modal' data-target='#modalActualizarProfesor' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
 									"</td>";
                                 $('#profesores').append(changos);
                         });

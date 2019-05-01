@@ -158,28 +158,9 @@ $('#modalActualizarProfesor').on('show.bs.modal', function (event) {
                       url:  '/buscadoralumno',
                       data: {'buscadoralumno':$value},
                       success:function(data){
-                          var horas;
+                          var taller;
                            $('#alumnos').html("");
                            $.each(data, function(i, item) {
-                               console.log(item.tipos_personas_id_tipo_persona);
-                           if(item.tipos_personas_id_tipo_persona == 2){
-                                       if( item.horas_servicio_social == null){horas = 0}
-                                       else{
-                                                       horas = item.horas_servicio_social;
-                                       }
-                                       changos = "<tr><td>" +
-                                           item.matricula + "</td><td>" +
-                                           item.nombre + "</td><td>" +
-                                           item.carrera + "</td><td>" +
-                                           item.cuatrimestre + "</td><td>" +
-                                           item.taller + "</td><td>" +
-                                           horas + "</td><td>" +
-                                           item.created_at + "</td><td>" +
-                                           item.updated_at + "</td><td>" +
-                                           "<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
-                                           "</td>";
-                                       $('#alumnos').append(changos);
-                           }
                            }); 
                            $('#profesores').html("");
                            $.each(data, function(i, item) {
@@ -190,7 +171,7 @@ $('#modalActualizarProfesor').on('show.bs.modal', function (event) {
                                        item.taller + "</td><td>" +
                                        item.created_at + "</td><td>" +
                                        item.updated_at + "</td><td>" +
-                                       "<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
+                                       "<button  data-alumno="+item.alumno+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
                                        "</td>";
                                    $('#profesores').append(changos);
                            }
