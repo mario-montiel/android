@@ -22,7 +22,7 @@ class AlumnosController extends Controller
     function viewMostrarAlumnos(){
         $personas = DB::table('personas')->where('tipos_personas_id_tipo_persona', '=', 2)->get();
         $alumnos = DB::table('usuarios')
-        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', 'carreras.id_carrera', 'carreras.carrera', 
+        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', 'carreras.carrera', 
         'cuatrimestre.cuatrimestre', 'talleres.taller', 'solicitudes.id_solicitudes', 'solicitudes.horas_servicio_social', 'usuarios.created_at', 
         'usuarios.updated_at', 'personas.tipos_personas_id_tipo_persona')
         ->join('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
@@ -54,7 +54,7 @@ class AlumnosController extends Controller
         'personas.nombre', 'carreras.carrera', 'cuatrimestre.cuatrimestre', 'talleres.taller', 'usuarios.created_at',
         'usuarios.updated_at', 'personas.tipos_personas_id_tipo_persona')*/
         ->get();
-        $carrera = Carrera::all();
+        $carrera = DB::table('carreras')->get();
         $cuatrimestre = Cuatrimestre::all();
         /*$horas = 0;
         $total = 0;
@@ -74,10 +74,22 @@ class AlumnosController extends Controller
         ->where('personas.tipos_personas_id_tipo_persona', '=', 2)
         ->groupBy('personas.nombre')
         ->get();
+
+        $todosalumnos = DB::table('usuarios')
+        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', 'carreras.carrera', 
+        'cuatrimestre.cuatrimestre', 'talleres.taller', 'solicitudes.id_solicitudes', 'solicitudes.horas_servicio_social', 'usuarios.created_at', 
+        'usuarios.updated_at', 'personas.tipos_personas_id_tipo_persona')
+        ->leftjoin('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
+        ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
+        ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
+        ->leftjoin('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
+        ->leftjoin('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
+        ->where('personas.tipos_personas_id_tipo_persona', '=', 2)
+        ->get();
        
 
         return view('TalleresUTT.Alumnos.mostrarAlumnos', compact('alumnos', 'personas', 'talleres', 
-        'carrera', 'cuatrimestre', 'profesoresx2', 'horasTaller', 'horasTallerX2'));
+        'carrera', 'cuatrimestre', 'profesoresx2', 'horasTaller', 'horasTallerX2', 'todosalumnos'));
     }
 
     function actualizarAlumno(Request $request, $id, $idsolicitud){

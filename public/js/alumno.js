@@ -7,8 +7,12 @@ $(document).ready(function(){
     $('#btnactalumno').click(function(){
         var alumno = $('#alumnoActualizar').val();
         var horas = $('#horasActualizar').val();
+        var carreraActualizar = $('#carreraActualizar').val();
+        var cuatrimestreActualizar = $('#cuatrimestreActualizar').val();
+        var tallerActualizar = $('#tallerActualizar').val();
 
-        if(alumno.length == "" || horas.length == ""){
+        if(alumno.length == "" || horas.length == "" || carreraActualizar.length || 
+        cuatrimestreActualizar.length || tallerActualizar.length){
             alert("Llene todos los campos para continuar.");
             return false;
         }
@@ -31,8 +35,9 @@ $('#modalActualizarAlumno').on('show.bs.modal', function (event) {
  var modal = $(this)
  modal.find('.modal-body #idActualizar').val(id)
  modal.find('.modal-body #matriculaActualizar').val(matricula)
- modal.find('.modal-body #alumnoActualizar').val(alumno)
  modal.find('.modal-body #carreraActualizar').val(carrera)
+ modal.find('.modal-body #alumnoActualizar').val(alumno)
+
  modal.find('.modal-body #cuatrimestreActualizar').val(cuatrimestre)
  modal.find('.modal-body #horasActualizar').val(horas)
  modal.find('.modal-body #tallerActualizar').val(taller)
@@ -106,8 +111,6 @@ $('.btn-act-alumno').click(function(e){
                                 $('#profesores').append(changos);
                         }
                     });
-                
-                    
                     Swal.fire({
                         position: 'top-end',
                         type: 'success',
@@ -131,11 +134,10 @@ $('.btn-act-alumno').click(function(e){
         type: 'error',
         title: 'Oops...',
         text: 'La actualización del alumno falló',
-        footer: '<a href>Intentelo de nuevo</a>'
+        footer: '<a href>Asegurese de llenar todos los campos e intentelo de nuevo</a>'
       })
    })
 })
-
 
 var idtaller;
 var idprofe;
@@ -206,8 +208,6 @@ $('#modalActualizarProfesor').on('show.bs.modal', function (event) {
                                    $('#profesores').append(changos);
                            }
                        });
-                   
-                       
                        Swal.fire({
                            position: 'top-end',
                            type: 'success',
@@ -225,7 +225,6 @@ $('#modalActualizarProfesor').on('show.bs.modal', function (event) {
                              })
                        }
                   });
-          
       }).fail(function(){
        Swal.fire({
            type: 'error',
@@ -236,16 +235,11 @@ $('#modalActualizarProfesor').on('show.bs.modal', function (event) {
       })
    })
 
-
-
-
    $('#modalEliminarProfesor').on('show.bs.modal', function (event) {
-  
     var button = $(event.relatedTarget) // Button that triggered the modal
     idprofe = button.data('id')
     idtaller  = button.data('idtaller');
     var modal = $(this)
-      
   });
     
 $('.btn-delete-profesor').click(function(e){

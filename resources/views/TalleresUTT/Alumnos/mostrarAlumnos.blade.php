@@ -82,9 +82,10 @@
                     <div class="col-md-12">
                         <nav>
                             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Alumno</a>
+                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Alumnos con taller</a>
                                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profesor</a>
                                 <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Total de Horas</a>
+                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav" role="tab" aria-controls="nav" aria-selected="false">Todos los alumnos</a>
                             </div>
                         </nav>
                         @if( count($alumnos)>0)
@@ -100,7 +101,6 @@
                                             <th>Nombre del Taller</th>
                                             <th>Horas</th>
                                             <th>Fecha de ingreso (aaa,mm,dd)</th>
-                                            <th>Última actualización</th>
                                             <th>Actualizar</th>
                                         </tr>
                                     </thead>
@@ -120,14 +120,12 @@
                                             @endif
                                             </td>
                                             <td>{{ Carbon\Carbon::parse($alumno->created_at)->format('Y-m-d') }}</td>
-                                            <td>{{ Carbon\Carbon::parse($alumno->updated_at)->format('Y-m-d') }}</td>
                                             {{ csrf_field() }}
-                                            <td><button data-id='{{$alumno->id_persona}}' data-matricula='{{$alumno->matricula}}' 
-                                            data-alumno="{{$alumno->nombre}}" data-carrera="{{$alumno->carrera}}" 
-                                            data-cuatrimestre="{{$alumno->cuatrimestre}}"  data-taller="{{$alumno->taller}}" 
-                                            data-horas="{{$alumno->horas_servicio_social}}" data-idsolicitudes="{{$alumno->id_solicitudes}}" 
-                                            data-toggle='modal' 
-                                            data-target='#modalActualizarAlumno' class="btn btn-warning">
+                                            <td><button data-idsolicitudes="{{$alumno->id_solicitudes}}" data-id='{{$alumno->id_persona}}' 
+                                            data-matricula='{{$alumno->matricula}}' data-alumno="{{$alumno->nombre}}" 
+                                            data-carrera="{{$alumno->carrera}}" data-cuatrimestre="{{$alumno->cuatrimestre}}"
+                                            data-taller="{{$alumno->taller}}" data-horas="{{$alumno->horas_servicio_social}}" 
+                                            data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning">
                                             <img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
                                         </tr>
                                         @endforeach
@@ -166,8 +164,14 @@
                                 <table class="table" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Matrícula</th>
                                             <th>Alumno</th>
-                                            <th>Total de Horas</th>
+                                            <th>Carrera</th>
+                                            <th>Cuatrimestre</th>
+                                            <th>Nombre del Taller</th>
+                                            <th>Horas</th>
+                                            <th>Fecha de ingreso (aaa,mm,dd)</th>
+                                            <th>Actualizar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -181,6 +185,32 @@
                                                 {{$ht->horas_servicio_social}}
                                             @endif
                                             </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="nav" role="tabpanel" aria-labelledby="nav">
+                                <table class="table" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Matrícula</th>
+                                            <th>Alumno</th>
+                                            <th>Carrera</th>
+                                            <th>Cuatrimestre</th>
+                                            <th>Nombre del Taller</th>
+                                            <th>Fecha de ingreso (aaa,mm,dd)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($todosalumnos as $p)
+                                        <tr>
+                                        <td>{{$p->matricula}}</td>
+                                            <td>{{$p->nombre}}</td>
+                                            <td>{{$p->carrera}}</td>
+                                            <td>{{$p->cuatrimestre}}</td>
+                                            <td>{{$p->taller}}</td>
+                                            <td>{{ Carbon\Carbon::parse($alumno->created_at)->format('Y-m-d') }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
