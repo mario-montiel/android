@@ -92,6 +92,7 @@
                 <th>Carrera</th>
                 <th>Cuatrimestre</th>
                 <th>Nombre del Taller</th>
+                <th>Horas</th>
                 <th>Fecha de ingreso (aaa,mm,dd)</th>
                 <th>Actualizar</th>
             </tr>
@@ -110,13 +111,14 @@
                     {{$alumno->taller}}
                 @endif
                 </td>
+                <td> {{$alumno->horas_servicio_social}}</td>
                 <td>{{ Carbon\Carbon::parse($alumno->created_at)->format('Y-m-d') }}</td>
                 <td><button data-idsolicitudes="{{$alumno->id_solicitudes}}" data-id='{{$alumno->id_persona}}' 
-                                            data-matricula='{{$alumno->matricula}}' data-alumno="{{$alumno->nombre}}" 
-                                            data-carrera="{{$alumno->carrera}}" data-cuatrimestre="{{$alumno->cuatrimestre}}"
-                                            data-taller="{{$alumno->taller}}" data-horas="{{$alumno->horas_servicio_social}}" 
-                                            data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning">
-                                            <img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
+                    data-matricula='{{$alumno->matricula}}' data-alumno="{{$alumno->nombre}}" 
+                    data-carrera="{{$alumno->carrera}}" data-cuatrimestre="{{$alumno->cuatrimestre}}"
+                    data-taller="{{$alumno->taller}}" data-horas="{{$alumno->horas_servicio_social}}" 
+                    data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning">
+                    <img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
             </tr>
                 @endforeach
         </tbody>

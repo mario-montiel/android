@@ -27,9 +27,9 @@ class AlumnosController extends Controller
         'usuarios.updated_at', 'personas.tipos_personas_id_tipo_persona')
         ->join('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
         ->join('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
-        ->join('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
-        ->join('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
-        ->join('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
+        ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
+        ->leftjoin('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
+        ->leftjoin('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
         ->where('personas.tipos_personas_id_tipo_persona', '=', 2)
         ->get();
         $talleres = Taller::all();
@@ -41,20 +41,24 @@ class AlumnosController extends Controller
     }
 
     function actualizarAlumno(Request $request, $id, $idsolicitud){
-        if($request->ajax()){
-            $alumno = Persona::find($id);
-            $alumno->matricula = $request->matricula;
-            $alumno->nombre = $request->alumno;
-            $alumno->carreras_id_carrera = $request->carrera;
-            $alumno->cuatrimestre_id_cuatrimestre = $request->cuatrimestre;
-            $alumno->save();
+        if($request->carrera != null ||
+        $request->cuatrimestre != null ||
+        $request->taller != null){
+                if($request->ajax()){
 
-            $solicitud = Solicitud::find($idsolicitud);
-            $solicitud->horas_servicio_social = $request->horas;
-            $solicitud->tallleres_id_taller = $request->taller;
-            $solicitud->save();
+                    $alumno = Persona::find($id);
+                    $alumno->matricula = $request->matricula;
+                    $alumno->nombre = $request->alumno;
+                    $alumno->carreras_id_carrera = $request->carrera;
+                    $alumno->cuatrimestre_id_cuatrimestre = $request->cuatrimestre;
+                    $alumno->save();
+        
+                    $solicitud = Solicitud::find($idsolicitud);
+                    $solicitud->horas_servicio_social = $request->horas;
+                    $solicitud->tallleres_id_taller = $request->taller;
+                    $solicitud->save();
+                }
         }
-        return redirect('/mostraralumnos');
     }
 
     function actualizarProfesor(Request $request, $idprofe){
@@ -125,9 +129,9 @@ class AlumnosController extends Controller
         'usuarios.updated_at', 'personas.tipos_personas_id_tipo_persona')
         ->join('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
         ->join('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
-        ->join('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
-        ->join('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
-        ->join('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
+        ->leftjoin('talleres','talleres.id_taller', '=', 'solicitudes.tallleres_id_taller')
+        ->leftjoin('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
+        ->leftjoin('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
         ->orWhere('matricula', 'LIKE', '%'.$request->buscadoralumno.'%')
         ->orWhere('nombre', 'LIKE', '%'.$request->buscadoralumno.'%')
         ->orWhere('horas_servicio_social', 'LIKE', '%'.$request->buscadoralumno.'%')

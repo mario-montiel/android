@@ -17,6 +17,9 @@ $(document).ready(function(){
 
 var id = '';
 var idsolicitud = '';
+var carrera = '';
+var cuatrimestre = '';
+var taller = '';
 
 $('#modalActualizarAlumno').on('show.bs.modal', function (event) {
  
@@ -25,16 +28,16 @@ $('#modalActualizarAlumno').on('show.bs.modal', function (event) {
  id = button.data('id')
  var matricula = button.data('matricula') 
  var alumno = button.data('alumno') 
- var carrera = button.data('carrera')
- var cuatrimestre = button.data('cuatrimestre')
- var taller = button.data('taller')
+ carrera= button.data('carrera')
+ cuatrimestre = button.data('cuatrimestre')
+taller = button.data('taller')
  var horas = button.data('horas')
  var modal = $(this)
+
  modal.find('.modal-body #idActualizar').val(id)
  modal.find('.modal-body #matriculaActualizar').val(matricula)
  modal.find('.modal-body #carreraActualizar').val(carrera)
  modal.find('.modal-body #alumnoActualizar').val(alumno)
-
  modal.find('.modal-body #cuatrimestreActualizar').val(cuatrimestre)
  modal.find('.modal-body #horasActualizar').val(horas)
  modal.find('.modal-body #tallerActualizar').val(taller)
@@ -45,6 +48,10 @@ $('.btn-act-alumno').click(function(e){
    var url = form_update.attr('action');
    var url_update = url+"/"+id+"/"+idsolicitud;
    var horas = $('#horas').val();
+   alert(url_update);
+   alert(carrera);
+ alert(cuatrimestre);
+ alert(taller);
    if(horas > 480){
     Swal.fire({
         type: 'error',
@@ -84,30 +91,13 @@ $('.btn-act-alumno').click(function(e){
                                         taller + "</td><td>" +
                                         horas + "</td><td>" +
                                         item.created_at + "</td><td>" +
-                                        item.updated_at + "</td><td>" +
-                                        "<button  data-matricula="+item.matricula+" data-alumno="+item.nombre+" data-carrera="+item.nombre+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
+                                        "<button  data-idsolicitudes="+item.id_solicitudes+" data-id="+item.id_persona+
+                                        " data-matricula="+item.matricula+" data-alumno="+item.nombre+" data-carrera="+item.nombre+
+                                        " data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
                                         "</td>";
                                     $('#alumnos').append(changos);
                         }
-                        }); 
-                        var tallerprofe="";
-                        $('#profesores').html("");
-                        $.each(data, function(i, item) {
-                        if(item.tipos_personas_id_tipo_persona == 1){
-                            if( item.taller == null){tallerprofe = "No se le ha asignado ningun taller";}
-                            else{
-                                tallerprofe = item.taller;
-                            }
-                                changos = "<tr><td>" +
-									item.nombre + "</td><td>" +
-                                    tallerprofe + "</td><td>" +
-                                    item.created_at + "</td><td>" +
-                                    item.updated_at + "</td><td>" +
-									"<button data-id="+item.id_persona+" data-profesor="+item.nombre+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarProfesor   ' class='btn btn-warning'><img id='update' src='img/update.png'></button>" + 
-									"</td>";
-                                $('#profesores').append(changos);
-                        }
-                    });
+                        });
                     Swal.fire({
                         position: 'top-end',
                         type: 'success',
