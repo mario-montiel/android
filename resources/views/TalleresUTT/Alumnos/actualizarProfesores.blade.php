@@ -23,7 +23,7 @@
 		        </ul>
             @endif
             
-            @foreach($alumnos as $alumno)
+            @foreach($profesoresx2 as $profesor)
              <form id="form-act-profesor" action="{{ url('editarprofesor')}}" method="post">
              <input id="idsolicitud" type="hidden" value="{{ $profesor->id_solicitudes }}">
             @endforeach

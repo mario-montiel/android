@@ -46,13 +46,24 @@
 </nav>
 
 <center><input name="buscador" id="buscadoralumno" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
+<br>
+<br>
+<center>
+    <div class="container">
+        <div class="row">
+            <div id="btn1" class="col btn-primary"><a id="a1" href="/mostrarprofesores">Profesores</a></div>
+            <div id="btn2" class="col btn-info"><a id="a2"href="/mostrarhoras">Total de Horas</a></div>
+            <div id="btn3" class="col btn-success"><a id="a3" href="/mostrartodoslosalumnos">Todos los Alumnos</a></div>
+        </div>
+    </div>
+</center>
 
 @extends('TalleresUTT.Alumnos.actualizarAlumnos')
 
-@extends('TalleresUTT.Alumnos.actualizarProfesores')
+<br>
+<br>
 
-<br>
-<br>
+
 @if( count($personas)>0)
 <div class="centrado" style=" margin-left: auto;
     margin-right: auto;">
@@ -76,151 +87,45 @@
     </table>
 </center>
 </div>
-        <section id="tabs" class="project-tab">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <nav>
-                            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Alumnos con taller</a>
-                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profesor</a>
-                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Total de Horas</a>
-                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav" role="tab" aria-controls="nav" aria-selected="false">Todos los alumnos</a>
-                            </div>
-                        </nav>
-                        @if( count($alumnos)>0)
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                <table class="table" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Matrícula</th>
-                                            <th>Alumno</th>
-                                            <th>Carrera</th>
-                                            <th>Cuatrimestre</th>
-                                            <th>Nombre del Taller</th>
-                                            <th>Horas</th>
-                                            <th>Fecha de ingreso (aaa,mm,dd)</th>
-                                            <th>Actualizar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="alumnos">
-                                    @foreach($alumnos as $alumno)   
-                                        <tr>
-                                            <td>{{$alumno->matricula}}</td>
-                                            <td>{{$alumno->nombre}}</td>
-                                            <td>{{$alumno->carrera}}</td>
-                                            <td>{{$alumno->cuatrimestre}}</td>
-                                            <td>{{$alumno->taller}}</td>
-                                            <td>
-                                            @if( $alumno->horas_servicio_social == null)
-                                                0
-                                            @else
-                                                {{$alumno->horas_servicio_social}}
-                                            @endif
-                                            </td>
-                                            <td>{{ Carbon\Carbon::parse($alumno->created_at)->format('Y-m-d') }}</td>
-                                            {{ csrf_field() }}
-                                            <td><button data-idsolicitudes="{{$alumno->id_solicitudes}}" data-id='{{$alumno->id_persona}}' 
+<div id="container" class="container">
+    <table class="table" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Matrícula</th>
+                <th>Nombre del Alumno</th>
+                <th>Carrera</th>
+                <th>Cuatrimestre</th>
+                <th>Nombre del Taller</th>
+                <th>Fecha de ingreso (aaa,mm,dd)</th>
+                <th>Actualizar</th>
+            </tr>
+        </thead>
+        <tbody id="todoslosalumnos">
+        @foreach($alumnos as $alumno)
+            <tr>
+                <td>{{$alumno->matricula}}</td>
+                <td>{{$alumno->nombre}}</td>
+                <td>{{$alumno->carrera}}</td>
+                <td>{{$alumno->cuatrimestre}}</td>
+                <td>
+                @if( $alumno->taller == null)
+                    No tiene taller asignado
+                @else
+                    {{$alumno->taller}}
+                @endif
+                </td>
+                <td>{{ Carbon\Carbon::parse($alumno->created_at)->format('Y-m-d') }}</td>
+                <td><button data-idsolicitudes="{{$alumno->id_solicitudes}}" data-id='{{$alumno->id_persona}}' 
                                             data-matricula='{{$alumno->matricula}}' data-alumno="{{$alumno->nombre}}" 
                                             data-carrera="{{$alumno->carrera}}" data-cuatrimestre="{{$alumno->cuatrimestre}}"
                                             data-taller="{{$alumno->taller}}" data-horas="{{$alumno->horas_servicio_social}}" 
                                             data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning">
                                             <img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            @endif
-                            @if( count($profesoresx2)>0)
-                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                <table class="table" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Profesor</th>
-                                            <th>Nombre del Taller</th>
-                                            <th>Fecha de ingreso (aaa,mm,dd)</th>
-                                            <th>Última actualización</th>
-                                            <th>Actualizar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="profesores">
-                                    @foreach($profesoresx2 as $profesor)
-                                        <tr>
-                                            <td>{{$profesor->nombre}}</td>
-                                            <td>{{$profesor->taller}}</td>
-                                            <td>{{ Carbon\Carbon::parse($profesor->created_at)->format('Y-m-d') }}</td>
-                                            <td>{{ Carbon\Carbon::parse($profesor->updated_at)->format('Y-m-d') }}</td>
-                                            {{ csrf_field() }}
-                                            <td><button data-id='{{$profesor->id_persona}}' data-profesor="{{$profesor->nombre}}" data-idtaller="{{$profesor->id_taller}}" data-taller="{{$profesor->taller}}" data-toggle='modal' data-target='#modalActualizarProfesor' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            @endif
-                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                <table class="table" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Matrícula</th>
-                                            <th>Alumno</th>
-                                            <th>Carrera</th>
-                                            <th>Cuatrimestre</th>
-                                            <th>Nombre del Taller</th>
-                                            <th>Horas</th>
-                                            <th>Fecha de ingreso (aaa,mm,dd)</th>
-                                            <th>Actualizar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($horasTallerX2 as $ht)
-                                        <tr>
-                                            <td> {{$ht->nombre}} </td>
-                                            <td>
-                                            @if( $ht->horas_servicio_social == null)
-                                                No tiene horas
-                                            @else
-                                                {{$ht->horas_servicio_social}}
-                                            @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="tab-pane fade" id="nav" role="tabpanel" aria-labelledby="nav">
-                                <table class="table" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Matrícula</th>
-                                            <th>Alumno</th>
-                                            <th>Carrera</th>
-                                            <th>Cuatrimestre</th>
-                                            <th>Nombre del Taller</th>
-                                            <th>Fecha de ingreso (aaa,mm,dd)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($todosalumnos as $p)
-                                        <tr>
-                                        <td>{{$p->matricula}}</td>
-                                            <td>{{$p->nombre}}</td>
-                                            <td>{{$p->carrera}}</td>
-                                            <td>{{$p->cuatrimestre}}</td>
-                                            <td>{{$p->taller}}</td>
-                                            <td>{{ Carbon\Carbon::parse($alumno->created_at)->format('Y-m-d') }}</td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </tr>
+                @endforeach
+        </tbody>
+    </table>
+</div>	
 @else
 <div class="container"><center><br><label class="alert alert-primary"> No hay ningún Alumno registrado </label></h1></center></div>
 @endif
@@ -244,7 +149,6 @@
 					if(data.no != ""){
                         $('#alumnos').html("");
                         $.each(data, function(i, item) {
-                            console.log(item.nombre);
                         if(item.tipos_personas_id_tipo_persona == 2){
                                     if( item.horas_servicio_social == null){horas = 0}
                                     else{
@@ -258,29 +162,14 @@
                                         item.taller + "</td><td>" +
                                         horas + "</td><td>" +
                                         item.created_at + "</td><td>" +
-                                        item.updated_at + "</td><td>" +
                                         "<button data-id="+item.id_persona+" data-matricula="+item.matricula+" data-alumno="+item.nombre+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
                                         "</td>";
                                     $('#alumnos').append(changos);
                                
                         }
                         }); 
-                        $('#profesores').html("");
-                        $.each(data, function(i, item) {
-                        if(item.tipos_personas_id_tipo_persona == 1){
-                                changos = "<tr><td>" +
-									item.nombre + "</td><td>" +
-                                    item.taller + "</td><td>" +
-                                    item.created_at + "</td><td>" +
-                                    item.updated_at + "</td><td>" +
-									"<button  data-id="+item.id_persona+" data-profesor="+item.nombre+" data-toggle='modal' data-target='#modalActualizarProfesor' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
-									"</td>";
-                                $('#profesores').append(changos);
-                        }
-                    });
-                    
-					}
-				},
+                    }
+                },
 			     error: function () {
 			         alert("Error del Servidor");
 			     }

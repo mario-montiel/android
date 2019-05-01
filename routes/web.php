@@ -113,8 +113,13 @@ Route::get('/mostraralumnos', 'AlumnosController@viewMostrarAlumnos');
 Route::post('/editaralumno/{id}/{idsolicitud}', 'AlumnosController@actualizarAlumno');
 Route::post('/editarprofesor/{idprofe}', 'AlumnosController@actualizarProfesor');
 Route::post('/eliminarprofesor/{idtaller}', 'AlumnosController@eliminarProfesor');
+Route::get('/mostrarprofesores', 'AlumnosController@viewMostrarProfesor');
+Route::get('/mostrarhoras', 'AlumnosController@viewMostrarHoras');
+Route::get('/mostrartodoslosalumnos', 'AlumnosController@viewMostrarTodosLosAlumnos');
 Route::get('/buscadoralumno', 'AlumnosController@buscador');
-Route::get('/buscatesta', 'AlumnosController@buscatesta');
+Route::get('/buscarprofesor', 'AlumnosController@buscarprofesor');
+Route::get('/buscarhoras', 'AlumnosController@buscarhoras');
+Route::get('/buscartodoalumno', 'AlumnosController@buscartodoslosalumnos');
 
 ////////////////////////////////////////////////////////////////////
 Route::get('/pruebon/{a}/{b}/{c}', 'ArreglosWebSite@pruebon');

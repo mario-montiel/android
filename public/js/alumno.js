@@ -274,7 +274,6 @@ $('.btn-delete-profesor').click(function(e){
                                          item.taller + "</td><td>" +
                                          horas + "</td><td>" +
                                          item.created_at + "</td><td>" +
-                                         item.updated_at + "</td><td>" +
                                          "<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
                                          "</td>";
                                      $('#alumnos').append(changos);
@@ -288,7 +287,6 @@ $('.btn-delete-profesor').click(function(e){
                                      item.nombre + "</td><td>" +
                                      item.taller + "</td><td>" +
                                      item.created_at + "</td><td>" +
-                                     item.updated_at + "</td><td>" +
                                      "<button  data-alumno="+item.alumno+" data-horas="+item.horas_servicio_social+" data-toggle='modal' data-target='#modalActualizarAlumno' class='btn btn-warning'><img id='update' src='{{ asset('img/update.png') }}''></button>" + 
                                      "</td>";
                                  $('#profesores').append(changos);
