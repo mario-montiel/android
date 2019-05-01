@@ -48,41 +48,53 @@ div.centrado{
 
 
 #btn1{
-    height: 50px; border-radius: 10px;
+    height: 40px; border-radius: 30px;
 }
 #a1{
     color:white; 
-    text-align:center; 
-    line-height: 15px;
-    line-height: 50px; 
-    font-size: 1.5em; 
+    text-align:center;
+    line-height: 35px; 
+    font-size: 1.2rem; 
     margin-top:5px; 
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
 }
 #btn2{
-    height: 50px; border-radius: 10px;
+    height: 40px; border-radius: 30px;
 }
 #a2{
     color:white; 
     text-align:center; 
-    line-height: 15px;
-    line-height: 50px; 
-    font-size: 1.5em; 
+    line-height: 35px;  
+    font-size: 1.2em; 
     margin-top:5px; 
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
 }
 #btn3{
-    height: 50px; border-radius: 10px;
+    height: 40px; border-radius: 30px;
 }
 #a3{
     color:white; 
     text-align:center; 
-    line-height: 15px;
-    line-height: 50px; 
-    font-size: 1.5em; 
+    line-height: 35px;  
+    font-size: 1.2em; 
     margin-top:5px; 
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+}
+
+
+
+#buscartodoalumno{
+    border-color: black;
+}
+#buscarhoras{
+    border-color: black;
+}
+#buscadoralumno{
+    border-color: black;
+}
+#buscarprofesor{
+    border-color: black;
 }

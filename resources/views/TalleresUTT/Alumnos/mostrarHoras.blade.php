@@ -44,11 +44,8 @@
   </div>
 </nav>
 
-<center><input name="buscador" id="buscarhoras" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
-
 <br>
 <br>
-
 <center>
     <div class="container">
         <div class="row">
@@ -59,8 +56,8 @@
         </div>
     </div>
 </center>
-
 <br>
+<center><input name="buscador" id="buscarhoras" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
 <br>
 @if( count($horasTallerX2)>0)
 <div id="container" class="container">

@@ -45,7 +45,6 @@
   </div>
 </nav>
 
-<center><input name="buscador" id="buscarprofesor" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
 <br>
 <br>
 <center>
@@ -58,10 +57,11 @@
         </div>
     </div>
 </center>
+<br>
+<center><input name="buscador" id="buscarprofesor" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
+<br>
 @extends('TalleresUTT.Alumnos.actualizarProfesores')
 
-<br>
-<br>
 @if( count($profesoresx2)>0)
 <div id="container" class="container-fluid">
     <table class="table" cellspacing="0">

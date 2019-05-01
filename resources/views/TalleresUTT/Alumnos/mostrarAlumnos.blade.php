@@ -44,8 +44,6 @@
 		@endif
   </div>
 </nav>
-
-<center><input name="buscador" id="buscadoralumno" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
 <br>
 <br>
 <center>
@@ -57,12 +55,10 @@
         </div>
     </div>
 </center>
-
+<br>
+<center><input name="buscador" id="buscadoralumno" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
+<br>
 @extends('TalleresUTT.Alumnos.actualizarAlumnos')
-
-<br>
-<br>
-
 
 @if( count($personas)>0)
 <div class="centrado" style=" margin-left: auto;
