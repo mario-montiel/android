@@ -139,7 +139,7 @@ class AlumnosController extends Controller
     function buscarprofesor(Request $request){
         $profesor = DB::table('usuarios')
         ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', 
-        'talleres.taller', 'usuarios.created_at',)
+        'talleres.taller', 'usuarios.created_at')
         ->join('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
         ->join('talleres','talleres.id_maistro', '=', 'personas.id_persona')
         ->orWhere('nombre', 'LIKE', '%'.$request->buscarprofesor.'%')
