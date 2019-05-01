@@ -50,7 +50,7 @@
 <center>
     <div class="container">
         <div class="row">
-            <div id="btn3" class="col btn-success"><button id="a3" href="/mostraralumnos">Alumnos con Taller</button></div>
+            <div id="btn3" class="col btn-success"><a id="a3" href="/mostraralumnos">Alumnos con Taller</a></div>
             <div id="btn1" class="col btn-primary"><a id="a1" href="/mostrarprofesores">Profesores</a></div>
             <div id="btn2" class="col btn-info"><a id="a2"href="/mostrarhoras">Total de Horas</a></div>
             
