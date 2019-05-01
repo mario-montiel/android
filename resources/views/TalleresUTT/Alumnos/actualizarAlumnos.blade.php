@@ -37,13 +37,14 @@
 						<input id="alumnoActualizar" type="text" class="form-control" name="alumno">
 					</div>
           <div class="form-group">
-				    <label for="exampleFormControlSelect1"> Carrera </label>
+				    <label for="exampleFormControlSelect1"> Tipo de taller </label>
 				     <select name="carrera" class="form-control" id="carreraActualizar">
+               <option disabled selected>Selecciona una opción</option>
 				    	@foreach($carrera as $c)
 				    		<option value="{{ $c->id_carrera }}">{{ $c->carrera }}</option>
 				    	@endforeach
 				    </select>
-          </div>
+				  </div>
           <div class="form-group">
 				    <label for="exampleFormControlSelect1"> Cuatrimestre </label>
 				     <select name="cuatrimestre" class="form-control" id="cuatrimestreActualizar">

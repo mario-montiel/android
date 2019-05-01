@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Cuatrimestre extends Model
 {
     protected $table = "cuatrimestre";
-    protected $primarykey = "id_cuatrimestre";
+    protected $primaryKey = "id_cuatrimestre";
     public $timestamps = false;
 }

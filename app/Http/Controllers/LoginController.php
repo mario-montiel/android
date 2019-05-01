@@ -150,7 +150,7 @@ class LoginController extends Controller
         $usuario->save();
 
 
-		return redirect('/registraralumno')
+		return redirect('/registrar')
                     ->with('correcto', 'Su cuenta se creó correctamente');
     
     }
