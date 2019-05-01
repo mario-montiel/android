@@ -63,7 +63,7 @@
 @extends('TalleresUTT.Alumnos.actualizarProfesores')
 
 @if( count($profesoresx2)>0)
-<div id="container" class="container-fluid">
+<div id="container" class="container">
     <table class="table" cellspacing="0">
         <thead>
             <tr>
