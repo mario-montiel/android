@@ -41,8 +41,8 @@ class AlumnosController extends Controller
     }
 
     function actualizarAlumno(Request $request, $id, $idsolicitud){
-        if($request->carrera != null ||
-        $request->cuatrimestre != null ||
+        if($request->carrera != null &&
+        $request->cuatrimestre != null &&
         $request->taller != null){
                 if($request->ajax()){
 
