@@ -48,10 +48,6 @@ $('.btn-act-alumno').click(function(e){
    var url = form_update.attr('action');
    var url_update = url+"/"+id+"/"+idsolicitud;
    var horas = $('#horas').val();
-   alert(url_update);
-   alert(carrera);
- alert(cuatrimestre);
- alert(taller);
    if(horas > 480){
     Swal.fire({
         type: 'error',
@@ -64,7 +60,7 @@ $('.btn-act-alumno').click(function(e){
    $.post(url_update, form_update.serialize(), function(result){
        //row.fadeOut();
                $value = $('#buscadoralumno').val();
-               
+               console.log(result);
                $.ajax({
                    type: 'GET',
                    url:  '/buscadoralumno',
@@ -98,13 +94,13 @@ $('.btn-act-alumno').click(function(e){
                                     $('#alumnos').append(changos);
                         }
                         });
-                    Swal.fire({
-                        position: 'top-end',
-                        type: 'success',
-                        title: 'Alumno actualizado correctamente',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
+                        Swal.fire({
+                            position: 'top-end',
+                            type: 'success',
+                            title: 'Alumno actualizado correctamente',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
 				},
                     error: function () {
                         Swal.fire({
@@ -158,10 +154,6 @@ $('#modalActualizarProfesor').on('show.bs.modal', function (event) {
                       url:  '/buscadoralumno',
                       data: {'buscadoralumno':$value},
                       success:function(data){
-                          var taller;
-                           $('#alumnos').html("");
-                           $.each(data, function(i, item) {
-                           }); 
                            $('#profesores').html("");
                            $.each(data, function(i, item) {
                            if(item.tipos_personas_id_tipo_persona == 1){

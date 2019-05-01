@@ -59,6 +59,9 @@ class AlumnosController extends Controller
                     $solicitud->save();
                 }
         }
+        else{
+            return alert("errror");
+        }
     }
 
     function actualizarProfesor(Request $request, $idprofe){
