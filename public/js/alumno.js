@@ -5,14 +5,11 @@ $(document).ready(function(){
 
 
     $('#btnactalumno').click(function(){
-        var alumno = $('#alumnoActualizar').val();
-        var horas = $('#horasActualizar').val();
         var carreraActualizar = $('#carreraActualizar').val();
         var cuatrimestreActualizar = $('#cuatrimestreActualizar').val();
         var tallerActualizar = $('#tallerActualizar').val();
-
-        if(alumno.length == "" || horas.length == "" || carreraActualizar.length || 
-        cuatrimestreActualizar.length || tallerActualizar.length){
+        if(carreraActualizar == null || 
+        cuatrimestreActualizar == null || tallerActualizar == null){
             alert("Llene todos los campos para continuar.");
             return false;
         }
