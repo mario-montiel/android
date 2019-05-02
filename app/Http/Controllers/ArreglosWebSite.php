@@ -48,7 +48,7 @@ class ArreglosWebSite extends Controller
     }
 
     function arregloJohnnyWuW(Request $request){
-        $consulta = DB::table('usuarios')
+        /*$consulta = DB::table('usuarios')
         ->join('personas', 'usuarios.personas_id_persona', '=', 'personas.id_persona')
         ->join('tipos_personas', 'tipos_personas.id_tipo_persona', '=', 'personas.tipos_personas_id_tipo_persona')
         ->where('usuario', $request->usuario)->get();
@@ -63,7 +63,17 @@ class ArreglosWebSite extends Controller
                 'usuario' => $request->usuario,
                 'password' => $password,
                 'tipo' => $tipo
-            ];
+            ];*/
+
+        $usuario = DB::table('usuarios')->where('usuario', $request->usuario)->first();
+        $confirmarpass = $usuario->password;
+        $pass = $request->contraseña;
+        $confirmar = $request->usuario;
+        $user = $usuario->usuario;
+        if (Hash::check($pass, $confirmarpass) && $confirmar == $user) {
+            return $usuario;
+        }
+        return "nachus";
     }
 
     function solicitud(Request $request){

@@ -5,15 +5,12 @@
 
 @section('contenido')
 <script type="text/javascript" src="js/asignarevento.js"></script>
+<script serc="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <style type="text/css">
 	 .img1 {
-             width:100%;
-           
-             
-             background-position:center
-     
+        width:100%;
+        background-position:center
 }
-
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light img1" style="background-image: url(img/navbarofi8.png)">
@@ -44,6 +41,19 @@
 		@endif
   </div>
 </nav>
+
+
+<div class="form-group">
+            <h2>Checkboxes</h2>
+            @foreach($talleres as $ev)
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="{{$ev->id_taller}}">
+                    {{$ev->taller}}
+                </label>
+            </div>
+            @endforeach
+        </div>
 
 <center><input name="buscadorasignado" id="buscadorasignado" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
 
