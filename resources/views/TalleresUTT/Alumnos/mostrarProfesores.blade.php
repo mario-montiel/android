@@ -63,38 +63,52 @@
 @extends('TalleresUTT.Alumnos.actualizarProfesores')
 
 @if( count($profesoresx2)>0)
-<div id="container" class="container">
-    <table class="table" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Profesor</th>
-                <th>Nombre del Taller</th>
-                <th>Fecha de ingreso (aaa,mm,dd)</th>
-                <th>Actualizar</th>
-            </tr>
-        </thead>
-        <tbody id="profesores">
-        @foreach($profesoresx2 as $profesor)
-        @if($profesor->tipos_personas_id_tipo_persona == 1)
-            <tr>
-                <td>{{$profesor->nombre}}</td>
-                <td>
-                @if( $profesor->taller == null)
-                    No tiene taller asignado
-                @else
-                    {{$profesor->taller}}
-                @endif
-                </td>
-                <td>{{ Carbon\Carbon::parse($profesor->created_at)->format('Y-m-d') }}</td>
-                    {{ csrf_field() }}
-                <td><button data-id='{{$profesor->id_persona}}' data-profesor="{{$profesor->nombre}}" data-idtaller="{{$profesor->id_taller}}" data-taller="{{$profesor->taller}}" data-toggle='modal' data-target='#modalActualizarProfesor' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
-            </tr>
-            @endif
-            @endforeach
-        </tbody>
-    </table>
-</div>	
-
+<section id="tabs" class="project-tab">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav>
+                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                    <div style="color:black;" class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Profesores</div>
+                </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <table class="table" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Profesor</th>
+                            <th>Nombre del Taller</th>
+                            <th>Fecha de ingreso (aaa,mm,dd)</th>
+                            <th>Actualizar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="profesores">
+                    @foreach($profesoresx2 as $profesor)
+                    @if($profesor->tipos_personas_id_tipo_persona == 1)
+                        <tr>
+                            <td>{{$profesor->nombre}}</td>
+                            <td>
+                            @if( $profesor->taller == null)
+                                No tiene taller asignado
+                            @else
+                                {{$profesor->taller}}
+                            @endif
+                            </td>
+                            <td>{{ Carbon\Carbon::parse($profesor->created_at)->format('Y-m-d') }}</td>
+                                {{ csrf_field() }}
+                            <td><button data-id='{{$profesor->id_persona}}' data-profesor="{{$profesor->nombre}}" data-idtaller="{{$profesor->id_taller}}" data-taller="{{$profesor->taller}}" data-toggle='modal' data-target='#modalActualizarProfesor' class="btn btn-warning"><img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
+                        </tr>
+                        @endif
+                        @endforeach
+                    </tbody>
+                </table>
+                </div>	
+                </div>
+             </div>
+        </div>
+    </div>
+</section>
 
 
 @else

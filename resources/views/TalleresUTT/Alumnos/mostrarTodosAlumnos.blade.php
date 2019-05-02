@@ -61,39 +61,55 @@
 <center><input name="buscador" id="buscartodoalumno" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
 <br>
 @if( count($todosalumnos)>0)
-<div id="container" class="container">
-    <table class="table" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Matrícula</th>
-                <th>Nombre del Alumno</th>
-                <th>Carrera</th>
-                <th>Cuatrimestre</th>
-                <th>Nombre del Taller</th>
-                <th>Fecha de ingreso (aaa,mm,dd)</th>
-            </tr>
-        </thead>
-        <tbody id="todoslosalumnos">
-        @foreach($todosalumnos as $alumnos)
-            <tr>
-                <td>{{$alumnos->matricula}}</td>
-                <td>{{$alumnos->nombre}}</td>
-                <td>{{$alumnos->carrera}}</td>
-                <td>{{$alumnos->cuatrimestre}}</td>
-                <td>
-                @if( $alumnos->taller == null)
-                    No tiene taller asignado
-                @else
-                    {{$alumnos->taller}}
-                @endif
-                </td>
-                <td>{{ Carbon\Carbon::parse($alumnos->created_at)->format('Y-m-d') }}</td>
-            </tr>
-                @endforeach
-        </tbody>
-    </table>
-</div>	
 
+<section id="tabs" class="project-tab">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav>
+                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                    <div style="color:black;" class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Todos los Alumnos</div>
+                </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div id="container" class="container">
+                        <table class="table" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Matrícula</th>
+                                    <th>Nombre del Alumno</th>
+                                    <th>Carrera</th>
+                                    <th>Cuatrimestre</th>
+                                    <th>Nombre del Taller</th>
+                                    <th>Fecha de ingreso (aaa,mm,dd)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="todoslosalumnos">
+                            @foreach($todosalumnos as $alumnos)
+                                <tr>
+                                    <td>{{$alumnos->matricula}}</td>
+                                    <td>{{$alumnos->nombre}}</td>
+                                    <td>{{$alumnos->carrera}}</td>
+                                    <td>{{$alumnos->cuatrimestre}}</td>
+                                    <td>
+                                    @if( $alumnos->taller == null)
+                                        No tiene taller asignado
+                                    @else
+                                        {{$alumnos->taller}}
+                                    @endif
+                                    </td>
+                                    <td>{{ Carbon\Carbon::parse($alumnos->created_at)->format('Y-m-d') }}</td>
+                                </tr>
+                                    @endforeach
+                            </tbody>
+                        </table>
+                    </div>	
+                    </div>
+             </div>
+        </div>
+    </div>
+</section>
 
 
 @else

@@ -60,31 +60,69 @@
 <center><input name="buscador" id="buscarhoras" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
 <br>
 @if( count($horasTallerX2)>0)
-<div id="container" class="container">
-    <table class="table" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Alumno</th>
-                <th>Horas</th>
-                </tr>
-        </thead>
-        <tbody id="horas">
-        @foreach($horasTallerX2 as $ht)
-            <tr>
-                <td> {{$ht->nombre}} </td>
-                <td>
-                @if( $ht->horas_servicio_social == null)
-                    No tiene horas
-                @else
-                    {{$ht->horas_servicio_social}}
-                @endif
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
-</div>	
 
+<section id="tabs" class="project-tab">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav>
+                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                    <div style="color:black;" class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Total de Horas</div>
+                </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div id="container" class="container">
+                        <table class="table" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Matrícula</th>
+                                    <th>Alumno</th>
+                                    <th>Carrera</th>
+                                    <th>Cuatrimestre</th>
+                                    <th>Total de Horas</th>
+                                    </tr>
+                            </thead>
+                            <tbody id="horas">
+                            @foreach($horasTallerX2 as $ht)
+                                <tr>
+                                    <td> {{$ht->matricula}} </td>
+                                    @if($ht->horas_servicio_social >= 480)
+                                    <td style="background-color:#27AE60; color:white;">
+                                        {{$ht->nombre}}
+                                    </td>
+                                    @else
+                                    <td>
+                                        {{$ht->nombre}}
+                                    </td>
+                                    @endif
+                                    <td> {{$ht->carrera}} </td>
+                                    <td> {{$ht->cuatrimestre}} </td>
+                                    
+                                    @if( $ht->horas_servicio_social == null)
+                                    <td>
+                                        No tiene horas
+                                    </td>
+                                    @elseif($ht->horas_servicio_social >= 480)
+                                    <td style="background-color:#27AE60; color:white;">
+                                        {{$ht->horas_servicio_social}}
+                                    </td>
+                                    @else
+                                    <td>
+                                        {{$ht->horas_servicio_social}}
+                                    </td>
+                                    @endif
+                                    
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>	
+                </div>
+             </div>
+        </div>
+    </div>
+</section>
 
 
 @else
@@ -100,6 +138,7 @@
 	$('#buscarhoras').on('keyup',function(e){
         e.preventDefault();
         var horas;
+        var colorear;
             $value = $('#buscarhoras').val();
 			$.ajax({
 				type: 'GET',
@@ -111,11 +150,28 @@
                         $('#horas').html("");
                         $.each(data, function(i, item) {
                             if( item.horas_servicio_social == null){horas = 0;}
-                            else{horas = item.horas_servicio_social;}
-                                changos = "<tr><td>" +
-									item.nombre + "</td><td>" +
-                                    horas + "</td>";
-                                $('#horas').append(changos);
+                            else{horas = item.horas_servicio_social}
+                            if( horas >= 480){
+                                colorear = 
+                                    "<tr><td>" +
+                                    item.matricula + "</td><td style='background-color:#27AE60; color:white;'>" +
+                                    item.nombre + "</td><td>" +
+                                    item.carrera + "</td><td>" +
+                                    item.cuatrimestre + "</td>" +
+                                    "<td style='background-color:#27AE60; color:white;'>"+horas + "</td>";
+                            }
+                            else{
+                                colorear = 
+                                    "<tr><td>" +
+                                    item.matricula + "</td><td>" +
+                                    item.nombre + "</td><td>" +
+                                    item.carrera + "</td><td>" +
+                                    item.cuatrimestre + "</td>" +
+                                    "<td>" + horas + "</td>"
+                            }
+                                changos = colorear;
+                                    
+                                $('#horas').append(colorear);
                         });
                     }
 				},
@@ -124,9 +180,6 @@
 			     }
 			});
 	});
-    
-    
-
 </script>
 
 @endsection

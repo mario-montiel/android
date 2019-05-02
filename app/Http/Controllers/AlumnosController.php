@@ -44,20 +44,24 @@ class AlumnosController extends Controller
         if($request->carrera != null &&
         $request->cuatrimestre != null &&
         $request->taller != null){
+            /*$horas = DB::table('personas')
+            ->select(DB::raw('SUM(solicitudes.horas_servicio_social) AS horas_servicio_social'))
+            ->join('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
+            ->where('solicitudes.personas_id_persona', '=', $id)
+            ->get();*/
                 if($request->ajax()){
-
                     $alumno = Persona::find($id);
                     $alumno->matricula = $request->matricula;
                     $alumno->nombre = $request->alumno;
                     $alumno->carreras_id_carrera = $request->carrera;
                     $alumno->cuatrimestre_id_cuatrimestre = $request->cuatrimestre;
                     $alumno->save();
-        
+            
                     $solicitud = Solicitud::find($idsolicitud);
                     $solicitud->horas_servicio_social = $request->horas;
                     $solicitud->tallleres_id_taller = $request->taller;
                     $solicitud->save();
-                }
+                }   
         }
         else{
             return alert("errror");
@@ -94,9 +98,13 @@ class AlumnosController extends Controller
 
     function viewMostrarHoras(Request $request){
         $horasTallerX2 = DB::table('usuarios')
-        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', DB::raw('SUM(solicitudes.horas_servicio_social) AS horas_servicio_social'))
+        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', 
+        DB::raw('SUM(solicitudes.horas_servicio_social) AS horas_servicio_social'),
+        'carreras.carrera', 'cuatrimestre.cuatrimestre')
         ->join('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
         ->join('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
+        ->leftjoin('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
+        ->leftjoin('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
         ->orWhere('nombre', 'LIKE', '%'.$request->buscarhoras.'%')
         ->where('personas.tipos_personas_id_tipo_persona', '=', 2)
         ->groupBy('personas.nombre')
@@ -156,9 +164,13 @@ class AlumnosController extends Controller
 
     function buscarhoras(Request $request){
         $horasTallerX2 = DB::table('usuarios')
-        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', DB::raw('SUM(solicitudes.horas_servicio_social) AS horas_servicio_social'))
+        ->select('personas.id_persona', 'personas.matricula', 'personas.nombre', 
+        DB::raw('SUM(solicitudes.horas_servicio_social) AS horas_servicio_social'),
+        'carreras.carrera', 'cuatrimestre.cuatrimestre')
         ->join('personas', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
         ->join('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
+        ->leftjoin('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
+        ->leftjoin('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
         ->orWhere('nombre', 'LIKE', '%'.$request->buscarhoras.'%')
         ->groupBy('personas.nombre')
         ->get();

@@ -83,47 +83,65 @@
     </table>
 </center>
 </div>
-<div id="container" class="container">
-    <table class="table" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Matrícula</th>
-                <th>Nombre del Alumno</th>
-                <th>Carrera</th>
-                <th>Cuatrimestre</th>
-                <th>Nombre del Taller</th>
-                <th>Horas</th>
-                <th>Fecha de ingreso (aaa,mm,dd)</th>
-                <th>Actualizar</th>
-            </tr>
-        </thead>
-        <tbody id="alumnos">
-        @foreach($alumnos as $alumno)
-            <tr>
-                <td>{{$alumno->matricula}}</td>
-                <td>{{$alumno->nombre}}</td>
-                <td>{{$alumno->carrera}}</td>
-                <td>{{$alumno->cuatrimestre}}</td>
-                <td>
-                @if( $alumno->taller == null)
-                    No tiene taller asignado
-                @else
-                    {{$alumno->taller}}
-                @endif
-                </td>
-                <td> {{$alumno->horas_servicio_social}}</td>
-                <td>{{ Carbon\Carbon::parse($alumno->created_at)->format('Y-m-d') }}</td>
-                <td><button data-idsolicitudes="{{$alumno->id_solicitudes}}" data-id='{{$alumno->id_persona}}' 
-                    data-matricula='{{$alumno->matricula}}' data-alumno="{{$alumno->nombre}}" 
-                    data-carrera="{{$alumno->carrera}}" data-cuatrimestre="{{$alumno->cuatrimestre}}"
-                    data-taller="{{$alumno->taller}}" data-horas="{{$alumno->horas_servicio_social}}" 
-                    data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning">
-                    <img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
-            </tr>
-                @endforeach
-        </tbody>
-    </table>
-</div>	
+
+<section id="tabs" class="project-tab">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav>
+                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                    <div style="color:black;" class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Alumnos con Taller</div>
+                </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div id="container" class="container">
+                        <table class="table" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Matrícula</th>
+                                    <th>Nombre del Alumno</th>
+                                    <th>Carrera</th>
+                                    <th>Cuatrimestre</th>
+                                    <th>Nombre del Taller</th>
+                                    <th>Horas</th>
+                                    <th>Fecha de ingreso (aaa,mm,dd)</th>
+                                    <th>Actualizar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="alumnos">
+                            @foreach($alumnos as $alumno)
+                                <tr>
+                                    <td>{{$alumno->matricula}}</td>
+                                    <td>{{$alumno->nombre}}</td>
+                                    <td>{{$alumno->carrera}}</td>
+                                    <td>{{$alumno->cuatrimestre}}</td>
+                                    <td>
+                                    @if( $alumno->taller == null)
+                                        No tiene taller asignado
+                                    @else
+                                        {{$alumno->taller}}
+                                    @endif
+                                    </td>
+                                    <td> {{$alumno->horas_servicio_social}}</td>
+                                    <td>{{ Carbon\Carbon::parse($alumno->created_at)->format('Y-m-d') }}</td>
+                                    <td><button data-idsolicitudes="{{$alumno->id_solicitudes}}" data-id='{{$alumno->id_persona}}' 
+                                        data-matricula='{{$alumno->matricula}}' data-alumno="{{$alumno->nombre}}" 
+                                        data-carrera="{{$alumno->carrera}}" data-cuatrimestre="{{$alumno->cuatrimestre}}"
+                                        data-taller="{{$alumno->taller}}" data-horas="{{$alumno->horas_servicio_social}}" 
+                                        data-toggle='modal' data-target='#modalActualizarAlumno' class="btn btn-warning">
+                                        <img id="update" src="{{ asset('img/update.png') }}" alt=""></button></td>
+                                </tr>
+                                    @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+             </div>
+        </div>
+    </div>
+</section>                   
+                    
 @else
 <div class="container"><center><br><label class="alert alert-primary"> No hay ningún Alumno registrado </label></h1></center></div>
 @endif
