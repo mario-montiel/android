@@ -91,6 +91,7 @@ class AlumnosController extends Controller
         ->rightjoin('usuarios', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
         ->leftjoin('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
         ->where('personas.tipos_personas_id_tipo_persona', '=', 1)
+        ->groupBy('personas.nombre')
         ->get();
 
         return  view('TalleresUTT.Alumnos.mostrarProfesores', compact('profesoresx2'));
@@ -124,6 +125,7 @@ class AlumnosController extends Controller
         ->leftjoin('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
         ->leftjoin('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
         ->where('personas.tipos_personas_id_tipo_persona', '=', 2)
+        ->groupBy('personas.nombre')
         ->get();
 
         return  view('TalleresUTT.Alumnos.mostrarTodosAlumnos', compact('todosalumnos'));
@@ -145,6 +147,7 @@ class AlumnosController extends Controller
         ->orWhere('nombre', 'LIKE', '%'.$request->buscadoralumno.'%')
         ->orWhere('horas_servicio_social', 'LIKE', '%'.$request->buscadoralumno.'%')
         ->orWhere('carrera', 'LIKE', '%'.$request->buscadoralumno.'%')
+        ->groupBy('personas.nombre')
         ->get();
         return $alumnos;
     }
@@ -158,6 +161,7 @@ class AlumnosController extends Controller
         ->where('personas.tipos_personas_id_tipo_persona', '=', 1)
         ->orWhere('nombre', 'LIKE', '%'.$request->buscarprofesor.'%')
         ->orWhere('taller', 'LIKE', '%'.$request->buscarprofesor.'%')
+        ->groupBy('personas.nombre')
         ->get();
         return $profesor;
     }
@@ -171,7 +175,11 @@ class AlumnosController extends Controller
         ->join('solicitudes','solicitudes.personas_id_persona', '=', 'personas.id_persona')
         ->leftjoin('cuatrimestre','cuatrimestre.id_cuatrimestre', '=', 'personas.cuatrimestre_id_cuatrimestre')
         ->leftjoin('carreras','carreras.id_carrera', '=', 'personas.carreras_id_carrera')
+        ->orWhere('matricula', 'LIKE', '%'.$request->buscarhoras.'%')
         ->orWhere('nombre', 'LIKE', '%'.$request->buscarhoras.'%')
+        ->orWhere('carrera', 'LIKE', '%'.$request->buscarhoras.'%')
+        ->orWhere('cuatrimestre', 'LIKE', '%'.$request->buscarhoras.'%')
+        ->orWhere('horas_servicio_social', 'LIKE', '%'.$request->buscarhoras.'%')
         ->groupBy('personas.nombre')
         ->get();
 
@@ -192,6 +200,7 @@ class AlumnosController extends Controller
         ->orWhere('nombre', 'LIKE', '%'.$request->buscartodoalumno.'%')
         ->orWhere('horas_servicio_social', 'LIKE', '%'.$request->buscartodoalumno.'%')
         ->orWhere('carrera', 'LIKE', '%'.$request->buscartodoalumno.'%')
+        ->groupBy('personas.nombre')
         ->get();
 
         return $todosalumnos;
