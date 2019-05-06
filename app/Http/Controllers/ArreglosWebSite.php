@@ -66,7 +66,7 @@ class ArreglosWebSite extends Controller
             ];*/
 
         //$usuario = $request->get('usuario');
-        return $usuario;
+        return $password;
         $pass = $request->get('contraseña');
 
         $vato = DB::table('usuarios')
