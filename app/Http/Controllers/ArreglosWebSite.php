@@ -69,11 +69,14 @@ class ArreglosWebSite extends Controller
         //return $password;
         $pass = $request->get('contraseña');
 
-        $vato = Usuario::all();
-            
+        $vato = DB::table('usuarios')
+            ->join('personas', 'personas.id_persona', 'usuarios.personas_id_persona')
+            ->where('usuarios.usuario', $usuario)
+            ->where('personas.tipos_personas_id_tipo_persona', 2)
+            ->get();
 
-        dd($vato);
-        /*if($vato){
+        return $vato;
+        if($vato){
             $confirmarpass = $vato->password;
             $confirmar = $vato->usuario;
 
@@ -86,7 +89,7 @@ class ArreglosWebSite extends Controller
                 return $johnny;
             }
         }
-        return false;*/
+        return false;
     }
 
     function solicitud(Request $request){
