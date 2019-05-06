@@ -70,8 +70,8 @@ class ArreglosWebSite extends Controller
         $pass = $request->get('contraseña');
 
         $vato = DB::table('usuarios')
-            ->where('usuario', $usuario)
-            ->get();
+            ->where('usuarios.usuario', '=', $usuario)
+            ->first();
 
         return $vato;
         /*if($vato){
