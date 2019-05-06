@@ -73,7 +73,7 @@ class ArreglosWebSite extends Controller
             ->where('usuarios.usuario', '=', $usuario)
             ->first();
 
-        return $vato;
+        dd($vato);
         /*if($vato){
             $confirmarpass = $vato->password;
             $confirmar = $vato->usuario;
