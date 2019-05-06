@@ -71,7 +71,7 @@ class ArreglosWebSite extends Controller
         $vato = DB::table('usuarios')
             ->join('personas', 'personas.id_persona', 'usuarios.personas_id_persona')
             ->join('tipos_personas', 'tipos_personas.id_tipo_persona', '=', 'personas.tipos_personas_id_tipo_persona')
-            ->where('usuario', $usuario)
+            ->where('usuarios.usuario', $usuario)
             ->where('personas.tipos_personas_id_tipo_persona', 2)
             ->get();
 
