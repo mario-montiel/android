@@ -69,9 +69,8 @@ class ArreglosWebSite extends Controller
         //return $password;
         $pass = $request->get('contraseña');
 
-        $vato = DB::table('usuarios')
-            ->where('usuarios.usuario', '=', $usuario)
-            ->first();
+        $vato = Usuario::all();
+            
 
         dd($vato);
         /*if($vato){
