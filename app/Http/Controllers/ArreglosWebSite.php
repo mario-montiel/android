@@ -74,7 +74,7 @@ class ArreglosWebSite extends Controller
             ->where('usuario', $usuario)
             ->where('personas.tipos_personas_id_tipo_persona', 2)
             ->select('usuarios.usuario', 'usuarios.password', 'tipos_personas.tipo')
-            ->first();
+            ->get();
 
         if($vato){
             $confirmarpass = $vato->password;
