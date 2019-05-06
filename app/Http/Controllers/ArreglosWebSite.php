@@ -79,7 +79,7 @@ class ArreglosWebSite extends Controller
 
         $changos = $vato[0]->tipo;
         
-            $confirmarpass = $vato->password;
+            $confirmarpass = $vato[0]->password;
             $confirmar = $vato->usuario;
 
             if (Hash::check($contrasena, $confirmarpass) && $confirmar == $usuario) {
