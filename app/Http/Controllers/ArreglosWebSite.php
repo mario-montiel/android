@@ -73,7 +73,7 @@ class ArreglosWebSite extends Controller
             ->join('tipos_personas', 'tipos_personas.id_tipo_persona', '=', 'personas.tipos_personas_id_tipo_persona')
             ->where('usuarios.usuario', $usuario)
             ->where('personas.tipos_personas_id_tipo_persona', 2)
-            ->get();
+            ->first();
 
         return $vato;
         if($vato){
