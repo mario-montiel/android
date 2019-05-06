@@ -47,47 +47,28 @@ class ArreglosWebSite extends Controller
         return array($talleres->encargado, $talleres->nombre, $usuario->alumno);
     }
 
-    function arregloJohnnyWuW(Request $request){
-        /*$consulta = DB::table('usuarios')
-        ->join('personas', 'usuarios.personas_id_persona', '=', 'personas.id_persona')
-        ->join('tipos_personas', 'tipos_personas.id_tipo_persona', '=', 'personas.tipos_personas_id_tipo_persona')
-        ->where('usuario', $request->usuario)->get();
-        $vato = json_decode($consulta,true);
-        $password="";
-        $tipo="";
-        foreach ($vato as $key => $con) {
-            $password = $con['password'];
-            $tipo =$con['tipo'];
-        }
-            return [
-                'usuario' => $request->usuario,
-                'password' => $password,
-                'tipo' => $tipo
-            ];*/
-
+    function arregloJohnnyWuW(Request $request, $usuario, $password){
         //$usuario = $request->get('usuario');
-        //return $password;
-        $usuario = $request->get('usuario');
         $contrasena = $request->get('contrasena');
         
         $vato = DB::table('usuarios')
             ->join('personas', 'personas.id_persona', 'usuarios.personas_id_persona')
             ->join('tipos_personas', 'tipos_personas.id_tipo_persona', 'personas.tipos_personas_id_tipo_persona')
-            ->where('usuarios.usuario', $request->usuario)
+            ->where('usuarios.usuario', $usuario)
             ->where('personas.tipos_personas_id_tipo_persona', 2)
-            ->get();
+            ->first();
 
-        $changos = $vato[0]->tipo;
+        $changos = $vato->tipo;
         
-            $confirmarpass = $vato[0]->password;
-            $confirmar = $vato->usuario;
+        $confirmarpass = $vato->password;
+        $confirmar = $vato->usuario;
 
-            if (Hash::check($contrasena, $confirmarpass) && $confirmar == $usuario) {
-                return[
-                    'tipo' => $changos,
-                    'password' => $contrasena
-                ];
-            }
+        if (Hash::check($contrasena, $confirmarpass) && $confirmar == $usuario) {
+            return[
+                'tipo' => $changos,
+                'password' => $contrasena
+            ];
+        }
         
         return false;
     }
