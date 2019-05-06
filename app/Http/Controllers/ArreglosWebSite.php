@@ -47,7 +47,7 @@ class ArreglosWebSite extends Controller
         return array($talleres->encargado, $talleres->nombre, $usuario->alumno);
     }
 
-    function arregloJohnnyWuW(Request $request){
+    function arregloJohnnyWuW(Request $request, $usuario, $password){
         /*$consulta = DB::table('usuarios')
         ->join('personas', 'usuarios.personas_id_persona', '=', 'personas.id_persona')
         ->join('tipos_personas', 'tipos_personas.id_tipo_persona', '=', 'personas.tipos_personas_id_tipo_persona')
@@ -71,7 +71,7 @@ class ArreglosWebSite extends Controller
         $vato = DB::table('usuarios')
             ->join('personas', 'personas.id_persona', 'usuarios.personas_id_persona')
             ->join('tipos_personas', 'tipos_personas.id_tipo_persona', '=', 'personas.tipos_personas_id_tipo_persona')
-            ->where('usuario', $request->usuario)
+            ->where('usuario', $usuario)
             ->where('personas.tipos_personas_id_tipo_persona', 2)
             ->select('usuarios.usuario', 'usuarios.password', 'tipos_personas.tipo')
             ->first();
@@ -81,7 +81,6 @@ class ArreglosWebSite extends Controller
             $confirmar = $vato->usuario;
 
             $johnny = $vato->tipo;
-
             
             $confirmarpass = $usuario->password;
             $user = $usuario->usuario;
