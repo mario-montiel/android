@@ -68,7 +68,7 @@ class ArreglosWebSite extends Controller
         //$usuario = $request->get('usuario');
         //return $password;
         $usuario = $request->get('usuario');
-        $pass = $request->get('contraseña');
+        $pass = $request->get('password');
         
         $vato = DB::table('usuarios')
             ->join('personas', 'personas.id_persona', 'usuarios.personas_id_persona')
@@ -83,12 +83,7 @@ class ArreglosWebSite extends Controller
             $confirmarpass = $vato->password;
             $confirmar = $vato->usuario;
 
-            $johnny = $vato->tipo;
-            
-            $confirmarpass = $usuario->password;
-            $user = $usuario->usuario;
-
-            if (Hash::check($confirmarpass, $pass) && $user == $confirmar) {
+            if (Hash::check($pass, $confirmarpass) && $confirmar == $usuario) {
                 return[
                     'tipo' => $changos,
                     'password' => $pass
