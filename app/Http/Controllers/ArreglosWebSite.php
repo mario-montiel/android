@@ -73,9 +73,9 @@ class ArreglosWebSite extends Controller
             ->join('tipos_personas', 'tipos_personas.id_tipo_persona', '=', 'personas.tipos_personas_id_tipo_persona')
             ->where('usuario', $usuario)
             ->where('personas.tipos_personas_id_tipo_persona', 2)
-            ->select('usuarios.usuario', 'usuarios.password', 'tipos_personas.tipo')
             ->get();
 
+        return $vato;
         if($vato){
             $confirmarpass = $vato->password;
             $confirmar = $vato->usuario;
