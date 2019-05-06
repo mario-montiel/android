@@ -76,7 +76,8 @@ class ArreglosWebSite extends Controller
             ->where('usuarios.usuario', $request->usuario)
             ->where('personas.tipos_personas_id_tipo_persona', 2)
             ->get();
-        return $vato[0]->tipo;
+
+        $changos = $vato[0]->tipo;
         
         if($vato){
             $confirmarpass = $vato->password;
@@ -88,7 +89,10 @@ class ArreglosWebSite extends Controller
             $user = $usuario->usuario;
 
             if (Hash::check($confirmarpass, $pass) && $user == $confirmar) {
-                return $johnny;
+                return[
+                    'tipo' => $changos,
+                    'password' => $pass
+                ];
             }
         }
         return false;
