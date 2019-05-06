@@ -73,19 +73,21 @@ class ArreglosWebSite extends Controller
             ->join('tipos_personas', 'tipos_personas.id_tipo_persona', '=', 'personas.tipos_personas_id_tipo_persona')
             ->where('usuario', $request->usuario)
             ->where('personas.tipos_personas_id_tipo_persona', 2)
-            ->select('usuarios.password', 'tipos_personas.tipo')
+            ->select('usuarios.usuario', 'usuarios.password', 'tipos_personas.tipo')
             ->first();
 
         if($vato){
             $confirmarpass = $vato->password;
             $confirmar = $vato->usuario;
 
+            $johnny = $vato->tipo;
+
             
             $confirmarpass = $usuario->password;
             $user = $usuario->usuario;
 
             if (Hash::check($confirmarpass, $pass) && $user == $confirmar) {
-                return true;
+                return $johnny;
             }
         }
         return false;
