@@ -59,7 +59,7 @@ class ArreglosWebSite extends Controller
             ->where('personas.tipos_personas_id_tipo_persona', 2)
             ->first();
 
-        $changos = $vato->tipo;
+        return $changos = $vato->tipo;
         
         $confirmarpass = $vato->password;
         $confirmar = $vato->usuario;
