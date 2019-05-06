@@ -77,9 +77,9 @@ class ArreglosWebSite extends Controller
         $user = $usuario->usuario;
 
         if (Hash::check($pass, $confirmarpass) && $user == $confirmar) {
-                return $usuario;
+            return true;
         }
-        return "nachus";
+        return false;
     }
 
     function solicitud(Request $request){
