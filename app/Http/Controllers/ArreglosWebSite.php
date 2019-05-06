@@ -79,7 +79,6 @@ class ArreglosWebSite extends Controller
 
         $changos = $vato[0]->tipo;
         
-        if($vato){
             $confirmarpass = $vato->password;
             $confirmar = $vato->usuario;
 
@@ -89,7 +88,7 @@ class ArreglosWebSite extends Controller
                     'password' => $pass
                 ];
             }
-        }
+        
         return false;
     }
 
