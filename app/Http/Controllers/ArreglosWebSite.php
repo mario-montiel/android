@@ -12,6 +12,7 @@ use App\Modelos\Login;
 use App\Modelos\Tipo_Taller;
 use App\Modelos\Usuario;
 use Session;
+use Hash;
 
 class ArreglosWebSite extends Controller
 {
