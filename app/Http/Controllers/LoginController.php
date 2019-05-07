@@ -161,13 +161,10 @@ class LoginController extends Controller
             }
         }
         
-        if(!$vato){
-            $vato = DB::table('usuarios')->where('usuario', $request->usuario)->first();
-            $response = $vato->usuario;
-            if($response){
+        if(!$vato){ 
                 return redirect('/registrar')
                         ->with('fail', 'Esta cuenta ya existe, porfavor poner otra cuenta');
-            }
+            
         }
         /*return redirect('/registrar')
           ->with('mal', 'Algo salio mal');*/
