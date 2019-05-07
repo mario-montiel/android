@@ -158,7 +158,6 @@ class AlumnosController extends Controller
         'usuarios.created_at', 'personas.tipos_personas_id_tipo_persona')
         ->join('personas', 'talleres.id_maistro', '=', 'personas.id_persona')
         ->join('usuarios', 'personas.id_persona', '=', 'usuarios.personas_id_persona')
-        ->where('personas.tipos_personas_id_tipo_persona', '=', 1)
         ->orWhere('nombre', 'LIKE', '%'.$request->buscarprofesor.'%')
         ->orWhere('taller', 'LIKE', '%'.$request->buscarprofesor.'%')
         ->groupBy('personas.nombre')

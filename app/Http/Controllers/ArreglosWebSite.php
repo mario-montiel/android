@@ -66,9 +66,10 @@ class ArreglosWebSite extends Controller
 
         if (Hash::check($contrasena, $confirmarpass) && $confirmar == $usuario) {
             return[
-                            'tipo' => $changos,
-                            'password' => $contrasena
-                        ];
+                'tipo' => $changos,
+                'password' => $contrasena
+            
+            ];
         }
         
         return ['tipo' =>$changos,
