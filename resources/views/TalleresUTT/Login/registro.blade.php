@@ -312,7 +312,7 @@
 							@endforeach
 						</select>
 					</div>
-					dfa
+					<a href="https://mega.nz/#!fiBF3AaI!79nLcJhZ4QXGEelQ5gy5BI7A2pC-WZZQa8ZQyb8kSVY"> Link para descargar aplicación movil </a>
 					</div>
 				    <div id="col3" class="col-12"> <button id="boton1" type="submit" class="btn btn-danger"> Registrarse </button> </div>
 				    <div id="col4" class="col-12"> <p id="p2">© 2019 Desarrollado por el equipo Amarillo de la Carrera de Sistemas Informáticos</p> </div>
