@@ -82,6 +82,7 @@ class LoginController extends Controller
     }
     function registrarPersona(Request $request)
     {
+    
         if($request->tpersona == 1){
             $this->validate($request, [
                 'usuario' => 'required|max:255',
@@ -123,33 +124,35 @@ class LoginController extends Controller
                 'tpersona.integer' => 'Seleccione un tipo de persona']);
         }
 
-        $con = $request->get('password');
-        $password = Hash::make($con);
-        $token = Str::random(60);
+        $vato = DB::table('usuarios')->where('usuario', $request->usuario)->first();
 
-        $persona = new Persona();
-        $persona->nombre = $request->get('alumno');
-        if($request->tpersona == 2){
-            $persona->matricula = $request->get('matricula');
-            $persona->seccion = $request->get('seccion');
-            $persona->carreras_id_carrera =$request->carrera;
-            $persona->cuatrimestre_id_cuatrimestre = $request->cuatrimestre;
+        if($request->usuario == $vato){
+            $con = $request->get('password');
+            $password = Hash::make($con);
+            $token = Str::random(60);
+    
+            $persona = new Persona();
+            $persona->nombre = $request->get('alumno');
+            if($request->tpersona == 2){
+                $persona->matricula = $request->get('matricula');
+                $persona->seccion = $request->get('seccion');
+                $persona->carreras_id_carrera =$request->carrera;
+                $persona->cuatrimestre_id_cuatrimestre = $request->cuatrimestre;
+            }
+            $persona->tipos_personas_id_tipo_persona = $request->tpersona;
+            $persona->save();
+    
+            $person = Session::put('persona', $persona);
+            $person = Session::get('persona', $persona);
+            
+            $usuario = new Usuario();
+            $usuario->usuario = $request->usuario;
+            $usuario->password = $password;
+            $usuario->api_token = $token;
+            $usuario->timestamps;
+            $usuario->personas_id_persona = $person->id_persona;
+            $usuario->save();
         }
-        $persona->tipos_personas_id_tipo_persona = $request->tpersona;
-        $persona->save();
-
-        $person = Session::put('persona', $persona);
-        $person = Session::get('persona', $persona);
-        
-        $usuario = new Usuario();
-        $usuario->usuario = $request->usuario;
-        $usuario->password = $password;
-        $usuario->api_token = $token;
-        $usuario->timestamps;
-        $usuario->personas_id_persona = $person->id_persona;
-        $usuario->save();
-
-
 		return redirect('/registrar')
                     ->with('correcto', 'Su cuenta se creó correctamente');
     
