@@ -42,19 +42,6 @@
   </div>
 </nav>
 
-
-<div class="form-group">
-            <h2>Checkboxes</h2>
-            @foreach($talleres as $ev)
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="{{$ev->id_taller}}">
-                    {{$ev->taller}}
-                </label>
-            </div>
-            @endforeach
-        </div>
-
 <center><input name="buscadorasignado" id="buscadorasignado" class="form-control" type="search" placeholder="Buscador!" aria-label="Search" style="width: 50%; margin-top: 2%; text-align: center;"></center>
 
 @extends('TalleresUTT.EventosAsignados.asignareventos')
