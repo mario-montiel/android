@@ -125,9 +125,9 @@ class LoginController extends Controller
         }
 
         $vato = DB::table('usuarios')->where('usuario', $request->usuario)->first();
+        $response = $vato->usuario;
 
-        if($vato){
-            if($request->usuario != $vato->usuario){
+            if(!$response){
                 $con = $request->get('password');
                 $password = Hash::make($con);
                 $token = Str::random(60);
@@ -157,13 +157,13 @@ class LoginController extends Controller
                 return redirect('/registrar')
                         ->with('correcto', 'Su cuenta se creó correctamente');
             }
-            else if($request->usuario == $vato->usuario){
+            else if($response){
                 return redirect('/registrar')
                         ->with('fail', 'Esta cuenta ya existe, porfavor poner otra cuenta');
             }
-        }
-        return redirect('/registrar')
-                ->with('mal', 'Algo salio mal');
+        
+        //return redirect('/registrar')
+          //      ->with('mal', 'Algo salio mal');
     }
     
     function viewRegistroUsuario()
