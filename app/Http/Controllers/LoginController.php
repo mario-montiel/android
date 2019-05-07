@@ -128,8 +128,9 @@ class LoginController extends Controller
         $vato = DB::table('usuarios')->where('usuario', $us3r)->first();
         
         if(!$vato){
-            dd($vato);
-            $response = $vato[0]->usuario;
+            $alumno = DB::table('usuarios')->where('usuario', $us3r)->first();
+            dd($alumno);
+            $response = $alumno[0]->usuario;
 
             if(!$response){
                 $con = $request->get('password');
