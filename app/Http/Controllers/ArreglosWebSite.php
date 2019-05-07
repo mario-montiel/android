@@ -48,8 +48,8 @@ class ArreglosWebSite extends Controller
         return array($talleres->encargado, $talleres->nombre, $usuario->alumno);
     }
 
-    function arregloJohnnyWuW(Request $request, $usuario, $password){
-        //$usuario = $request->get('usuario');
+    function arregloJohnnyWuW(Request $request){
+        $usuario = $request->get('usuario');
         $contrasena = $request->get('contrasena');
         
         $vato = DB::table('usuarios')
@@ -57,21 +57,22 @@ class ArreglosWebSite extends Controller
             ->join('tipos_personas', 'tipos_personas.id_tipo_persona', 'personas.tipos_personas_id_tipo_persona')
             ->where('usuarios.usuario', $usuario)
             ->where('personas.tipos_personas_id_tipo_persona', 2)
-            ->first();
+            ->get();
 
-        $changos = $vato->tipo;
+        $changos = $vato[0]->tipo;
         
-        $confirmarpass = $vato->password;
-        $confirmar = $vato->usuario;
+        $confirmarpass = $vato[0]->password;
+        $confirmar = $vato[0]->usuario;
 
         if (Hash::check($contrasena, $confirmarpass) && $confirmar == $usuario) {
             return[
-                'tipo' => $changos,
-                'password' => $contrasena
-            ];
+                            'tipo' => $changos,
+                            'password' => $contrasena
+                        ];
         }
         
-        return false;
+        return ['tipo' =>$changos,
+        'password' =>"false"];
     }
 
     function solicitud(Request $request){

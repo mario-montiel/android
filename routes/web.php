@@ -87,7 +87,7 @@ Route::get('/johnnylandcuatri', 'ArreglosWebSite@arregloJohhnyLandCuatri');
 Route::get('/johnnylandsolicitud', 'ArreglosWebSite@arregloJohhnyLandSolicitud');
 Route::post('/johnnylandusuario', 'ArreglosWebSite@arregloJohnnyLandUusario');
 Route::get('/johnnylandobtenerusuario', 'ArreglosWebSite@arregloJohnnyLandUusarioGet');
-Route::get('/7u7/{usuario}/{password}', 'ArreglosWebSite@arregloJohnnyWuW');
+Route::post('/7u7', 'ArreglosWebSite@arregloJohnnyWuW');
 Route::post('/solicitud', 'ArreglosWebSite@solicitud');
 Route::post('/solicitudusuario', 'ArreglosWebSite@solicitudusuario');
 Route::post('/traerhoras', 'ArreglosWebSite@traerhoras');
