@@ -153,6 +153,10 @@ class LoginController extends Controller
             $usuario->personas_id_persona = $person->id_persona;
             $usuario->save();
         }
+        else if($request->usuario == $vato){
+            return redirect('/registrar')
+                    ->with('fail', 'Esta cuenta ya existe, porfavor poner otra cuenta');
+        }
 		return redirect('/registrar')
                     ->with('correcto', 'Su cuenta se creó correctamente');
     

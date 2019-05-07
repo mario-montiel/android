@@ -257,6 +257,10 @@
 				<center><span ><p class="alert alert-success">Su cuenta se creó correctamente.</p></span></center>
 			@endif
 
+			@if(Session::has('fail'))
+				<center><span ><p class="alert alert-success">Esta cuenta ya existe, porfavor poner otra cuenta.</p></span></center>
+			@endif
+
 @if ($errors->any())
         <ul style="color: white; margin-top: 25px; margin: auto;">
             @foreach ($errors->all() as $error)
