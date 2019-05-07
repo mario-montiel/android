@@ -128,11 +128,6 @@ class LoginController extends Controller
         $vato = DB::table('usuarios')->where('usuario', $us3r)->first();
         
         if(!$vato){
-            $alumno = DB::table('usuarios')->where('usuario', $us3r)->first();
-            dd($alumno);
-            $response = $alumno[0]->usuario;
-
-            if(!$response){
                 $con = $request->get('password');
                 $password = Hash::make($con);
                 $token = Str::random(60);
@@ -161,7 +156,7 @@ class LoginController extends Controller
     
                 return redirect('/registrar')
                         ->with('correcto', 'Su cuenta se creó correctamente');
-            }
+            
         }
                 return redirect('/registrar')
                         ->with('fail', 'Esta cuenta ya existe, porfavor poner otra cuenta');
