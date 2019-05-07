@@ -126,39 +126,41 @@ class LoginController extends Controller
 
         $vato = DB::table('usuarios')->where('usuario', $request->usuario)->first();
 
-        if($request->usuario != $vato->usuario){
-            $con = $request->get('password');
-            $password = Hash::make($con);
-            $token = Str::random(60);
+        if($vato){
+            if($request->usuario != $vato->usuario){
+                $con = $request->get('password');
+                $password = Hash::make($con);
+                $token = Str::random(60);
+        
+                $persona = new Persona();
+                $persona->nombre = $request->get('alumno');
+                if($request->tpersona == 2){
+                    $persona->matricula = $request->get('matricula');
+                    $persona->seccion = $request->get('seccion');
+                    $persona->carreras_id_carrera =$request->carrera;
+                    $persona->cuatrimestre_id_cuatrimestre = $request->cuatrimestre;
+                }
+                $persona->tipos_personas_id_tipo_persona = $request->tpersona;
+                $persona->save();
+        
+                $person = Session::put('persona', $persona);
+                $person = Session::get('persona', $persona);
+                
+                $usuario = new Usuario();
+                $usuario->usuario = $request->usuario;
+                $usuario->password = $password;
+                $usuario->api_token = $token;
+                $usuario->timestamps;
+                $usuario->personas_id_persona = $person->id_persona;
+                $usuario->save();
     
-            $persona = new Persona();
-            $persona->nombre = $request->get('alumno');
-            if($request->tpersona == 2){
-                $persona->matricula = $request->get('matricula');
-                $persona->seccion = $request->get('seccion');
-                $persona->carreras_id_carrera =$request->carrera;
-                $persona->cuatrimestre_id_cuatrimestre = $request->cuatrimestre;
+                return redirect('/registrar')
+                        ->with('correcto', 'Su cuenta se creó correctamente');
             }
-            $persona->tipos_personas_id_tipo_persona = $request->tpersona;
-            $persona->save();
-    
-            $person = Session::put('persona', $persona);
-            $person = Session::get('persona', $persona);
-            
-            $usuario = new Usuario();
-            $usuario->usuario = $request->usuario;
-            $usuario->password = $password;
-            $usuario->api_token = $token;
-            $usuario->timestamps;
-            $usuario->personas_id_persona = $person->id_persona;
-            $usuario->save();
-
-            return redirect('/registrar')
-                    ->with('correcto', 'Su cuenta se creó correctamente');
-        }
-        else if($request->usuario == $vato->usuario){
-            return redirect('/registrar')
-                    ->with('fail', 'Esta cuenta ya existe, porfavor poner otra cuenta');
+            else if($request->usuario == $vato->usuario){
+                return redirect('/registrar')
+                        ->with('fail', 'Esta cuenta ya existe, porfavor poner otra cuenta');
+            }
         }
     }
     
