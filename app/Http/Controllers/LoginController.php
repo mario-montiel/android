@@ -128,7 +128,7 @@ class LoginController extends Controller
         $vato = DB::table('usuarios')->where('usuario', $us3r)->first();
         
         if(!$vato){
-            $response = $vato->usuario;
+            $response = $vato[0]->usuario;
 
             if(!$response){
                 $con = $request->get('password');
