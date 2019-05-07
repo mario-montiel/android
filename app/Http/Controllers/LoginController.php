@@ -160,14 +160,8 @@ class LoginController extends Controller
                         ->with('correcto', 'Su cuenta se creó correctamente');
             }
         }
-        
-        if(!$vato){ 
                 return redirect('/registrar')
                         ->with('fail', 'Esta cuenta ya existe, porfavor poner otra cuenta');
-            
-        }
-        /*return redirect('/registrar')
-          ->with('mal', 'Algo salio mal');*/
     }
     
     function viewRegistroUsuario()
