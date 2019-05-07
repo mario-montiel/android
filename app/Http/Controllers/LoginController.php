@@ -162,6 +162,8 @@ class LoginController extends Controller
                         ->with('fail', 'Esta cuenta ya existe, porfavor poner otra cuenta');
             }
         }
+        return redirect('/registrar')
+                ->with('mal', 'Algo salio mal');
     }
     
     function viewRegistroUsuario()
