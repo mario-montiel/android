@@ -162,6 +162,7 @@ class LoginController extends Controller
         }
         
         if(!$vato){
+            $response = $vato->usuario;
             if($response){
                 return redirect('/registrar')
                         ->with('fail', 'Esta cuenta ya existe, porfavor poner otra cuenta');
