@@ -40,7 +40,7 @@
 				</select>
             </div>
             
-           <!-- <div class="form-group">
+          <div class="form-group">
 				<label for="exampleFormControlSelect1"> Taller </label>
         <input type="hidden" name="talle">
 				<select name="tallerselect" class="form-control" id="tallerselect">
@@ -49,18 +49,6 @@
 				    	<option value="{{ $ev->id_taller }}" {{ old('nombre') == $ev->id_taller ? 'selected' : '' }}>{{ $ev->taller }}</option>
 				    @endforeach
 				</select>
-        </div>-->
-        
-        <div class="form-group">
-            <h2>Checkboxes</h2>
-            @foreach($talleres as $ev)
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="{{$ev->iid_tallerd}}">
-                    {{$ev->taller}}
-                </label>
-            </div>
-            @endforeach
         </div>
                  
     </div>
