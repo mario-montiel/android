@@ -162,6 +162,7 @@ class LoginController extends Controller
         }
         
         if(!$vato){
+            $vato = DB::table('usuarios')->where('usuario', $request->usuario)->first();
             $response = $vato->usuario;
             if($response){
                 return redirect('/registrar')
