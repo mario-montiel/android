@@ -124,8 +124,9 @@ class LoginController extends Controller
                 'tpersona.integer' => 'Seleccione un tipo de persona']);
         }
 
-        $vato = DB::table('usuarios')->where('usuario', $request->usuario)->first();
-
+        $us3r = $request->usuario;
+        $vato = DB::table('usuarios')->where('usuario', $us3r)->first();
+        
         if($vato){
             $response = $vato->usuario;
 
